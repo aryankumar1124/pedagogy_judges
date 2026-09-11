@@ -1,0 +1,43 @@
+experiment_id: ollama_student_provider_comparison_full_v2
+seed: 42
+student_agent: ollama
+machine_config: config/machine.yaml
+assignment_content_root: assignments/data
+student_models_config: config/student_models.yaml
+tutor_models_config: config/tutor_models.yaml
+student_models: from_config
+assignments:
+  - 4
+  - 6
+  - 7
+question_selection:
+  - assignment_id: 4
+    question_id: a4_q1
+  - assignment_id: 6
+    question_id: a6_q3
+  - assignment_id: 7
+    question_id: a7_q3
+repetitions: 3
+tutors:
+  - openai
+  - anthropic
+  - gemini
+conversation_limits:
+  max_student_attempts: 15
+  max_turns: 14
+generation_parameters:
+  temperature: 0.4
+  top_p: 0.9
+resume:
+  enabled: true
+pricing:
+  openai: null
+  anthropic: null
+  gemini: null
+expected_plan:
+  student_models: 15
+  teachers: 3
+  repetitions: 3
+  questions_per_conversation: 3
+  parent_conversations: 135
+  question_episodes: 405

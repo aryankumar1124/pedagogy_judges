@@ -1,0 +1,158 @@
+parameter_ranges:
+  - R1_SMALL_0_5_TO_2B
+  - R2_SMALL_3_TO_4B
+  - R3_MEDIUM_7_TO_9B
+  - R4_LARGE_12_TO_14B
+  - R5_XL_24_TO_30B
+models:
+  - tag: qwen2.5:0.5b
+    family: qwen2.5
+    size: 0.5b
+    nominal_parameter_size: 0.5B
+    parameter_range: R1_SMALL_0_5_TO_2B
+    parameter_bucket: R1_SMALL_0_5_TO_2B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: llama3.2:1b
+    family: llama3.2
+    size: 1b
+    nominal_parameter_size: 1B
+    parameter_range: R1_SMALL_0_5_TO_2B
+    parameter_bucket: R1_SMALL_0_5_TO_2B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: qwen3:1.7b
+    family: qwen3
+    size: 1.7b
+    nominal_parameter_size: 1.7B
+    parameter_range: R1_SMALL_0_5_TO_2B
+    parameter_bucket: R1_SMALL_0_5_TO_2B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: qwen2.5:3b
+    family: qwen2.5
+    size: 3b
+    nominal_parameter_size: 3B
+    parameter_range: R2_SMALL_3_TO_4B
+    parameter_bucket: R2_SMALL_3_TO_4B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: phi3:mini
+    family: phi3
+    size: 3.8b
+    nominal_parameter_size: 3.8B
+    parameter_range: R2_SMALL_3_TO_4B
+    parameter_bucket: R2_SMALL_3_TO_4B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: gemma3:4b
+    family: gemma3
+    size: 4b
+    nominal_parameter_size: 4B
+    parameter_range: R2_SMALL_3_TO_4B
+    parameter_bucket: R2_SMALL_3_TO_4B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: qwen2.5:7b
+    family: qwen2.5
+    size: 7b
+    nominal_parameter_size: 7B
+    parameter_range: R3_MEDIUM_7_TO_9B
+    parameter_bucket: R3_MEDIUM_7_TO_9B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: llama3.1:8b
+    family: llama3.1
+    size: 8b
+    nominal_parameter_size: 8B
+    parameter_range: R3_MEDIUM_7_TO_9B
+    parameter_bucket: R3_MEDIUM_7_TO_9B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: gemma2:9b
+    family: gemma2
+    size: 9b
+    nominal_parameter_size: 9B
+    parameter_range: R3_MEDIUM_7_TO_9B
+    parameter_bucket: R3_MEDIUM_7_TO_9B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: gemma3:12b
+    family: gemma3
+    size: 12b
+    nominal_parameter_size: 12B
+    parameter_range: R4_LARGE_12_TO_14B
+    parameter_bucket: R4_LARGE_12_TO_14B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: qwen3:14b
+    family: qwen3
+    size: 14b
+    nominal_parameter_size: 14B
+    parameter_range: R4_LARGE_12_TO_14B
+    parameter_bucket: R4_LARGE_12_TO_14B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: phi4:14b
+    family: phi4
+    size: 14b
+    nominal_parameter_size: 14B
+    parameter_range: R4_LARGE_12_TO_14B
+    parameter_bucket: R4_LARGE_12_TO_14B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: mistral-small:24b
+    family: mistral-small
+    size: 24b
+    nominal_parameter_size: 24B
+    parameter_range: R5_XL_24_TO_30B
+    parameter_bucket: R5_XL_24_TO_30B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: gemma3:27b
+    family: gemma3
+    size: 27b
+    nominal_parameter_size: 27B
+    parameter_range: R5_XL_24_TO_30B
+    parameter_bucket: R5_XL_24_TO_30B
+    quantization: null
+    architecture_type: dense
+    role: student
+    estimated_storage_gib: null
+  - tag: qwen3:30b
+    family: qwen3
+    size: 30b
+    nominal_parameter_size: 30B
+    parameter_range: R5_XL_24_TO_30B
+    parameter_bucket: R5_XL_24_TO_30B
+    quantization: null
+    architecture_type: moe
+    active_parameter_size: 3B
+    role: student
+    estimated_storage_gib: null

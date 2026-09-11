@@ -1,0 +1,27 @@
+Teacher: Today we're going to learn about binary search. Can anyone tell me what happens when you look up a word in a dictionary? Do you start from page 1?
+
+Student A: No, you kind of guess the middle and go from there.
+
+Teacher: Exactly! That's the core idea behind binary search. Let me think through this out loud as if I were solving it for the first time. Say I'm looking for the number 42 in this sorted list: [3, 8, 15, 23, 42, 56, 91]. I start by checking the middle element, 23. Since 42 is bigger than 23, I know the answer must be in the right half. I don't need to check the left half at all — that's the key insight that makes this fast.
+
+Student B: What if the list isn't sorted?
+
+Teacher: Great question — binary search only works on sorted data, that's a common misconception. If your data isn't sorted, you'd need to sort it first, or use a different search method entirely.
+
+Teacher: Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck.
+
+[Students work in pairs. Teacher circulates.]
+
+Teacher: I noticed some of you jumped straight to checking the first element — remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again.
+
+Student A: Oh I see, so we check 23, then since 8 is smaller we only look at [3, 8, 15].
+
+Teacher: Exactly right. Can you explain to your partner why we only look at that half now?
+
+Student A: Because we know 8 has to be smaller than 23, and the list is sorted, so it can't be on the right side.
+
+Teacher: Perfect explanation. Before we move on, can anyone tell me why binary search is faster than checking every element one by one?
+
+Student B: Because you cut the list in half each time instead of just going one by one.
+
+Teacher: Exactly — that's why it's much faster for large datasets. For homework, try tracing through one more example and be ready to explain your reasoning to the class tomorrow.
