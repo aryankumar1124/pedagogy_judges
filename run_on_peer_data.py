@@ -11,7 +11,7 @@ import sys
 import json
 
 from utils.transcript_converter import load_raw_transcript, to_dialogue_text, build_metadata_summary
-from main import run_all_judges, aggregate
+from main import run_all_judges, aggregate, print_score_table, print_full_detail
 
 
 def main():
@@ -29,14 +29,13 @@ def main():
     print(f"\nTranscript length: {len(transcript_text)} chars\n")
 
     results = run_all_judges(transcript_text)
-
-    print("\n=== RAW JUDGE OUTPUTS ===")
-    print(json.dumps(results, indent=2))
-
     summary = aggregate(results)
 
-    print("\n=== AGGREGATED RESULT ===")
-    print(json.dumps(summary, indent=2))
+    print("\n=== PEDAGOGY SCORES BY FACTOR ===")
+    print_score_table(results, summary)
+
+    print("\n=== FULL DETAIL PER FACTOR ===")
+    print_full_detail(results, summary)
 
     # Save everything to a file for later analysis
     out = {"metadata": metadata, "judge_results": results, "aggregated": summary}
