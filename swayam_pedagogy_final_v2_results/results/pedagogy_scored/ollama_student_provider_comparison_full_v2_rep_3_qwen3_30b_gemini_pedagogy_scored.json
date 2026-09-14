@@ -1,0 +1,483 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_qwen3_30b_gemini",
+    "student_model": "qwen3:30b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at your answer for part 3. Check the operator definition for `greater than` in the prompt: what are the expected input types for `greater than`?",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like `5` can be promoted or treated as floats when a float is expected.",
+          "Teacher: That is a fantastic, thorough breakdown! You correctly traced every single step and verified the input and output types for each operator."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by guiding the student through type system nuances, clarifying operator definitions, and addressing misconceptions about numeric promotion. The explanations are clear and grounded in the specific context of the assignment's type system.",
+        "strengths": [
+          "Clear and accurate explanations of type system rules (e.g., numeric promotion).",
+          "Effective use of operator definitions to guide student reasoning.",
+          "Proactive identification and correction of student misconceptions (e.g., strict typing vs. implicit conversions)."
+        ],
+        "weaknesses": [
+          "Could have provided more explicit analogies or real-world examples to deepen understanding.",
+          "No evidence of addressing broader misconceptions beyond the immediate problem."
+        ],
+        "suggestions": [
+          "Incorporate analogies (e.g., comparing type systems to real-world rules) to make abstract concepts more relatable.",
+          "Explicitly state common misconceptions about type systems upfront to preempt confusion."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a closer look at your answer for part 3.",
+          "Teacher: That is a fantastic, thorough breakdown! You correctly traced every single step and verified the input and output types for each operator.",
+          "Teacher: That is spot on! All of your final answers and explanations are completely correct."
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback by pointing out errors (e.g., part 3), guiding the student to re-examine definitions, and affirming correct reasoning. The feedback is timely and directly tied to learning goals.",
+        "strengths": [
+          "Feedback is specific and tied to the student's work (e.g., re-examining part 3).",
+          "Encourages self-correction by asking guiding questions.",
+          "Provides clear affirmation of correct answers with reasoning."
+        ],
+        "weaknesses": [
+          "Feedback is reactive rather than proactive; no evidence of preemptive feedback on common pitfalls.",
+          "Lacks explicit next steps for improvement beyond the immediate problem."
+        ],
+        "suggestions": [
+          "Provide more explicit next steps (e.g., 'Next time, always check for implicit conversions in the operator definitions').",
+          "Use a feedback framework (e.g., 'What went well? What needs improvement?') to structure responses."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Let's look really closely at that operator definition again: `greater than(int, float) -> boolean`.",
+          "Teacher: In many programming languages, if a function expects a floating-point number, can an integer be safely used or implicitly converted in a strict type-checking system like this?",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like `5` can be promoted or treated as floats when a float is expected."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by asking probing questions and clarifying type system rules, but the modeling is somewhat implicit. There is no explicit 'think-aloud' or step-by-step demonstration of the teacher's own problem-solving process.",
+        "strengths": [
+          "Guides the student through the teacher's own reasoning via questions.",
+          "Clarifies abstract concepts (e.g., numeric promotion) with concrete examples."
+        ],
+        "weaknesses": [
+          "Lacks explicit 'think-aloud' or demonstration of the teacher's own problem-solving steps.",
+          "Modeling is reactive (in response to student errors) rather than proactive."
+        ],
+        "suggestions": [
+          "Explicitly model the teacher's thought process (e.g., 'Here\u2019s how I would approach this: first, I check the operator definition...').",
+          "Use a 'think-aloud' strategy to make expert reasoning more visible."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a closer look at your answer for part 3. Check the operator definition for `greater than` in the prompt: what are the expected input types for `greater than`?",
+          "Teacher: Wait, let's re-read the prompt: does it mention any implicit conversions for `greater than`, or are the input types strict?",
+          "Teacher: Let's re-examine standard type systems in programming. When a function expects a floating-point number, can an integer literal like `5` (or `5.0`) be treated as a float?"
+        ],
+        "reasoning": "The teacher provides structured guidance through targeted questions, gradually leading the student to the correct understanding. The support is adaptive and fades as the student demonstrates competence (e.g., the student eventually arrives at the correct answer independently).",
+        "strengths": [
+          "Uses scaffolding questions to guide the student toward self-correction.",
+          "Adapts support based on the student's responses (e.g., probing deeper when the student is unsure).",
+          "Gradually reduces support as the student gains confidence."
+        ],
+        "weaknesses": [
+          "No explicit evidence of fading support for other parts of the assignment (e.g., part 4).",
+          "Could have provided more direct hints when the student was stuck."
+        ],
+        "suggestions": [
+          "Explicitly state when support is being reduced (e.g., 'Now try applying this to part 4 on your own').",
+          "Use a mix of direct hints and open-ended questions to cater to different student needs."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: For part 4, I checked each operator step by step. First, `greater than(20, 10.5)`: the operator expects `int` and `float`, and 20 is an integer while 10.5 is a float, so that matches. 20 > 10.5 is true, so it outputs `true` (boolean). Next, `equals(\"hi\", \"hi\")`: both arguments are strings, so the operator works, and since the strings are equal, it outputs `true` (boolean). Finally, `and(true, true)` uses the `and` operator, which takes two booleans and returns a boolean. True AND true is true, so the whole expression evaluates to `true` with a final type of boolean.",
+          "Teacher: That is a fantastic, thorough breakdown! You correctly traced every single step and verified the input and output types for each operator."
+        ],
+        "reasoning": "The teacher consistently prompts the student to explain their reasoning (e.g., 'Can you explain your reasoning for how you determined that expression's type and output?'). The student demonstrates deep reflection by breaking down their thought process step-by-step.",
+        "strengths": [
+          "Student is frequently asked to articulate reasoning (e.g., for part 4).",
+          "Student demonstrates high-quality reflection by tracing steps and verifying types.",
+          "Teacher reinforces reflection by affirming thorough explanations."
+        ],
+        "weaknesses": [
+          "Reflection is primarily student-driven; the teacher could have explicitly modeled reflection strategies.",
+          "No evidence of the student reflecting on their own learning process (e.g., metacognition)."
+        ],
+        "suggestions": [
+          "Incorporate explicit reflection prompts (e.g., 'What strategies did you use to solve this?').",
+          "Encourage metacognitive reflection (e.g., 'What did you learn from this mistake?')."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Oh, right! The operator says \"greater than(int, float)\", so the second argument needs to be a float, but 5 is an integer. I should've checked that again.",
+          "Student: In this strict type system, since there's no \"int to float\" operator listed and the `greater than` operator specifically requires a float as the second argument, integers can't be used where a float is expected.",
+          "Student: For part 4, I checked each operator step by step... All types matched the operator definitions without needing conversions, so it's typeable."
+        ],
+        "reasoning": "The student is consistently engaged in interactive and constructive activities. They are actively reasoning, explaining their thought processes, and co-constructing understanding with the teacher. The dialogue is highly collaborative and involves deep cognitive engagement (ICAP: Interactive).",
+        "strengths": [
+          "Student is actively constructing knowledge through dialogue and reasoning.",
+          "High level of interaction between teacher and student (e.g., back-and-forth questioning and explaining).",
+          "Student demonstrates deep cognitive engagement (e.g., self-explaining, questioning, summarizing)."
+        ],
+        "weaknesses": [
+          "No evidence of group collaboration (only 1:1 interaction).",
+          "Could have included more peer-to-peer discussion if applicable."
+        ],
+        "suggestions": [
+          "Incorporate peer discussion or group work to further enhance interactive engagement.",
+          "Encourage the student to pose their own questions or challenges to deepen engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Actually, in this particular assignment's type system, numeric values like 5 can be promoted or treated as floats when a float is expected.",
+          "Teacher: ...what are the expected input types for greater than?",
+          "Teacher: In many programming languages, if a function expects a floating-point number, can an integer be safely used or implicitly converted..."
+        ],
+        "reasoning": "The teacher demonstrates solid domain knowledge of type systems and numeric promotion. They effectively use Socratic questioning to guide the student through the specific constraints of the problem's type definition, correcting a misconception about strict typing versus the specific rules of the assignment. The explanation of implicit conversion is clear once the rule is established.",
+        "strengths": [
+          "Effective use of domain-specific terminology (typeable, implicit conversion, numeric promotion).",
+          "Correctly identifies the nuance between general language rules and specific assignment constraints.",
+          "Clear final explanation of the type system rules."
+        ],
+        "weaknesses": [
+          "The initial handling of the student's mistake involved multiple confusing turns before the correct rule was clarified, which might have caused confusion before the PCK payoff.",
+          "Did not proactively address the common misconception about int/float compatibility before the student struggled, though the eventual resolution was clear."
+        ],
+        "suggestions": [
+          "Provide a brief upfront clarification on the type system's promotion rules at the start of the specific problem part to prevent the initial back-and-forth.",
+          "Use a visual or explicit comparison chart between 'strict distinct' and 'implicit promotion' to solidify the concept."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: ...I think I was overthinking it before, but yeah, strict types mean no implicit conversions here.",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like 5 can be promoted...",
+          "Teacher: That is a fantastic, thorough breakdown! You correctly traced every single step..."
+        ],
+        "reasoning": "The feedback is specific and actionable. When the student made an error in Part 3, the teacher did not simply correct them but guided them to the root cause. When the student corrected themselves in Part 4, the teacher provided detailed praise highlighting *what* was done well (tracing steps, verifying types). The feedback clearly indicates the learning goal (correct type evaluation) and the performance standard.",
+        "strengths": [
+          "Feedback is descriptive rather than generic ('fantastic, thorough breakdown').",
+          "Identifies specific cognitive errors (misunderstanding the type system rules).",
+          "Confirms mastery and readiness to submit."
+        ],
+        "weaknesses": [
+          "The feedback during the correction phase was somewhat lengthy and repetitive before the final 'Actually...' clarification.",
+          "Could have been more concise in guiding the student back to the prompt's specific definitions."
+        ],
+        "suggestions": [
+          "Structure feedback in a 're-observe, reflect, respond' format to keep the interaction tighter.",
+          "Explicitly link the correction to the general principle for future similar problems."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at your answer for part 3.",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like 5 can be promoted..."
+        ],
+        "reasoning": "The teacher does not model the problem-solving process. They do not think-aloud through a new example or demonstrate the step-by-step tracing of a type evaluation themselves. Instead, they rely entirely on the student to perform the work and use questioning to prompt the student's thinking. The 'modeling' is effectively absent; the teacher acts as a facilitator/guide rather than a demonstrator of expert thinking.",
+        "strengths": [
+          "The teacher's questions implicitly model the *kind* of thinking required (checking operator definitions, checking conversion rules) by asking the student to perform those checks."
+        ],
+        "weaknesses": [
+          "No explicit demonstration of the expert problem-solving sequence (e.g., 'Let me trace this one... I look at the operator, I check the types, I check for conversions...').",
+          "Missed opportunity to model how to approach a *new* complex expression before asking the student to summarize."
+        ],
+        "suggestions": [
+          "Perform a 'worked example' on a slightly different, simpler expression to show the tracing process explicitly before asking the student to apply it.",
+          "Think-aloud during the review of Part 4 to show how an expert verifies nested expressions."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Check the operator definition for greater than in the prompt: what are the expected input types for greater than?",
+          "Teacher: ...what do you think?",
+          "Teacher: Since you've successfully worked through all four parts... would you like to summarize your final answers..."
+        ],
+        "reasoning": "The teacher provides appropriate scaffolding by asking guiding questions rather than giving the answer immediately. The support is adapted to the student's current need (confusion about types). The scaffolding fades as the student gains confidence, moving from specific questions about operator definitions to broader requests for summarization and self-verification. The teacher waits for the student to articulate the answer before confirming correctness.",
+        "strengths": [
+          "Uses open-ended questions to guide discovery.",
+          "Adapts questioning depth based on student responses (digging into the 'why' when the student is uncertain).",
+          "Empowers the student to make the final decision and verification."
+        ],
+        "weaknesses": [
+          "The initial coaching on Part 3 was slightly circular, repeating similar questions before clarifying the rule, which may have felt like a lack of direction for a moment."
+        ],
+        "suggestions": [
+          "Provide a clearer hint structure: e.g., 'Let's look at the conversion list first.' rather than asking multiple variations of the same question."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Student: ...I think I was overthinking it before, but yeah, strict types mean no implicit conversions here.",
+          "Student: ...Can you explain your reasoning for how you determined that expression's type and output?",
+          "Student: For part 4, I checked each operator step by step..."
+        ],
+        "reasoning": "The student is explicitly asked to reflect on their errors ('Oh, right!... I should've checked that again') and explain their reasoning for correct answers. The student's final summary demonstrates metacognitive awareness of the process (checking types, verifying output). The interaction pushes the student to articulate *why* their previous answer was wrong and *how* they arrived at the correct one.",
+        "strengths": [
+          "Student verbalizes the shift in understanding ('I was overthinking it').",
+          "Final summary serves as a reflective artifact consolidating the learning.",
+          "Student explains the 'why' behind the type invalidity clearly."
+        ],
+        "weaknesses": [
+          "The reflection is driven largely by teacher prompts; more independent self-checking could be encouraged for future problems."
+        ],
+        "suggestions": [
+          "Ask the student to identify *one* specific cue in the problem statement that would help them recall this type rule in the future."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Oh, right! The operator says \"greater than(int, float)\"...",
+          "Student: In this strict type system, integers can't be used as floats without an explicit conversion operator...",
+          "Student: For part 4, I checked each operator step by step..."
+        ],
+        "reasoning": "The student is actively engaged in Constructive Cognitive engagement. They are not just listening; they are analyzing the types, constructing arguments for why an expression is or isn't typeable, and synthesizing the rules of the system. The interaction is a dialogue where the student constructs knowledge by applying rules to specific data. It reaches Interactive levels as the student argues and defends their reasoning based on the system's constraints.",
+        "strengths": [
+          "Student actively applies rules to new data (the specific expressions).",
+          "High level of cognitive effort evident in the detailed step-by-step tracing of Part 4.",
+          "Student engages in self-correction, a sign of high cognitive involvement."
+        ],
+        "weaknesses": [
+          "The engagement is limited to a single student-teacher channel; there is no peer interaction or collaborative construction.",
+          "The length of the dialogue on Part 3 might have reduced engagement momentum for some students."
+        ],
+        "suggestions": [
+          "Encourage the student to 'teach back' the rule to a hypothetical peer to further solidify the constructive engagement.",
+          "Introduce a visual representation of the expression tree to aid in the active construction of the solution."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's re-examine standard type systems in programming. When a function expects a floating-point number, can an integer literal like `5` (or `5.0`) be treated as a float, or do languages often allow widening/implicit conversion from `int` to `float`?",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like `5` can be promoted or treated as floats when a float is expected."
+        ],
+        "reasoning": "The teacher demonstrates exceptional PCK by deeply exploring type systems, implicit conversions, and strict typing in programming. They guide the student through complex reasoning, correcting misconceptions, and adapting explanations to the student's needs.",
+        "strengths": [
+          "Clear and detailed explanations of type systems and implicit conversions.",
+          "Proactive identification and correction of student misconceptions.",
+          "Use of real-world programming conventions to deepen understanding."
+        ],
+        "weaknesses": [
+          "Initial confusion in the student's understanding of type promotion, though effectively resolved by the teacher."
+        ],
+        "suggestions": [
+          "Continue using real-world examples to bridge theoretical concepts with practical programming scenarios."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: That is a fantastic, thorough breakdown! You correctly traced every single step and verified the input and output types for each operator.",
+          "Teacher: That is spot on! All of your final answers and explanations are completely correct."
+        ],
+        "reasoning": "The teacher provides highly effective feedback, consistently addressing learning goals, current performance, and future improvement. Feedback is clear, actionable, and tailored to the student's responses.",
+        "strengths": [
+          "Specific praise for correct steps and reasoning.",
+          "Clear affirmation of the student's final answers.",
+          "Encouragement for future work and submission."
+        ],
+        "weaknesses": [
+          "Could include more explicit next steps or areas for further exploration, though the student appears confident."
+        ],
+        "suggestions": [
+          "Incorporate brief suggestions for extending learning beyond the current assignment."
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Hold on a second\u2014let's look really closely at that operator definition again: `greater than(int, float) -> boolean`. In many programming languages, if a function expects a floating-point number, can an integer be safely used or implicitly converted...",
+          "Teacher: Let's pause and look at standard mathematical and programming conventions regarding integers and floats."
+        ],
+        "reasoning": "The teacher consistently models expert thinking by making their thought processes visible through think-aloud strategies, real-world examples, and step-by-step reasoning.",
+        "strengths": [
+          "Clear demonstration of problem-solving processes.",
+          "Use of think-aloud strategies to model expert thinking.",
+          "Integration of real-world programming conventions."
+        ],
+        "weaknesses": [
+          "None significant; the modeling is highly effective and consistent."
+        ],
+        "suggestions": [
+          "Continue using think-aloud strategies to deepen student understanding."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Check the operator definition for `greater than` in the prompt: what are the expected input types for `greater than`?",
+          "Teacher: Take a look at the given operators list\u2014is there an explicit `int to float` operator, or is numeric promotion standard?",
+          "Teacher: Actually, in this particular assignment's type system, numeric values like `5` can be promoted or treated as floats when a float is expected."
+        ],
+        "reasoning": "The teacher provides strategic and gradually fading support, guiding the student through complex concepts with targeted questions and hints. Support is adapted to the student's growing competence.",
+        "strengths": [
+          "Strategic use of questions to guide student thinking.",
+          "Gradual removal of support as the student gains confidence.",
+          "Adaptation of coaching to the student's needs."
+        ],
+        "weaknesses": [
+          "None significant; the coaching is highly effective and tailored."
+        ],
+        "suggestions": [
+          "Continue adapting support based on student progress and needs."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Oh, right, the prompt says the second argument has to be a float, and there's no conversion operator for int to float\u2014only int to string. So even though 5 is a number, it's an integer, and the system requires a float.",
+          "Student: In this strict type system, integers can't be used as floats without an explicit conversion operator. The problem says to use only the given operators, and there's no 'int to float' conversion listed\u2014only 'int to string' exists."
+        ],
+        "reasoning": "The student consistently articulates reasoning, evaluates understanding, and engages in meaningful reflection. The teacher facilitates this by asking probing questions and encouraging deep thinking.",
+        "strengths": [
+          "Student consistently explains reasoning and reflects on understanding.",
+          "Teacher facilitates reflection through targeted questioning.",
+          "Deep engagement with the material and concepts."
+        ],
+        "weaknesses": [
+          "None significant; reflection is consistent and meaningful."
+        ],
+        "suggestions": [
+          "Encourage students to reflect on broader implications of type systems in programming."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Yes, it's typeable. The second argument 5 is a numeric value that gets promoted to a float (since the type system allows this), so it matches the expected float type.",
+          "Student: For part 4, I checked each operator step by step. First, `greater than(20, 10.5)`: the operator expects `int` and `float`, and 20 is an integer while 10.5 is a float, so that matches."
+        ],
+        "reasoning": "The student consistently participates in interactive learning, engaging in discussion, collaboration, and co-construction of understanding. The teacher fosters this through open-ended questions and encouragement.",
+        "strengths": [
+          "High level of interactive engagement.",
+          "Student actively participates in problem-solving and discussion.",
+          "Teacher fosters collaboration and co-construction of knowledge."
+        ],
+        "weaknesses": [
+          "None significant; engagement is consistently interactive and constructive."
+        ],
+        "suggestions": [
+          "Continue fostering interactive and collaborative learning environments."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          2,
+          5
+        ],
+        "agreement_stdev": 1.25
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 84.4,
+    "interpretation": "Very Good pedagogy"
+  }
+}

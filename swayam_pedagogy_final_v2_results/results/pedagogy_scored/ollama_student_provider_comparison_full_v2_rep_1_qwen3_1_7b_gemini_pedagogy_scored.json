@@ -1,0 +1,513 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen3_1_7b_gemini",
+    "student_model": "qwen3:1.7b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Let's look closely at how weakest preconditions are computed by substitution.",
+          "for an assignment `x := E`, we take the postcondition and replace every occurrence of the variable `x` with the expression `E`.",
+          "Let's apply this to the last statement, `w := w + v`, with the postcondition $w = 0$. What do you get when you substitute the expression for `w` into $w = 0$?",
+          "Remember the core rule of weakest precondition substitution: for an assignment `x := E`, we literally take the current condition and replace every occurrence of the variable `x` with the expression `E`.",
+          "If we have the equation: `w + 2v - u - 3 = 0`, To cancel out the `- 3` on the left side, we need to **add** `3` to both sides."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by transforming complex formal methods (weakest preconditions) into clear, step-by-step explanations. The teacher uses precise mathematical notation, correct substitution rules, and addresses student misconceptions directly. The explanations are adapted to the student's current understanding, with progressive scaffolding (e.g., breaking down substitution into individual steps).",
+        "strengths": [
+          "Exceptional clarity in explaining formal methods (weakest preconditions) through substitution rules",
+          "Uses precise mathematical notation and correct terminology",
+          "Proactively identifies and corrects student misconceptions (e.g., implicit type promotion, substitution errors)",
+          "Adapts explanations to the student's current level of understanding",
+          "Provides progressive scaffolding by breaking down complex steps into manageable parts"
+        ],
+        "weaknesses": [
+          "Minimal use of real-world analogies or multiple representations (though not strictly necessary for this advanced topic)",
+          "Could occasionally summarize key takeaways more explicitly for reinforcement"
+        ],
+        "suggestions": [
+          "Incorporate a brief real-world analogy (e.g., 'think of substitution like replacing a variable with its recipe') to aid conceptual understanding",
+          "Explicitly state the 'big picture' after each major step (e.g., 'This means the weakest precondition ensures the postcondition holds')"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Let's look closely at how you derived the weakest precondition in part 2. Could you walk me through the steps you took...?",
+          "Let's check that last step of algebraic simplification.",
+          "Let's look at that addition one more time.",
+          "Spot on! The weakest precondition is indeed $w + 2v - u = 3$.",
+          "Based on the substitution steps we just walked through, what would the new weakest precondition be?"
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses learning goals, current performance, and next steps. Feedback is specific, actionable, and directly tied to the student's work. The teacher uses Socratic questioning to guide the student toward self-correction, and provides immediate, clear validation when the student arrives at the correct answer.",
+        "strengths": [
+          "Feedback is consistently specific, timely, and actionable",
+          "Uses Socratic questioning to promote deeper understanding",
+          "Provides immediate validation and correction",
+          "Ties feedback directly to the student's current work and misconceptions",
+          "Encourages reflection and self-correction"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more explicit praise for correct reasoning (though this is minor)",
+          "Feedback is sometimes very directive; could allow more student exploration in some cases"
+        ],
+        "suggestions": [
+          "Balance directive feedback with open-ended questions to encourage independent problem-solving",
+          "Explicitly acknowledge correct reasoning steps more frequently to reinforce positive behaviors"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Let's look closely at how weakest preconditions are computed by substitution.",
+          "for an assignment `x := E`, we take the postcondition and replace every occurrence of the variable `x` with the expression `E`.",
+          "Let's apply this to the last statement, `w := w + v`, with the postcondition $w = 0$. What do you get when you substitute the expression for `w` into $w = 0$?",
+          "Remember the core rule of weakest precondition substitution: for an assignment `x := E`, we literally take the current condition and replace every occurrence of the variable `x` with the expression `E`.",
+          "If we have the equation: `w + 2v - u - 3 = 0`, To cancel out the `- 3` on the left side, we need to **add** `3` to both sides."
+        ],
+        "reasoning": "The teacher consistently models expert thinking by demonstrating the step-by-step process of deriving weakest preconditions. The teacher makes their reasoning visible through clear, logical explanations and by explicitly stating the rules (e.g., substitution rules for weakest preconditions). The teacher also models problem-solving strategies, such as breaking down complex problems into smaller steps.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through clear, step-by-step explanations",
+          "Makes reasoning visible by explicitly stating rules and processes",
+          "Models problem-solving strategies (e.g., breaking down complex problems)",
+          "Uses precise and accurate mathematical reasoning"
+        ],
+        "weaknesses": [
+          "Could occasionally use think-aloud strategies to further expose the teacher's internal reasoning process"
+        ],
+        "suggestions": [
+          "Incorporate more think-aloud moments to model the teacher's internal reasoning process (e.g., 'I'm wondering if...')",
+          "Explicitly label the modeling of expert thinking (e.g., 'Here's how I approach this problem...')"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Let's look closely at how you derived the weakest precondition in part 2. Could you walk me through the steps you took...?",
+          "Let's check that last step of algebraic simplification.",
+          "Let's look at that addition one more time.",
+          "Let's step back and look at how you answered part 4.",
+          "Can you update your response to list all four expressions in their original order...?"
+        ],
+        "reasoning": "The teacher provides excellent coaching and scaffolding by guiding the student through the problem-solving process with targeted questions and prompts. The teacher adapts their support to the student's needs, providing hints and corrections as necessary. The scaffolding is gradually reduced as the student demonstrates understanding, allowing the student to take more ownership of the solution.",
+        "strengths": [
+          "Provides targeted questions and prompts to guide the student",
+          "Adapts support to the student's current understanding",
+          "Gradually reduces scaffolding as the student demonstrates progress",
+          "Encourages the student to take ownership of the solution",
+          "Uses hints and corrections effectively to guide the student toward the correct answer"
+        ],
+        "weaknesses": [
+          "Could occasionally allow the student more time to struggle with the problem before providing hints"
+        ],
+        "suggestions": [
+          "Allow the student more time to grapple with the problem independently before providing hints",
+          "Use more open-ended prompts to encourage the student to explore multiple approaches"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Can you revise your justification to focus strictly on that behavior?",
+          "Can you restate your justification concisely, focusing solely on that rule...?",
+          "Can you update your response to list all four expressions in their original order...?",
+          "Can you update your answer for part 3 to show that it is typeable...?"
+        ],
+        "reasoning": "The teacher frequently prompts the student to reflect on their reasoning and revise their answers, which encourages metacognition. However, the reflection is primarily driven by the teacher's questions rather than the student independently articulating their thought process. The student does engage in reflection, but it is often in response to the teacher's prompts rather than spontaneous.",
+        "strengths": [
+          "Frequently prompts the student to reflect on their reasoning",
+          "Encourages the student to revise and improve their answers",
+          "Promotes metacognition through targeted questions"
+        ],
+        "weaknesses": [
+          "Reflection is primarily teacher-driven rather than student-initiated",
+          "The student does not consistently articulate their reasoning independently",
+          "Could encourage the student to explain their thought process more explicitly"
+        ],
+        "suggestions": [
+          "Encourage the student to independently articulate their reasoning before providing feedback",
+          "Ask the student to explain their thought process more explicitly (e.g., 'How did you arrive at that conclusion?')",
+          "Use prompts that require the student to reflect on their learning process (e.g., 'What strategies did you use to solve this problem?')"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: The weakest precondition for the program is $ w + 2v - u = 0 $...",
+          "Student: The substitution involves replacing `v` in the intermediate condition `w + v = 0` with `2*v - u`...",
+          "Student: The final weakest precondition for the entire program is $ \\boxed{w + 2v - u = 3} $...",
+          "Student: The new weakest precondition becomes: $ \\boxed{w + 2v - u \\geq 3} $...",
+          "Teacher: Let's look closely at how you derived the weakest precondition in part 2. Could you walk me through the steps you took...?"
+        ],
+        "reasoning": "The transcript shows a highly interactive learning environment where the student and teacher engage in a back-and-forth dialogue. The student is consistently engaged in constructive and interactive activities, such as explaining their reasoning, revising their answers, and responding to the teacher's prompts. The student demonstrates deep engagement by working through complex problems, reflecting on their reasoning, and articulating their thought process.",
+        "strengths": [
+          "Highly interactive dialogue between teacher and student",
+          "Student consistently engages in constructive and interactive activities",
+          "Student demonstrates deep engagement by explaining reasoning and revising answers",
+          "Teacher prompts encourage the student to engage in higher-order thinking"
+        ],
+        "weaknesses": [
+          "Minimal evidence of peer-to-peer interaction (though this is a one-on-one context)"
+        ],
+        "suggestions": [
+          "Incorporate opportunities for the student to collaborate with peers (if possible) to further enhance interactive engagement",
+          "Encourage the student to ask their own questions to deepen their engagement"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: Remember that under pass-by-result (copy-out), nothing is copied *into* the function when it is called; the parameters start uninitialized, and their final values are copied *back* to the actual arguments when the function returns.",
+          "Teacher: Remember the core rule of weakest precondition substitution: for an assignment `x := E`, we literally take the current condition and replace every occurrence of the variable `x` with the expression `E`.",
+          "Teacher: Ah, I see! You are focusing on whether `5` has a decimal point written in it. In programming and type checking, numbers can often be written with or without a decimal point... In standard type systems... numeric literals like `5` are often considered compatible with or automatically promotable to floating-point types"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by clearly defining the specific semantics of pass-by-result (uninitialized parameters) and the syntactic rule for weakest precondition substitution. They effectively address the student's persistent misconception about type promotion (int vs float) by isolating the specific rule required for the assignment and explaining the underlying concept (promotability). The explanations are precise and tailored to the specific errors identified in the student work.",
+        "strengths": [
+          "Clear definition of pass-by-result mechanics (copy-out vs copy-in).",
+          "Precise rhetorical guidance on the WEAKPRE rule (syntactic substitution).",
+          "Effective use of specific examples (5 vs 5.0) to clarify type system rules."
+        ],
+        "weaknesses": [
+          "The explanation for why the student's initial 'strict type' interpretation was incorrect could have been brought earlier to prevent repeated confusion."
+        ],
+        "suggestions": [
+          "Could provide a visual or step-by-step trace of the substitution for WEAKPRE to further solidify the 'syntactic' nature of the operation for students struggling with the algebra."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You've got part of it\u2014under pass-by-result, `a` starts uninitialized... However, notice your explanation for *why* pass-by-result isn't applicable still mentions pass-by-reference... Can you revise your justification to focus strictly on that behavior?",
+          "Teacher: Great job fixing part 1! Now let's take a closer look at part 3.",
+          "Teacher: You've got the right idea about strict type matching... But let's look at part 4 to see how the type system treats a similar situation."
+        ],
+        "reasoning": "The teacher provides consistent, targeted feedback that identifies specific errors (e.g., confusion between pass-by-reference and pass-by-result, or the decimal point issue). Each feedback loop highlights what was done correctly ('Great job fixing part 1') and precisely what needs correction ('revise your justification to focus strictly on that behavior'). The feedback is actionable and guides the student to a specific next step in their reasoning.",
+        "strengths": [
+          "Feedback is specific to the conceptual error, not just the final answer.",
+          "Positive reinforcement is balanced with corrective guidance ('You've got it! Under pass-by-result...').",
+          "Guides the student to re-examine specific lines of code or logic."
+        ],
+        "weaknesses": [
+          "In the final algebra steps, the feedback sometimes feels like leading questions rather than evaluating the student's own derivation process in greater depth."
+        ],
+        "suggestions": [
+          "For the weakest precondition section, ask the student to state *why* the substitution is valid before correcting the arithmetic, to deepen the feedback loop."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Let's apply this to the last statement, `w := w + v`, with the postcondition $w = 0$. What do you get when you substitute the expression for `w` into $w = 0$?",
+          "Teacher: Let's trace that carefully! If we have the equation... To cancel out the `- 3` on the left side, we need to **add** `3` to both sides... On the right side, what does `0 + 3` equal?",
+          "Teacher: Now, take that intermediate condition `w + v = 0` as your new postcondition, and apply the exact same substitution rule to the second statement..."
+        ],
+        "reasoning": "The teacher models the *process* of solving problems by breaking down the expert strategy (backward substitution) and guiding the student through the first step or a specific sub-step (like algebraic simplification). Instead of just giving the answer, the teacher models the *thinking* required to apply the rule: 'Take that intermediate condition... apply the exact same substitution rule.' This makes the expert's modular approach to complex problems visible.",
+        "strengths": [
+          "Breaks down complex derivation into manageable steps, modeling the decomposition strategy.",
+          "Models the transition from one step to the next (e.g., using the result of step 1 as the input for step 2).",
+          "Explicitly names the strategy being modeled ('apply the exact same substitution rule')."
+        ],
+        "weaknesses": [
+          "The teacher does not explicitly 'think aloud' about *why* they choose to substitute in a particular order, though the order is standard for this method."
+        ],
+        "suggestions": [
+          "Could briefly articulate the metacognitive decision-making: 'We always work from the last statement back to the first because...'"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "Teacher: Let's narrow our focus back to question 2. Look closely at the function definition... If you were to use pass-by-result here, what happens...",
+          "Teacher: If you have `- 3` on the left side... what operation cancels out `- 3` so we can move it to the right side?",
+          "Teacher: Since we've discussed this extensively and you've held firmly to the strict type interpretation, let me give you the fuller explanation..."
+        ],
+        "reasoning": "The teacher uses sophisticated scaffolding. They start with guiding questions that require the student to apply a rule, and when the student gets stuck, they provide smaller, more leading hints (e.g., asking about the specific algebraic operation). When the student remains stuck on a fundamental misconception (type promotion), the teacher appropriately increases the level of support by providing the 'fuller explanation,' effectively fading the student's independence only when necessary to prevent frustration and allow learning to continue. This is strong cognitive apprenticeship.",
+        "strengths": [
+          "Progressive scaffolding: moves from open-ended application to specific algebraic hints to direct instruction when necessary.",
+          "Adapts support level based on student response (e.g., persisting on the type issue until the student is ready or leading them to the conclusion).",
+          "Strategic use of leading questions to prompt self-correction in algebra."
+        ],
+        "weaknesses": [
+          "The transition to direct instruction for the type promotion issue could have been signaled more clearly as a 'new concept' rather than just 'let's discuss this extensively'."
+        ],
+        "suggestions": [
+          "Explicitly mark the shift from 'student tries it' to 'teacher explains' to help the student know when they are expected to produce the answer vs. receive instruction."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Student: The key takeaway is that in pass-by-result (copy-out), parameters are not copied into the function...",
+          "Student: The difference lies in the exact type requirements specified in the operator definitions...",
+          "Student: The substitution involves replacing `v` in the intermediate condition..."
+        ],
+        "reasoning": "Students are frequently required to articulate their reasoning and justify their answers. They explain *why* an answer is correct or incorrect (e.g., 'This leads to undefined behavior because...'). However, the reflection is largely focused on justifying the immediate answer rather than self-evaluating their learning process or comparing their new understanding with their prior misconceptions. They explain the 'what' and 'why' of the code behavior, but the metacognitive 'how did I learn this' or 'where was my thinking wrong before' is less prevalent.",
+        "strengths": [
+          "Students consistently provide justifications for their code outputs.",
+          "Students articulate the logical connections between code lines and results.",
+          "Students attempt to define concepts (e.g., 'strict adherence to defined types') to support their answers."
+        ],
+        "weaknesses": [
+          "Limited metacognitive reflection on the *process* of problem-solving.",
+          "Reflection is often a restatement of the correct rule rather than an evaluation of the previously held misconception."
+        ],
+        "suggestions": [
+          "Ask students to compare their initial incorrect justification with the final correct one: 'What was the specific flaw in your first explanation compared to this one?'"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: The key takeaway is that in pass-by-result (copy-out), parameters are not copied into the function...",
+          "Teacher: ...can an integer value like `5` be implicitly used... What does that mean for whether part 3 is typeable?",
+          "Student: The type system strictly enforces the exact types specified... In part 3, the second argument is an integer (5), which does not match..."
+        ],
+        "reasoning": "The interaction is highly interactive and constructive. The student is not just listening; they are actively constructing their understanding by hypothesizing, testing against code, and refining their logic based on teacher feedback. The dialogue involves back-and-forth argumentation (e.g., the student insisting on strict types, the teacher challenging it, the student reconsidering). This places the student firmly in the 'Constructive' to 'Interactive' range of the ICAP framework, as they are co-constructing the correct interpretation with the teacher.",
+        "strengths": [
+          "High level of back-and-forth dialogue.",
+          "Student actively defends and refines their reasoning.",
+          "Engagement goes beyond passive reception; student must produce new justifications repeatedly."
+        ],
+        "weaknesses": [
+          "The interaction is primarily one-on-one (1:1), so 'collaborative' elements (peer-to-peer) are absent, though 'interactive' with the teacher is high."
+        ],
+        "suggestions": [
+          "Could introduce peer discussion for the type promotion issue to allow students to argue with each other, which might solidify the concept further."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "Student demonstrates understanding of pass-by-value, pass-by-reference, and pass-by-result concepts.",
+          "Correctly identifies that pass-by-result is not applicable due to uninitialized parameters.",
+          "Misinterprets the behavior of pass-by-reference in the given problem, assuming original variables are modified."
+        ],
+        "reasoning": "The student shows a functional understanding of parameter passing mechanisms but struggles with applying these concepts to the specific problem. The explanation for why pass-by-result is not applicable is partially correct, focusing on uninitialized parameters, but fails to accurately describe the behavior of pass-by-reference in the context of the problem.",
+        "strengths": [
+          "Clear understanding of pass-by-value and pass-by-result.",
+          "Correct identification of uninitialized parameters in pass-by-result."
+        ],
+        "weaknesses": [
+          "Misinterpretation of pass-by-reference behavior.",
+          "Inconsistent application of concepts to the problem."
+        ],
+        "suggestions": [
+          "Provide more examples of pass-by-reference to clarify when original variables are modified.",
+          "Encourage step-by-step analysis of each parameter passing mechanism in the context of the problem."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides specific feedback on the student's justification, highlighting misconceptions about pass-by-result.",
+          "Guides the student to reconsider the behavior of parameters in pass-by-result.",
+          "Offers a detailed explanation of how pass-by-result works, addressing the student's confusion."
+        ],
+        "reasoning": "The teacher's feedback is constructive and targeted, addressing the student's specific misconceptions. It provides clear guidance on how to correct the understanding of pass-by-result and encourages the student to apply this knowledge to the problem. However, the feedback could be more actionable by providing specific steps or examples to reinforce the concepts.",
+        "strengths": [
+          "Clear and specific feedback on misconceptions.",
+          "Detailed explanation of pass-by-result.",
+          "Encourages critical thinking and re-evaluation."
+        ],
+        "weaknesses": [
+          "Lacks specific examples or steps to apply the concepts.",
+          "Could be more structured to guide the student through the problem."
+        ],
+        "suggestions": [
+          "Include step-by-step examples of pass-by-result in feedback.",
+          "Provide a structured framework for analyzing parameter passing mechanisms."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student attempts to model the behavior of pass-by-result but makes errors in applying the concept.",
+          "Correctly identifies that parameters are uninitialized in pass-by-result.",
+          "Fails to accurately model the impact of uninitialized parameters on the function's behavior."
+        ],
+        "reasoning": "The student demonstrates an attempt to model the behavior of pass-by-result but struggles with the specifics, particularly the implications of uninitialized parameters. The modeling is partially correct but lacks depth and accuracy in applying the concept to the problem.",
+        "strengths": [
+          "Recognition of uninitialized parameters in pass-by-result.",
+          "Attempt to apply the concept to the problem."
+        ],
+        "weaknesses": [
+          "Inaccurate modeling of pass-by-result behavior.",
+          "Lack of depth in understanding the implications of uninitialized parameters."
+        ],
+        "suggestions": [
+          "Provide more detailed examples of how uninitialized parameters affect function behavior.",
+          "Encourage the student to trace the execution of the function step-by-step under pass-by-result."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides structured guidance through questioning, helping the student identify misconceptions.",
+          "Gradually leads the student to understand the behavior of pass-by-result.",
+          "Offers specific insights into how parameters are handled in pass-by-result."
+        ],
+        "reasoning": "The teacher effectively coaches the student by using targeted questions to guide their understanding. The coaching is structured and gradual, helping the student to identify and correct misconceptions. However, the coaching could be more explicit in providing step-by-step instructions or examples to reinforce the concepts.",
+        "strengths": [
+          "Structured and gradual guidance through questioning.",
+          "Effective in helping the student identify misconceptions.",
+          "Provides specific insights into parameter handling."
+        ],
+        "weaknesses": [
+          "Lacks explicit step-by-step instructions or examples.",
+          "Could be more proactive in reinforcing concepts."
+        ],
+        "suggestions": [
+          "Incorporate step-by-step examples or diagrams to illustrate concepts.",
+          "Provide explicit instructions for applying concepts to the problem."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 70,
+        "evidence": [
+          "Student reflects on the behavior of pass-by-result and attempts to apply it to the problem.",
+          "Shows some understanding of the implications of uninitialized parameters.",
+          "Reflection is superficial and does not fully address the misconceptions."
+        ],
+        "reasoning": "The student engages in reflection but does not fully articulate or address the underlying misconceptions. The reflection is superficial and lacks depth in connecting the concepts to the problem. More guidance is needed to help the student reflect critically on their understanding.",
+        "strengths": [
+          "Engagement in reflection on pass-by-result.",
+          "Some understanding of uninitialized parameters."
+        ],
+        "weaknesses": [
+          "Superficial reflection without deep analysis.",
+          "Failure to fully address misconceptions."
+        ],
+        "suggestions": [
+          "Encourage deeper reflection by asking probing questions.",
+          "Provide structured prompts to guide critical thinking about the problem."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student actively participates in the discussion, attempting to justify their answers.",
+          "Engages with the teacher's feedback and questions.",
+          "Shows persistence in trying to understand the concepts, even when struggling."
+        ],
+        "reasoning": "The student demonstrates active engagement by participating in the discussion, attempting to justify their answers, and responding to the teacher's feedback. The engagement is constructive, with the student showing persistence in trying to understand the concepts. However, the engagement could be more interactive, with the student asking questions or seeking clarification when unsure.",
+        "strengths": [
+          "Active participation in the discussion.",
+          "Persistence in trying to understand the concepts.",
+          "Responsive to teacher's feedback."
+        ],
+        "weaknesses": [
+          "Lack of interactive engagement, such as asking questions.",
+          "Could be more proactive in seeking clarification."
+        ],
+        "suggestions": [
+          "Encourage the student to ask questions when unsure.",
+          "Foster a more interactive dialogue to deepen understanding."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          3,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 81.1,
+    "interpretation": "Very Good pedagogy"
+  }
+}

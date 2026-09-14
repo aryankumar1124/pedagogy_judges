@@ -1,0 +1,502 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen2_5_3b_openai",
+    "student_model": "qwen2.5:3b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: You're still holding the misconception that the third line has run after the first. Quick question: after executing only the first statement u := u + 3, has the third statement w := w + v executed?",
+          "Teacher: You're still updating w too early. Remember the rule: an assignment only changes its left-hand variable.",
+          "Teacher: You're still updating w before the w-assignment runs. Which program line actually assigns to w, and has it executed by this point?"
+        ],
+        "reasoning": "The teacher demonstrates strong conceptual understanding of variable assignment semantics but struggles to effectively address the student's persistent misconception about the order of execution. The explanations are technically correct but fail to resolve the student's confusion, indicating a gap in transforming content knowledge into teachable moments.",
+        "strengths": [
+          "Correctly identifies the core misconception (updating w too early).",
+          "Consistently reinforces the rule that assignments only change their left-hand variable.",
+          "Uses precise technical language about program execution order."
+        ],
+        "weaknesses": [
+          "Repeatedly fails to resolve the student's misconception despite multiple attempts.",
+          "Does not provide concrete examples or alternative explanations to clarify the concept.",
+          "Lacks adaptation to the student's specific confusion (e.g., not explicitly stating which variables remain unchanged)."
+        ],
+        "suggestions": [
+          "Use a step-by-step trace with explicit state snapshots (e.g., 'After line 1: u=..., v=..., w=...').",
+          "Ask the student to predict the values of all variables after each line, then verify.",
+          "Provide a visual diagram of the program's execution flow."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You're still holding the misconception that the third line has run after the first. Quick question: after executing only the first statement u := u + 3, has the third statement w := w + v executed?",
+          "Teacher: You're still updating w too early. Remember the rule: an assignment only changes its left-hand variable.",
+          "Teacher: Revise u1, v1, w1 (three equations in terms of u0,v0,w0) and give one short sentence each explaining why each is correct."
+        ],
+        "reasoning": "The teacher provides targeted questions to guide the student toward correcting their misconceptions, but the feedback is primarily corrective rather than formative. There is no explicit praise or actionable next steps for improvement, and the feedback lacks consistency in addressing the root issue.",
+        "strengths": [
+          "Questions are specific and directly address the student's errors.",
+          "Feedback is timely and relevant to the immediate misunderstanding.",
+          "Encourages the student to revise their work."
+        ],
+        "weaknesses": [
+          "Feedback is mostly corrective (pointing out errors) rather than constructive (guiding improvement).",
+          "Lacks explicit identification of what the student did well.",
+          "Does not provide a clear path for the student to self-correct beyond the immediate question."
+        ],
+        "suggestions": [
+          "Combine corrective feedback with positive reinforcement (e.g., 'You correctly identified the first assignment, but let's check the others').",
+          "Provide a model of the correct approach (e.g., 'Here's how I would trace the first line...').",
+          "Use the 'sandwich' method: positive feedback, corrective feedback, positive reinforcement."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You're still holding the misconception that the third line has run after the first.",
+          "Teacher: Remember the rule: an assignment only changes its left-hand variable."
+        ],
+        "reasoning": "The teacher states rules and concepts but does not demonstrate expert thinking or problem-solving processes. There is no visible modeling of how to approach the problem, such as a think-aloud or step-by-step demonstration of the correct method.",
+        "strengths": [
+          "Clearly states the rule governing variable assignments.",
+          "Uses precise technical language."
+        ],
+        "weaknesses": [
+          "No demonstration of expert problem-solving (e.g., no worked example).",
+          "Lacks think-aloud strategies to make reasoning visible.",
+          "Does not show how to apply the rule to the specific problem."
+        ],
+        "suggestions": [
+          "Model the correct approach by tracing the program step-by-step aloud.",
+          "Show a worked example of a similar problem to illustrate the concept.",
+          "Use analogies or real-world examples to explain the execution order."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Quick question: after executing only the first statement u := u + 3, has the third statement w := w + v executed?",
+          "Teacher: Revise u1, v1, w1 (three equations in terms of u0,v0,w0) and give one short sentence each explaining why each is correct."
+        ],
+        "reasoning": "The teacher provides some guidance and prompts the student to revise their work, but the coaching is inconsistent. The hints are not gradually adjusted to the student's progress, and there is no clear fading of support as the student's competence grows.",
+        "strengths": [
+          "Provides targeted questions to guide the student.",
+          "Encourages the student to revise and correct their work.",
+          "Uses prompts to direct the student's attention to specific issues."
+        ],
+        "weaknesses": [
+          "Coaching is reactive rather than proactive (waits for errors to occur).",
+          "Lacks structured hints or scaffolding that adapts to the student's needs.",
+          "Does not gradually reduce support as the student improves."
+        ],
+        "suggestions": [
+          "Start with more explicit guidance (e.g., 'Let's trace the first line together') and gradually reduce support.",
+          "Provide a scaffolded worksheet with partial solutions for the student to complete.",
+          "Use a 'think-pair-share' approach to encourage peer discussion before revising."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Student: Sure, let's tackle this step by step.",
+          "Student: Okay, let's revise the answer based on the correct order of assignments:",
+          "Teacher: Revise u1, v1, w1 (three equations in terms of u0,v0,w0) and give one short sentence each explaining why each is correct."
+        ],
+        "reasoning": "The student is occasionally asked to revise their work, but there is little explicit prompting for reflection or articulation of reasoning. The teacher does not consistently require the student to explain their thought process or evaluate their understanding.",
+        "strengths": [
+          "Student is encouraged to revise their work.",
+          "Some prompts require the student to justify their answers."
+        ],
+        "weaknesses": [
+          "Lacks explicit prompts for the student to reflect on their understanding.",
+          "No structured activities for the student to articulate their reasoning.",
+          "Student rarely explains their thought process beyond revising equations."
+        ],
+        "suggestions": [
+          "Ask the student to explain their reasoning in their own words (e.g., 'Why did you choose this approach?').",
+          "Use reflection prompts such as 'What did you learn from this mistake?' or 'How would you approach this differently next time?'.",
+          "Incorporate journaling or exit tickets where the student summarizes their understanding."
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: Sure, let's tackle this step by step.",
+          "Student: Okay, let's revise the answer based on the correct order of assignments:",
+          "Teacher: Quick question: after executing only the first statement u := u + 3, has the third statement w := w + v executed?"
+        ],
+        "reasoning": "The student is actively participating in the problem-solving process, but the engagement is primarily at the 'active' level (e.g., revising answers, responding to questions). There is limited evidence of constructive or interactive engagement, such as self-explaining, questioning, or collaboration.",
+        "strengths": [
+          "Student is actively engaged in the problem-solving process.",
+          "Teacher prompts the student to participate in the discussion.",
+          "Student responds to questions and revises their work."
+        ],
+        "weaknesses": [
+          "Engagement is mostly active (e.g., revising answers) rather than constructive or interactive.",
+          "Lacks opportunities for the student to generate their own questions or explanations.",
+          "No collaborative or peer-based activities are evident."
+        ],
+        "suggestions": [
+          "Encourage the student to generate their own questions or explanations (e.g., 'Can you explain this to me as if I were a peer?').",
+          "Incorporate think-aloud protocols where the student verbalizes their thought process.",
+          "Use group work or peer teaching to promote interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: You're mixing up two things. Quote the exact prompt lines for add and for the string-concatenation operator (concat), then\u2014using those lines\u2014revise your answer for (2)...",
+          "Teacher: You mixed up which \u201cold\u201d values each RHS uses. Each assignment\u2019s right-hand side uses the values immediately before that assignment...",
+          "Teacher: You're still updating w too early. Remember the rule: an assignment only changes its left-hand variable."
+        ],
+        "reasoning": "The teacher demonstrates strong content knowledge by correctly identifying specific misconceptions regarding variable scope (parameters vs. globals), type signatures (add vs. concat), and control flow (sequential execution of assignments). However, the explanations are often reactive rather than proactive; the teacher relies heavily on the student finding the answer via the prompt rather than providing a robust alternative explanation or analogy when the student fails repeatedly. The teacher correctly models the 'what' is wrong but sometimes lacks depth in 'why' for complex parts like Hoare logic until the very end.",
+        "strengths": [
+          "Accurately identifies persistent misconceptions (e.g., confusing function signatures, misunderstanding sequential execution).",
+          "Correctly distinguishes between parameter passing semantics and global variable updates."
+        ],
+        "weaknesses": [
+          "Reliance on prompt-lookups rather than conceptual reinforcement when students repeatedly fail to find the correct line.",
+          "Lacks diverse representations or analogies to help the student internalize the concept of 'state' in sequential programs."
+        ],
+        "suggestions": [
+          "Use a whiteboard or visual aid to track variable states step-by-step for the Hoare logic problem.",
+          "Provide a concrete example of sequential execution (like a simple counter) to reinforce that only the assigned variable changes."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good\u2014you're on the right track. Now one step at a time: ...",
+          "Teacher: Small clarification first: your last paragraph contradicts itself \u2014 you said the function requires (int, float) and then wrote \u201cwe're providing an integer and a float,\u201d but both literals 10 and 5 are integers.",
+          "Teacher: You're still quoting the justification sentence instead of the copy-back rule. Look for the sentence that contains the words \"copied back\" and \"left-to-right order.\""
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback that points to exact errors (e.g., 'you said X but mean Y', 'quote the line containing Z'). The feedback consistently identifies strengths ('Good', 'Nice work') and weaknesses (specific logic errors) while always providing a clear next step ('revise item (3)...', 'quote the exact line...'). It is highly structured around the assignment prompt, ensuring the student knows exactly which text supports the correct answer.",
+        "strengths": [
+          "Specific and actionable: Points to exact contradictory statements or missing lines.",
+          "Consistent structure: Always pairs correction with a specific task.",
+          "Balanced: Acknowledges progress even when errors persist."
+        ],
+        "weaknesses": [
+          "Can be repetitive when the student makes the same error multiple times (e.g., repeatedly asking for the 'copy-back' line).",
+          "Does not always explain the *consequence* of the error in the final output, only the procedural fix."
+        ],
+        "suggestions": [
+          "When a student repeats an error, shift strategy: explicitly model the correct line or provide a more direct hint about the *concept* behind the line."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You slipped in the algebra. For the assignment w := w + v, the value after the assignment equals (old) w + (old) v. Question: write the equation that enforces (old) w + (old) v = 0...",
+          "Teacher: Quick check (one step): ... write u1,v1,w1 immediately after the first statement..."
+        ],
+        "reasoning": "The teacher rarely models the full problem-solving process themselves. Instead of thinking out loud or working through the first step to demonstrate the method, they ask the student to do it. While they sometimes provide the first logical step ('the value after the assignment equals...'), they quickly retreat to questioning the student. There is a lack of explicit 'think-aloud' demonstrations, especially for the complex Hoare triple derivation where the student is clearly struggling. The teacher models what the answer should look like by asking for specific formats, but not the expert cognition involved in deriving it.",
+        "strengths": [
+          "Models the *structure* of the expected answer (e.g., 'quote the line, then explain')."
+        ],
+        "weaknesses": [
+          "Lack of think-aloud strategies.",
+          "Does not work through an example first when student is stuck; immediately quizzes the student."
+        ],
+        "suggestions": [
+          "Perform a 'think-aloud' for the first assignment line in the Hoare problem to demonstrate how to track state changes before asking the student to do the second line."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: Now do two things (one step at a time): 1) Quote the exact sentence... 2) In one short sentence, explain...",
+          "Teacher: Quick hint: explicitly cite the operator lines... Based on those lines, is there an operator that turns an int into a float?",
+          "Teacher: One step: starting from u0,v0,w0 (initial), after the first statement u := u + 3 what are u1, v1, w1..."
+        ],
+        "reasoning": "The teacher employs strong scaffolding by breaking complex tasks into micro-steps ('one step at a time'). They provide targeted hints that guide the student without giving away the final answer. The scaffolding is adapted to the student's apparent difficulty (reducing the step size when errors persist). The teacher consistently fades support by asking the question after providing the hint, though the fade is sometimes slow due to the student's repeated errors. The guidance is strategically placed at the point of cognitive conflict.",
+        "strengths": [
+          "Effective decomposition of complex tasks into manageable chunks.",
+          "Use of targeted prompts that force metacognition ('which line supports this?').",
+          "Adaptive step-size: shrinking the scope of the task when the student fails."
+        ],
+        "weaknesses": [
+          "Dilutes the concept of 'independence' by doing the checking for every single step; the student never practices a full block unaided."
+        ],
+        "suggestions": [
+          "After two successful steps, have the student attempt the next two steps independently before checking."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: ...briefly explain your reasoning.",
+          "Student: The reasoning used here is that the `add` function is clearly defined to add integers... Since the function does not support string inputs, the expression cannot be typeable.",
+          "Teacher: ...explain in one sentence how that copy-back order could affect the result."
+        ],
+        "reasoning": "Students are frequently asked to articulate their reasoning, and they do so. However, the reflection is often superficial or mechanical. The student often states 'because the signature is X' rather than reflecting on *why* they made the error or how their initial mental model differed from the correct process. While the student explains the logic of the correct answer, there is less evidence of the student reflecting on their own cognitive process or error origins. The prompts for reflection are consistent but the depth of the student's response is limited.",
+        "strengths": [
+          "Routine practice in articulating justification for answers.",
+          "Student attempts to explain the underlying rules (signatures, assignment order)."
+        ],
+        "weaknesses": [
+          "Reflection is often just restating the rule rather than a meta-cognitive analysis of the error.",
+          "Lack of self-evaluation of understanding before submitting answers."
+        ],
+        "suggestions": [
+          "Ask 'What cue in the problem should have alerted you to the different operation?' to encourage deeper error analysis."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Student actively reverses answers based on teacher feedback.",
+          "Student attempts to derive Hoare conditions step-by-step.",
+          "Interactive back-and-forth on specific lines of code."
+        ],
+        "reasoning": "The engagement is predominantly Constructive (ICAP level 4). The student is not just listening; they are actively solving, checking types, and deriving pre/post-conditions. The interaction is also Interactive (ICAP level 5) in the sense that it is a dialogue where the student's output directly changes the teacher's input. However, it stays in the Constructive phase because it is a one-on-one tutorial focused on individual problem-solving rather than co-construction of knowledge with peers. The student is cognitively involved in manipulating symbols and logic, which is highly effective.",
+        "strengths": [
+          "High cognitive engagement with programming logic and type systems.",
+          "Active revision of solutions based on feedback.",
+          "Sustained focus on a complex multi-part problem."
+        ],
+        "weaknesses": [
+          "No peer interaction or collaborative construction evident.",
+          "Engagement levels likely drop during the repetitive phrase-locating tasks."
+        ],
+        "suggestions": [
+          "Introduce a collaborative element, such as having the student 'teach' the correct signature to a dummy student or peer to reinforce the concept."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Student: Sure, let's tackle this step by step. We'll start with part (a), where all parameters are passed by value.",
+          "Teacher: You're quoting the question prompt itself (the part asking you to justify), but that's not the specific instruction that affects how parameters get updated."
+        ],
+        "reasoning": "The student demonstrates a basic understanding of parameter passing concepts but struggles to apply them accurately. They can follow simple instructions but fail to identify and correct misconceptions, such as confusing parameters with global variables.",
+        "strengths": [
+          "Follows instructions to quote relevant parts of the prompt.",
+          "Attempts to break down the problem step by step."
+        ],
+        "weaknesses": [
+          "Fails to distinguish between parameters and global variables.",
+          "Does not correctly identify the copy-back semantics from the prompt.",
+          "Struggles to apply parameter passing concepts accurately."
+        ],
+        "suggestions": [
+          "Provide explicit examples contrasting parameters and global variables.",
+          "Highlight the specific prompt lines that define copy-back semantics.",
+          "Encourage students to trace variable changes step by step, focusing on the scope of each variable."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Nice work starting the steps. I notice you may be mixing how parameters vs. globals are updated (a and b vs. x,y,z). Before we redo any calculations, which exact part of the assignment prompt are you using to justify your next step? Please quote the line/phrase that supports it.",
+          "Teacher: You're still quoting the wrong sentence. Quick reminder: a and b are the function parameters; x, y, z are globals."
+        ],
+        "reasoning": "The teacher provides constructive feedback that identifies specific misconceptions and guides the student toward the correct understanding. The feedback is timely, relevant, and actionable, though it could be more explicit in suggesting next steps.",
+        "strengths": [
+          "Identifies specific misconceptions (e.g., mixing parameters and globals).",
+          "Encourages students to justify their steps with evidence from the prompt.",
+          "Provides reminders about key distinctions (e.g., parameters vs. globals)."
+        ],
+        "weaknesses": [
+          "Does not always provide explicit next steps for improvement.",
+          "Feedback could be more structured to address multiple errors at once."
+        ],
+        "suggestions": [
+          "Include specific examples of correct parameter vs. global usage in feedback.",
+          "Provide a structured checklist for students to self-assess their work.",
+          "Explicitly link feedback to the learning goals and prompt requirements."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You're still quoting the wrong line (remember: a and b are parameters; x,y,z are globals).",
+          "Student: I think the relevant part of the prompt is this sentence: 'Passed-by-result parameter passing scheme is not applicable for the above program \u2014 justify this statement.'"
+        ],
+        "reasoning": "The teacher attempts to model expert thinking by guiding the student to identify the correct prompt lines and distinguish between parameters and globals. However, the modeling is inconsistent, and the teacher does not always demonstrate the full thought process explicitly.",
+        "strengths": [
+          "Attempts to guide students in identifying relevant prompt lines.",
+          "Reinforces key distinctions (e.g., parameters vs. globals)."
+        ],
+        "weaknesses": [
+          "Does not consistently demonstrate the full thought process.",
+          "Relies heavily on student responses rather than explicitly modeling expert thinking."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to explicitly model the thought process.",
+          "Provide step-by-step demonstrations of how to trace variable changes.",
+          "Incorporate real-world analogies to help students understand abstract concepts."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 78,
+        "evidence": [
+          "Teacher: You're close, but two quick points before we redo calculations:",
+          "Teacher: Please quote exactly the sentence in the prompt that contains the words 'copied back' and 'left-to-right order.'"
+        ],
+        "reasoning": "The teacher provides appropriate support and guidance but does not consistently adapt it to the student's progress. The coaching is helpful but lacks the strategic fading of support as the student gains competence.",
+        "strengths": [
+          "Provides targeted corrections and reminders.",
+          "Encourages students to find and quote relevant prompt lines."
+        ],
+        "weaknesses": [
+          "Does not gradually fade support as the student progresses.",
+          "Sometimes repeats feedback without checking for understanding."
+        ],
+        "suggestions": [
+          "Gradually reduce hints and let students attempt steps independently.",
+          "Incorporate self-assessment prompts to encourage student reflection.",
+          "Provide structured practice with increasing levels of difficulty."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 70,
+        "evidence": [
+          "Student: I think you might be referring to the part where I justified why the passed-by-result parameter passing scheme is not applicable for the program.",
+          "Student: I see, so I need to find the part of the prompt that explains how output/value-result arguments are copied back."
+        ],
+        "reasoning": "The student occasionally reflects on their understanding but does so superficially. They acknowledge mistakes but do not deeply analyze their reasoning or articulate their thought processes clearly.",
+        "strengths": [
+          "Acknowledges mistakes and attempts to correct them.",
+          "Shows willingness to revisit and re-examine the prompt."
+        ],
+        "weaknesses": [
+          "Reflection is superficial and lacks depth.",
+          "Does not consistently articulate thought processes or evaluate understanding."
+        ],
+        "suggestions": [
+          "Encourage students to explain their reasoning step by step.",
+          "Provide structured reflection prompts to guide deeper analysis.",
+          "Model reflective practices by explicitly sharing thought processes."
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 82,
+        "evidence": [
+          "Student: Sure, let's tackle this step by step. We'll start with part (a), where all parameters are passed by value.",
+          "Teacher: You're still quoting the wrong sentence. Quick reminder: a and b are the function parameters; x, y, z are globals."
+        ],
+        "reasoning": "The student is actively engaged in the learning process, attempting to follow instructions and respond to feedback. However, the engagement remains largely active rather than constructive or interactive, as the student struggles to apply concepts independently.",
+        "strengths": [
+          "Shows willingness to engage with the material and respond to feedback.",
+          "Attempts to break down problems into manageable steps."
+        ],
+        "weaknesses": [
+          "Engagement is primarily active (following instructions) rather than constructive or interactive.",
+          "Struggles to apply concepts independently without guidance."
+        ],
+        "suggestions": [
+          "Encourage collaborative problem-solving activities.",
+          "Incorporate opportunities for students to explain and justify their thinking.",
+          "Provide structured tasks that require constructive engagement, such as summarizing or questioning."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          3,
+          2
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 3.67,
+        "individual_scores": [
+          3,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          2,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          3,
+          2
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 57.7,
+    "interpretation": "Needs significant improvement"
+  }
+}

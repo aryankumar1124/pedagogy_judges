@@ -1,0 +1,520 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_phi4_14b_openai",
+    "student_model": "phi4:14b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good\u2014you fixed the earlier misconception about globals vs. parameters.",
+          "Teacher: Good\u2014you're correct that y in the body refers to the global and a,b are the formals.",
+          "Teacher: Good\u2014you're at the point of finishing the backward derivation. Before we close, check your result by moving forward.",
+          "Teacher: Good\u2014your forward check is correct.",
+          "Teacher: Good\u2014you've laid out the wp steps.",
+          "Teacher: Good\u2014you corrected the earlier sign slip\u2014good catch.",
+          "Teacher: Good\u2014your backward chain is correct."
+        ],
+        "reasoning": "The teacher consistently demonstrates deep Pedagogical Content Knowledge (PCK) by transforming complex concepts (e.g., parameter passing mechanisms, weakest preconditions, Hoare triples) into clear, step-by-step explanations. The teacher identifies and corrects student misconceptions (e.g., globals vs. parameters, sign errors in algebra) with precise, actionable feedback. The teacher also adapts explanations to the student's level, using formal rules (e.g., wp calculus) and concrete examples to scaffold understanding.",
+        "strengths": [
+          "Exceptional ability to identify and address student misconceptions with precision.",
+          "Clear, structured explanations of complex concepts (e.g., parameter passing, wp calculus).",
+          "Effective use of formal rules and examples to scaffold learning.",
+          "Adapts feedback to the student's current understanding and progress."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in PCK. The teacher could occasionally provide more explicit connections to broader concepts (e.g., linking wp calculus to program verification in general)."
+        ],
+        "suggestions": [
+          "Continue using formal rules (e.g., wp calculus) to justify steps, as this reinforces rigorous reasoning.",
+          "Occasionally summarize key takeaways or broader implications of the concepts being discussed to deepen understanding."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Teacher: Good\u2014you fixed the earlier misconception about globals vs. parameters.",
+          "Teacher: Good\u2014you're correct that y in the body refers to the global and a,b are the formals.",
+          "Teacher: Good\u2014you're at the point of finishing the backward derivation.",
+          "Teacher: Good\u2014your forward check is correct.",
+          "Teacher: Good\u2014you've laid out the wp steps.",
+          "Teacher: Good\u2014you corrected the earlier sign slip\u2014good catch.",
+          "Teacher: Good\u2014your backward chain is correct.",
+          "Teacher: Your rule phrasing is fine: use the wp assignment rule wp(x := E, R) = R[E/x]."
+        ],
+        "reasoning": "The teacher provides highly effective feedback that consistently addresses learning goals, current performance, and next steps. Feedback is specific, actionable, and tied to the student's work (e.g., correcting misconceptions, guiding through derivations). The teacher also validates correct steps and encourages the student to reflect on their reasoning.",
+        "strengths": [
+          "Feedback is consistently specific, actionable, and tied to the student's work.",
+          "Effectively identifies and corrects misconceptions with clear explanations.",
+          "Validates correct steps and encourages reflection.",
+          "Guides the student through complex derivations with targeted questions and hints."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed. The teacher could occasionally provide more explicit praise for correct reasoning to reinforce positive behaviors."
+        ],
+        "suggestions": [
+          "Continue providing feedback that is specific, actionable, and tied to the student's work.",
+          "Occasionally include explicit praise for correct reasoning to reinforce positive behaviors."
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Good\u2014you fixed the earlier misconception about globals vs. parameters.",
+          "Teacher: Good\u2014you're correct that y in the body refers to the global and a,b are the formals.",
+          "Teacher: Good\u2014you're at the point of finishing the backward derivation. Before we close, check your result by moving forward.",
+          "Teacher: Good\u2014your forward check is correct.",
+          "Teacher: Good\u2014you've laid out the wp steps.",
+          "Teacher: Good\u2014you corrected the earlier sign slip\u2014good catch.",
+          "Teacher: Good\u2014your backward chain is correct."
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes. For example, the teacher demonstrates how to work backward through assignments using the wp calculus, how to verify results by moving forward, and how to identify and correct misconceptions. The teacher also explicitly references formal rules (e.g., wp(x := E, R) = R[E/x]) to justify steps, making their reasoning transparent.",
+        "strengths": [
+          "Consistently models expert thinking and problem-solving processes.",
+          "Demonstrates how to work backward and forward through derivations.",
+          "Explicitly references formal rules to justify steps.",
+          "Makes reasoning transparent and accessible to the student."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed. The teacher could occasionally use more varied examples to illustrate concepts."
+        ],
+        "suggestions": [
+          "Continue modeling expert thinking through step-by-step derivations and explicit references to formal rules.",
+          "Use varied examples to illustrate concepts and deepen understanding."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good\u2014you fixed the earlier misconception about globals vs. parameters.",
+          "Teacher: Good\u2014you're correct that y in the body refers to the global and a,b are the formals.",
+          "Teacher: Good\u2014you're at the point of finishing the backward derivation. Before we close, check your result by moving forward.",
+          "Teacher: Good\u2014your forward check is correct.",
+          "Teacher: Good\u2014you've laid out the wp steps.",
+          "Teacher: Good\u2014you corrected the earlier sign slip\u2014good catch.",
+          "Teacher: Good\u2014your backward chain is correct.",
+          "Teacher: One short task: show necessity for Q: w \u2265 0 by a single backward chain."
+        ],
+        "reasoning": "The teacher provides highly effective coaching and scaffolding. The teacher guides the student through complex derivations with targeted questions, hints, and step-by-step tasks (e.g., 'compute wp(w := w + v, w \u2265 0)'). The teacher also validates the student's progress and encourages them to reflect on their reasoning. The scaffolding is gradually adjusted as the student demonstrates understanding.",
+        "strengths": [
+          "Provides highly effective coaching and scaffolding.",
+          "Guides the student through complex derivations with targeted questions and hints.",
+          "Validates the student's progress and encourages reflection.",
+          "Gradually adjusts scaffolding as the student demonstrates understanding."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed. The teacher could occasionally provide more explicit guidance on how to generalize the steps to other problems."
+        ],
+        "suggestions": [
+          "Continue providing targeted questions and hints to guide the student through complex derivations.",
+          "Occasionally provide explicit guidance on how to generalize the steps to other problems."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good\u2014you fixed the earlier misconception about globals vs. parameters.",
+          "Teacher: Good\u2014you're correct that y in the body refers to the global and a,b are the formals.",
+          "Teacher: Good\u2014you're at the point of finishing the backward derivation. Before we close, check your result by moving forward.",
+          "Teacher: Good\u2014your forward check is correct.",
+          "Student: Let's address the problem step by step, considering the function update(y, z) with value-result parameter passing.",
+          "Student: Let's analyze the function update(a, b) step by step to determine which statements update the global variables x, y, or z during execution, and whether they update a global or a local variable."
+        ],
+        "reasoning": "The teacher encourages reflection by asking the student to verify their results (e.g., 'check your result by moving forward') and to explain their reasoning (e.g., 'explain the substitution you used'). The student also demonstrates reflection by revising their work and explaining their thought processes. However, the reflection could be more explicitly structured or frequent to deepen the student's understanding.",
+        "strengths": [
+          "Encourages reflection by asking the student to verify results and explain reasoning.",
+          "Student demonstrates reflection by revising work and explaining thought processes."
+        ],
+        "weaknesses": [
+          "Reflection activities could be more explicitly structured or frequent.",
+          "The teacher could occasionally ask the student to summarize key takeaways or broader implications of their work."
+        ],
+        "suggestions": [
+          "Increase the frequency of explicit reflection prompts (e.g., 'Explain why this step is necessary' or 'Summarize the key takeaway from this derivation').",
+          "Encourage the student to articulate their reasoning more frequently and in greater depth."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Alright, let's tackle this step by step.",
+          "Student: Sure, let's clarify the part about passed-by-value and address the misconception.",
+          "Student: Let's go through each expression one by one:",
+          "Student: Alright, let's work through the statement x = b + y + a using the current state where x = 5, y = 10, and z = 0.",
+          "Student: Let's analyze the function update(a, b) step by step to determine which statements update the global variables x, y, or z during execution",
+          "Student: Sure, let's go through each expression again with a focus on the operator signatures and conversions explicitly listed in the prompt."
+        ],
+        "reasoning": "The student is consistently engaged at the 'Interactive' level of the ICAP framework. The student actively participates in discussions, asks questions, and collaborates with the teacher to solve problems. The student also demonstrates constructive engagement by explaining their reasoning, revising their work, and verifying their results. The teacher fosters this engagement by providing targeted questions, hints, and feedback.",
+        "strengths": [
+          "Student is consistently engaged at the 'Interactive' level of the ICAP framework.",
+          "Student actively participates in discussions, asks questions, and collaborates with the teacher.",
+          "Student demonstrates constructive engagement by explaining reasoning, revising work, and verifying results.",
+          "Teacher fosters engagement by providing targeted questions, hints, and feedback."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed. The teacher could occasionally encourage the student to engage in peer collaboration or discussion."
+        ],
+        "suggestions": [
+          "Continue fostering interactive engagement by providing targeted questions, hints, and feedback.",
+          "Occasionally encourage the student to engage in peer collaboration or discussion to further deepen understanding."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: 'Also, a likely misconception in your (a) solution: you treated passed-by-value as meaning nothing the function does to x, y, z can change. Remember which names are parameters (a, b) and which are globals (x, y, z).'",
+          "Teacher: 'Misconception: in the function the only parameter names (locals) are a and b \u2014 not y. The function signature \"function update(a, b)\" shows that a and b are the formal parameters; therefore the name y inside the body refers to the global y, not a local.'",
+          "Teacher: 'I see a small misconception: you said you substitute u by u+3, but then wrote u - 3 = 2*v + w, which contradicts that substitution (a sign slip).'"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by explicitly identifying common traps in parameter passing (scope of variables) and formal verification (substitution rules). The teacher distinguishes between local and global variables clearly and corrects the student's flawed reasoning about value-result passing. The explanation of the weakest precondition rule is precise, and the teacher guides the student to apply the rule correctly (R[E/x]) rather than just checking the final answer.",
+        "strengths": [
+          "Proactively identifies and corrects misinterpretations of variable scope (globals vs. parameters).",
+          "Clearly explains the formal definition of the weakest precondition rule.",
+          "Differentiates between the mechanics of the substitution and the algebraic manipulation required."
+        ],
+        "weaknesses": [
+          "Could potentially use more visual aids (like memory diagrams) to reinforce the distinction between local and global scope in parameter passing."
+        ],
+        "suggestions": [
+          "When discussing value-result, explicitly draw a diagram showing the 'copy-in' and 'copy-out' phases to visually reinforce why intermediate changes to globals matter."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: 'Good work writing out the steps. One quick point before we redo anything: which part of the assignment prompt tells you how to handle copying back...'",
+          "Teacher: 'Good\u2014you fixed the earlier misconception about globals vs. parameters.'",
+          "Teacher: 'You corrected the earlier inconsistency \u2014 nice catch.'"
+        ],
+        "reasoning": "Feedback is immediate, specific, and actionable. The teacher never just says 'correct' or 'incorrect'; instead, they pinpoint the exact conceptual error (e.g., 'sign slip', 'wrong function arguments') and provide a specific question to guide the student to the correction. The feedback loop is tight, ensuring the student fixes the error before moving to the next complex step.",
+        "strengths": [
+          "Immediate reinforcement of correct actions ('nice catch', 'looks right').",
+          "Diagnostics are precise, targeting the specific line or logical step where the error occurred.",
+          "Encourages the student to cite the source of the rule (assignment prompt) to build self-correction habits."
+        ],
+        "weaknesses": [
+          "None observed; the feedback is consistently high quality."
+        ],
+        "suggestions": [
+          "Continue maintaining this level of specificity in feedback for complex algebraic steps."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: 'Hint/question: apply the rule wp(u := u+3, R) = R[u+3/u] to R \u2261 (u = 2*v + w) explicitly. Write out the equation after substitution, then solve it for u.'",
+          "Teacher: 'Now do one more step: compute wp(u := u + 3, R)... Apply the rule... explicitly...'"
+        ],
+        "reasoning": "The teacher models the *process* of applying the weakest precondition rule by asking the student to perform the substitution explicitly. While the teacher doesn't perform the full derivation for the student (which would be less effective), they demonstrate the *structure* of the expected solution and the logical flow (substitution -> simplification -> solving). This acts as a 'worked example in progress' that guides the student's reasoning.",
+        "strengths": [
+          "Demonstrates the algebraic structure required for the wp derivation.",
+          "Models how to translate a formal rule into a concrete algebraic step.",
+          "Shows the 'backward' direction of the logic clearly."
+        ],
+        "weaknesses": [
+          "The teacher relies heavily on the student to perform the actual algebra, which is good for learning but means the 'modeling' is more about structuring the proof than demonstrating the full calculation."
+        ],
+        "suggestions": [
+          "For the first application of the wp rule, the teacher could have done a 'think-aloud' covering just the first substitution to anchor the student's understanding of the syntax."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: 'Before you compute part (b), identify aliasing under pass-by-reference... then using those aliases, compute the effect of the first statement...'",
+          "Teacher: 'Don't give the whole rework yet \u2014 just fix this one line.'",
+          "Teacher: 'If you get stuck, ask for one small hint.'"
+        ],
+        "reasoning": "The teacher uses excellent scaffolding. Instead of giving the answer to the complex multi-part problem, the teacher breaks it down into micro-steps (identify aliases -> compute line 1 -> compute line 2). When the student makes an error, the teacher restricts the scope of the revision to the specific error page ('just fix this one line'), preventing cognitive overload and ensuring mastery of the concept before proceeding. The teacher actively manages the zone of proximal development.",
+        "strengths": [
+          "Breaks complex tasks into manageable, sequential sub-tasks.",
+          "Restricts revisions to the specific area of error to maintain focus.",
+          "Offers hints as an option rather than imposing them, promoting independence."
+        ],
+        "weaknesses": [
+          "None observed."
+        ],
+        "suggestions": [
+          "Maintain this step-by-step progression for the remaining parts of the proof."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: 'Which part of the assignment prompt tells you to write down the LHS values for each line? (Just quote or point to that phrase.)'",
+          "Teacher: 'State the LHS, show the substitution, and give the new values... Then explain your reasoning briefly.'",
+          "Student: 'Reasoning: The statement updates the global variable x by adding the values of z (aliased by b), y, and x itself (aliased by a)..."
+        ],
+        "reasoning": "The teacher consistently requires the student to articulate *why* they are taking each step. By asking the student to quote the prompt or state the formal rule, the teacher forces metacognitive engagement. The student is not just calculating numbers but explaining the justification for the calculation (e.g., why a global variable changes vs. a local one). This deepens understanding and ensures the student is not just pattern-matching.",
+        "strengths": [
+          "Requires explicit citation of rules/prompts, linking action to theory.",
+          "Asks for 'brief reasoning' to ensure conceptual understanding accompanies procedural steps.",
+          "Promotes verification of own work ('Check your result by moving forward')."
+        ],
+        "weaknesses": [
+          "None observed."
+        ],
+        "suggestions": [
+          "Encourage the student to reflect on *which* part of the process was most difficult to promote self-regulated learning."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 90,
+        "evidence": [
+          "Student: 'Let's clarify the part about passed-by-value and address the misconception...'",
+          "Student: 'So, after executing the statement b = a - z, the new values of the variables are...'",
+          "Teacher: 'Question to check your reasoning: when the function executes the line \"y = b + x\", does that name y refer to a parameter or to a global?'",
+          "Student: 'I used this substitution to ensure that the condition... holds...'"
+        ],
+        "reasoning": "The interaction is highly interactive and constructive. The student is not passively listening to a lecture; they are actively constructing the solution step-by-step. The engagement goes beyond active (doing the problem) to constructive (explaining the logic, checking reasoning, and correcting based on feedback). The teacher's questions are Socratic, prompting the student to interrogate their own assumptions and verify their logic, leading to deep cognitive involvement.",
+        "strengths": [
+          "High level of dialogue; student actively generates content.",
+          "Student engages in self-explanation and verification.",
+          "Co-construction of the solution path through iterative correction."
+        ],
+        "weaknesses": [
+          "The transcript is a 1-on-1 dialogue, so 'collaboration' (group interaction) isn't possible, but the 1-on-1 interactivity is maximized."
+        ],
+        "suggestions": [
+          "Could ask the student to predict the outcome of the next line before executing it to further engage intuitive reasoning before formal calculation."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The teacher demonstrates a strong understanding of programming concepts like pass-by-value, pass-by-reference, and value-result parameter passing schemes.",
+          "They provide clear explanations of aliasing and how it affects variable values in pass-by-reference scenarios.",
+          "The teacher identifies and corrects a student's misconception about pass-by-value, emphasizing the distinction between local parameters and global variables."
+        ],
+        "reasoning": "The teacher shows good pedagogical content knowledge by explaining complex programming concepts clearly and addressing student misconceptions effectively. They use precise language and provide concrete examples to illustrate abstract ideas.",
+        "strengths": [
+          "Clear explanations of complex concepts",
+          "Effective identification and correction of misconceptions",
+          "Use of precise language and concrete examples"
+        ],
+        "weaknesses": [
+          "Could provide more opportunities for students to discover concepts independently",
+          "Does not always explicitly connect concepts to broader programming principles"
+        ],
+        "suggestions": [
+          "Encourage more student-led discovery of concepts through guided questions",
+          "Explicitly connect specific examples to broader programming principles"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The teacher provides specific feedback on student work, identifying both correct aspects and misconceptions.",
+          "They ask targeted questions to guide students toward discovering errors and correcting them.",
+          "Feedback is given in a timely manner, allowing students to revise their work before moving on."
+        ],
+        "reasoning": "The teacher's feedback is generally effective, helping students understand their current performance and next steps. However, some feedback could be more actionable by providing explicit suggestions for improvement.",
+        "strengths": [
+          "Specific and targeted feedback",
+          "Timely delivery of feedback",
+          "Encourages student reflection and revision"
+        ],
+        "weaknesses": [
+          "Some feedback lacks explicit suggestions for improvement",
+          "Could provide more praise for correct aspects of student work"
+        ],
+        "suggestions": [
+          "Include explicit suggestions for improvement in feedback",
+          "Provide more balanced feedback by praising correct aspects of student work"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher models expert thinking by demonstrating step-by-step problem-solving processes.",
+          "They make their thought processes visible through think-aloud strategies and explicit explanations of each step.",
+          "The teacher uses real-world examples and analogies to illustrate abstract concepts."
+        ],
+        "reasoning": "The teacher effectively models expert thinking, making their problem-solving processes transparent and accessible to students. They use a variety of strategies to demonstrate thinking, but could incorporate more student collaboration in the modeling process.",
+        "strengths": [
+          "Clear demonstration of step-by-step problem-solving",
+          "Use of think-aloud strategies",
+          "Incorporation of real-world examples"
+        ],
+        "weaknesses": [
+          "Limited student collaboration in the modeling process",
+          "Could provide more opportunities for students to model their own thinking"
+        ],
+        "suggestions": [
+          "Incorporate more student collaboration in the modeling process",
+          "Provide opportunities for students to model their own thinking"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "The teacher provides structured guidance and hints to support student learning.",
+          "They adapt their support based on student progress, gradually fading guidance as students become more competent.",
+          "The teacher encourages students to take ownership of their learning by asking guiding questions."
+        ],
+        "reasoning": "The teacher provides effective coaching and scaffolding, supporting students while promoting independence. However, some students may need more explicit instructions or additional practice opportunities.",
+        "strengths": [
+          "Structured guidance and hints",
+          "Adaptive support based on student progress",
+          "Encourages student ownership of learning"
+        ],
+        "weaknesses": [
+          "Some students may need more explicit instructions",
+          "Limited opportunities for additional practice"
+        ],
+        "suggestions": [
+          "Provide more explicit instructions when needed",
+          "Offer additional practice opportunities for students"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "The teacher encourages students to explain their reasoning and reflect on their understanding.",
+          "Students are asked to articulate their thought processes and evaluate their own work.",
+          "Reflection activities are integrated into the learning process, promoting metacognition."
+        ],
+        "reasoning": "The teacher promotes reflection and articulation effectively, helping students develop metacognitive skills. However, reflection activities could be more diverse and structured to support deeper learning.",
+        "strengths": [
+          "Encourages student explanation of reasoning",
+          "Promotes metacognition",
+          "Integrates reflection into the learning process"
+        ],
+        "weaknesses": [
+          "Reflection activities lack diversity and structure",
+          "Limited opportunities for peer reflection"
+        ],
+        "suggestions": [
+          "Incorporate more diverse and structured reflection activities",
+          "Provide opportunities for peer reflection"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 91,
+        "evidence": [
+          "Students are actively engaged in constructive activities, such as self-explaining, questioning, and summarizing.",
+          "The teacher promotes interactive learning through discussion and collaboration.",
+          "Students are encouraged to co-construct knowledge with the teacher and peers."
+        ],
+        "reasoning": "The teacher promotes high levels of student engagement, particularly in constructive and interactive activities. However, there could be more opportunities for students to engage in argumentation and debate.",
+        "strengths": [
+          "Active engagement in constructive activities",
+          "Promotion of interactive learning",
+          "Encourages co-construction of knowledge"
+        ],
+        "weaknesses": [
+          "Limited opportunities for argumentation and debate",
+          "Could provide more open-ended tasks to promote deeper engagement"
+        ],
+        "suggestions": [
+          "Incorporate more opportunities for argumentation and debate",
+          "Provide more open-ended tasks to promote deeper engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 90.0,
+    "interpretation": "Excellent pedagogy"
+  }
+}

@@ -1,0 +1,524 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_llama3_2_1b_openai",
+    "student_model": "llama3.2:1b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Quick note about your attempt: you\u2019ve listed many \u201cLHS\u201d lines that don\u2019t correspond to the actual statements in the function and you haven\u2019t shown step-by-step values after each statement. That makes it hard to check correctness.",
+          "Teacher: You\u2019re mixing up the parameter names with the globals \u2014 that\u2019s the main misconception. In update(x,y) passed by value the function\u2019s parameters are a and b (locals); x, y, z inside the function refer to the globals (unless a local shadows them, which here it does not).",
+          "Teacher: You correctly identified that the y used is the global y (not the local b). However your numeric value for a after the assignment is wrong \u2014 check the arithmetic.",
+          "Teacher: Misconceptions I see: you never updated a after the assignment (you left a = 3 instead of computing a + y), and saying \u201cy is declared as global\u201d is incorrect\u2014the code has no such declaration.",
+          "Teacher: Correction for the one step you were stuck on: 3 + 2 = 5, so after a = a + y the values are (a, b, x, y, z) = (5, 2, 3, 2, 5). Short reason why the function refers to that y: the function\u2019s parameters are a and b (locals), so any other name (y, x, z) refers to the globals.",
+          "Teacher: You\u2019re repeatedly leaving a unchanged \u2014 that's the misconception. Compute 3 + 2 and write the result.",
+          "Teacher: You're still mixing up the conversion names (that's the main misconception).",
+          "Teacher: You\u2019re still holding the same misconception (replacing v with 0). The WP rule replaces the assigned variable in the postcondition with the assignment's right-hand side.",
+          "Teacher: For the assignment w := w + v, x = w and E = w + v. Now apply R[x -> E] to Q: w = 0 (i.e., replace the w that appears in w = 0 with w + v). Write the resulting predicate and briefly explain why we replace w (not v)."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge (PCK) by consistently identifying and addressing student misconceptions, particularly around parameter-passing modes, variable scoping, and weakest-precondition logic. The teacher provides clear, step-by-step corrections, often breaking down complex concepts into manageable parts. However, the teacher does not always proactively anticipate all possible misconceptions or provide multiple representations of the same concept (e.g., analogies or alternative explanations).",
+        "strengths": [
+          "Consistently identifies and corrects student misconceptions with precision.",
+          "Provides clear, step-by-step explanations of complex concepts (e.g., parameter-passing modes, weakest-precondition logic).",
+          "Uses targeted questions to guide students toward understanding (e.g., 'which part of the assignment prompt tells you...').",
+          "Demonstrates deep understanding of the subject matter (e.g., weakest-precondition rules, variable scoping)."
+        ],
+        "weaknesses": [
+          "Does not always proactively address potential misconceptions before they arise.",
+          "Lacks variety in explanations (e.g., no analogies or alternative representations).",
+          "Sometimes repeats the same correction without varying the approach, which may not help all students."
+        ],
+        "suggestions": [
+          "Proactively introduce common misconceptions at the start of the lesson to help students avoid them.",
+          "Use multiple representations (e.g., analogies, diagrams) to explain abstract concepts like parameter-passing modes.",
+          "Vary the approach when students repeatedly struggle with the same misconception (e.g., use a different example or explanation)."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Quick note about your attempt: you\u2019ve listed many \u201cLHS\u201d lines that don\u2019t correspond to the actual statements in the function and you haven\u2019t shown step-by-step values after each statement. That makes it hard to check correctness.",
+          "Teacher: You\u2019re mixing up the parameter names with the globals \u2014 that\u2019s the main misconception.",
+          "Teacher: You correctly identified that the y used is the global y (not the local b). However your numeric value for a after the assignment is wrong \u2014 check the arithmetic.",
+          "Teacher: Misconceptions I see: you never updated a after the assignment (you left a = 3 instead of computing a + y), and saying \u201cy is declared as global\u201d is incorrect\u2014the code has no such declaration.",
+          "Teacher: Correction for the one step you were stuck on: 3 + 2 = 5, so after a = a + y the values are (a, b, x, y, z) = (5, 2, 3, 2, 5).",
+          "Teacher: You\u2019re repeatedly leaving a unchanged \u2014 that's the misconception. Compute 3 + 2 and write the result.",
+          "Teacher: You're still mixing up the conversion names (that's the main misconception).",
+          "Teacher: You\u2019re still holding the same misconception (replacing v with 0). The WP rule replaces the assigned variable in the postcondition with the assignment's right-hand side.",
+          "Teacher: For the assignment w := w + v, x = w and E = w + v. Now apply R[x -> E] to Q: w = 0 (i.e., replace the w that appears in w = 0 with w + v)."
+        ],
+        "reasoning": "The teacher provides consistent, specific, and actionable feedback that identifies misconceptions and guides students toward correct understanding. The feedback often includes corrections, explanations, and prompts for the next step. However, the feedback is sometimes repetitive and could benefit from more explicit connections to learning goals or next steps.",
+        "strengths": [
+          "Feedback is specific and directly addresses student errors.",
+          "Provides clear corrections and explanations for misconceptions.",
+          "Uses guiding questions to help students self-correct.",
+          "Consistently identifies the 'main misconception' to focus student attention."
+        ],
+        "weaknesses": [
+          "Feedback can be repetitive, especially when students struggle with the same misconception.",
+          "Lacks explicit references to learning goals or broader objectives.",
+          "Does not always provide a clear 'next step' or actionable advice beyond the immediate correction."
+        ],
+        "suggestions": [
+          "Explicitly connect feedback to learning goals or objectives (e.g., 'This is important because...').",
+          "Provide a clear 'next step' or actionable task after each correction (e.g., 'Now try this...').",
+          "Vary the feedback approach to avoid repetition and engage students differently."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Correction for the one step you were stuck on: 3 + 2 = 5, so after a = a + y the values are (a, b, x, y, z) = (5, 2, 3, 2, 5).",
+          "Teacher: Short reason why the function refers to that y: the function\u2019s parameters are a and b (locals), so any other name (y, x, z) refers to the globals.",
+          "Teacher: For the assignment w := w + v, x = w and E = w + v. Now apply R[x -> E] to Q: w = 0 (i.e., replace the w that appears in w = 0 with w + v)."
+        ],
+        "reasoning": "The teacher occasionally models expert thinking, such as demonstrating the correct arithmetic or explaining the weakest-precondition rule. However, the modeling is inconsistent and often limited to corrections rather than proactive demonstrations of problem-solving processes. There is little use of think-aloud strategies or step-by-step modeling of expert reasoning.",
+        "strengths": [
+          "Provides correct demonstrations of arithmetic and logic (e.g., 3 + 2 = 5).",
+          "Explains the reasoning behind corrections (e.g., why the function refers to global y).",
+          "Breaks down complex rules (e.g., weakest-precondition) into manageable steps."
+        ],
+        "weaknesses": [
+          "Modeling is inconsistent and often reactive (only provided after student errors).",
+          "Lacks think-aloud strategies or explicit demonstrations of expert problem-solving.",
+          "Does not consistently show the full process of solving a problem from start to finish."
+        ],
+        "suggestions": [
+          "Proactively model expert thinking at the start of a new concept (e.g., 'Let me show you how I would approach this...').",
+          "Use think-aloud strategies to make expert reasoning visible (e.g., 'I\u2019m thinking... because...').",
+          "Demonstrate the full problem-solving process for a sample problem before asking students to attempt it."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Quick note about your attempt: you\u2019ve listed many \u201cLHS\u201d lines that don\u2019t correspond to the actual statements in the function and you haven\u2019t shown step-by-step values after each statement. That makes it hard to check correctness. Question to guide your next step: which part of the assignment prompt tells you how parameters and globals behave (look at the function header and the parameter-passing mode for case (a))?",
+          "Teacher: Now revise just part (a): show the initial values, then show the values of a, b, x, y, z after each line in the function (one statement at a time). Don\u2019t compute (b)-(d) yet.",
+          "Teacher: Quick question/hint: what is 3 + 2? Using that, write the full tuple (a, b, x, y, z) immediately after executing a = a + y. Then in one short sentence explain why the function refers to the global y rather than a local y.",
+          "Teacher: You're still leaving the arithmetic step undone. Quick prompt: what is 3 + 2? Using that, write the full tuple (a, b, x, y, z) immediately after a = a + y, and in one short sentence explain why the function refers to the global y rather than a local y.",
+          "Teacher: Quick step (one thing to do): compute the effect of the second statement, y = b + x, and give the full tuple (a, b, x, y, z) immediately after that line. Show the arithmetic you used.",
+          "Teacher: Quick question (one step): for w := w + v, what are x and E? Now perform R[x -> E] on the postcondition w = 0 (i.e., replace the w that appears in w = 0 with w + v)."
+        ],
+        "reasoning": "The teacher provides consistent scaffolding through targeted questions, hints, and prompts to guide students toward the correct answer. However, the scaffolding is often repetitive and does not always adapt to the student's progress or fade as the student becomes more independent. The teacher could provide more structured or tiered hints.",
+        "strengths": [
+          "Provides consistent and targeted hints to guide students.",
+          "Breaks down complex tasks into smaller, manageable steps.",
+          "Uses questions to prompt student thinking (e.g., 'what is 3 + 2?')."
+        ],
+        "weaknesses": [
+          "Scaffolding is often repetitive and does not adapt to student progress.",
+          "Lacks tiered or fading support (e.g., hints do not become less explicit as the student improves).",
+          "Does not always provide structured guidance for multi-step problems."
+        ],
+        "suggestions": [
+          "Use tiered hints that gradually reduce in explicitness as the student progresses.",
+          "Provide structured scaffolding for multi-step problems (e.g., 'First do X, then Y, then Z').",
+          "Fade support as the student demonstrates competence (e.g., reduce hints for subsequent similar problems)."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Student: As you can see, the local variables x and y are updated inside the function, but the global variables x and y are not affected. This is because when we pass parameters by value, the local variables are copied into the function, and the changes made to them do not affect the original variables outside the function.",
+          "Student: The function uses the global y rather than a local y because the variable y is declared as global at the beginning of the function, and it is used as such in the first statement.",
+          "Teacher: You\u2019re mixing up the parameter names with the globals \u2014 that\u2019s the main misconception."
+        ],
+        "reasoning": "There is limited evidence of students being asked to reflect on their understanding or articulate their reasoning. The teacher occasionally prompts students to explain their thinking (e.g., 'explain why the function refers to the global y'), but these prompts are infrequent and often met with incorrect or superficial responses. The teacher does not consistently encourage students to evaluate their own understanding or engage in meaningful reflection.",
+        "strengths": [
+          "Occasionally prompts students to explain their reasoning (e.g., 'explain why...').",
+          "Encourages students to articulate their thought process in short sentences."
+        ],
+        "weaknesses": [
+          "Reflection activities are infrequent and superficial.",
+          "Students are rarely asked to evaluate their own understanding or identify gaps in their knowledge.",
+          "The teacher does not consistently model or encourage metacognitive reflection."
+        ],
+        "suggestions": [
+          "Incorporate regular reflection prompts (e.g., 'How did you arrive at this answer?', 'What do you still find confusing?').",
+          "Ask students to evaluate their own understanding (e.g., 'On a scale of 1-5, how confident are you in this answer?').",
+          "Encourage students to articulate their reasoning in more depth (e.g., 'Explain your thought process step-by-step')."
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Student: I will follow the pseudocode to write down the values of x, y, and z after each call to the update function.",
+          "Student: I'll show the initial values, then the values of a, b, x, y, z after each line in the function. I'll also identify which identifiers are local parameters and which are globals.",
+          "Student: a = a + y... Numeric values after the first statement: a = 3, b = 2, x = 3, y = 2, z = 5",
+          "Teacher: Quick note about your attempt... Question to guide your next step: which part of the assignment prompt tells you how parameters and globals behave...?",
+          "Student: The final answer is: $\\boxed{(5,2,3,2,5)}$"
+        ],
+        "reasoning": "Students are frequently engaged in active learning, such as writing down values, identifying variables, and computing arithmetic. However, the engagement is primarily at the 'Active' level (e.g., note-taking, following instructions) rather than 'Constructive' or 'Interactive'. There is limited evidence of students engaging in self-explanation, questioning, or collaborative problem-solving. The teacher's prompts sometimes encourage constructive engagement (e.g., explaining reasoning), but these are not consistent.",
+        "strengths": [
+          "Students are actively engaged in problem-solving (e.g., computing values, identifying variables).",
+          "The teacher provides prompts that encourage students to think through problems step-by-step.",
+          "Students demonstrate persistence in attempting to solve problems."
+        ],
+        "weaknesses": [
+          "Engagement is primarily at the 'Active' level (e.g., following instructions, computing values).",
+          "Limited evidence of 'Constructive' engagement (e.g., self-explanation, questioning).",
+          "No evidence of 'Interactive' engagement (e.g., collaboration, discussion, argumentation)."
+        ],
+        "suggestions": [
+          "Encourage students to self-explain their reasoning (e.g., 'Why did you choose this approach?').",
+          "Incorporate collaborative activities (e.g., pair programming, group discussions).",
+          "Design tasks that require students to generate questions or critique their own work."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: You\u2019re mixing up the parameter names with the globals \u2014 that\u2019s the main misconception.",
+          "Teacher: You\u2019re still mixing up the conversion names (that\u2019s the main misconception).",
+          "Teacher: You're repeatedly replacing v by 0 \u2014 that\u2019s the misconception."
+        ],
+        "reasoning": "The teacher demonstrates a solid grasp of the subject matter, accurately identifying key misconceptions in parameter passing (value vs reference, local vs global scope), operator overloading, and weakest-precondition calculus. The teacher correctly identifies the specific errors (e.g., confusing the variable to be replaced in the wp rule). However, the teaching is constrained by the student's persistent failure to follow instructions, leading to repetitive corrections rather than diverse pedagogical strategies (like analogies or alternative representations) to break through the misunderstanding.",
+        "strengths": [
+          "Accurate identification of deep conceptual misconceptions (WP rules, scope).",
+          "Clear distinction between local parameters and global variables."
+        ],
+        "weaknesses": [
+          "Lack of varied examples or analogies to address persistent errors.",
+          "Over-reliance on repetitive verbal correction."
+        ],
+        "suggestions": [
+          "Use a different, simpler example to re-explain the wp rule before returning to the problem.",
+          "Utilize visual aids or step-by-step symbolic mapping to clarify variable substitution."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You correctly identified that the y used is the global y (not the local b). However your numeric value for a after the assignment is wrong.",
+          "Teacher: You're still mixing up the conversion names (that's the main misconception).",
+          "Teacher: You're repeatedly replacing v by 0 \u2014 that\u2019s the misconception."
+        ],
+        "reasoning": "The teacher provides specific feedback, pointing out exact errors (arithmetic, variable naming). However, the feedback is often redundant and repetitive, lacking the 'next step' guidance that might break the cycle of repeated errors. It identifies weaknesses well but struggles to provide actionable pathways for improvement that the student can execute, resulting in a loop of 'do it again' rather than 'here is how to do it differently.'",
+        "strengths": [
+          "Specific identification of errors (e.g., 'you left a = 3 instead of computing a + y')."
+        ],
+        "weaknesses": [
+          "Repetitive phrasing without adding new instructional value.",
+          "Lack of actionable 'how-to' for the student's specific cognitive block."
+        ],
+        "suggestions": [
+          "Vary the feedback structure to include a mini-answer or a different hint for the first few times, then fade support.",
+          "Focus on one specific sub-skill at a time rather than repeating the full correction."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Correction for the one step you were stuck on: 3 + 2 = 5, so after a = a + y the values are (a, b, x, y, z) = (5, 2, 3, 2, 5).",
+          "Teacher: For w := w + v: - x = w and E = w + v. - So apply R[x -> E] to Q: w = 0 by replacing w with (w+v). - That gives the condition (w + v) = 0"
+        ],
+        "reasoning": "Modeling is minimal and reserved only until the student becomes completely stuck or after many failed attempts. The teacher does not model the thinking process at the start of the lesson or for early steps; instead, they prompt the student to do it. When modeling occurs, it is often a direct answer rather than a 'think-aloud' demonstrating the cognitive strategy. This lack of early, explicit modeling contributes to the student's struggle with the fundamental mechanics of the task.",
+        "strengths": [
+          "Eventually models the correct procedure when all other scaffolding fails."
+        ],
+        "weaknesses": [
+          "No initial 'I do' or think-aloud to set the standard.",
+          "Modeling is reactive rather than proactive."
+        ],
+        "suggestions": [
+          "Begin with a 'think-aloud' of the first statement trace to demonstrate the expected output format and reasoning.",
+          "Use 'I do, We do, You do' structure."
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Question to guide your next step: which part of the assignment prompt tells you how parameters and globals behave...?",
+          "Teacher: Question: for the assignment w := w + v, what are x and E?",
+          "Teacher: You\u2019re still mixing up the conversion names. Please do one thing precisely: copy-and-paste verbatim..."
+        ],
+        "reasoning": "The teacher provides coaching hints and questions, but the scaffolding is static. It does not fade; it remains at the same level of difficulty (or gets even more prescriptive/repetitive) throughout the long exchange. The support is not adjusted effectively to the student's apparent inability to process the instructions, leading to a failure to move the student forward. The coaching fails to bridge the gap between the prompt's instructions and the student's execution.",
+        "strengths": [
+          "Consistent use of guiding questions to activate prior knowledge."
+        ],
+        "weaknesses": [
+          "Scaffolding does not adapt to the student's persistent failure.",
+          "Support becomes repetitive rather than strategic."
+        ],
+        "suggestions": [
+          "If a hint doesn't work, change the type of hint (e.g., from a question to a worked example).",
+          "Break the task into smaller, more manageable chunks if the student is stuck."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: Explain what that would force the value of w (after all three assignments) to be.",
+          "Student: Explain your steps.",
+          "Student: In one short sentence, state why the function uses the global y rather than a local y."
+        ],
+        "reasoning": "The teacher frequently requests the student to explain their reasoning (e.g., 'explain the substitution you used'). However, the student's responses are often non-responsive or redundant, indicating that the reflection cue is not effectively engaging the student's metacognition. The teacher asks for articulation, but the depth is limited by the student's inability to reflect correctly. The factor is present but functionally limited until the student simply repeats the right definition without true understanding.",
+        "strengths": [
+          "Regular prompting for explanation of reasoning."
+        ],
+        "weaknesses": [
+          "Student reflection is superficial or incorrect, suggesting the prompts aren't landing."
+        ],
+        "suggestions": [
+          "Use 'Why?' questions that force the student to connect the rule to the specific instance.",
+          "Require the student to identify their own error before providing the hint."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 90,
+        "evidence": [
+          "Student: a = a + y... Numeric values after the first statement: a = 3... (repeated multiple times with no change)",
+          "Student: int to string(add(10, 5)) (repeated multiple times with no change)",
+          "Student: I will replace \"v\" with 0 in the postcondition Q: w = 0. (repeated multiple times)"
+        ],
+        "reasoning": "The student engagement is low. The student is not actively processing the teacher's feedback, instead repeating the same incorrect input. There is no constructible or interactive engagement; the student is in a passive 'awaiting correction' mode that becomes active in a maladaptive loop. The ICAP level drops below Active because the student is not generating new ideas or modifying their approach based on the interaction.",
+        "strengths": [
+          "The student is technically participating (responding), even if unproductively."
+        ],
+        "weaknesses": [
+          "No constructive engagement (no self-correction).",
+          "Repetitive, non-iterative responses indicate disengagement or cognitive overload."
+        ],
+        "suggestions": [
+          "Pause the direct problem solving to address the meta-cognitive issue (why the student is stuck).",
+          "Engage the student on a different, simpler problem to reset cognitive flow."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "Teacher: You\u2019re mixing up the parameter names with the globals \u2014 that\u2019s the main misconception. In update(x,y) passed by value the function\u2019s parameters are a and b (locals); x, y, z inside the function refer to the globals (unless a local shadows them, which here it does not).",
+          "Teacher: You correctly identified that the y used is the global y (not the local b). However your numeric value for a after the assignment is wrong \u2014 check the arithmetic."
+        ],
+        "reasoning": "The teacher addresses misconceptions about parameter passing and global/local variables, indicating the student has some understanding but lacks depth. The student struggles with arithmetic and variable updates, suggesting inadequate grasp of fundamental concepts.",
+        "strengths": [
+          "Identifies global vs. local variables in some cases",
+          "Attempts to apply parameter passing rules"
+        ],
+        "weaknesses": [
+          "Misinterprets parameter names and globals",
+          "Struggles with basic arithmetic and variable updates",
+          "Does not consistently apply concepts across problems"
+        ],
+        "suggestions": [
+          "Provide explicit examples contrasting global/local variables",
+          "Reinforce arithmetic skills through targeted exercises",
+          "Use visual representations of memory to clarify parameter passing"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Quick note about your attempt: you\u2019ve listed many \u201cLHS\u201d lines that don\u2019t correspond to the actual statements in the function and you haven\u2019t shown step-by-step values after each statement. That makes it hard to check correctness.",
+          "Teacher: You\u2019re still leaving a arithmetic step undone. Quick prompt: what is 3 + 2?"
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback on errors in the student's work, highlighting both conceptual misunderstandings and procedural mistakes. Feedback is consistent and helps guide the student toward correct solutions.",
+        "strengths": [
+          "Identifies specific errors in student work",
+          "Provides clear guidance for improvement",
+          "Uses questioning to prompt student thinking"
+        ],
+        "weaknesses": [
+          "Does not always connect errors to underlying concepts",
+          "Some feedback is repetitive due to persistent misconceptions"
+        ],
+        "suggestions": [
+          "Link procedural errors to conceptual misunderstandings",
+          "Vary feedback strategies to address persistent errors",
+          "Provide summaries of key points after repeated feedback"
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You keep leaving the arithmetic step undone. What is 3 + 2?",
+          "Teacher: Misconceptions: you never updated a after the assignment (you left a = 3 instead of computing a + y)"
+        ],
+        "reasoning": "The teacher repeatedly prompts the student to execute basic arithmetic and variable updates, indicating the student is not modeling expert thinking. The student fails to demonstrate procedural knowledge or conceptual understanding independently.",
+        "strengths": [
+          "Attempts to follow instructions when prompted"
+        ],
+        "weaknesses": [
+          "Does not demonstrate independent problem-solving",
+          "Struggles with basic arithmetic and variable updates",
+          "Fails to model expert thinking processes"
+        ],
+        "suggestions": [
+          "Explicitly model step-by-step thinking processes",
+          "Provide structured practice with immediate feedback",
+          "Use think-aloud strategies to demonstrate expert reasoning"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Now revise just part (a): show the initial values, then show the values of a, b, x, y, z after each line in the function (one statement at a time). Don\u2019t compute (b)-(d) yet.",
+          "Teacher: Quick question/hint: what is 3 + 2? Using that, write the full tuple (a, b, x, y, z) immediately after executing a = a + y."
+        ],
+        "reasoning": "The teacher provides structured guidance, breaking tasks into manageable steps and offering hints when the student is stuck. Support is adapted to the student's needs, though some repetition occurs due to persistent misconceptions.",
+        "strengths": [
+          "Breaks tasks into manageable steps",
+          "Provides hints and scaffolding when needed",
+          "Adapts support to student responses"
+        ],
+        "weaknesses": [
+          "Some repetition due to student's persistent errors",
+          "Does not always fade support as student gains competence"
+        ],
+        "suggestions": [
+          "Gradually reduce scaffolding as student improves",
+          "Incorporate self-assessment to promote independence",
+          "Use more varied hints to avoid repetition"
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 70,
+        "evidence": [
+          "Student: The function uses the global y rather than a local y because the variable y is declared as global at the beginning of the function, and it is used as such in the first statement.",
+          "Teacher: Misconceptions: you never updated a after the assignment (you left a = 3), and saying \u201cy is declared as global\u201d is wrong\u2014the code has no such declaration."
+        ],
+        "reasoning": "The student occasionally attempts to explain reasoning but often repeats misconceptions. Reflections are superficial and do not demonstrate deep understanding or evaluation of their own thinking.",
+        "strengths": [
+          "Attempts to articulate reasoning in some cases"
+        ],
+        "weaknesses": [
+          "Reflections are superficial and repeat errors",
+          "Does not evaluate or correct own thinking",
+          "Lacks depth in explaining concepts"
+        ],
+        "suggestions": [
+          "Prompt students to evaluate their own explanations",
+          "Model reflective thinking processes explicitly",
+          "Encourage students to identify and correct misconceptions"
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Student: I'll show the initial values, then the values of a, b, x, y, z after each line in the function.",
+          "Teacher: You\u2019re still leaving a arithmetic step undone. Quick prompt: what is 3 + 2?"
+        ],
+        "reasoning": "The student engages in active learning by attempting tasks and responding to prompts. However, engagement remains largely reactive, with the student struggling to apply concepts independently or engage in higher-order thinking.",
+        "strengths": [
+          "Responds to prompts and attempts tasks",
+          "Shows willingness to engage with material"
+        ],
+        "weaknesses": [
+          "Engagement is primarily reactive",
+          "Struggles with independent application of concepts",
+          "Does not initiate higher-order thinking"
+        ],
+        "suggestions": [
+          "Encourage collaborative problem-solving",
+          "Incorporate more open-ended tasks to promote constructive engagement",
+          "Provide opportunities for student-led exploration"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          3,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 2.33,
+        "individual_scores": [
+          3,
+          2,
+          2
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 3,
+        "individual_scores": [
+          3,
+          2,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Reflection": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          3,
+          2
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 2.67,
+        "individual_scores": [
+          3,
+          2,
+          3
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 57.8,
+    "interpretation": "Needs significant improvement"
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_phi4_14b_openai",
+    "student_model": "phi4:14b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt made you conclude that changes inside the function won't affect the original variables (for part a)? Point to the exact phrasing you used to justify that step.",
+          "Teacher: Good\u2014you're on the right track. Before we proceed, point to the exact text in the assignment prompt that you used to decide x, y, and z are globals (quote the line). Then briefly say in one sentence how that text implies that assignments to x, y, z inside update refer to globals rather than parameters.",
+          "Teacher: Good\u2014now revise part (a). For each line inside update, write the RHS operands with their current numeric values and state whether each operand is a global or a local (parameter), then give the LHS result and whether that updates a local or a global. Finally, state the final values of globals x, y, z after the call and in one sentence explain the reasoning you used.",
+          "Teacher: Good\u2014now also quote the function header (the exact line) and, in one concise sentence, explain how that header together with the global declarations shows that a and b are the function's locals while x, y, z inside update refer to the globals.",
+          "Teacher: Good. Now let's move to part (b) step-by-step. First, quote the exact call you're analyzing (the line in the prompt for part (b)) and state precisely what 'passed by reference' implies about which variables a and b alias. Then compute the first assignment inside update: For 'a = a + y', give the numeric values of the RHS operands and say whether each operand is a local/parameter or a global, and whether the LHS updates a parameter (an alias) or a global.",
+          "Teacher: Good\u2014you're on track. Now do the next line inside update: Compute 'y = b + x': for the RHS list each operand with its current numeric value and whether it is a local/parameter, a global, or an alias; then give the LHS result and say whether that LHS updates a parameter/alias or a global.",
+          "Teacher: Nice detailed work. One small misconception: remember a and x are aliases when passed by reference, so changes to one affect the other. Question: after you executed 'x = b + y + a' (step 4), what are the current numeric values of x and a? Use those values to recompute the final statement 'z = x + a - b', then state the revised final globals x, y, z and briefly explain your reasoning.",
+          "Teacher: You corrected the aliasing misconception: when a aliases x, writing to x also updates a (and vice versa), which is why z became 30 \u2014 good identification.",
+          "Teacher: Now let's move on to part (c). First, quote the exact line in the prompt that tells you how value-result copy-back works (the text about copying back and order). Then, using update(y, z) with value-result, compute the first assignment inside update: For 'a = a + y', give the numeric RHS operands and say whether each is a local/parameter or a global. Also, in one sentence, state which actual variables will be copied back at function exit and in what order (so you keep the copy-back effect in mind).",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good\u2014you're ready to continue. Now compute just the next line: For 'b = a - z': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS result and say whether that LHS updates a local/parameter or a global, then state the updated state (values) of globals and of the formals a and b after this assignment.",
+          "Teacher: Quick check: remember a and b are independent locals (initialized from y,z) under value-result \u2014 they do not alias globals; writes to x change the global x immediately. Now compute the next line for me: For the statement 'x = b + y + a': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS numeric result and say whether that LHS updates a local/parameter or a global. Finally, state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good\u2014you're consistent so far. Two quick steps before we continue. 1) Quote the exact sentence in the assignment prompt that says how copy-back (value-result) is performed and in what order (left-to-right). (One short quote.) 2) Now compute the next assignment inside update: For the line 'z = x + a - b': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS numeric result and say whether that LHS updates a local/parameter or a global, then state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by consistently transforming complex programming concepts (parameter passing mechanisms, variable scoping, and aliasing) into clear, step-by-step explanations. The teacher uses precise terminology, addresses student misconceptions directly (e.g., aliasing in pass-by-reference, copy-back in value-result), and adapts explanations to the student's evolving understanding. The teacher also references the assignment prompt to ground reasoning in the given definitions, ensuring clarity and accuracy.",
+        "strengths": [
+          "Exceptional ability to break down complex concepts into digestible steps",
+          "Proactive identification and correction of student misconceptions (e.g., aliasing, copy-back order)",
+          "Consistent use of precise terminology and references to the assignment prompt",
+          "Adaptation of explanations to the student's current understanding and errors",
+          "Clear modeling of expert reasoning through step-by-step derivations"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in PCK; the teacher consistently demonstrates deep understanding and effective communication"
+        ],
+        "suggestions": [
+          "Continue to emphasize the importance of distinguishing pre- and post-state variables to avoid confusion in derivations",
+          "Encourage students to explicitly label variables with subscripts (e.g., u0, u1) to clarify state transitions"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt made you conclude that changes inside the function won't affect the original variables (for part a)? Point to the exact phrasing you used to justify that step.",
+          "Teacher: Good\u2014you're on the right track. Before we proceed, point to the exact text in the assignment prompt that you used to decide x, y, and z are globals (quote the line). Then briefly say in one sentence how that text implies that assignments to x, y, z inside update refer to globals rather than parameters.",
+          "Teacher: Good\u2014now revise part (a). For each line inside update, write the RHS operands with their current numeric values and state whether each operand is a global or a local (parameter), then give the LHS result and whether that updates a local or a global. Finally, state the final values of globals x, y, z after the call and in one sentence explain the reasoning you used.",
+          "Teacher: Good\u2014now also quote the function header (the exact line) and, in one concise sentence, explain how that header together with the global declarations shows that a and b are the function's locals while x, y, z inside update refer to the globals.",
+          "Teacher: Good. Now let's move to part (b) step-by-step. First, quote the exact call you're analyzing (the line in the prompt for part (b)) and state precisely what 'passed by reference' implies about which variables a and b alias. Then compute the first assignment inside update: For 'a = a + y', give the numeric values of the RHS operands and say whether each operand is a local/parameter or a global, and whether the LHS updates a parameter (an alias) or a global.",
+          "Teacher: Good\u2014you're on track. Now do the next line inside update: Compute 'y = b + x': for the RHS list each operand with its current numeric value and whether it is a local/parameter, a global, or an alias; then give the LHS result and say whether that LHS updates a parameter/alias or a global.",
+          "Teacher: Nice detailed work. One small misconception: remember a and x are aliases when passed by reference, so changes to one affect the other. Question: after you executed 'x = b + y + a' (step 4), what are the current numeric values of x and a? Use those values to recompute the final statement 'z = x + a - b', then state the revised final globals x, y, z and briefly explain your reasoning.",
+          "Teacher: You corrected the aliasing misconception: when a aliases x, writing to x also updates a (and vice versa), which is why z became 30 \u2014 good identification.",
+          "Teacher: Now let's move on to part (c). First, quote the exact line in the prompt that tells you how value-result copy-back works (the text about copying back and order). Then, using update(y, z) with value-result, compute the first assignment inside update: For 'a = a + y', give the numeric RHS operands and say whether each is a local/parameter or a global. Also, in one sentence, state which actual variables will be copied back at function exit and in what order (so you keep the copy-back effect in mind).",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good\u2014you're ready to continue. Now compute just the next line: For 'b = a - z': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS result and say whether that LHS updates a local/parameter or a global, then state the updated state (values) of globals and of the formals a and b after this assignment.",
+          "Teacher: Quick check: remember a and b are independent locals (initialized from y,z) under value-result \u2014 they do not alias globals; writes to x change the global x immediately. Now compute the next line for me: For the statement 'x = b + y + a': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS numeric result and say whether that LHS updates a local/parameter or a global. Finally, state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good\u2014you're consistent so far. Two quick steps before we continue. 1) Quote the exact sentence in the assignment prompt that says how copy-back (value-result) is performed and in what order (left-to-right). (One short quote.) 2) Now compute the next assignment inside update: For the line 'z = x + a - b': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS numeric result and say whether that LHS updates a local/parameter or a global, then state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good\u2014you're on the right track. Before we change anything, which part of the assignment prompt (the operator definitions) supports your next step when checking that expression?",
+          "Teacher: You correctly caught the implicit int\u2192float assumption \u2014 good. Now apply the same checks to the other expressions one at a time. Start with expression 1: which operator definitions in the prompt justify each step (the inner add(...) and the outer int to string(...))? Then revise your answer for expression 1 and explain the reasoning you used.",
+          "Teacher: Your reasoning for expression 1 matches the operator definitions (add(int,int) -> int; int to string(int) -> string) \u2014 that step is fine. Now address expression 2. Question: which operator definitions from the prompt support each step of your reasoning about add(\"hello\", \"world\")? In particular, is there any operator given that would convert strings into the int inputs that add requires, or any operator that makes add applicable to strings? Revise your answer for (2) and explain the reasoning you used.",
+          "Teacher: Your reasoning for (2) looks consistent with the operator definitions \u2014 no further misconception there. Now apply the same checks to expression 4. Question: which operator definitions justify each inner call (greater than(20, 10.5) and equals(\"hi\", \"hi\"))? What are the result types of those inner calls, and does the outer and(...) accept those result types? Then state the final type and expected output in one sentence and briefly explain the reasoning you used.",
+          "Teacher: I don't see any misconception in your reasoning so far. Now, quote the exact operator definition lines from the prompt that justify each of these calls: greater than(20, 10.5), equals(\"hi\", \"hi\"), and the outer and(...). (Just paste the relevant definition lines.)",
+          "Teacher: You quoted the operator lines correctly. I noticed you corrected the earlier implicit int\u2192float assumption \u2014 keep that in mind. Now please revise and state your final answer concisely for each expression (1\u20134): for each one, say (a) whether it is typeable, (b) the final type and expected output if typeable (or a brief reason why not), and (c) which operator definition line(s) justify your conclusion. Start with expression 1.",
+          "Teacher: Good \u2014 your backward substitution is fine. Now let's verify it by forward execution (one step at a time). Assume initial values u0, v0, w0 satisfy your precondition u0 = 2*v0 + w0 - 3. Compute: 1) u after u := u + 3 (call it u1). 2) v after v := 2*v - u (call it v1) \u2014 remember this uses the updated u1. 3) w after w := w + v (call it w2). Write the substitution for each step and simplify to show w2 = 0. Please carry out those three substitutions and simplifications.",
+          "Teacher: Good \u2014 your forward execution shows sufficiency. Now one step at a time: State the Hoare triple {P} S {w = 0} with the P you found, and in one sentence explain why P is the weakest precondition (i.e., show both sufficiency \u2014 which you already demonstrated \u2014 and necessity: why any initial state that leads to w = 0 after S must satisfy P).",
+          "Teacher: Good \u2014 your backward derivation is correct. One small clarity improvement: avoid mixed subscripts\u2014show the relation entirely in pre-state variables. Please rewrite the necessity proof using only the initial-state variables (u, v, w) without subscripts, give the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why the backward-substitution chain proves that any initial state yielding w = 0 must satisfy P.",
+          "Teacher: Good\u2014you're almost there. One small issue: in step 2 you wrote 'From w = w + v, we have v = -w' using the same symbol names for pre- and post-states; the cleaner backward chain uses only initial-state variables by substituting both updates at once. Hint: start from 0 = w (final), write w (final) as w + v (with v being the value after the second assignment), then replace that v by 2*v - (u + 3) (because u was first updated to u + 3). So write the single equation 0 = w + (2*v - (u + 3)) and simplify to solve for u in terms of the initial u, v, w. Please rewrite the necessity proof showing that single substitution, simplify it, and give one clear sentence explaining why this derivation proves that any initial state leading to w = 0 must satisfy P.",
+          "Teacher: Good \u2014 your compact derivation is correct. One last check: restate the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why no weaker (i.e., less restrictive) precondition than P could guarantee w = 0 after S.",
+          "Teacher: Good \u2014 your necessity proof is clean now. Next (one step): derive the weakest precondition for Q: w \u2265 0. Show the three substitutions stepwise (start from w + v \u2265 0, replace v by 2*v - u, then replace u by u + 3), simplify, and give the final condition and a short note on what initial-value restriction it imposes."
+        ],
+        "reasoning": "The teacher provides highly effective feedback by consistently guiding the student through step-by-step reasoning, identifying errors, and prompting corrections. The feedback is actionable, specific, and tied directly to the student's work. The teacher uses the student's responses to scaffold learning, ensuring the student understands the underlying concepts (e.g., parameter passing, variable scoping, and operator definitions). The feedback also encourages the student to justify their reasoning using the assignment prompt, fostering critical thinking and independence.",
+        "strengths": [
+          "Feedback is consistently actionable, specific, and tied to the student's work",
+          "Guides the student through step-by-step reasoning, correcting misconceptions proactively",
+          "Encourages the student to justify their reasoning using the assignment prompt",
+          "Scaffolds learning by building on the student's responses",
+          "Provides clear, concise, and timely feedback that addresses both errors and strengths"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed; feedback is consistently high-quality and effective"
+        ],
+        "suggestions": [
+          "Consider occasionally summarizing key takeaways or patterns in the student's errors to reinforce learning",
+          "Encourage the student to self-reflect on their reasoning process after corrections"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt made you conclude that changes inside the function won't affect the original variables (for part a)? Point to the exact phrasing you used to justify that step.",
+          "Teacher: Good\u2014you're on the right track. Before we proceed, point to the exact text in the assignment prompt that you used to decide x, y, and z are globals (quote the line). Then briefly say in one sentence how that text implies that assignments to x, y, z inside update refer to globals rather than parameters.",
+          "Teacher: Good\u2014now revise part (a). For each line inside update, write the RHS operands with their current numeric values and state whether each operand is a global or a local (parameter), then give the LHS result and whether that updates a local or a global. Finally, state the final values of globals x, y, z after the call and in one sentence explain the reasoning you used.",
+          "Teacher: Good\u2014now also quote the function header (the exact line) and, in one concise sentence, explain how that header together with the global declarations shows that a and b are the function's locals while x, y, z inside update refer to the globals.",
+          "Teacher: Good. Now let's move to part (b) step-by-step. First, quote the exact call you're analyzing (the line in the prompt for part (b)) and state precisely what 'passed by reference' implies about which variables a and b alias. Then compute the first assignment inside update: For 'a = a + y', give the numeric values of the RHS operands and say whether each operand is a local/parameter or a global, and whether the LHS updates a parameter (an alias) or a global.",
+          "Teacher: Good\u2014you're on track. Now do the next line inside update: Compute 'y = b + x': for the RHS list each operand with its current numeric value and whether it is a local/parameter, a global, or an alias; then give the LHS result and say whether that LHS updates a parameter/alias or a global.",
+          "Teacher: Nice detailed work. One small misconception: remember a and x are aliases when passed by reference, so changes to one affect the other. Question: after you executed 'x = b + y + a' (step 4), what are the current numeric values of x and a? Use those values to recompute the final statement 'z = x + a - b', then state the revised final globals x, y, z and briefly explain your reasoning.",
+          "Teacher: You corrected the aliasing misconception: when a aliases x, writing to x also updates a (and vice versa), which is why z became 30 \u2014 good identification.",
+          "Teacher: Now let's move on to part (c). First, quote the exact line in the prompt that tells you how value-result copy-back works (the text about copying back and order). Then, using update(y, z) with value-result, compute the first assignment inside update: For 'a = a + y', give the numeric RHS operands and say whether each is a local/parameter or a global. Also, in one sentence, state which actual variables will be copied back at function exit and in what order (so you keep the copy-back effect in mind).",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good\u2014you're ready to continue. Now compute just the next line: For 'b = a - z': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS result and say whether that LHS updates a local/parameter or a global, then state the updated state (values) of globals and of the formals a and b after this assignment.",
+          "Teacher: Quick check: remember a and b are independent locals (initialized from y,z) under value-result \u2014 they do not alias globals; writes to x change the global x immediately. Now compute the next line for me: For the statement 'x = b + y + a': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS numeric result and say whether that LHS updates a local/parameter or a global. Finally, state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good\u2014you're consistent so far. Two quick steps before we continue. 1) Quote the exact sentence in the assignment prompt that says how copy-back (value-result) is performed and in what order (left-to-right). (One short quote.) 2) Now compute the next assignment inside update: For the line 'z = x + a - b': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS numeric result and say whether that LHS updates a local/parameter or a global, then state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good \u2014 your backward substitution is fine. Now let's verify it by forward execution (one step at a time). Assume initial values u0, v0, w0 satisfy your precondition u0 = 2*v0 + w0 - 3. Compute: 1) u after u := u + 3 (call it u1). 2) v after v := 2*v - u (call it v1) \u2014 remember this uses the updated u1. 3) w after w := w + v (call it w2). Write the substitution for each step and simplify to show w2 = 0. Please carry out those three substitutions and simplifications.",
+          "Teacher: Good \u2014 your forward execution shows sufficiency. Now one step at a time: State the Hoare triple {P} S {w = 0} with the P you found, and in one sentence explain why P is the weakest precondition (i.e., show both sufficiency \u2014 which you already demonstrated \u2014 and necessity: why any initial state that leads to w = 0 after S must satisfy P).",
+          "Teacher: Good \u2014 your backward derivation is correct. One small clarity improvement: avoid mixed subscripts\u2014show the relation entirely in pre-state variables. Please rewrite the necessity proof using only the initial-state variables (u, v, w) without subscripts, give the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why the backward-substitution chain proves that any initial state yielding w = 0 must satisfy P.",
+          "Teacher: Good\u2014you're almost there. One small issue: in step 2 you wrote 'From w = w + v, we have v = -w' using the same symbol names for pre- and post-states; the cleaner backward chain uses only initial-state variables by substituting both updates at once. Hint: start from 0 = w (final), write w (final) as w + v (with v being the value after the second assignment), then replace that v by 2*v - (u + 3) (because u was first updated to u + 3). So write the single equation 0 = w + (2*v - (u + 3)) and simplify to solve for u in terms of the initial u, v, w. Please rewrite the necessity proof showing that single substitution, simplify it, and give one clear sentence explaining why this derivation proves that any initial state leading to w = 0 must satisfy P.",
+          "Teacher: Good \u2014 your compact derivation is correct. One last check: restate the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why no weaker (i.e., less restrictive) precondition than P could guarantee w = 0 after S.",
+          "Teacher: Good \u2014 your necessity proof is clean now. Next (one step): derive the weakest precondition for Q: w \u2265 0. Show the three substitutions stepwise (start from w + v \u2265 0, replace v by 2*v - u, then replace u by u + 3), simplify, and give the final condition and a short note on what initial-value restriction it imposes."
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes, particularly in the context of parameter passing mechanisms, variable scoping, and formal reasoning (e.g., Hoare triples, weakest preconditions). The teacher demonstrates the thought process behind each step, such as backward substitution for weakest preconditions and forward execution for verification. The teacher also explicitly references the assignment prompt to ground the modeling in the given definitions, ensuring clarity and accuracy.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through step-by-step derivations",
+          "Models problem-solving processes explicitly, including backward and forward reasoning",
+          "Uses precise terminology and references to the assignment prompt to ground explanations",
+          "Adapts modeling to the student's current understanding and errors",
+          "Provides clear, structured examples of expert reasoning"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed; modeling is consistently high-quality and effective"
+        ],
+        "suggestions": [
+          "Consider occasionally summarizing the broader problem-solving strategy (e.g., 'We use backward substitution to derive weakest preconditions') to reinforce metacognitive awareness",
+          "Encourage the student to verbalize their own thought process after the teacher models it"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt made you conclude that changes inside the function won't affect the original variables (for part a)? Point to the exact phrasing you used to justify that step.",
+          "Teacher: Good\u2014you're on the right track. Before we proceed, point to the exact text in the assignment prompt that you used to decide x, y, and z are globals (quote the line). Then briefly say in one sentence how that text implies that assignments to x, y, z inside update refer to globals rather than parameters.",
+          "Teacher: Good\u2014now revise part (a). For each line inside update, write the RHS operands with their current numeric values and state whether each operand is a global or a local (parameter), then give the LHS result and whether that updates a local or a global. Finally, state the final values of globals x, y, z after the call and in one sentence explain the reasoning you used.",
+          "Teacher: Good\u2014now also quote the function header (the exact line) and, in one concise sentence, explain how that header together with the global declarations shows that a and b are the function's locals while x, y, z inside update refer to the globals.",
+          "Teacher: Good. Now let's move to part (b) step-by-step. First, quote the exact call you're analyzing (the line in the prompt for part (b)) and state precisely what 'passed by reference' implies about which variables a and b alias. Then compute the first assignment inside update: For 'a = a + y', give the numeric values of the RHS operands and say whether each operand is a local/parameter or a global, and whether the LHS updates a parameter (an alias) or a global.",
+          "Teacher: Good\u2014you're on track. Now do the next line inside update: Compute 'y = b + x': for the RHS list each operand with its current numeric value and whether it is a local/parameter, a global, or an alias; then give the LHS result and say whether that LHS updates a parameter/alias or a global.",
+          "Teacher: Nice detailed work. One small misconception: remember a and x are aliases when passed by reference, so changes to one affect the other. Question: after you executed 'x = b + y + a' (step 4), what are the current numeric values of x and a? Use those values to recompute the final statement 'z = x + a - b', then state the revised final globals x, y, z and briefly explain your reasoning.",
+          "Teacher: You corrected the aliasing misconception: when a aliases x, writing to x also updates a (and vice versa), which is why z became 30 \u2014 good identification.",
+          "Teacher: Now let's move on to part (c). First, quote the exact line in the prompt that tells you how value-result copy-back works (the text about copying back and order). Then, using update(y, z) with value-result, compute the first assignment inside update: For 'a = a + y', give the numeric RHS operands and say whether each is a local/parameter or a global. Also, in one sentence, state which actual variables will be copied back at function exit and in what order (so you keep the copy-back effect in mind).",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good\u2014you're ready to continue. Now compute just the next line: For 'b = a - z': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS result and say whether that LHS updates a local/parameter or a global, then state the updated state (values) of globals and of the formals a and b after this assignment.",
+          "Teacher: Quick check: remember a and b are independent locals (initialized from y,z) under value-result \u2014 they do not alias globals; writes to x change the global x immediately. Now compute the next line for me: For the statement 'x = b + y + a': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS numeric result and say whether that LHS updates a local/parameter or a global. Finally, state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good\u2014you're consistent so far. Two quick steps before we continue. 1) Quote the exact sentence in the assignment prompt that says how copy-back (value-result) is performed and in what order (left-to-right). (One short quote.) 2) Now compute the next assignment inside update: For the line 'z = x + a - b': list each RHS operand with its current numeric value and whether it is a local/parameter or a global, give the LHS numeric result and say whether that LHS updates a local/parameter or a global, then state the updated values of the globals and of the formals a and b immediately after this assignment (i.e., before any copy-back). Explain your reasoning in one short sentence.",
+          "Teacher: Good. First, quote the exact sentence from the assignment prompt that says how copy-back (value-result) is done and in what order (left-to-right). Then, without doing the whole function yet, compute just the next assignment inside update: For the line 'y = b + x', list each RHS operand with its current numeric value and whether it is a local/parameter or a global, then give the LHS result and say whether that LHS updates a local/parameter or a global.",
+          "Teacher: Good \u2014 your backward substitution is fine. Now let's verify it by forward execution (one step at a time). Assume initial values u0, v0, w0 satisfy your precondition u0 = 2*v0 + w0 - 3. Compute: 1) u after u := u + 3 (call it u1). 2) v after v := 2*v - u (call it v1) \u2014 remember this uses the updated u1. 3) w after w := w + v (call it w2). Write the substitution for each step and simplify to show w2 = 0. Please carry out those three substitutions and simplifications.",
+          "Teacher: Good \u2014 your forward execution shows sufficiency. Now one step at a time: State the Hoare triple {P} S {w = 0} with the P you found, and in one sentence explain why P is the weakest precondition (i.e., show both sufficiency \u2014 which you already demonstrated \u2014 and necessity: why any initial state that leads to w = 0 after S must satisfy P).",
+          "Teacher: Good \u2014 your backward derivation is correct. One small clarity improvement: avoid mixed subscripts\u2014show the relation entirely in pre-state variables. Please rewrite the necessity proof using only the initial-state variables (u, v, w) without subscripts, give the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why the backward-substitution chain proves that any initial state yielding w = 0 must satisfy P.",
+          "Teacher: Good\u2014you're almost there. One small issue: in step 2 you wrote 'From w = w + v, we have v = -w' using the same symbol names for pre- and post-states; the cleaner backward chain uses only initial-state variables by substituting both updates at once. Hint: start from 0 = w (final), write w (final) as w + v (with v being the value after the second assignment), then replace that v by 2*v - (u + 3) (because u was first updated to u + 3). So write the single equation 0 = w + (2*v - (u + 3)) and simplify to solve for u in terms of the initial u, v, w. Please rewrite the necessity proof showing that single substitution, simplify it, and give one clear sentence explaining why this derivation proves that any initial state leading to w = 0 must satisfy P.",
+          "Teacher: Good \u2014 your compact derivation is correct. One last check: restate the Hoare triple {P} S {w = 0} with P written explicitly, and in one clear sentence explain why no weaker (i.e., less restrictive) precondition than P could guarantee w = 0 after S.",
+          "Teacher: Good \u2014 your necessity proof is clean now. Next (one step): derive the weakest precondition for Q: w \u2265 0. Show the three substitutions stepwise (start from w + v \u2265 0, replace v by 2*v - u, then replace u by u + 3), simplify, and give the final condition and a short note on what initial-value restriction it imposes."
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding by guiding the student through complex problems step-by-step, offering structured hints, and gradually reducing support as the student demonstrates competence. The teacher adapts the level of guidance to the student's current understanding, providing more detailed hints when the student struggles and allowing the student to work independently when they show mastery. The coaching is strategic, targeted, and fades appropriately as the student progresses.",
+        "strengths": [
+          "Provides strategic, targeted hints that guide the student without giving away the answer",
+          "Adapts the level of support to the student's current understanding and progress",
+          "Gradually reduces support as the student demonstrates competence (scaffolding)",
+          "Encourages the student to think critically and independently",
+          "Uses structured, step-by-step guidance to build the student's problem-solving skills"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed; coaching is consistently high-quality and effective"
+        ],
+        "suggestions": [
+          "Consider occasionally asking the student to summarize the key steps or insights they've gained from the coaching session",
+          "Encourage the student to reflect on how they might apply the problem-solving strategies to similar problems"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Alright, let's tackle this step by step for each part of the question.",
+          "Student: In part (a), I concluded that changes inside the function won't affect the original variables because the parameters are passed by value.",
+          "Student: Sure, let's break it down: Function Parameters and Globals...",
+          "Student: Sure, let's revise part (a) with the detailed breakdown:",
+          "Student: Alright, let's go through each expression one by one using the given operator definitions:",
+          "Student: To address the misconception and correctly analyze the impact of the statement x = b + y + a on the variables x and a, let's carefully consider the aliasing behavior when variables are passed by reference.",
+          "Student: ### Part (c) Continued: Value-Result Semantics",
+          "Student: ### Necessity Proof",
+          "Student: ### Corrected Derivation",
+          "Student: 1. **Expression 1: int to string(add(10, 5))**",
+          "Student: Alright, let's tackle this step by step.",
+          "Student: To derive the weakest precondition for the postcondition Q: w \u2265 0, we need to work backwards through the program, substituting the expressions for each variable as they are updated."
+        ],
+        "reasoning": "The teacher encourages reflection and articulation by prompting the student to explain their reasoning, justify their steps, and revise their answers. The student is frequently asked to break down their thought process, identify misconceptions, and provide detailed explanations. However, the student's reflections are often in response to the teacher's prompts rather than being self-initiated. The teacher could further encourage the student to articulate their reasoning independently.",
+        "strengths": [
+          "Encourages the student to explain their reasoning and justify their steps",
+          "Prompts the student to revise their answers and reflect on their thought process",
+          "Asks the student to break down complex problems into smaller, manageable steps",
+          "Fosters critical thinking by guiding the student to identify and correct misconceptions"
+        ],
+        "weaknesses": [
+          "Reflection is often teacher-prompted rather than student-initiated",
+          "The student's reflections are sometimes reactive rather than proactive"
+        ],
+        "suggestions": [
+          "Encourage the student to independently articulate their reasoning before providing feedback",
+          "Prompt the student to reflect on their learning process and key insights gained from the session",
+          "Ask the student to summarize the main takeaways or strategies they've learned"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Student: Alright, let's tackle this step by step for each part of the question.",
+          "Student: In part (a), I concluded that changes inside the function won't affect the original variables because the parameters are passed by value.",
+          "Student: Sure, let's break it down: Function Parameters and Globals...",
+          "Student: Sure, let's revise part (a) with the detailed breakdown:",
+          "Student: Alright, let's go through each expression one by one using the given operator definitions:",
+          "Student: To address the misconception and correctly analyze the impact of the statement x = b + y + a on the variables x and a, let's carefully consider the aliasing behavior when variables are passed by reference.",
+          "Student: ### Part (c) Continued: Value-Result Semantics",
+          "Student: ### Necessity Proof",
+          "Student: ### Corrected Derivation",
+          "Student: 1. **Expression 1: int to string(add(10, 5))**",
+          "Student: Alright, let's tackle this step by step.",
+          "Student: To derive the weakest precondition for the postcondition Q: w \u2265 0, we need to work backwards through the program, substituting the expressions for each variable as they are updated."
+        ],
+        "reasoning": "The student demonstrates a high level of cognitive engagement throughout the transcript. The student consistently participates in constructive activities, such as breaking down problems, explaining reasoning, and revising answers. The student also engages in interactive learning by responding to the teacher's prompts, asking for clarification, and collaborating to solve complex problems. The engagement is consistently at the 'Interactive' level, as the student is actively co-constructing knowledge with the teacher.",
+        "strengths": [
+          "Consistently engages in constructive activities (e.g., breaking down problems, explaining reasoning)",
+          "Actively participates in interactive learning (e.g., responding to prompts, revising answers)",
+          "Demonstrates a high level of cognitive involvement in problem-solving",
+          "Collaborates with the teacher to co-construct knowledge"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed; engagement is consistently high and interactive"
+        ],
+        "suggestions": [
+          "Encourage the student to take the lead in initiating discussions or questions to further enhance their engagement",
+          "Provide opportunities for the student to engage in peer collaboration or group problem-solving"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: ...check this: inside the function there are assignments to a, b, x, y, and z. Which of those names are the function's parameters (locals) and which refer to the globals declared before the function?",
+          "Teacher: One small misconception: remember a and x are aliases when passed by reference, so changes to one affect the other.",
+          "Teacher: One misconception I see: you treated integers as floats automatically for greater than(10, 5)... Hint: ask yourself whether any operator explicitly converts int to float.",
+          "Student: ...The correct conclusion is that the expression is not typeable, and the reasoning is that the greater than operator requires one input to be a float, which is not the case here."
+        ],
+        "reasoning": "The teacher demonstrates deep subject matter expertise in programming languages (parameter passing mechanisms, type systems) and formal methods (Hoare logic). They effectively transform these abstract concepts into checkable criteria (identifying local vs global names, checking type signatures). The teacher proactively identifies and corrects specific misconceptions (e.g., aliasing in pass-by-reference, implicit type coercion), ensuring the student's mental model aligns with the formal specifications of the pseudocode. The explanations rely heavily on the provided prompt definitions, reinforcing the connection between syntax and semantics.",
+        "strengths": [
+          "Precise identification of common student errors (aliasing confusion, implicit type conversion assumptions).",
+          "Effective use of the assignment prompt as an authoritative reference for semantics.",
+          "Clear distinction between local parameters and global variables in various passing modes."
+        ],
+        "weaknesses": [
+          "Relies heavily on the student's ability to perform algebraic substitutions; less explicit teaching of the *mechanism* of weakest preconditions beyond 'substitute backwards'."
+        ],
+        "suggestions": [
+          "Use color-coding or distinct naming conventions (e.g., u\u2080, u\u2081) more aggressively in the teacher's own prompts to visually reinforce the difference between pre- and post-assignment states."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Your line-by-line breakdown looks consistent. Before we finalize, point to the exact text in the assignment prompt...",
+          "Teacher: Good \u2014 that substitution is correct. Next: apply the same rule to the equation...",
+          "Teacher: Good \u2014 your backward execution shows sufficiency. Now one step at a time: State the Hoare triple... and in one sentence explain why P is the weakest precondition...",
+          "Teacher: Good \u2014 you ended with the correct final equation, but there's a clear algebra slip in step 2. Hint/question... Rewrite step 2 correctly..."
+        ],
+        "reasoning": "The feedback is exceptionally high quality. It is specific, actionable, and directly linked to learning goals. The teacher consistently validates correct steps ('Good', 'Nice work') and pinpoints exact errors ('algebra slip in step 2', 'mixed pre/post naming'). Feedback is not just corrective but instructional, often including a 'Hint' or a specific next step that guides the student toward self-correction. The teacher asks for justification (quoting prompt text) rather than just acceptance of the answer, providing feedback on the student's reasoning process, not just the output.",
+        "strengths": [
+          "Immediate and specific confirmation of correct steps.",
+          "Precise identification of errors with clear explanations of why they are errors.",
+          "Actionable guidance for correction (e.g., 'Rewrite step 2 correctly by...')."
+        ],
+        "weaknesses": [
+          "None significant. The feedback flow is very tight and supportive."
+        ],
+        "suggestions": [
+          "Continue this pattern of 'validate then pivot' to maintain momentum while addressing errors."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: ...perform that substitution explicitly\u2014write the equation after replacing v by (2*v - u) and then simplify it.",
+          "Teacher: ...Replace u by (u + 3), simplify the equation, and then solve it for u to express the precondition.",
+          "Teacher: ...substitute v' into the w update; then show the short substitution 0 = w + (2*v - (u + 3)) and simplify..."
+        ],
+        "reasoning": "The teacher provides strong procedural modeling by breaking down the complex task of deriving weakest preconditions into atomic steps (substitution, simplification, solving). The teacher models expert thinking by emphasizing the *order* of operations and the specific substitution rules for Hoare logic. However, the teacher does not perform a full 'think-aloud' demonstration of a complete example from scratch before giving the problem to the student; instead, they model the *steps* of the solution process through guided questioning. This is a form of modeling (procedural), but it lacks the narrative 'voice' of a full think-aloud demonstrating how to select strategies when stuck.",
+        "strengths": [
+          "Clear step-by-step decomposition of the problem-solving algorithm.",
+          "Explicit instruction on the algebraic manipulation required (replacing X with E)."
+        ],
+        "weaknesses": [
+          "Lacks a fully worked example where the teacher narrates their decision-making process from start to finish."
+        ],
+        "suggestions": [
+          "In future lessons, consider doing one full example with a visible 'inner monologue' ('I'm looking at this assignment, so I need to substitute...') to model metacognitive strategies."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: ...Which of those names are the function's parameters...? Then revise your answer...",
+          "Teacher: ...Quote the exact call... and state precisely what 'passed by reference' implies... Then compute the first assignment...",
+          "Teacher: ...Hint: remember the previous step changed a, which aliases x, so use the updated x value.",
+          "Teacher: ...Hint: follow the same substitution rule you used for equality..."
+        ],
+        "reasoning": "The scaffolding is strategic and graduated. The teacher starts by checking foundational understanding (local vs global), then moves to applying that understanding to small sub-problems (single lines), and finally to the full derivation. Hints are provided only when the student is stuck or makes a specific error, and they are targeted (e.g., clarifying aliasing, reminding of substitution rules) rather than giving the answer. The support fades as the student demonstrates competence, allowing them to complete final steps independently once the notation is corrected.",
+        "strengths": [
+          "Gradual release of responsibility (from checking concepts to executing single steps to full proofs).",
+          "Hints are diagnostic, addressing specific conceptual or procedural gaps.",
+          "Scaffolding is adapted in real-time based on student response quality."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: ...explain how that distinction changes the final values.",
+          "Teacher: ...in one sentence explain the reasoning you used.",
+          "Teacher: ...explain why P is the weakest precondition... show both sufficiency... and necessity...",
+          "Student: ...The precondition P... is the weakest precondition because it is the least restrictive condition that ensures the postcondition..."
+        ],
+        "reasoning": "The teacher consistently requires the student to articulate their reasoning, not just present calculations. Prompts like 'explain the reasoning you used' and 'why P is the weakest precondition' force the student to engage in metacognition and articulation of the underlying logic (necessity vs sufficiency). The student is encouraged to reflect on their understanding by quoting source text and justifying interpretation. This goes beyond simple recall to conceptual justification.",
+        "strengths": [
+          "Regular demands for explicit justification of steps.",
+          "Encouragement to link specific textual evidence to theoretical conclusions.",
+          "Focus on the 'why' (necessity/sufficiency) rather than just the 'what' (the equation)."
+        ],
+        "weaknesses": [
+          "Reflection is largely confined to justifying the current step; there is less reflection on the overarching strategy or learning progress."
+        ],
+        "suggestions": [
+          "At the end of the session, ask the student to summarize the key differences between the passing mechanisms in their own words to consolidate long-term understanding."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "The entire transcript is a dialogue where the student performs the cognitive work (calculations, logic, derivation) based on teacher prompts.",
+          "Student: ...Let's tackle this step by step for each part of the question.",
+          "Student: ...Let's break it down...",
+          "Student: ...This analysis shows how each assignment within the update function affects the local parameters..."
+        ],
+        "reasoning": "The engagement is consistently at the Constructive and Interactive levels of the ICAP framework. The student is not passively listening; they are actively constructing the solution by performing algebraic manipulations, logical deductions, and code trace executions. The interaction is cooperative, with the teacher acting as a coach and the student as the primary problem-solver. The student constructs meaning by breaking down complex problems into manageable parts and synthesizing results. There is no passive consumption of information; every segment requires active mental effort and output from the student.",
+        "strengths": [
+          "High level of cognitive demand (active/constructive engagement).",
+          "Sustained interactive dialogue focused on problem-solving.",
+          "Student takes ownership of the derivation process."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student demonstrates exceptional understanding of parameter passing mechanisms (pass-by-value, pass-by-reference, value-result) and their impact on variable states.",
+          "Accurately identifies and explains the distinction between local and global variables, and how assignments affect them.",
+          "Provides detailed, step-by-step analyses of variable states after each operation, correctly applying the rules of each parameter passing mechanism."
+        ],
+        "reasoning": "The student's explanations are precise, comprehensive, and adapt to the specific requirements of each parameter passing scenario. They proactively identify potential misconceptions and address them with clear reasoning.",
+        "strengths": [
+          "Exceptional clarity in explaining complex concepts",
+          "Proactive identification and correction of misconceptions",
+          "Strong adaptation to different parameter passing mechanisms"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue reinforcing the distinction between local and global variables in different contexts"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher consistently provides specific, actionable feedback that guides the student toward deeper understanding.",
+          "Feedback addresses both the correctness of solutions and the underlying reasoning processes.",
+          "Encourages the student to justify their steps by referencing specific parts of the assignment prompt."
+        ],
+        "reasoning": "The feedback is highly effective, consistently linking current performance to learning goals and providing clear guidance for improvement. It fosters metacognitive awareness by prompting the student to reflect on their reasoning processes.",
+        "strengths": [
+          "Consistently links feedback to learning goals",
+          "Promotes metacognitive reflection",
+          "Actionable and specific guidance"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain this high standard of feedback quality"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher consistently models expert thinking by demonstrating step-by-step problem-solving processes.",
+          "Uses think-aloud strategies to make expert reasoning visible.",
+          "Provides real-world analogies and multiple representations of concepts (e.g., local vs. global variables)."
+        ],
+        "reasoning": "The modeling is highly effective, making abstract concepts concrete through detailed demonstrations. The teacher consistently shows the thought processes behind solutions, not just the answers.",
+        "strengths": [
+          "Consistent use of think-aloud strategies",
+          "Multiple representations of concepts",
+          "Clear demonstration of expert reasoning"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue using real-world examples to enhance understanding"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher provides strategic hints and scaffolding that gradually fade as the student gains competence.",
+          "Support is tailored to the student's current level of understanding and adjusted dynamically.",
+          "Encourages independent problem-solving while remaining available for guidance."
+        ],
+        "reasoning": "The coaching is highly effective, balancing support with independence. The teacher strategically provides assistance and gradually removes it as the student demonstrates mastery.",
+        "strengths": [
+          "Strategic and dynamic scaffolding",
+          "Balances support with independence",
+          "Tailored to student needs"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain this strategic approach to coaching"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student consistently articulates their reasoning and evaluates their understanding throughout the transcript.",
+          "Engages in meaningful reflection on their thought processes and justifies their conclusions.",
+          "The teacher prompts the student to reflect on specific aspects of their reasoning."
+        ],
+        "reasoning": "Reflection is consistently integrated into the learning process. The student demonstrates a high level of metacognitive awareness, and the teacher fosters this through targeted prompts.",
+        "strengths": [
+          "Consistent articulation of reasoning",
+          "Meaningful reflection on thought processes",
+          "Teacher prompts enhance metacognition"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue fostering this reflective practice"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student and teacher engage in interactive, collaborative problem-solving.",
+          "Discussions involve co-construction of understanding through argumentation and justification.",
+          "The student actively participates in analyzing and revising their solutions."
+        ],
+        "reasoning": "The engagement is consistently at the highest level of the ICAP framework. The interactive nature of the discussions fosters deep learning and critical thinking.",
+        "strengths": [
+          "Consistent interactive engagement",
+          "Co-construction of understanding",
+          "Active student participation"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain this high level of interactive engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          3,
+          5
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 94.4,
+    "interpretation": "Excellent pedagogy"
+  }
+}

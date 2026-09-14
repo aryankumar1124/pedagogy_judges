@@ -1,0 +1,461 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen3_1_7b_anthropic",
+    "student_model": "qwen3:1.7b",
+    "tutor_provider": "anthropic",
+    "tutor_model": "claude-haiku-4-5-20251001",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let me guide you through a careful check of your reasoning by working through the weakest precondition derivation more carefully.",
+          "Let me ask you to reconsider: For part (b): update(x, z) by reference. Here's my question: What is the key difference between pass-by-value and pass-by-reference? How should this affect which variables get modified?",
+          "Let me refocus you on the actual mechanics: After line 1 executes: a = a + y = 3 + 2 = 5. Since a is a reference to x: What is the value of the original x now?",
+          "Let me ask you a very direct question to clarify: If a is a reference to x, can a and x have different values at the same time?",
+          "Let me ask directly: After line 1 executes (a = a + y = 3 + 2 = 5), what is the value of the original x?",
+          "Let me have you re-derive that to check it. Looking at the program: u := u + 3; v := 2*v - u; w := w + v; After line 1, what is the value of u? Then, when line 2 executes v := 2*v - u, what gets substituted for u in that expression?",
+          "Can you state in your own words (without the summary format) why changing the postcondition from w = 0 to w \u2265 0 changes the precondition from an equation to an inequality, but both maintain the same algebraic structure?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by consistently transforming complex concepts (pass-by-reference, weakest preconditions) into clear, step-by-step explanations. They use precise examples, address misconceptions directly, and adapt their explanations to the student's evolving understanding. The teacher also proactively identifies and corrects student errors, ensuring conceptual clarity.",
+        "strengths": [
+          "Exceptional ability to break down complex concepts into digestible steps",
+          "Uses concrete examples and direct questions to guide understanding",
+          "Proactively identifies and corrects misconceptions",
+          "Adapts explanations based on student responses",
+          "Demonstrates deep understanding of both the content and common student difficulties"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "I can see you've worked through all the cases. Let me help you verify your reasoning by focusing on one case at a time.",
+          "Good! You've correctly identified that pass-by-value creates copies, and you got the first line right: a = 5.",
+          "Good progress on line 2 of part (a)! You correctly computed y = 5.",
+          "Excellent! You've got it: b = 0 after line 3.",
+          "Perfect! You've got z = 15 after line 4.",
+          "Good work overall! Let me guide you through a careful check of your reasoning.",
+          "Good\u2014you've corrected the sign and are now deriving the weakest precondition backwards.",
+          "Good reasoning! You're on the right track with the step-by-step backwards approach.",
+          "Good\u2014you've confirmed that x = 5 after line 1. That's the key insight: a and x are the same in pass-by-reference.",
+          "Good! Your derivation of the weakest precondition is now solid.",
+          "Excellent! Your reasoning is now clear, correct, and well-articulated."
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses all three components of effective feedback (goals, current performance, next steps). They identify specific errors, explain why they're incorrect, and guide the student toward the correct understanding. The feedback is timely, specific, and actionable, helping the student progress from misconceptions to correct understanding.",
+        "strengths": [
+          "Provides specific, actionable feedback that addresses misconceptions",
+          "Guides student through step-by-step verification of their reasoning",
+          "Balances praise with constructive criticism",
+          "Uses questions to prompt deeper thinking rather than just providing answers",
+          "Consistently connects feedback to learning goals"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let me help you verify your reasoning by focusing on one case at a time.",
+          "Let me ask you to reconsider: For part (b): update(x, z) by reference. Here's my question: What is the key difference between pass-by-value and pass-by-reference? How should this affect which variables get modified?",
+          "Let me refocus you on the actual mechanics: After line 1 executes: a = a + y = 3 + 2 = 5. Since a is a reference to x: What is the value of the original x now?",
+          "Let me ask you a very direct question to clarify: If a is a reference to x, can a and x have different values at the same time?",
+          "Let me ask directly: After line 1 executes (a = a + y = 3 + 2 = 5), what is the value of the original x?",
+          "Let me have you re-derive that to check it. Looking at the program: u := u + 3; v := 2*v - u; w := w + v; After line 1, what is the value of u? Then, when line 2 executes v := 2*v - u, what gets substituted for u in that expression?",
+          "Let me guide you through a careful check of your reasoning by working through the weakest precondition derivation more carefully."
+        ],
+        "reasoning": "The teacher consistently models expert thinking through think-aloud strategies, step-by-step problem solving, and explicit demonstration of reasoning processes. They make their thought process visible by breaking down complex problems, asking guiding questions, and showing how to verify each step. This modeling is particularly strong in the weakest precondition derivation and the pass-by-reference explanation.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through step-by-step problem solving",
+          "Uses think-aloud strategies to make reasoning visible",
+          "Models how to verify and check work",
+          "Shows the process of identifying and correcting errors",
+          "Demonstrates how to break down complex problems into manageable steps"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let me help you verify your reasoning by focusing on one case at a time.",
+          "Let me ask you to reconsider: For part (b): update(x, z) by reference. Here's my question: What is the key difference between pass-by-value and pass-by-reference?",
+          "Let me refocus you on the actual mechanics: After line 1 executes: a = a + y = 3 + 2 = 5. Since a is a reference to x: What is the value of the original x now?",
+          "Let me ask you a very direct question to clarify: If a is a reference to x, can a and x have different values at the same time?",
+          "Let me ask directly: After line 1 executes (a = a + y = 3 + 2 = 5), what is the value of the original x?",
+          "Let me have you re-derive that to check it.",
+          "Can you work through just the first line and tell me what the LHS (a) equals after that line?",
+          "Can you now recalculate line 3?",
+          "Can you recalculate line 2 with the correct value of b?",
+          "Can you state in your own words why changing the postcondition from w = 0 to w \u2265 0 changes the precondition from an equation to an inequality?"
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding. They consistently provide just the right amount of guidance to help the student progress, using targeted questions to prompt deeper thinking. The scaffolding is gradually adjusted as the student demonstrates understanding, with the teacher fading support as the student becomes more independent. The coaching is particularly strong in the weakest precondition derivation, where the teacher guides the student through each step without giving away the answer.",
+        "strengths": [
+          "Provides targeted, just-in-time guidance",
+          "Uses questions to scaffold learning effectively",
+          "Gradually fades support as student understanding improves",
+          "Adapts coaching to student's current level of understanding",
+          "Provides hints that guide without giving away answers"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Can you work through just the first line and tell me what the LHS (a) equals after that line?",
+          "Can you now recalculate line 3?",
+          "Can you recalculate line 2 with the correct value of b?",
+          "Can you state in your own words why changing the postcondition from w = 0 to w \u2265 0 changes the precondition from an equation to an inequality, but both maintain the same algebraic structure?",
+          "What would happen if we changed the postcondition to w \u2264 0 instead?",
+          "Can you explain why these two expressions succeed where (c) fails, in terms of operator availability and type matching?"
+        ],
+        "reasoning": "The teacher consistently prompts students to articulate their reasoning, reflect on their understanding, and communicate their thought processes. They ask open-ended questions that require students to explain their thinking, not just provide answers. This is evident in questions like 'Can you state in your own words...' and 'What would happen if...'. The teacher also models reflection by explaining their own reasoning processes.",
+        "strengths": [
+          "Consistently prompts students to explain their reasoning",
+          "Asks open-ended questions that require reflection",
+          "Encourages students to articulate their thought processes",
+          "Models reflection through think-aloud strategies",
+          "Uses reflection to deepen understanding rather than just check answers"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student: 1. (a) update(x,y) by value...",
+          "Student: I'll explain the first line again. In pass-by-value...",
+          "Student: I'll recalculate line 3 for part (a) now...",
+          "Student: **Final Answer for Part (b):** After line 1 executes...",
+          "Student: **Final Answer for Part (b):** After line 1 executes...",
+          "Student: The weakest precondition for the postcondition $ w = 0 $ is $ w_{\\text{initial}} + 2v_{\\text{initial}} - u_{\\text{initial}} - 3 = 0 $.",
+          "Student: The final weakest precondition in part 3(b) is correct because **algebraic rearrangement preserves the inequality direction**."
+        ],
+        "reasoning": "The transcript shows consistently high levels of student engagement. The student frequently engages in constructive activities (self-explaining, questioning, summarizing) and interactive learning (discussion, collaboration, argumentation). The teacher's questioning style and the student's responses demonstrate deep cognitive involvement, with the student often explaining their reasoning, reflecting on their understanding, and engaging in meaningful dialogue. This aligns with the highest level of the ICAP framework.",
+        "strengths": [
+          "Students consistently engage in constructive and interactive activities",
+          "Teacher's questioning prompts deep cognitive involvement",
+          "Students frequently explain their reasoning and thought processes",
+          "Dialogue demonstrates high-level engagement throughout",
+          "Students show persistence in working through complex problems"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: If a is a reference to x, can a and x have different values at the same time?",
+          "Teacher: Look at the constraint given at the very beginning: 'Using only the given operators...' Given this constraint, can you point to an operator in the provided list that would allow you to convert an int to a float?",
+          "Teacher: The inequality direction did not get 'flipped back' by the equality. Instead: We simply rearranged algebraically... This is just moving terms across the inequality while keeping the direction the same."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by effectively deconstructing common misconceptions in programming concepts (pass-by-reference vs. value) and formal verification (inequality manipulation). The teacher uses targeted questions to expose logical contradictions in the student's reasoning (e.g., 'These three statements cannot all be true simultaneously') and guides them toward the correct conceptual models (memory references, strict type checking). The explanations are precise and tailored to the specific errors the student makes.",
+        "strengths": [
+          "Effective use of Socratic questioning to identify logical contradictions in student reasoning.",
+          "Clear distinction between syntactic matching and semantic type checking.",
+          "Precise explanation of why algebraic rearrangement preserves inequality direction in weakest precondition derivation."
+        ],
+        "weaknesses": [
+          "The initial approach to the pass-by-reference problem could have been more abstract (e.g., using a memory diagram) to prevent the student from lingering in the 'copy' mental model for so long."
+        ],
+        "suggestions": [
+          "Use visual aids or memory address representations for reference passing to reinforce the concept that variables point to the same location."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: I need to stop you here\u2014there's a critical misconception in your reasoning about part (b).",
+          "Teacher: I appreciate you working through this, but I need to push back on the reasoning here. Let me clarify the concern with a direct example.",
+          "Teacher: Excellent! Your revised reasoning is now complete and correct. You've clearly articulated all three key points..."
+        ],
+        "reasoning": "The teacher provides consistent, high-quality feedback that identifies specific errors and explains why they are wrong. The feedback moves beyond simple correction to providing guidance on how to fix the thinking process. The teacher explicitly distinguishes between correct answers and flawed reasoning, ensuring the student understands the 'why' behind the correction. The tone is constructive and encouraging while remaining firm on the technical accuracy.",
+        "strengths": [
+          "Feedback is specific, actionable, and focused on the underlying conceptual error rather than just the final answer.",
+          "The teacher consistently validates progress when the student makes corrections, reinforcing positive learning behaviors.",
+          "Clear separation of 'what is wrong' and 'how to fix it' in every intervention."
+        ],
+        "weaknesses": [
+          "Some feedback is repetitive due to the student's persistent errors, which might feel slightly nagging to a human student, though it is necessary for mastery."
+        ],
+        "suggestions": [
+          "Summarize the key feedback points at the end of each major section to help the student consolidate learning before moving on."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: After line 1 executes: a = a + y = 3 + 2 = 5. Since a is a reference to the original x: What is the value of the original x now?",
+          "Teacher: From w \u2265 0, we get: w_before + v \u2265 0. Rearranging: w_before \u2265 -v. Substituting v = 2*v_initial - u_initial - 3: w_before \u2265 -(2*v_initial - u_initial - 3)"
+        ],
+        "reasoning": "The teacher models expert thinking by demonstrating the step-by-step process of tracing code execution and deriving weakest preconditions. However, the teacher often stops just before the final answer to prompt the student, which is a form of 'guided modeling'. The teacher explicitly lays out the state of variables and the logical transformations, making the invisible process of algorithmic tracing visible.",
+        "strengths": [
+          "Clear, step-by-step demonstration of variable state tracking.",
+          "Explicit modeling of the algebraic substitution process in formal verification problems.",
+          "Breakdown of complex logical constraints into manageable intermediate steps."
+        ],
+        "weaknesses": [
+          "The modeling is slightly less consistent in the type-checking section, where the teacher relies more on prompting the student to recall the rules rather than re-modeling the type inference process."
+        ],
+        "suggestions": [
+          "Create a visual 'trace table' model that the student can copy and use for future problems, establishing a reusable framework for expert thinking."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Can you work through just the first line and tell me what the LHS (a) equals after that line?",
+          "Teacher: In other words: What does the assignment prompt tell you about what operators and conversions you're allowed to use?",
+          "Teacher: Can you state in your own words (without the summary format) why changing the postcondition... changes the precondition...?"
+        ],
+        "reasoning": "The teacher exhibits exceptional coaching skills by providing precise scaffolding that is adjusted based on the student's specific errors. When the student is stuck on a conceptual hurdle (reference passing), the teacher breaks it down to the smallest possible unit (one line of code). When the student provides a circular argument, the teacher isolates the logical flaw and asks for a direct answer. The scaffolding fades appropriately as the student demonstrates mastery, eventually asking for generalizations and self-explanations.",
+        "strengths": [
+          "Highly adaptive scaffolding: The teacher adjusts the level of support based on the student's immediate needs (e.g., reducing complexity from 'trace whole function' to 'check one variable').",
+          "Strategic use of 'cold calling' or direct questioning to force the student out of passive summarization and into active reasoning.",
+          "Effective fading of support, moving from guided traces to independent generalization."
+        ],
+        "weaknesses": [
+          "The persistence in the pass-by-reference section was necessary but could have risked frustration if the student did not eventually 'get it'. The teacher managed this well by validating the student's effort along the way."
+        ],
+        "suggestions": [
+          "Encourage the student to verbalize their 'stuck points' before the teacher intervenes, to further develop self-regulatory skills."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: I need to make sure I understand how pass-by-value works here. Since the function uses copies of the original parameters...",
+          "Student: The student\u2019s reasoning emphasizes exact operator signature matches and explicit conversions, aligning with the principles of formal type systems.",
+          "Student: This highlights a key principle: weakest preconditions can handle inequalities and equations through the same algebraic rules..."
+        ],
+        "reasoning": "The student does engage in reflection, particularly in articulating key principles at the end of sections. However, much of the student's 'reflection' is actually summarizing the teacher's feedback or repeating the teacher's phrasing, rather than generating deep independent insight. The student's initial reflections on pass-by-reference were flawed and superficial until heavily prompted by the teacher. The final reflections show improved articulation but still lean on the teacher's provided summaries.",
+        "strengths": [
+          "The student eventually articulates the general principle of strict type checking and inequality preservation.",
+          "The student attempts to connect specific examples to broader theoretical concepts."
+        ],
+        "weaknesses": [
+          "Initial reflections were often just restatements of the problem rather than analysis of the reasoning process.",
+          "The student relies heavily on the teacher to structure the reflection (e.g., 'summarize what we did' vs 'what did you learn?')."
+        ],
+        "suggestions": [
+          "Ask the student to reflect on their *misconceptions* specifically: 'What was your first thought about pass-by-reference, and why was it misleading?'"
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Student: I'll explain the first line again. In pass-by-value, the function uses the original values of the parameters...",
+          "Student: **Final Answer for Part (b):** ... (Student often provides full blocks of text rather than interacting step-by-step)",
+          "Student: The key insight is that weakest preconditions can handle both equations and inequalities through the same algebraic rules..."
+        ],
+        "reasoning": "The engagement is primarily 'Active' (the student is doing the calculations and typing the answers) but moves into 'Constructive' (explaining reasoning, generalizing principles) only in the later stages and when prompted. The interaction is not consistently 'Interactive' where the student and teacher co-construct knowledge in a dialogue. Often, the student provides large monologues, and the teacher acts as a judge/corrector. The student engages cognitively by tracing code, but the collaboration is less fluid than ideal interactive learning.",
+        "strengths": [
+          "The student actively performs the calculations and derivations rather than just asking for answers.",
+          "The student demonstrates constructive activity by attempting to explain the reasoning behind their answers, even if initially flawed.",
+          "The student generalizes principles (e.g., applying the inequality logic to a hypothetical w <= 0 case), which is a high-level constructive activity."
+        ],
+        "weaknesses": [
+          "The student tends to submit full answers rather than engaging in a tight, step-by-step collaborative dialogue, which limits the 'Interactive' level of engagement.",
+          "There is little evidence of the student challenging the teacher or co-creating the solution; the dynamic remains largely teacher-led questioning and student answering."
+        ],
+        "suggestions": [
+          "Encourage the student to make predictions about the next step before the teacher verifies it, fostering a more interactive, co-construction dynamic."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher demonstrates exceptional knowledge of programming concepts like pass-by-value, pass-by-reference, and value-result, explaining them clearly and correcting student misconceptions.",
+          "The teacher uses precise language to describe variable scoping, memory locations, and function parameter passing mechanisms."
+        ],
+        "reasoning": "The teacher exhibits a deep understanding of the subject matter, providing clear explanations of complex programming concepts. They proactively identify and correct student misconceptions about pass-by-reference vs. pass-by-value, ensuring the student understands the distinction between modifying local variables and original parameters.",
+        "strengths": [
+          "Clear and precise explanations of programming concepts",
+          "Proactive identification and correction of misconceptions",
+          "Use of technical vocabulary to describe memory locations and variable scoping"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher provides specific, actionable feedback on the student's work, highlighting both correct steps and areas needing improvement.",
+          "Feedback is consistently tied to learning goals (e.g., understanding pass-by-reference) and future improvement steps (e.g., tracing through code line by line)."
+        ],
+        "reasoning": "The teacher's feedback is highly effective, consistently addressing the student's current performance while guiding them toward mastery of the topic. They provide concrete examples of what the student did well and where they need to improve, always linking back to the underlying programming concepts.",
+        "strengths": [
+          "Specific and actionable feedback",
+          "Clear connection to learning goals",
+          "Balanced emphasis on strengths and areas for improvement"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher consistently models expert thinking by demonstrating step-by-step code tracing, making their thought processes visible through think-aloud strategies.",
+          "They use real-world analogies (e.g., memory locations) to explain abstract programming concepts."
+        ],
+        "reasoning": "The teacher excels at modeling expert thinking, making their problem-solving processes transparent. By walking through code line by line and explaining their reasoning at each step, they demonstrate how an expert programmer would approach these problems. Their use of analogies helps bridge the gap between abstract concepts and concrete understanding.",
+        "strengths": [
+          "Visible think-aloud strategies",
+          "Step-by-step demonstration of problem-solving",
+          "Effective use of real-world analogies"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher provides structured guidance, gradually fading support as the student gains competence.",
+          "They strategically refocus the student when they get off track, bringing them back to the core learning objective."
+        ],
+        "reasoning": "The teacher's coaching is highly strategic, providing just enough support to keep the student moving forward without taking over. They expertly refocus the student when needed, ensuring the conversation stays aligned with the learning goals. Their scaffolding is gradually removed as the student demonstrates increasing independence.",
+        "strengths": [
+          "Strategic provision of hints and guidance",
+          "Gradual fading of support",
+          "Effective refocusing when student gets off track"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher consistently prompts the student to explain their reasoning and reflect on their understanding.",
+          "The student is encouraged to evaluate their own thought processes and identify areas of confusion."
+        ],
+        "reasoning": "The teacher fosters deep reflection by regularly asking the student to articulate their thinking. This metacognitive approach helps the student develop a more nuanced understanding of the material. By encouraging self-evaluation, the teacher helps the student become more aware of their own learning process and areas needing improvement.",
+        "strengths": [
+          "Consistent prompting for self-explanation",
+          "Encouragement of metacognitive reflection",
+          "Focus on identifying and resolving confusion"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student is consistently engaged in interactive learning, collaborating with the teacher to co-construct understanding.",
+          "The conversation involves argumentation, questioning, and joint problem-solving."
+        ],
+        "reasoning": "The student is highly engaged in interactive learning, actively participating in discussions and collaborating with the teacher to build understanding. The conversation is characterized by constructive argumentation, thoughtful questioning, and joint problem-solving, all hallmarks of ICAP's highest level of engagement.",
+        "strengths": [
+          "Consistent interactive engagement",
+          "Collaborative co-construction of understanding",
+          "High-level cognitive involvement through argumentation and questioning"
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          3,
+          5
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Engagement": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          3,
+          5
+        ],
+        "agreement_stdev": 0.94
+      }
+    },
+    "pedagogy_score": 92.2,
+    "interpretation": "Excellent pedagogy"
+  }
+}

@@ -1,0 +1,494 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_qwen3_30b_gemini",
+    "student_model": "qwen3:30b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher provides clear definitions of operators: 'greater than(int, float) -> boolean'",
+          "Teacher guides student to compare argument types to definitions: 'Look closely at the types required for the second argument, and compare that to what is passed in greater than(10, 5)'",
+          "Teacher explicitly references operator definitions from the prompt to validate reasoning",
+          "Teacher systematically checks each part of expressions against type definitions"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by consistently transforming complex type-checking concepts into clear, digestible explanations. They use the operator definitions as a scaffold, repeatedly referencing them to guide the student's reasoning. The teacher also proactively identifies and corrects misconceptions (e.g., the student's initial confusion about numeric literals and type expectations).",
+        "strengths": [
+          "Clear, precise explanations of type-checking concepts",
+          "Effective use of operator definitions as a reference point",
+          "Proactive identification and correction of student misconceptions",
+          "Adaptation to student's evolving understanding"
+        ],
+        "weaknesses": [
+          "No explicit use of analogies or multiple representations of concepts (e.g., real-world examples) to aid understanding"
+        ],
+        "suggestions": [
+          "Incorporate analogies or real-world examples to make abstract type-checking concepts more relatable",
+          "Provide a summary of key type-checking rules at the end of the lesson for reinforcement"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "'You've done a great job on most of these!'",
+          "'That's correct about number 3!'",
+          "'You've got that one completely right!'",
+          "Teacher asks guiding questions: 'Are there any other expressions where the argument types might need a closer look?'",
+          "Teacher provides corrective feedback: 'Wait, let's look closer at how numeric literals are typically typed...'"
+        ],
+        "reasoning": "The teacher provides consistent and actionable feedback, often in the form of guiding questions that prompt the student to reflect and self-correct. The feedback is specific to the task (type-checking) and helps the student understand their errors. However, the feedback is somewhat limited to validation and correction, with less emphasis on next steps or broader learning goals.",
+        "strengths": [
+          "Feedback is specific and task-focused",
+          "Guiding questions encourage student reflection and self-correction",
+          "Positive reinforcement is balanced with corrective feedback"
+        ],
+        "weaknesses": [
+          "Lacks explicit next steps or actionable guidance for improvement",
+          "Feedback does not consistently tie to broader learning goals or transferable skills"
+        ],
+        "suggestions": [
+          "Explicitly state next steps for the student to apply feedback (e.g., 'Now, try applying this same reasoning to expression 4')",
+          "Connect feedback to broader learning goals (e.g., 'This type-checking process is a key skill for debugging in programming')"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher demonstrates the thought process of type-checking: 'Look closely at the types required for the second argument, and compare that to what is passed in greater than(10, 5)'",
+          "Teacher models backward substitution for weakest precondition: 'Start with Q: w = 0. Last line: w := w + v. WP is w + v = 0.'",
+          "Teacher explicitly walks through each step of the reasoning process"
+        ],
+        "reasoning": "The teacher consistently models expert thinking by demonstrating the step-by-step process of type-checking and backward substitution. They make their reasoning visible through guiding questions and explicit explanations. However, the modeling is primarily verbal and could be enhanced with visual or written demonstrations (e.g., diagrams, code annotations).",
+        "strengths": [
+          "Consistent demonstration of expert reasoning",
+          "Clear, step-by-step explanations of problem-solving processes",
+          "Use of guiding questions to make thinking visible"
+        ],
+        "weaknesses": [
+          "Modeling is primarily verbal; lacks visual or written demonstrations",
+          "No explicit think-aloud strategy to verbalize internal reasoning"
+        ],
+        "suggestions": [
+          "Incorporate visual aids (e.g., diagrams, flowcharts) to model type-checking processes",
+          "Use think-aloud strategies to explicitly verbalize internal reasoning steps"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher provides hints: 'Look closely at the types required for the second argument...'",
+          "Teacher breaks down complex problems into smaller steps: 'Let's check expression 4: and(greater than(20, 10.5), equals(\"hi\", \"hi\"))'",
+          "Teacher adapts support to student's progress: 'Now let's revisit expression 4...'",
+          "Teacher provides structured assistance: 'Double-check your reasoning on whether 20 is strictly an integer...'"
+        ],
+        "reasoning": "The teacher provides consistent and structured coaching, breaking down complex problems into manageable steps and offering hints that guide the student toward independent reasoning. The support is adaptive, as the teacher adjusts their questions based on the student's responses. However, there is limited evidence of fading support as the student's competence grows.",
+        "strengths": [
+          "Structured, step-by-step guidance",
+          "Adaptive support tailored to student's progress",
+          "Effective use of hints to scaffold learning"
+        ],
+        "weaknesses": [
+          "Limited evidence of fading support as student competence increases",
+          "No explicit transition to independent problem-solving"
+        ],
+        "suggestions": [
+          "Gradually reduce hints and guidance as the student demonstrates competence",
+          "Encourage the student to attempt problems independently after initial scaffolding"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student explains reasoning: 'Ah, right! The second argument needs to be a float, but 5 is an integer...'",
+          "Student reflects on understanding: 'I should've double-checked that 5 is an int, not a float. Got it now.'",
+          "Student articulates thought process: 'For expression 4, the inner expressions greater than(20, 10.5) uses an int (20) and a float (10.5), matching the required input types...'",
+          "Student summarizes reasoning: 'The key was working backwards from the postcondition through each assignment, substituting the right-hand side into the WP.'"
+        ],
+        "reasoning": "The teacher consistently prompts the student to explain their reasoning, reflect on their understanding, and articulate their thought processes. The student demonstrates high levels of reflection and articulation, which are actively encouraged by the teacher's guiding questions. This aligns with the highest level of the Reflection factor.",
+        "strengths": [
+          "Student consistently explains reasoning and reflects on understanding",
+          "Teacher prompts reflection through guiding questions",
+          "Student articulates thought processes clearly and thoroughly"
+        ],
+        "weaknesses": [
+          "No explicit meta-reflection (e.g., 'How did you arrive at this conclusion?') to deepen understanding"
+        ],
+        "suggestions": [
+          "Incorporate meta-reflection questions (e.g., 'What strategies did you use to solve this?') to encourage deeper reflection"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student actively participates in problem-solving: 'Ah, right! The second argument needs to be a float...'",
+          "Student constructs explanations: 'For expression 4, the inner expressions greater than(20, 10.5) uses an int (20) and a float (10.5)...'",
+          "Student engages in interactive dialogue: 'Yes, add(10,5) returns an int (15), and int to string requires an int as input...'",
+          "Student collaborates with teacher to co-construct understanding: 'The key was working backwards from the postcondition through each assignment...'",
+          "Student questions and verifies reasoning: 'Wait, let's look closer at the first argument of greater than(20, 10.5)...'"
+        ],
+        "reasoning": "The student demonstrates consistently high levels of engagement, moving beyond constructive activities (e.g., self-explaining) to interactive learning (e.g., dialogue, collaboration, co-construction of understanding). The teacher's guiding questions and prompts facilitate this interactive engagement, creating a dynamic and participatory learning environment.",
+        "strengths": [
+          "Student consistently engages in interactive learning (dialogue, collaboration)",
+          "Student constructs explanations and verifies reasoning",
+          "Teacher facilitates high levels of engagement through guiding questions"
+        ],
+        "weaknesses": [
+          "No explicit peer-to-peer interaction (e.g., group work) to further enhance engagement"
+        ],
+        "suggestions": [
+          "Incorporate peer-to-peer activities (e.g., pair programming, group discussions) to diversify interactive engagement"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: The definition for `greater than` is: `greater than(int, float) -> boolean` ... Look closely at the types required for the second argument, and compare that to what is passed in `greater than(10, 5)`.",
+          "Teacher: ... Check the operator definition for `greater than` again: does it allow an int where a float is expected, or are the types strictly separated?"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by breaking down complex type-checking rules into manageable parts. The teacher correctly identifies the strict nature of the type system (int vs. float) and guides the student to compare code arguments against formal definitions. The explanation of why `5` fails but `10.5` passes is clear and grounded in the provided definitions.",
+        "strengths": [
+          "Clear focus on formal definitions vs. intuitive assumptions.",
+          "Effective identification of the specific misconception (treating int/float as interchangeable).",
+          "Step-by-step decomposition of nested expressions."
+        ],
+        "weaknesses": [
+          "The extensive repetitive output at the end of the transcript (the 'AI loop') does not reflect teaching but is an artifact; however, within the actual dialogue, the PCK was strong.",
+          "Could have explicitly explained *why* some languages allow implicit conversion (upcasting) while this specific one does not, to deepen understanding."
+        ],
+        "suggestions": [
+          "Add a brief analogy comparing strict type checking to 'slots' that only fit specific shapes to reinforce the concept.",
+          "Explicitly confirm the 'strictness' rule as a general principle of the course's language syntax."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You've done a great job on most of these! Let's take a closer look at number 3.",
+          "Teacher: ... What do you notice?",
+          "Teacher: Let's check your answers for all four expressions. Are there any other expressions where the argument types might need a closer look..."
+        ],
+        "reasoning": "The feedback is formative and constructive. Instead of just saying 'that's wrong,' the teacher highlights the area of difficulty (number 3 and later number 4) and prompts the student to verify their understanding of the other items. The feedback guides the student towards the correct application of rules rather than just giving the answer.",
+        "strengths": [
+          "Positive reinforcement balanced with specific inquiry ('You've done a great job... Let's take a closer look').",
+          "Encourages self-assessment ('Are there any other expressions...')."
+        ],
+        "weaknesses": [
+          "The feedback loop on expression 4 became somewhat convoluted, requiring multiple prompts to resolve a single type mismatch, which could sometimes be streamlined."
+        ],
+        "suggestions": [
+          "After the student identifies the error, ask them to re-state the rule they violated to ensure retention.",
+          "Provide a clear 'next step' after resolving the error, such as 'Now try applying that same check to a new example.'"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "Teacher: The definition for `greater than` is: `greater than(int, float) -> boolean` ... Look closely at the types required for the second argument",
+          "Student: ... 20 is clearly written as a whole number without a decimal, so it's strictly an integer (int) per the prompt's notation."
+        ],
+        "reasoning": "The teacher provides the model (the definition) and guides the student to apply it, rather than explicitly thinking through the entire process aloud in a 'see, I'm doing this' manner. The teacher acts more as a guide for self-discovery. While the logic is clear, the explicit 'thinking aloud' modeling of the expert process is limited; the student drives the articulation of the steps.",
+        "strengths": [
+          "Clear presentation of the rule/model (the type definition).",
+          "Scaffolds the application of the model to the specific case."
+        ],
+        "weaknesses": [
+          "Lacks a full think-aloud demonstration of how an expert would systematically type-check a complex expression from scratch."
+        ],
+        "suggestions": [
+          "Before asking the student to check, briefly model the checking process on a simple, unrelated example to make the cognitive strategy visible.",
+          "Use metacognitive language: 'When I see a number like 20, I first ask...'."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Look specifically at the first argument to `greater than` and compare it to the input type required by its definition in the prompt. What do you notice?",
+          "Teacher: Let's check the operator definition for `equals` used in the second part of expression 4... What do you notice about them?"
+        ],
+        "reasoning": "The teacher uses high-quality scaffolding. By directing the student's attention to specific components (arg 1 vs arg 2, specific operator definitions) and asking open-ended observation questions ('What do you notice?'), the teacher provides just enough support to help the student recognize the mismatch without giving away the answer. This is effective coaching.",
+        "strengths": [
+          "Precise decomposition of the problem.",
+          "Use of leading questions that direct cognitive focus.",
+          "Incremental support: moving from one part of the expression to another."
+        ],
+        "weaknesses": [
+          "The process was somewhat lengthy for a single type error, which might reduce efficiency in a real-time setting, though it was effective for learning."
+        ],
+        "suggestions": [
+          "Once the student masters the technique, reduce the granularity of the prompts to let them check the whole expression at once.",
+          "Introduce a checklist strategy for type-checking to help students self-scaffold."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 80,
+        "evidence": [
+          "Student: The operator definitions in the prompt state that `greater than(int, float) \u2192 boolean` and `equals(string, string) \u2192 boolean`. For expression 4... the inner expressions... matching the required input types...",
+          "Student: In strict type systems, whole numbers like 20 are always treated as ints unless explicitly written as floats (e.g., 20.0). So 20 is valid..."
+        ],
+        "reasoning": "The student is consistently required to articulate their reasoning. They don't just give the final 'typeable/not typeable' answer; they explain *why* based on the definitions. The student even generalizes the rule ('In strict type systems...'), showing deep reflection and articulation of the underlying principle.",
+        "strengths": [
+          "Student verbalizes the connection between code literals and type definitions.",
+          "Student generalizes the specific case to a broader rule about strict typing.",
+          "Encourages justification over guessing."
+        ],
+        "weaknesses": [
+          "Could push for reflection on the *process* of finding the error (e.g., 'What strategy helped you find it?')."
+        ],
+        "suggestions": [
+          "Ask the student to predict the outcome of a similar expression before looking at the definition to test their internalized rule.",
+          "Have the student explain the error in their own words to a peer (simulated) to further consolidate understanding."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 85,
+        "evidence": [
+          "Student: Ah, right! The second argument needs to be a float, but 5 is an integer (not a float), so it's not typeable. I should've double-checked that 5 is an int, not a float. Got it now.",
+          "Student: ... The second argument in expression 4 is `10.5`, which is a float... In expression 3, `5` was an integer, which didn't match... Here, `10.5` is a float, so it's valid."
+        ],
+        "reasoning": "The interaction is highly interactive and constructive. The student is not passively listening; they are actively constructing knowledge, comparing cases (Expr 3 vs Expr 4), correcting their own prior reasoning, and engaging in dialogue. This reaches the highest level of ICAP engagement (Interactive/Constructive) where the student builds and refines their mental model through active problem-solving and comparison.",
+        "strengths": [
+          "Active comparison of multiple examples (Expr 3 vs Expr 4).",
+          "Self-correction and refinement of understanding.",
+          "Deep cognitive involvement in type logic."
+        ],
+        "weaknesses": [
+          "The repetitive tail end of the transcript is an artifact and not a teaching engagement issue, but limits the observable duration of this engagement."
+        ],
+        "suggestions": [
+          "Introduce a peer review or collaborative element where students check each other's type evaluations.",
+          "Provide a set of new expressions for the student to type-check independently to test autonomy."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 91,
+        "evidence": [
+          "Teacher explains the type-checking rules for each operator and guides the student through identifying correct and incorrect types in expressions.",
+          "The teacher systematically checks each expression, comparing the provided types with the operator definitions, ensuring the student understands the reasoning behind each typeability judgment."
+        ],
+        "reasoning": "The teacher demonstrates strong pedagogical content knowledge by systematically guiding the student through type-checking logic, ensuring understanding of operator definitions and type requirements. The teacher identifies and corrects misconceptions, such as the need for strict type matching in expressions.",
+        "strengths": [
+          "Clear and systematic explanation of type-checking rules.",
+          "Proactive identification and correction of student misconceptions.",
+          "Use of specific examples to illustrate correct and incorrect type usage."
+        ],
+        "weaknesses": [
+          "Could provide more varied examples to reinforce understanding.",
+          "Does not explicitly connect type-checking to broader programming concepts."
+        ],
+        "suggestions": [
+          "Incorporate more diverse examples to deepen understanding.",
+          "Link type-checking to real-world programming scenarios for practical relevance."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The teacher provides specific feedback on each expression, highlighting both correct answers and areas needing revision.",
+          "Feedback is action-oriented, guiding the student to re-examine specific parts of expressions and compare them to operator definitions."
+        ],
+        "reasoning": "The teacher's feedback is consistently detailed, addressing both strengths and weaknesses in the student's work. It effectively guides the student toward self-correction by asking targeted questions and pointing out specific errors or oversights.",
+        "strengths": [
+          "Detailed and specific feedback on each expression.",
+          "Encourages student reflection and self-correction.",
+          "Balances positive reinforcement with constructive criticism."
+        ],
+        "weaknesses": [
+          "Could summarize key takeaways at the end of the session.",
+          "Does not explicitly state next steps for further practice."
+        ],
+        "suggestions": [
+          "Provide a summary of key learning points at the end.",
+          "Suggest specific exercises or problems for further practice."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "The teacher models expert thinking by walking through the type-checking process step-by-step, explaining how to compare argument types with operator definitions.",
+          "Think-aloud strategies are used to demonstrate how to identify and resolve type mismatches."
+        ],
+        "reasoning": "The teacher effectively models the thought process behind type-checking, making the reasoning visible to the student. This includes explaining how to interpret operator definitions and apply them to specific expressions, fostering a deeper understanding of the underlying logic.",
+        "strengths": [
+          "Clear demonstration of step-by-step type-checking.",
+          "Use of think-aloud strategies to make reasoning explicit.",
+          "Encourages student engagement in the problem-solving process."
+        ],
+        "weaknesses": [
+          "Could incorporate more real-world examples to enhance relevance.",
+          "Does not explicitly discuss common pitfalls in type-checking."
+        ],
+        "suggestions": [
+          "Incorporate real-world programming examples to illustrate type-checking.",
+          "Discuss common mistakes and how to avoid them."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "The teacher provides structured guidance, asking leading questions to help the student identify errors and correct them independently.",
+          "Support is gradually faded as the student demonstrates increasing competence, with the teacher stepping back to allow independent problem-solving."
+        ],
+        "reasoning": "The teacher employs a highly effective coaching style, offering just enough support to keep the student on track while encouraging independence. This approach fosters critical thinking and problem-solving skills, as the student learns to apply concepts autonomously.",
+        "strengths": [
+          "Strategic use of questioning to guide student thinking.",
+          "Gradual fading of support to promote independence.",
+          "Encourages student ownership of the learning process."
+        ],
+        "weaknesses": [
+          "Could provide more explicit praise for independent problem-solving.",
+          "Does not set clear goals for future sessions."
+        ],
+        "suggestions": [
+          "Offer explicit praise for independent problem-solving achievements.",
+          "Set clear goals and objectives for future learning sessions."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The student is frequently prompted to explain their reasoning and reflect on their understanding, such as when asked to double-check specific parts of expressions.",
+          "The teacher encourages the student to articulate their thought process, reinforcing understanding through self-explanation."
+        ],
+        "reasoning": "The teacher effectively promotes student reflection by regularly asking the student to explain their reasoning and evaluate their understanding. This practice helps solidify learning and encourages metacognitive awareness, enabling the student to monitor and adjust their own thinking.",
+        "strengths": [
+          "Regular prompts for student self-explanation and reflection.",
+          "Encourages metacognitive awareness and self-monitoring.",
+          "Reinforces understanding through active engagement."
+        ],
+        "weaknesses": [
+          "Could incorporate more structured reflection activities.",
+          "Does not explicitly ask the student to summarize key learnings."
+        ],
+        "suggestions": [
+          "Incorporate structured reflection activities at key points.",
+          "Ask the student to summarize key learnings at the end of the session."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "The student is actively engaged in interactive learning, responding to the teacher's prompts, explaining their reasoning, and collaborating in problem-solving.",
+          "The session involves discussion, argumentation, and co-construction of understanding, with both teacher and student contributing to the learning process."
+        ],
+        "reasoning": "The learning activity is highly interactive, with the student actively participating in discussion, problem-solving, and co-construction of understanding. This level of engagement fosters deep learning and critical thinking, as the student is not just receiving information but actively involved in the learning process.",
+        "strengths": [
+          "High level of interactive and collaborative learning.",
+          "Encourages active participation and critical thinking.",
+          "Fosters a dynamic and engaging learning environment."
+        ],
+        "weaknesses": [
+          "Could introduce more varied activities to maintain engagement.",
+          "Does not explicitly connect the session to broader learning goals."
+        ],
+        "suggestions": [
+          "Introduce varied activities to sustain high engagement levels.",
+          "Explicitly connect the session to broader learning goals and objectives."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 85.5,
+    "interpretation": "Very Good pedagogy"
+  }
+}

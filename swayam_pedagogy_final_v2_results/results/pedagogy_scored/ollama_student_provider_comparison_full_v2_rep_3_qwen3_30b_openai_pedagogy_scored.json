@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_qwen3_30b_openai",
+    "student_model": "qwen3:30b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher prompts students to justify typing steps using operator definitions: 'Which operator definition(s) from the prompt did you use for each expression (1\u20134) to justify your typing step?'",
+          "Teacher asks students to explicitly state typeability, final type, and runtime output: 'explicitly state (a) whether it is typeable, (b) the final type if typeable, and (c) the expected runtime output value if typeable.'",
+          "Teacher challenges students to verify assumptions: 'Which part of the assignment prompt (or its operator signatures) supports that assumption about literal types?'",
+          "Student demonstrates deep understanding of type systems and operator signatures in their responses."
+        ],
+        "reasoning": "The teacher consistently transforms complex programming concepts (type systems, operator signatures, weakest preconditions) into clear, structured tasks. They require students to explicitly connect their reasoning to provided definitions, address implicit assumptions, and verify their work. The student responses show high-level understanding, indicating effective PCK.",
+        "strengths": [
+          "Exceptional ability to break down abstract concepts into concrete, actionable steps",
+          "Strong focus on connecting student reasoning to formal definitions",
+          "Encourages students to identify and address implicit assumptions",
+          "Student responses demonstrate deep conceptual understanding"
+        ],
+        "weaknesses": [
+          "No explicit addressing of common misconceptions (e.g., implicit type conversion) beyond the prompt's scope"
+        ],
+        "suggestions": [
+          "Explicitly highlight and correct common misconceptions about type systems or weakest preconditions",
+          "Provide more varied examples to reinforce understanding"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher provides targeted prompts: 'List them per expression, and explicitly say whether any step assumes an implicit conversion'",
+          "Teacher asks for revision and explanation: 'revise your answers if needed and explain the reasoning you used'",
+          "Teacher requests explicit justification: 'cite the exact operator signature(s) from the prompt that justify the typing step(s)'",
+          "Teacher challenges assumptions: 'If the prompt doesn't state literal typing, explain how that affects your judgment for expression 3'"
+        ],
+        "reasoning": "The teacher provides consistent, actionable feedback that guides students to improve their reasoning. They require students to justify their steps, revise answers, and address assumptions. However, the feedback is primarily in the form of prompts rather than direct evaluation of student work.",
+        "strengths": [
+          "Feedback is specific, actionable, and tied to learning goals",
+          "Encourages students to self-correct and justify their reasoning",
+          "Consistently pushes students to deepen their understanding"
+        ],
+        "weaknesses": [
+          "Feedback is mostly in the form of prompts rather than direct evaluation of student performance",
+          "Lacks explicit praise or recognition of correct answers"
+        ],
+        "suggestions": [
+          "Include direct evaluation of student responses (e.g., 'Your answer for expression 1 is correct because...')",
+          "Provide more explicit praise for correct reasoning"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student models expert thinking in their response: 'Starting from the end. The last line is w := w + v. The postcondition is w = 0. So before that line, w must have been 0 - v, right?'",
+          "Student demonstrates problem-solving process: 'Then the first line: u := u + 3. The postcondition here is w + 2v - u = 0. But after this assignment, u is u + 3, so before the assignment, u was the old value.'"
+        ],
+        "reasoning": "The transcript shows strong student modeling of expert thinking, particularly in the weakest precondition section. However, the teacher does not explicitly model their own expert thinking or demonstrate problem-solving processes. The modeling is primarily student-driven.",
+        "strengths": [
+          "Student demonstrates clear, step-by-step reasoning",
+          "Student articulates their thought process effectively"
+        ],
+        "weaknesses": [
+          "Teacher does not explicitly model expert thinking or problem-solving",
+          "Modeling is reactive (student-driven) rather than proactive (teacher-driven)"
+        ],
+        "suggestions": [
+          "Teacher should explicitly model expert thinking (e.g., think-aloud) for key concepts",
+          "Demonstrate problem-solving processes for complex tasks"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides structured guidance: 'Next step: for each expression (1\u20134), explicitly state (a) whether it is typeable, (b) the final type if typeable, and (c) the expected runtime output value if typeable.'",
+          "Teacher scaffolds the task: 'One more check: you treated 10 and 5 as int and 10.5 as float. Which part of the assignment prompt supports that assumption?'",
+          "Teacher encourages verification: 'Let me check with an example. Suppose u=0, v=0, then w should be 3.'"
+        ],
+        "reasoning": "The teacher provides consistent, structured guidance that helps students progress through the task. They scaffold the learning by breaking down complex tasks into manageable steps and encourage students to verify their work. However, there is limited evidence of fading support as student competence grows.",
+        "strengths": [
+          "Provides clear, structured guidance for complex tasks",
+          "Encourages students to verify their reasoning",
+          "Scaffolds learning effectively"
+        ],
+        "weaknesses": [
+          "Limited evidence of fading support as students become more independent",
+          "Coaching is primarily task-focused rather than adaptive to individual student needs"
+        ],
+        "suggestions": [
+          "Gradually reduce guidance as students demonstrate competence",
+          "Provide more adaptive coaching tailored to individual student needs"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student reflects on their reasoning: 'Let me just recap to make sure I didn't skip any steps. Starting from the end, working backwards through each assignment, replacing variables with their new values.'",
+          "Student evaluates their understanding: 'Yep, that works. For part 3(a), the initial values must satisfy w + 2v - u = 3.'",
+          "Student articulates their thought process: 'The key was reversing each assignment's effect on the variables. For the inequality part, since it's a \u2265 instead of =, the equality becomes a \u2265.'",
+          "Student checks for mistakes: 'I don't see any mistakes here.'"
+        ],
+        "reasoning": "The transcript shows extensive student reflection and articulation of reasoning. Students consistently explain their thought processes, evaluate their understanding, and engage in meaningful reflection. The teacher prompts this reflection effectively.",
+        "strengths": [
+          "Students consistently articulate reasoning and reflect on understanding",
+          "Students evaluate their own work and check for mistakes",
+          "Reflection is deeply integrated into the learning process"
+        ],
+        "weaknesses": [
+          "Reflection is primarily student-driven; teacher could model reflection more explicitly"
+        ],
+        "suggestions": [
+          "Teacher could explicitly model reflective practices (e.g., think-aloud reflection)",
+          "Encourage peer reflection or discussion"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student engages in constructive activities: 'Let me just recap to make sure I didn't skip any steps.'",
+          "Student participates in interactive learning: 'Okay, let's try to figure this out. The program does three assignments...'",
+          "Student explains reasoning: 'The key was reversing each assignment's effect on the variables.'",
+          "Student verifies their work: 'Yep, that works.'"
+        ],
+        "reasoning": "The transcript shows high levels of student engagement, with students consistently participating in constructive and interactive activities. They explain their reasoning, reflect on their understanding, and verify their work. The engagement is primarily constructive and interactive, with minimal passive activity.",
+        "strengths": [
+          "Students consistently engage in constructive and interactive learning",
+          "Students explain reasoning, reflect, and verify their work",
+          "High cognitive involvement in learning activities"
+        ],
+        "weaknesses": [
+          "Limited evidence of collaborative or peer-to-peer interaction"
+        ],
+        "suggestions": [
+          "Incorporate more collaborative activities to enhance interactive engagement",
+          "Encourage peer discussion or group problem-solving"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: ... explicitly say whether any step assumes an implicit conversion (for example, treating 5 as a float). Then revise your answers if needed and explain the reasoning you used.",
+          "Teacher: One more check: you treated 10 and 5 as int and 10.5 as float. Which part of the assignment prompt (or its operator signatures) supports that assumption about literal types? If the prompt doesn't state literal typing, explain how that affects your judgment for expression 3.",
+          "Teacher: Nice work listing the operators you used. Next step: for each expression (1\u20134), explicitly state (a) whether it is typeable, (b) the final type if typeable, and (c) the expected runtime output value if typeable. For each case, cite the exact operator signature(s) from the prompt that justify the typing step(s)."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by proactively identifying and addressing common misconceptions regarding type inference and implicit conversions in programming. Instead of simply asking for the answer, the teacher guides the student to justify their typing assumptions based on operator signatures and discusses the implications when explicit rules are absent. The questioning is highly specific, forcing the student to operationalize their understanding of static typing rules.",
+        "strengths": [
+          "Proactively targets deep misconceptions about type coercion/inference.",
+          "Requires students to cite specific evidence (operator signatures) to support claims.",
+          "Distinguishes between surface-level syntax and semantic typing rules."
+        ],
+        "weaknesses": [
+          "The feedback is dense and requires high prior knowledge; might be overwhelming for beginners if not scaffolded."
+        ],
+        "suggestions": [
+          "Continue using 'citation of evidence' techniques to ensure technical rigor."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Nice work listing the operators you used. Next step: for each expression (1\u20134), explicitly state (a) whether it is typeable, (b) the final type if typeable, and (c) the expected runtime output value if typeable.",
+          "Teacher: Which part of the assignment prompt... supports that assumption about literal types? If the prompt doesn't state literal typing, explain how that affects your judgment..."
+        ],
+        "reasoning": "The teacher provides structured, actionable feedback. It begins with affirmation ('Nice work') but quickly pivots to specific next steps that address gaps in the student's initial response. The feedback is not just evaluative but instructional, telling the student exactly what components are missing (explicit typeability statement, final type, output value) and asking probing questions to test the robustness of their understanding.",
+        "strengths": [
+          "Feedback is specific and actionable, listing exactly what needs to be added (a, b, c).",
+          "Uses probing questions to verify understanding rather than just correcting errors."
+        ],
+        "weaknesses": [
+          "The transcript shows the feedback leading to a correct student response, but does not show the teacher confirming that final response was perfectly executed, though the repetition in the tail suggests the session may have timed out or repeated."
+        ],
+        "suggestions": [
+          "Ensure that after the student provides the revised answer, explicit confirmation or further refinement feedback is given to close the loop."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Which operator definition(s)... did you use...",
+          "Teacher: Nice work listing... Next step: ..."
+        ],
+        "reasoning": "The transcript does not show the teacher modeling the problem-solving process (e.g., solving one expression as a think-aloud example). Instead, the teacher asks the student to execute the steps and justifies their reasoning. While the teacher expresses the *criteria* for the model (cite signatures, check for implicit conversion), they do not *demonstrate* the cognitive process themselves. The student performs the cognitive work without a worked example from the teacher.",
+        "strengths": [
+          "The teacher clearly articulates the *structure* of the expected reasoning (listing operators, checking conversions)."
+        ],
+        "weaknesses": [
+          "No 'think-aloud' or worked example provided by the teacher.",
+          "The teacher assumes the student already possesses the procedural knowledge to derive the answers independently."
+        ],
+        "suggestions": [
+          "The teacher could model the analysis of expression #1 explicitly (walk through the types step-by-step aloud) before asking the student to do the rest."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: ... explicitly say whether any step assumes an implicit conversion... Then revise your answers if needed and explain the reasoning you used.",
+          "Teacher: One more check: ... If the prompt doesn't state literal typing, explain how that affects your judgment for expression 3."
+        ],
+        "reasoning": "The teacher provides high-quality scaffolding by breaking down the task into manageable cognitive sub-tasks (identify operators, check for implicit conversion, justify literal types). The scaffolding is adapted to the student's initial answer, which identified the types but lacked the rigorous justification for the int/float distinction. The teacher pushes the student to refine their work with specific, targeted prompts rather than giving the answer.",
+        "strengths": [
+          "Scaffolding is specific to the student's errors/omissions.",
+          "The 'nudge' towards checking the prompt for literal typing rules is expert-level coaching."
+        ],
+        "weaknesses": [
+          "The support does not fade; the transcript ends before the student's final revised answer is fully evaluated or the support is removed."
+        ],
+        "suggestions": [
+          "After the student provides the fully justified answer, fade the support by asking the student to apply the logic to a new, slightly varied problem without hints."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: 1. Typeable. ... 2. Not typeable. ... 3. Not typeable. ... 4. Typeable. ... (Student initially answers)",
+          "Student: 1. Used add(int, int) \u2192 int ... No implicit conversion...",
+          "Student: 1. Typeable. Final type: string. Output: \"15\". Operators: `add(int, int) \u2192 int`..."
+        ],
+        "reasoning": "The student is repeatedly asked to articulate their reasoning and their response demonstrates high-level reflection. The student doesn't just guess; they explicitly cite the rules they are using. In the final response, the student structures their answer to directly address the teacher's prompts, explaining *why* a step is valid or invalid by referencing the operator signatures. This shows active reflection on the logical basis of their conclusions.",
+        "strengths": [
+          "Student explicitly cites the rules/operator signatures backing their answers.",
+          "Student differentiates between 'typeable' and 'not typeable' with clear logical justification.",
+          "Student addresses the specific constraint about implicit conversions."
+        ],
+        "weaknesses": [
+          "The second part of the transcript (weakest precondition) seems to be a separate task where the reflection is embedded in the derivation steps, but the prompt focuses on the typing exercise primarily."
+        ],
+        "suggestions": [
+          "Encourage the student to reflect on *why* the implicit conversion rule (or lack thereof) is significant to program correctness."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 90,
+        "evidence": [
+          "Student: ... 3. Not typeable. greater than expects (int, float), but 5 is an int (not float).",
+          "Student: ... Literal assumption: 10 and 5 are int (no decimal), 10.5 is float (has decimal). The prompt doesn\u2019t state literal types, but standard typing rules apply...",
+          "Student: ... Let me check with an example. Suppose u=0, v=0, then w should be 3..."
+        ],
+        "reasoning": "The student is highly engaged in Constructive and Interactive learning. They are not passively listening; they are actively constructing arguments, testing hypotheses (e.g., 'Let me check with an example'), and engaging in a dialogue with the teacher's prompts. The student is doing the cognitive heavy lifting of mapping language rules to specific code instances and verifying their logic with test cases.",
+        "strengths": [
+          "Student engages in self-explanation and verification (testing with u=0, v=0).",
+          "Student actively constructs justifications for typing rules.",
+          "High level of cognitive involvement (analyzing, evaluating, creating justifications)."
+        ],
+        "weaknesses": [
+          "The repetitive loop at the end of the transcript appears to be a data artifact/error rather than a pedagogical collapse, but if real, it indicates a breakdown in the interaction flow. However, based on the content provided, the actual learning engagement is top-tier."
+        ],
+        "suggestions": [
+          "Maintain this high level of cognitive demand. The combination of rigorous questioning and student verification is highly effective."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 91,
+        "evidence": [
+          "Student accurately applies operator signatures (e.g., `add(int, int) \u2192 int`, `greater than(int, float) \u2192 boolean`) to determine typeability and output types.",
+          "Correctly identifies implicit type assumptions (e.g., treating `5` as `int` due to lack of decimal) and explains their impact on typeability.",
+          "Demonstrates systematic reasoning in backward substitution to find the precondition `w + 2v - u = 3`."
+        ],
+        "reasoning": "The student demonstrates strong content knowledge by correctly applying operator signatures to determine typeability and output types. They accurately identify implicit type assumptions and explain their reasoning clearly. The backward substitution method used to derive the precondition shows a deep understanding of the problem constraints.",
+        "strengths": [
+          "Accurate application of operator signatures",
+          "Clear explanation of type assumptions",
+          "Systematic backward substitution reasoning"
+        ],
+        "weaknesses": [
+          "Relies on standard typing rules without explicit prompt confirmation",
+          "Does not explicitly verify all edge cases (e.g., inequality precondition derivation)"
+        ],
+        "suggestions": [
+          "Explicitly state assumptions about literal typing when the prompt is ambiguous",
+          "Verify edge cases (e.g., inequality precondition) with additional examples"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher prompts student to list operator definitions used and explicitly state typeability/output for each expression.",
+          "Requests justification for literal type assumptions (e.g., `10.5` as `float`), guiding student to consider prompt details.",
+          "Asks for precondition derivation steps and verification through example, encouraging self-checking."
+        ],
+        "reasoning": "The teacher provides structured feedback that guides the student toward deeper understanding. They prompt the student to explicitly justify steps, consider edge cases, and verify their work. While the feedback is effective, it could be more actionable by suggesting specific improvements or alternative approaches.",
+        "strengths": [
+          "Guides explicit justification of steps",
+          "Encourages self-verification through examples",
+          "Prompts consideration of edge cases"
+        ],
+        "weaknesses": [
+          "Lacks specific suggestions for improvement",
+          "Does not model alternative strategies when student struggles"
+        ],
+        "suggestions": [
+          "Provide concrete examples of alternative approaches",
+          "Offer specific suggestions for improving rigor in ambiguous cases"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 78,
+        "evidence": [
+          "Student demonstrates backward substitution process but does not explicitly articulate the strategy until the end.",
+          "Implicitly uses standard typing rules without modeling the decision process for literal types."
+        ],
+        "reasoning": "The student demonstrates the problem-solving process through backward substitution but does not make their thinking fully visible until the final recap. They apply typing rules correctly but do not model the decision-making process behind literal type assumptions. More explicit think-aloud or step-by-step justification would strengthen modeling.",
+        "strengths": [
+          "Correct application of backward substitution",
+          "Accurate use of typing rules"
+        ],
+        "weaknesses": [
+          "Lack of explicit strategy articulation during the process",
+          "Implicit assumptions about literal typing"
+        ],
+        "suggestions": [
+          "Encourage verbalizing thought processes during problem-solving",
+          "Model decision-making for ambiguous cases (e.g., literal typing)"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "Teacher provides structured prompts to guide student through typeability analysis and precondition derivation.",
+          "Encourages self-checking through example verification.",
+          "Gradually increases independence by asking student to revise and justify their own work."
+        ],
+        "reasoning": "The teacher effectively scaffolds learning by providing structured prompts and encouraging self-verification. They gradually increase student independence by requiring justification and revision. The support is well-adapted to the student's needs, though more explicit modeling of alternative strategies could further enhance coaching.",
+        "strengths": [
+          "Structured prompts for step-by-step analysis",
+          "Encourages self-verification and revision",
+          "Gradual release of responsibility"
+        ],
+        "weaknesses": [
+          "Limited modeling of alternative strategies",
+          "Does not explicitly fade scaffolding as student gains competence"
+        ],
+        "suggestions": [
+          "Model alternative problem-solving strategies",
+          "Explicitly fade support as student demonstrates mastery"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 87,
+        "evidence": [
+          "Student explicitly states reasoning for each step (e.g., operator choices, type assumptions).",
+          "Verifies precondition through example and considers alternative postconditions (e.g., inequality case).",
+          "Recaps entire process at the end, identifying key steps and strategies."
+        ],
+        "reasoning": "The student consistently articulates their reasoning and evaluates their understanding through example verification and consideration of alternative scenarios. The final recap demonstrates meaningful reflection on the problem-solving process. However, more proactive reflection during the process (e.g., pausing to evaluate intermediate steps) would further strengthen this skill.",
+        "strengths": [
+          "Explicit articulation of reasoning",
+          "Verification through examples",
+          "Comprehensive final recap"
+        ],
+        "weaknesses": [
+          "Limited proactive reflection during the process",
+          "Does not explicitly evaluate potential errors in real-time"
+        ],
+        "suggestions": [
+          "Encourage pause points for intermediate self-evaluation",
+          "Promote real-time error-checking strategies"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 94,
+        "evidence": [
+          "Student actively constructs solutions through systematic backward substitution and example verification.",
+          "Engages in interactive dialogue with teacher, responding to prompts and revising work.",
+          "Considers alternative scenarios (e.g., inequality postcondition) and evaluates their implications."
+        ],
+        "reasoning": "The student demonstrates high cognitive engagement by actively constructing solutions, engaging in interactive dialogue, and considering alternative scenarios. Their work involves both constructive and interactive elements, meeting the highest level of the ICAP framework. The teacher's prompts effectively sustain this high level of engagement.",
+        "strengths": [
+          "Active construction of solutions",
+          "Interactive dialogue with teacher",
+          "Consideration of alternative scenarios"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue fostering interactive and constructive activities",
+          "Encourage peer collaboration for additional interactive engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 2.67,
+        "individual_scores": [
+          3,
+          2,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 83.4,
+    "interpretation": "Very Good pedagogy"
+  }
+}

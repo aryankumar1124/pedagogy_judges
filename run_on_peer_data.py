@@ -2,7 +2,7 @@
 Runs the pedagogy judges on ONE of Swayam's real teacher-student transcripts.
 
 Usage:
-    Put OPENAI_API_KEY, GROQ_API_KEY, GOOGLE_API_KEY in a .env file
+    Put MISTRAL_API_KEY, GROQ_API_KEY, COHERE_API_KEY in a .env file
     (see .env.example), or export them in your shell, then:
     python run_on_peer_data.py /path/to/raw_transcript.json
 """

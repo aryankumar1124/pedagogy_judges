@@ -1,0 +1,486 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_gemma2_9b_gemini",
+    "student_model": "gemma2:9b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher explains pass-by-value: 'Because they are separate copies, the original x and y remain untouched during the function execution (though global variables like z might still be accessed or modified if they are in scope).'",
+          "Teacher clarifies global vs. local scope: 'Since x and y are initialized outside the function, which makes them global variables.'",
+          "Teacher corrects misconception about pass-by-value: 'Earlier, we correctly noted that because x and y are passed by value, any changes to parameters a and b inside the function do not affect the original variables outside. However, during the execution of the function, did we assign a new value to the global variable x on line 4?'",
+          "Teacher guides through type-checking: 'Given that greater than strictly requires an int and a float, what does that mean for whether expression 3 is typeable based on the rules?'",
+          "Teacher uses backward substitution for Hoare triples: 'For the statement w := w + v, if the postcondition is w = 0, what does the substitution rule for assignment tell us about the condition on w and v right before that statement?'"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by transforming complex programming concepts (pass-by-value, scope, type-checking, Hoare triples) into clear, step-by-step explanations. The teacher uses precise terminology, addresses misconceptions proactively, and adapts explanations to the student's current understanding. The use of backward substitution for Hoare triples and type-checking shows deep subject-matter expertise combined with pedagogical skill.",
+        "strengths": [
+          "Clear, accurate explanations of technical concepts (e.g., pass-by-value, global vs. local scope).",
+          "Proactive identification and correction of student misconceptions (e.g., pass-by-value affecting global variables).",
+          "Use of multiple representations (e.g., tracing code execution, backward substitution, type-checking rules).",
+          "Adaptation of explanations to the student's current level of understanding."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in PCK."
+        ],
+        "suggestions": [
+          "Consider occasionally summarizing key takeaways to reinforce learning (e.g., after the pass-by-value discussion)."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher provides immediate, specific feedback: 'Spot on! a and b are initially the values of x and y, so a = 3 and b = 2.'",
+          "Teacher corrects errors with guidance: 'You're on the right track with b and x! But let's check y.'",
+          "Teacher reinforces correct reasoning: 'You've got the reasoning down for expression 3!'",
+          "Teacher encourages self-correction: 'Are you confident about expressions 2 and 4, or would you like to double-check their types against their operator definitions just like we did with expression 3?'",
+          "Teacher confirms understanding: 'That is completely correct! You've successfully checked all four expressions.'"
+        ],
+        "reasoning": "The teacher provides consistent, actionable feedback that helps the student understand current performance and next steps. Feedback is specific, timely, and often includes questions to guide the student toward self-correction. However, feedback could be more explicit about learning goals and how the student's performance aligns with them.",
+        "strengths": [
+          "Feedback is specific, immediate, and addresses both correct and incorrect responses.",
+          "Feedback often includes questions to prompt deeper thinking or self-correction.",
+          "Feedback reinforces correct reasoning and encourages confidence."
+        ],
+        "weaknesses": [
+          "Feedback does not always explicitly connect to broader learning goals or criteria for success.",
+          "Feedback could occasionally include more explicit next steps for improvement."
+        ],
+        "suggestions": [
+          "Explicitly state the learning goal (e.g., 'Our goal is to understand how pass-by-value works in functions') and connect feedback to it.",
+          "Provide more structured feedback (e.g., 'You correctly identified the initial values, but let's revisit how pass-by-value affects them')."
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher models backward substitution for Hoare triples: 'For the statement w := w + v, if the postcondition is w = 0, what does the substitution rule for assignment tell us about the condition on w and v right before that statement?'",
+          "Teacher demonstrates type-checking process: 'Given that greater than strictly requires an int and a float, what does that mean for whether expression 3 is typeable based on the rules?'",
+          "Teacher models tracing code execution: 'Let's look at the first line inside the function: a = a + y. Keeping in mind the current values of a, y, and any other relevant variables, what is the new value of a after this line executes?'",
+          "Teacher uses think-aloud to guide reasoning: 'Remember how we substitute the right-hand side of the assignment for the variable on the left?'"
+        ],
+        "reasoning": "The teacher consistently makes expert thinking visible through demonstrations, think-aloud strategies, and step-by-step reasoning. The teacher models problem-solving processes (e.g., backward substitution, type-checking, code tracing) in a way that is clear and accessible to the student. This is a hallmark of effective modeling.",
+        "strengths": [
+          "Consistently demonstrates expert thinking and problem-solving processes.",
+          "Uses think-aloud strategies to make reasoning explicit.",
+          "Models multiple problem-solving approaches (e.g., backward substitution, type-checking).",
+          "Adapts modeling to the student's current understanding."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in modeling."
+        ],
+        "suggestions": [
+          "Occasionally summarize the modeling process to reinforce the strategy (e.g., 'This is how we use backward substitution to derive preconditions')."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher provides hints to guide reasoning: 'Keeping in mind that these parameters are passed by value, what does that mean for how changes made to the parameters a and b inside the function affect the original variables x and y outside the function?'",
+          "Teacher scaffolds understanding: 'Let's check the lines executed so far: 1. a = a + y 2. y = b + x. Since we are on line 2, y hasn't been changed by line 2 yet, but what about global vs local scope?'",
+          "Teacher adjusts support based on student progress: 'You've made a good start and reasoned through most of these correctly! Let's take a closer look at expression 3.'",
+          "Teacher fades support as student gains confidence: 'Are you confident about expressions 2 and 4, or would you like to double-check their types against their operator definitions just like we did with expression 3?'"
+        ],
+        "reasoning": "The teacher provides strategic, adaptive coaching and scaffolding that fades as the student's competence grows. The teacher uses hints, questions, and structured guidance to support the student's learning, and adjusts the level of support based on the student's progress. This is a strong example of effective coaching.",
+        "strengths": [
+          "Provides strategic hints and questions to guide student reasoning.",
+          "Scaffolds understanding by breaking down complex problems into manageable steps.",
+          "Adjusts support based on the student's current level of understanding.",
+          "Gradually fades support as the student becomes more independent."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in coaching."
+        ],
+        "suggestions": [
+          "Occasionally explicitly state when support is being faded (e.g., 'Now that you've got the hang of this, try the next part on your own')."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher prompts reflection: 'Take a moment to put that all together and tell me the final values for x, y, and z.'",
+          "Teacher encourages self-correction: 'You've made a good start and reasoned through most of these correctly! Let's take a closer look at expression 3.'",
+          "Teacher asks student to explain reasoning: 'What part of the definition for int to string or add stands out to you as you look at expression 1 again?'",
+          "Student reflects on understanding: 'I think expression 4 is typeable. greater than(20, 10.5) returns a boolean, and equals(\"hi\", \"hi\") also returns a boolean. Since and takes two booleans and returns a boolean, the whole thing should work.'"
+        ],
+        "reasoning": "The teacher regularly incorporates reflection and articulation into the learning process, prompting the student to explain reasoning, double-check work, and summarize understanding. However, reflection could be more structured and consistent, with explicit prompts for the student to evaluate their own understanding.",
+        "strengths": [
+          "Regularly prompts the student to explain reasoning and reflect on understanding.",
+          "Encourages self-correction and double-checking of work.",
+          "Provides opportunities for the student to articulate thought processes."
+        ],
+        "weaknesses": [
+          "Reflection prompts could be more explicit and structured (e.g., 'Explain why you think this is correct').",
+          "Reflection is not consistently incorporated into every part of the lesson."
+        ],
+        "suggestions": [
+          "Use more explicit reflection prompts (e.g., 'Why do you think this is the correct answer? What evidence supports your reasoning?').",
+          "Incorporate reflection activities more consistently throughout the lesson."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student actively participates in problem-solving: 'For case (a), the function update is being passed x and y.'",
+          "Student engages in constructive activities: 'I think expression 4 is typeable. greater than(20, 10.5) returns a boolean, and equals(\"hi\", \"hi\") also returns a boolean.'",
+          "Student collaborates with teacher to refine understanding: 'Okay, let me think about expression 3 again. The greater than operator needs an int and a float as input. But in expression 3, we have greater than(10, 5), and both 10 and 5 are integers.'",
+          "Student demonstrates interactive learning: 'The program requires that the initial values of u, v, and w satisfy the relationship w = u - 2*v + 3.'"
+        ],
+        "reasoning": "The student consistently engages in interactive and constructive learning activities. The transcript shows the student actively participating in problem-solving, explaining reasoning, and collaborating with the teacher to refine understanding. This aligns with the highest level of the ICAP framework (Interactive).",
+        "strengths": [
+          "Student consistently engages in active, constructive, and interactive learning.",
+          "Student frequently explains reasoning and reflects on understanding.",
+          "Student collaborates with the teacher to solve problems and refine ideas."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in engagement."
+        ],
+        "suggestions": [
+          "Encourage the student to engage in peer-to-peer discussion or collaboration to further enhance interactive learning."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Remember that earlier we found an issue with expression 3 (`greater than(10, 5)`) because of its specific argument requirements? Take another look at expression 3 using that same rule.",
+          "Teacher: Remember the rule for assignment: wherever you see the variable being assigned (`u` in this case), replace it with the right-hand side of the assignment (`u + 3`).",
+          "Teacher: Not quite\u2014remember that the weakest precondition must hold *before* the program runs in order to guarantee the postcondition at the end."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by rigorously addressing specific programming misconceptions, such as the difference between local parameter changes and global variable mutations in call-by-value contexts, and the strictness of type systems in pseudocode. The teacher effectively distinguishes between equality and inequality in weakest precondition calculations, guiding the student to use the mechanical substitution rule rather than intuitive rearrangement, which is a common pitfall in formal methods.",
+        "strengths": [
+          "Proactively identifies and corrects the misconception that global variables aren't affected by assignments inside functions.",
+          "Enforces strict type-checking logic, correcting the student's assumption that `int` can substitute for `float` without explicit casting.",
+          "Clarifies the logical direction of weakest precondition derivation (initial state implies final state)."
+        ],
+        "weaknesses": [
+          "The distinction between 'typeable' and 'evaluable' is assumed based on the prompt's vocabulary, which might be a source of confusion if not previously defined in the course."
+        ],
+        "suggestions": [
+          "Consider explicitly defining the term 'typeable' at the start of the type-checking section to ensure the student is separating type correctness from runtime evaluation."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: You're on the right track with `b` and `x`! But let's check `y`.",
+          "Teacher: You've made a good attempt at guessing a precondition, but let's check if $u ge 0$, $v ge 0$, and $w ge 0$ actually guarantees that $w = 0$ at the end.",
+          "Teacher: Not quite\u2014remember that the weakest precondition must hold *before* the program runs in order to guarantee the postcondition at the end."
+        ],
+        "reasoning": "The teacher provides consistent, high-quality feedback that moves beyond simple validation. When the student is partially correct, the teacher identifies exactly which part is correct and which is flawed (e.g., confirming `b` and `x` but questioning `y`). The feedback is actionable, often directing the student to re-read a specific definition or rule to self-correct.",
+        "strengths": [
+          "Differentiates between correct and incorrect components of multi-part answers.",
+          "Uses Socratic feedback to guide reasoning rather than just providing the correction.",
+          "Specifically highlights the logical error in the student's initial precondition guess."
+        ],
+        "weaknesses": [
+          "Some feedback relies heavily on the student catching the cues, which can be slow if the student is stuck."
+        ],
+        "suggestions": [
+          "Provide a consistent visual marker or signal (e.g., 'Signal 1: Check Scope', 'Signal 2: Check Substitution') to help the student categorize the type of feedback they are receiving."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Remember the rule for assignment: wherever you see the variable being assigned (`u` in this case), replace it with the right-hand side of the assignment (`u + 3`). Using our current condition `w = u - 2*v`, what do you get when you substitute `u + 3` in place of `u`?",
+          "Teacher: For the statement `w := w + v`, if the postcondition is `w = 0`, what does the substitution rule for assignment tell us about the condition on `w` and `v` right before that statement? (Hint: replace `w` with the expression being assigned to it)."
+        ],
+        "reasoning": "The teacher explicitly models the 'expert thinking' process of weakest precondition calculation by articulating the substitution rule before applying it. However, the teacher often asks the student to perform the final calculation step rather than demonstrating the entire chain of derivation in a 'think-aloud' manner. The guidance is high-quality but serves as a strong scaffold rather than a full expert demonstration of the final result.",
+        "strengths": [
+          "Explicitly verbalizes the algorithm (substitute right-hand side for left-hand side).",
+          "Demonstrates the first step of the backward derivation to set a pattern for the subsequent steps."
+        ],
+        "weaknesses": [
+          "The teacher does not fully model the complete derivation to the end; the student must perform each substitution step after the first one is shown."
+        ],
+        "suggestions": [
+          "For the next problem, attempt a full 'think-aloud' of the derivation if the student struggles with the second or third substitution, to show how the variables transform across multiple steps."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Teacher: Hint: replace `w` with the expression being assigned to it.",
+          "Teacher: Taking a moment to put that all together and tell me the final values for `x`, `y`, and `z`.",
+          "Teacher: What are the input types required by this operator, and what are the types of the arguments provided in expression 3?"
+        ],
+        "reasoning": "The coaching is strategically scaffolded. The teacher starts with higher-order questions (asking for the final values) and, when the student errs, breaks the task down into smaller steps (identifying specific input types or applying the substitution rule). The support is gradually released; once the student correctly applies the rule to one inequality, the teacher steps back to let the student apply it to the next one independently.",
+        "strengths": [
+          "Uses precise, targeted hints that unlock the student's specific point of confusion.",
+          "Successfully transitions from guided calculation to independent problem solving as competence increases.",
+          "Adapts the level of support based on the complexity of the step (e.g., providing a hint for the first substitution, then asking for the next one in the sequence)."
+        ],
+        "weaknesses": [
+          "The scaffolding is very word-heavy; the cognitive load shifts entirely to the student very quickly."
+        ],
+        "suggestions": [
+          "Provide a visual checklist for the 'Backward Substitution Method' to serve as a persistent scaffold the student can refer to independently."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 94,
+        "evidence": [
+          "Student: Since `x` is global, assigning to it inside the function *does* affect the original global `x`.",
+          "Student: It seems like my initial guess of `u >= 0 and v >= 0 and w >= 0` wasn't quite right.",
+          "Student: The inner expressions both return a boolean, and the `and` operator requires two booleans as input."
+        ],
+        "reasoning": "Students are consistently asked to articulate their reasoning and evaluate their own understanding. The transcript shows the student explicitly correcting their initial mental model (e.g., changing their view on global variable mutation) and summarizing their logical conclusions before moving on to the next problem.",
+        "strengths": [
+          "Students explicitly articulate the 'why' behind their answers regarding scope and types.",
+          "Students engage in self-evaluation, identifying discrepancies between their initial guesses and the derived logic.",
+          "The final steps of each problem require a summary of the state/variables, forcing a holistic reflection of the process."
+        ],
+        "weaknesses": [
+          "Reflection is heavily focused on the immediate technical problem rather than broader learning strategies."
+        ],
+        "suggestions": [
+          "Ask the student to reflect on which of the four expressions was the most difficult and why, to help them identify personal patterns in problem-solving difficulties."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "Student: I want to double check expression 2.  I want to double check that.",
+          "Student: Okay, let me try that. If `w >= -v`, then `v` must be less than or equal to `-w`.",
+          "Student: So expression 3 isn't typeable because the types of the arguments don't match what the `greater than` operator expects."
+        ],
+        "reasoning": "The engagement is primarily 'constructive.' Students are actively processing the information, explaining their reasoning, and manipulating logical structures (substitutions, type checks). While the interaction is high, it is primarily individual work with the teacher, rather than 'interactive' learning involving collaboration with peers. However, the cognitive involvement is very high as the student must track multiple state variables and logical constraints.",
+        "strengths": [
+          "Students actively construct solutions rather than passively receiving them.",
+          "High frequency of student-teacher dialogue ensures the student remains 'active' in the learning loop.",
+          "Students are required to summarize and synthesize information at the end of each section."
+        ],
+        "weaknesses": [
+          "The activity lacks 'interactive' (social/co-constructive) elements, as it is strictly 1-on-1."
+        ],
+        "suggestions": [
+          "Introduce a 'peer check' phase where the student explains their derivation to a hypothetical peer or classmate to move towards the 'interactive' level of engagement."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher provides clear and detailed explanations of concepts like pass-by-value, global vs. local variables, and type-checking rules.",
+          "Addresses student misconceptions proactively, such as correcting the understanding of expression 3's typeability.",
+          "Uses effective examples and analogies, like tracing code execution step-by-step and backward substitution in Hoare logic."
+        ],
+        "reasoning": "The teacher demonstrates exceptional ability to explain complex programming concepts clearly, address misconceptions, and use multiple representations (step-by-step tracing, backward substitution) to ensure understanding.",
+        "strengths": [
+          "Proactive identification and correction of misconceptions",
+          "Use of multiple representations for concepts",
+          "Clear and detailed explanations"
+        ],
+        "weaknesses": [
+          "Occasional need for repetition when students struggle with abstract concepts"
+        ],
+        "suggestions": [
+          "Incorporate more visual representations for abstract concepts like scope and type-checking"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Provides specific, actionable feedback on student responses, e.g., guiding the student to re-examine expression 3's type requirements.",
+          "Consistently links feedback to learning goals (understanding type rules, program execution, and formal verification).",
+          "Uses Socratic questioning to help students discover their own errors and correct them."
+        ],
+        "reasoning": "The teacher's feedback is consistently clear, actionable, and goal-oriented. It helps students understand both their current performance and how to improve, often through guided self-discovery.",
+        "strengths": [
+          "Actionable and goal-oriented feedback",
+          "Use of Socratic questioning",
+          "Consistency in addressing learning goals"
+        ],
+        "weaknesses": [
+          "Could provide more explicit next steps in some cases"
+        ],
+        "suggestions": [
+          "Summarize key takeaways and next steps more explicitly after complex topics"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Consistently demonstrates expert thinking processes, such as step-by-step code tracing and backward substitution in formal verification.",
+          "Makes thinking visible through think-aloud strategies, e.g., explaining how to apply substitution rules.",
+          "Uses real-world analogies and concrete examples to illustrate abstract concepts."
+        ],
+        "reasoning": "The teacher expertly models complex thinking processes, making them visible and accessible to students. This includes both technical problem-solving and formal reasoning strategies.",
+        "strengths": [
+          "Visible demonstration of expert thinking",
+          "Use of think-aloud strategies",
+          "Real-world and concrete examples"
+        ],
+        "weaknesses": [
+          "Pace could be adjusted for more complex demonstrations"
+        ],
+        "suggestions": [
+          "Provide slower, more detailed modeling for highly abstract concepts"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Provides strategic hints and scaffolding, such as guiding questions to help students discover errors in type-checking.",
+          "Gradually removes support as students demonstrate competence, e.g., letting the student lead the analysis of expression 4.",
+          "Adapts support to individual student needs, providing more guidance when needed and stepping back when appropriate."
+        ],
+        "reasoning": "The teacher provides highly effective coaching, offering just enough support to keep students productive while fostering independence. Support is strategically tailored and gradually faded.",
+        "strengths": [
+          "Strategic hinting and scaffolding",
+          "Gradual fading of support",
+          "Adaptation to individual needs"
+        ],
+        "weaknesses": [
+          "Could occasionally summarize progress to reinforce independence"
+        ],
+        "suggestions": [
+          "Explicitly acknowledge student growth and independence more frequently"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 94,
+        "evidence": [
+          "Consistently prompts students to explain their reasoning, e.g., asking them to justify typeability decisions.",
+          "Encourages meta-cognitive reflection, such as discussing how inequality propagation differs from equality in weakest precondition derivation.",
+          "Students demonstrate deep understanding by articulating complex relationships, e.g., explaining initial value restrictions."
+        ],
+        "reasoning": "The teacher fosters consistent and meaningful reflection, pushing students to articulate and evaluate their understanding. This results in students who can explain complex reasoning processes.",
+        "strengths": [
+          "Consistent prompting for explanation",
+          "Encouragement of meta-cognitive reflection",
+          "Depth of student articulation"
+        ],
+        "weaknesses": [
+          "Could occasionally push for more explicit self-evaluation"
+        ],
+        "suggestions": [
+          "Incorporate more explicit self-assessment prompts"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Students consistently engage in interactive learning through discussion, collaboration, and co-construction of understanding.",
+          "Activities require constructive processes like self-explanation, questioning, and summarizing, e.g., analyzing typeability and deriving preconditions.",
+          "Teacher fosters argumentation and justification, such as debating the typeability of expressions."
+        ],
+        "reasoning": "The lesson consistently engages students at the highest level of the ICAP framework. Learning activities are interactive, requiring students to construct understanding through discussion, justification, and collaborative problem-solving.",
+        "strengths": [
+          "Consistent interactive engagement",
+          "Constructive learning activities",
+          "Fostering of argumentation and justification"
+        ],
+        "weaknesses": [
+          "Could vary engagement modes more frequently"
+        ],
+        "suggestions": [
+          "Incorporate more varied interactive formats (e.g., pair work, group discussion)"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.67,
+        "individual_scores": [
+          4,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 94.5,
+    "interpretation": "Excellent pedagogy"
+  }
+}

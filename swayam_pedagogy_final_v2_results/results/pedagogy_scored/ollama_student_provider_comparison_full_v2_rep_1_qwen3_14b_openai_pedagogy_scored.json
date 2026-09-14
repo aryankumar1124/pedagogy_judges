@@ -1,0 +1,548 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen3_14b_openai",
+    "student_model": "qwen3:14b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which exact line from the prompt supports your change? Quote it. Then, using the explicit assumption 'no explicit line' (i.e., unadorned numerals are int and numerals with a decimal are float), please revise your answers for all four expressions...",
+          "Teacher: Which given operator could you use to turn the int literal 5 into a float so that greater than(10, 5) would match greater than(int, float)? If none, briefly explain why (cite the available operators), then rewrite your final one-sentence answer for (3) including the explicit assumption ('no explicit line') and quoting the operator definition you used.",
+          "Teacher: Which exact part (quote the line) of the prompt supports your assumption that unadorned numeric literals like 5 are typed as int and literals like 5.0 as float? If no exact line exists, state 'no explicit line' and then briefly restate that explicit assumption in one sentence.",
+          "Student: The prompt does not explicitly state how numeric literals are typed (e.g., that '5' is an int or '5.0' is a float). This assumption is inferred from the operator definitions, such as greater than(int, float) \u2192 boolean, which implicitly requires the second argument to be a float (e.g., '5.0') and the first to be an int (e.g., '10').",
+          "Teacher: Good \u2014 your counterexample shows P is necessary (some states not satisfying P can falsify Q). One small point: a single counterexample doesn't by itself prove P is the weakest; weakest means 'every precondition that guarantees Q must imply P.'",
+          "Teacher: Your argument is essentially correct and captures the needed idea. One small addition: explicitly write u1 and v1 in terms of u0,v0,w0 (show the two intermediate substitution steps), then finish with a single formal sentence such as 'for all states s, if R(s) then P(s)'."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by consistently transforming complex concepts (e.g., Hoare logic, weakest preconditions, type systems) into clear, step-by-step explanations. The teacher addresses student misconceptions proactively (e.g., literal typing, operator definitions) and uses precise, domain-specific language. The teacher also adapts explanations to the student's level, ensuring understanding of abstract concepts through concrete examples and symbolic derivations.",
+        "strengths": [
+          "Exceptional ability to break down complex theoretical concepts (e.g., Hoare triples, weakest preconditions) into digestible steps.",
+          "Proactive identification and correction of student misconceptions (e.g., literal typing, operator definitions).",
+          "Use of precise, domain-specific terminology and symbolic reasoning to clarify abstract ideas.",
+          "Adaptation of explanations to the student's current understanding, ensuring clarity and depth.",
+          "Strong alignment with Shulman's PCK by transforming subject matter into forms students can understand."
+        ],
+        "weaknesses": [
+          "Occasional reliance on implicit assumptions (e.g., literal typing) without explicit citation from the prompt, though this is later clarified.",
+          "Minor gaps in immediately addressing the 'weakest' aspect of preconditions, though this is corrected in subsequent steps."
+        ],
+        "suggestions": [
+          "Explicitly state assumptions (e.g., literal typing) upfront to avoid confusion, even if the prompt does not specify them.",
+          "Clarify the distinction between 'necessary' and 'weakest' preconditions earlier in the discussion to reinforce understanding."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good \u2014 your per-line LHS labels and assigned values for part (a) are correct; I see no arithmetic mistakes or conceptual errors.",
+          "Teacher: Good \u2014 your final globals look right. One required item is still missing from the assignment: for each line in the function you must state which variable is on the LHS (global or parameter) and the value assigned there.",
+          "Teacher: Good. Next line: x = b + y + a. Question: which x is that on the LHS (global or parameter)? Quote the prompt line that justifies your choice. Then using the current state you gave (a=5, b=0, x=3, y=5, z=5), show the RHS computation (plug in b, y, a), give the value assigned to x, and write the full program state immediately after that line.",
+          "Teacher: Good \u2014 your step-by-step work for the inside of update(...) looks correct \u2014 no arithmetic mistakes I see.",
+          "Teacher: Good \u2014 you caught that mismatch. Now let's check your reasoning for part (a) (update(x,y) with pass-by-value) step by step.",
+          "Teacher: Good. Now move to the next line inside the function.",
+          "Teacher: Good. Now handle the final statement inside the function.",
+          "Teacher: Good \u2014 your per-line LHS labels and assigned values for part (a) are correct; I see no arithmetic mistakes or conceptual errors.",
+          "Teacher: Good \u2014 your final globals look right.",
+          "Teacher: Good. Next step: for part (b) quote the exact prompt line for (b) (the call and passing mode) and state the initial bindings when you call that (i.e., which globals a and b refer to under pass-by-reference).",
+          "Teacher: Quick correction: you quoted update(x,y), but part (b) of the prompt names the actual call. Please quote the exact prompt line for (b) (the call and passing mode) and then state the initial bindings under pass-by-reference \u2014 i.e., which global each parameter (a and b) aliases to and their initial values.",
+          "Teacher: You're close, but check the execution order: which statement runs first, u := u + 3 or v := 2*v - u? Based on that, what is the value of u at the moment v is computed (express it in terms of the initial u)?",
+          "Teacher: Good\u2014you're almost done. One step: please prove that. Concretely, assume R is any precondition such that {R} S {w = 0} holds. Take an arbitrary initial state satisfying R and, by running the program symbolically (write u1, v1, w1 in terms of u0,v0,w0), show that w1 = 0 forces w0 + 2v0 - u0 - 3 = 0. In other words, show R \u21d2 (w + 2v - u - 3 = 0). Do that symbolic derivation and state the implication briefly."
+        ],
+        "reasoning": "The teacher provides highly effective feedback that consistently addresses learning goals, current performance, and next steps. The feedback is specific, actionable, and tailored to the student's responses. It often includes direct quotes from the student's work, identifies strengths (e.g., correct reasoning, arithmetic), and provides clear guidance for improvement (e.g., missing steps, clarifications). The feedback aligns with Hattie's Visible Learning by making the learning process transparent and guiding the student toward deeper understanding.",
+        "strengths": [
+          "Feedback is consistently specific, referencing exact lines from the student's work and the prompt.",
+          "Clear identification of strengths (e.g., correct reasoning, arithmetic) and weaknesses (e.g., missing steps, misquotes).",
+          "Actionable guidance for improvement, often with step-by-step instructions.",
+          "Alignment with Hattie's Visible Learning by making the learning process explicit and guiding the student toward mastery.",
+          "Use of questions to prompt deeper reflection and understanding."
+        ],
+        "weaknesses": [
+          "Occasional minor delays in addressing conceptual gaps (e.g., the 'weakest' aspect of preconditions), though these are eventually clarified.",
+          "Feedback could occasionally include more explicit praise to reinforce positive behaviors."
+        ],
+        "suggestions": [
+          "Incorporate more explicit praise to reinforce positive behaviors and build student confidence.",
+          "Address conceptual gaps (e.g., 'weakest' vs. 'necessary' preconditions) earlier in the feedback loop to prevent confusion."
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Which exact line from the prompt supports your change? Quote it. Then, using the explicit assumption 'no explicit line' (i.e., unadorned numerals are int and numerals with a decimal are float), please revise your answers for all four expressions...",
+          "Teacher: Which given operator could you use to turn the int literal 5 into a float so that greater than(10, 5) would match greater than(int, float)? If none, briefly explain why (cite the available operators), then rewrite your final one-sentence answer for (3) including the explicit assumption ('no explicit line') and quoting the operator definition you used.",
+          "Teacher: Good \u2014 your counterexample shows P is necessary (some states not satisfying P can falsify Q). One small point: a single counterexample doesn't by itself prove P is the weakest; weakest means 'every precondition that guarantees Q must imply P.'",
+          "Teacher: Your argument is essentially correct and captures the needed idea. One small addition: explicitly write u1 and v1 in terms of u0,v0,w0 (show the two intermediate substitution steps), then finish with a single formal sentence such as 'for all states s, if R(s) then P(s)'.",
+          "Teacher: Good\u2014you're almost done. One step: please prove that. Concretely, assume R is any precondition such that {R} S {w = 0} holds. Take an arbitrary initial state satisfying R and, by running the program symbolically (write u1, v1, w1 in terms of u0,v0,w0), show that w1 = 0 forces w0 + 2v0 - u0 - 3 = 0. In other words, show R \u21d2 (w + 2v - u - 3 = 0). Do that symbolic derivation and state the implication briefly.",
+          "Teacher: Nice\u2014you're almost done. One step: using u1 = u + 3, v1 = 2v \u2212 u1 and w1 = w + v1, show algebraically (briefly) that if w + 2v \u2212 u \u2265 3 then w1 \u2265 0. Write the substitution and the single inequality step that concludes w1 \u2265 0.",
+          "Teacher: Your triple and forward steps look correct. One step: to show this precondition is weakest, please prove minimality.",
+          "Teacher: Task (one step): Assume R is any precondition with {R} S {w \u2265 0}. For an arbitrary initial state s satisfying R, symbolically compute u1, v1, w1 in terms of the initial u,v,w, use w1 \u2265 0 to derive the inequality that the initial state must satisfy, and finish with the sentence: 'for all states s, if R(s) then (w + 2v - u \u2265 3)(s).'"
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes, particularly in the context of formal logic (Hoare triples, weakest preconditions) and type systems. The teacher demonstrates step-by-step reasoning, uses think-aloud strategies (e.g., 'One step: ...'), and provides clear, structured examples. This aligns with Cognitive Apprenticeship by making expert thinking visible and guiding the student through complex problem-solving processes.",
+        "strengths": [
+          "Consistent demonstration of expert thinking through step-by-step reasoning and symbolic derivations.",
+          "Use of think-aloud strategies to model problem-solving processes (e.g., 'One step: ...').",
+          "Clear, structured examples that illustrate abstract concepts (e.g., Hoare triples, weakest preconditions).",
+          "Alignment with Cognitive Apprenticeship by making expert thinking visible and guiding the student through complex tasks.",
+          "Adaptation of modeling to the student's current understanding, ensuring clarity and depth."
+        ],
+        "weaknesses": [
+          "Occasional reliance on implicit assumptions (e.g., literal typing) without immediate clarification, though this is later addressed.",
+          "Could occasionally provide more real-world analogies to complement the formal reasoning."
+        ],
+        "suggestions": [
+          "Incorporate more real-world analogies to complement formal reasoning and enhance understanding.",
+          "Clarify implicit assumptions (e.g., literal typing) earlier in the modeling process to avoid confusion."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Teacher: Good \u2014 your per-line LHS labels and assigned values for part (a) are correct; I see no arithmetic mistakes or conceptual errors. Next step: for part (b) quote the exact prompt line for (b) (the call and passing mode) and state the initial bindings when you call that (i.e., which globals a and b refer to under pass-by-reference).",
+          "Teacher: Quick correction: you quoted update(x,y), but part (b) of the prompt names the actual call. Please quote the exact prompt line for (b) (the call and passing mode) and then state the initial bindings under pass-by-reference \u2014 i.e., which global each parameter (a and b) aliases to and their initial values.",
+          "Teacher: You're close, but check the execution order: which statement runs first, u := u + 3 or v := 2*v - u? Based on that, what is the value of u at the moment v is computed (express it in terms of the initial u)? Using that, redo just the single backward step from w + v = 0 through v := 2*v - u (show the substitution) and then state the resulting formula you get before handling u := u + 3. Please revise and explain that one substitution step.",
+          "Teacher: Good\u2014you're almost done. One step: please prove that. Concretely, assume R is any precondition such that {R} S {w = 0} holds. Take an arbitrary initial state satisfying R and, by running the program symbolically (write u1, v1, w1 in terms of u0,v0,w0), show that w1 = 0 forces w0 + 2v0 - u0 - 3 = 0. In other words, show R \u21d2 (w + 2v - u - 3 = 0). Do that symbolic derivation and state the implication briefly.",
+          "Teacher: Nice\u2014you're almost done. One step: using u1 = u + 3, v1 = 2v \u2212 u1 and w1 = w + v1, show algebraically (briefly) that if w + 2v \u2212 u \u2265 3 then w1 \u2265 0. Write the substitution and the single inequality step that concludes w1 \u2265 0.",
+          "Teacher: Your triple and forward steps look correct. One step: to show this precondition is weakest, please prove minimality.",
+          "Teacher: Task (one step): Assume R is any precondition with {R} S {w \u2265 0}. For an arbitrary initial state s satisfying R, symbolically compute u1, v1, w1 in terms of the initial u,v,w, use w1 \u2265 0 to derive the inequality that the initial state must satisfy, and finish with the sentence: 'for all states s, if R(s) then (w + 2v - u \u2265 3)(s).'"
+        ],
+        "reasoning": "The teacher provides highly effective coaching and scaffolding, guiding the student through complex problems with structured, step-by-step assistance. The teacher adapts the level of support to the student's needs, gradually reducing guidance as the student demonstrates competence (e.g., moving from full explanations to 'one step' prompts). This aligns with the ICAP framework by encouraging constructive and interactive engagement, and with Cognitive Apprenticeship by fading support as the student gains independence.",
+        "strengths": [
+          "Structured, step-by-step guidance that adapts to the student's current understanding.",
+          "Gradual reduction of support as the student demonstrates competence (e.g., 'one step' prompts).",
+          "Clear, actionable hints that guide the student toward deeper understanding.",
+          "Alignment with Cognitive Apprenticeship by fading support as the student gains independence.",
+          "Encouragement of constructive and interactive engagement (ICAP framework)."
+        ],
+        "weaknesses": [
+          "Occasional minor delays in addressing conceptual gaps, though these are eventually clarified.",
+          "Could occasionally provide more open-ended prompts to encourage independent problem-solving."
+        ],
+        "suggestions": [
+          "Incorporate more open-ended prompts to encourage independent problem-solving and deeper reflection.",
+          "Address conceptual gaps (e.g., 'weakest' vs. 'necessary' preconditions) earlier in the coaching process to prevent confusion."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good \u2014 your per-line LHS labels and assigned values for part (a) are correct; I see no arithmetic mistakes or conceptual errors.",
+          "Teacher: Good \u2014 your final globals look right. One required item is still missing from the assignment: for each line in the function you must state which variable is on the LHS (global or parameter) and the value assigned there.",
+          "Teacher: Good. Now move to the next line inside the function.",
+          "Teacher: Good. Now handle the final statement inside the function.",
+          "Teacher: Good \u2014 your step-by-step work for the inside of update(...) looks correct \u2014 no arithmetic mistakes I see.",
+          "Student: ### Per-Line LHS and Assigned Values: 1. Line 1: a = a + y ...",
+          "Student: **Revised answer for (3):** greater than(10, 5) is not typeable because the explicit assumption ('no explicit line') that unadorned numeric literals like 5 are typed as int (per the operator definition greater than(int, float) \u2192 boolean) creates a type mismatch: the second argument (5) is int, but the operator requires a float (e.g., 5.0), and no operator exists to convert int to float.",
+          "Student: **Revised Proof that P is the Weakest Precondition:** Assume R is any precondition such that {R} S {w = 0} holds. For any initial state (u, v, w) satisfying R, the program's execution leads to the following intermediate values: ...",
+          "Student: **Derivation of Minimality for Q: w \u2265 0:** Assume R is any precondition such that {R} S {w \u2265 0} holds. For an arbitrary initial state s = (u, v, w) satisfying R, the program's execution leads to: ..."
+        ],
+        "reasoning": "The teacher encourages reflection and articulation, particularly in the context of formal proofs and symbolic reasoning. The student is prompted to explain their reasoning, revise their answers, and justify their conclusions. However, the reflection is primarily driven by the teacher's prompts rather than the student independently articulating their thought processes. The student does engage in constructive reflection (e.g., revising answers, providing proofs), but there is limited evidence of the student independently initiating reflection or articulation.",
+        "strengths": [
+          "Encouragement of reflection and articulation through prompts (e.g., 'explain your reasoning', 'revise your answer').",
+          "Student engagement in constructive reflection (e.g., revising answers, providing proofs).",
+          "Alignment with the ICAP framework by encouraging constructive engagement (self-explaining, justifying)."
+        ],
+        "weaknesses": [
+          "Reflection is primarily teacher-driven rather than student-initiated.",
+          "Limited evidence of the student independently articulating their thought processes without prompts.",
+          "Could encourage more open-ended reflection to deepen understanding."
+        ],
+        "suggestions": [
+          "Encourage the student to independently articulate their thought processes more frequently, even without prompts.",
+          "Incorporate more open-ended reflection questions to deepen understanding and encourage independent thinking.",
+          "Provide opportunities for the student to summarize their learning or explain concepts in their own words."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Student: ### Summary of Function Execution with Different Parameter Passing Mechanisms ...",
+          "Student: **Initial State:** - x = 3 - y = 2 - z = 5 ...",
+          "Student: **Execution Steps:** 1. a = 2 + y = 2 + 2 = 4 \u2192 a = 4 ...",
+          "Student: **Final State:** - x = 11 - y = 8 - z = 16 ...",
+          "Student: **Conclusion:** - Value Passing: Only x is modified; y and z are updated during execution. ...",
+          "Student: **Final Answers:** - Value Passing: x = 11, y = 8, z = 16 ...",
+          "Student: **Per-Line LHS and Assigned Values:** 1. Line 1: a = a + y ...",
+          "Student: **Revised answer for (3):** greater than(10, 5) is not typeable because the explicit assumption ('no explicit line') that unadorned numeric literals like 5 are typed as int (per the operator definition greater than(int, float) \u2192 boolean) creates a type mismatch: the second argument (5) is int, but the operator requires a float (e.g., 5.0), and no operator exists to convert int to float.",
+          "Student: **Revised Proof that P is the Weakest Precondition:** Assume R is any precondition such that {R} S {w = 0} holds. For any initial state (u, v, w) satisfying R, the program's execution leads to the following intermediate values: ...",
+          "Student: **Derivation of Minimality for Q: w \u2265 0:** Assume R is any precondition such that {R} S {w \u2265 0} holds. For an arbitrary initial state s = (u, v, w) satisfying R, the program's execution leads to: ..."
+        ],
+        "reasoning": "The student demonstrates consistently high levels of cognitive engagement, aligning with the ICAP framework. The student frequently engages in constructive activities (e.g., self-explaining, justifying, summarizing) and interactive activities (e.g., responding to prompts, revising answers, providing proofs). The student's responses show deep involvement in the learning process, with minimal passive engagement. The teacher's prompts further encourage this high level of engagement.",
+        "strengths": [
+          "Consistent engagement in constructive activities (e.g., self-explaining, justifying, summarizing).",
+          "Frequent participation in interactive activities (e.g., responding to prompts, revising answers, providing proofs).",
+          "Alignment with the ICAP framework, with minimal passive engagement.",
+          "Deep involvement in the learning process, demonstrating high cognitive engagement."
+        ],
+        "weaknesses": [
+          "Limited evidence of collaborative engagement (e.g., peer discussion), though this is not a focus of the transcript.",
+          "Could occasionally engage in more open-ended problem-solving to further deepen understanding."
+        ],
+        "suggestions": [
+          "Encourage more open-ended problem-solving to further deepen understanding and engagement.",
+          "Incorporate opportunities for collaborative engagement (e.g., peer discussion) to enhance learning."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: ...Which exact operator definition in the prompt are you using to justify your conclusion...",
+          "Teacher: ...introduce explicit state names (u0,v0,w0 for initial; u1 = u0+3; ...)...",
+          "Teacher: ...give a short counterexample \u2014 pick initial values... that do not satisfy P... and show that w1 \u2260 0.",
+          "Teacher: ...prove that. Concretely, assume R is any precondition... show that w1 = 0 forces w0 + 2v0 - u0 - 3 = 0."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by transforming abstract concepts (parameter passing, type systems, Hoare logic) into concrete, step-by-step verification tasks. They proactively address misconceptions (e.g., the difference between global and local variables, the 'weakest' nature of preconditions) by forcing the student to cite specific prompt lines and perform symbolic substitutions. The use of explicit state variables (u0, v0) and counterexamples is a sophisticated technique to ensure deep conceptual understanding rather than rote memorization.",
+        "strengths": [
+          "Proactive identification of common misconceptions (e.g., confusing updated variable values with initial ones).",
+          "Use of multiple representations (symbolic algebra, execution trace, formal logic).",
+          "Rigorous checking of the 'weakest precondition' definition through counterexamples and universal quantification."
+        ],
+        "weaknesses": [
+          "Little to none observed in the provided transcript; the instruction is highly precise."
+        ],
+        "suggestions": [
+          "Could occasionally provide a 'bridge' analogy for more abstract logic concepts if the student struggles, though the current method is highly effective for this level."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good \u2014 your step-by-step work for the inside of update(...) looks correct \u2014 no arithmetic mistakes I see.",
+          "Teacher: You quoted update(x,y), but that doesn't match the original prompt. Please do two things...",
+          "Teacher: You're close, but check the execution order...",
+          "Teacher: Your argument is essentially correct... One small addition: explicitly write u1 and v1..."
+        ],
+        "reasoning": "The teacher provides consistent, actionable feedback. They clearly identify errors (mismatched prompt quotes, incorrect assumption about variable updates) and specify exactly what is missing or wrong. The feedback is not just corrective but also actionable ('Quote the line', 'State the LHS name'), guiding the student toward the desired output format and content depth.",
+        "strengths": [
+          "Specific identification of errors (e.g., pointing out the prompt mismatch).",
+          "Clear next steps ('Please revise by adding...').",
+          "Balanced praise and correction ('Good start', 'You're close, but...')."
+        ],
+        "weaknesses": [
+          "Feedback is heavily focused on procedural correctness (quoting lines, step-by-step submission) rather than broader conceptual synthesis, though this is likely appropriate for the specific assignment style."
+        ],
+        "suggestions": [
+          "Could occasionally ask the student to self-evaluate their confidence or reflection on the concept before requesting the next step."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: ...introduce explicit state names (u0,v0,w0 for initial; u1 = u0+3; v1 = 2*v0 - u1; w1 = w0 + v1).",
+          "Teacher: ...compute u, v, w after each statement (u1, v1, w1) starting from P and show that w1 = 0; explain each substitution briefly."
+        ],
+        "reasoning": "The teacher models the *structure* of the solution by explicitly defining the notation (u1, v1) and outlining the steps (forward execution, backward substitution). However, the teacher does not perform the full derivation *for* the student or think-aloud extensively on the logic itself; instead, they guide the student to do the modeling work. This is a strong form of guided discovery rather than pure modeling of expert thinking, but the explicit notation setup serves as a model for how to represent state changes.",
+        "strengths": [
+          "Clear modeling of notation and state tracking (u0/u1).",
+          "Clear modeling of the proof structure (assume R, show implication)."
+        ],
+        "weaknesses": [
+          "Lacks explicit 'think-aloud' narration of the internal reasoning process (e.g., 'I am looking for the inverse operation of this assignment...')."
+        ],
+        "suggestions": [
+          "The teacher could briefly demonstrate one backward substitution step themselves before asking the student to do the rest, to further vividly model the mechanical substitution process for beginners."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: ...Which part of the assignment prompt tells you the exact call you should analyze for part (a)? (Quote the line...)",
+          "Teacher: ...compute the first line inside the function... Show the RHS value you used and the program state...",
+          "Teacher: ...Hint/question (one step): introduce explicit state names...",
+          "Teacher: ...give a short counterexample...",
+          "Teacher: ...assume R is any precondition... show that w1 = 0 forces..."
+        ],
+        "reasoning": "The coaching is exemplary. The teacher breaks complex problems into manageable micro-steps ('One task at a time', 'One step:'). They provide scaffolding that is gradually removed (starting from checking arithmetic, moving to justifying variable scope, then to proving minimality). The hints are precise (e.g., specifying which variables to track) and the support is adapted to the student's current performance (correcting the prompt quote before proceeding to logic).",
+        "strengths": [
+          "Excellent chunking of tasks ('one step at a time').",
+          "Targeted hints that nudge without giving away the answer.",
+          "Adaptive support that corrects fundamental misunderstandings (global vs local) before building on them."
+        ],
+        "weaknesses": [
+          "The rigidity of the step-by-step approach might be less efficient for a student who already grasps the logic."
+        ],
+        "suggestions": [
+          "Once the student demonstrates mastery of the step-by-step format, the teacher could allow them to attempt a full solution in one block to test independence."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: ...Which exact line in the assignment prompt supports your choice...? Quote that line and briefly explain how it justifies your decision.",
+          "Teacher: ...Which operator definition in the prompt are you using...? Explain in one short sentence...",
+          "Teacher: ...explain how that affects the expression.",
+          "Teacher: ...state briefly whether that is the final weakest precondition expressed in the program's initial variables."
+        ],
+        "reasoning": "The teacher consistently requires the student to articulate their reasoning (PCK/Pedagogy of explanation). Every calculation is paired with a requirement to justify *why* a specific action was taken (e.g., why y is global, why u is the updated version). This forces the student to reflect on the structural rules of the problem, not just the arithmetic. The student is repeatedly asked to explain the connection between the prompt text and the mathematical action.",
+        "strengths": [
+          "Consistent requirement to quote source justification for every step.",
+          "Focus on the 'why' (reasoning) rather than just the 'what' (answer).",
+          "Encourages metacognitive awareness of variable scope and state changes."
+        ],
+        "weaknesses": [
+          "Reflection is heavily constrained to the specific proof/trace context; less space for broader conceptual synthesis."
+        ],
+        "suggestions": [
+          "Could ask the student to summarize the *general rule* for backward substitution in their own words after the example is complete."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: [Detailed step-by-step calculations and justifications]",
+          "Student: [Counterexample construction]",
+          "Student: [Formal proof derivation]",
+          "Teacher: [Socratic questioning and verification]"
+        ],
+        "reasoning": "The engagement is at a Constructive level (ICAP). The student is not passive; they are actively constructing arguments, performing symbolic algebra, and building proofs. It is not quite 'Interactive' (ICAP) in the sense of peer collaboration or debate, but it is a high-level cognitive engagement where the student must construct specific proofs and counterexamples. The student is forced to do the heavy lifting of the reasoning.",
+        "strengths": [
+          "Active construction of proofs and counterexamples.",
+          "High cognitive load required to track state changes and formal logic.",
+          "Student is forced to engage with the syntax and semantics of the prompt."
+        ],
+        "weaknesses": [
+          "Lacks interactive elements (discussion, peer review).",
+          "Student engagement is driven entirely by the teacher's prompts; no independent exploration visible."
+        ],
+        "suggestions": [
+          "This level is appropriate for individual reasoning tasks. To move to Interactive, the teacher could have the student explain their proof to a peer or debate the validity of a flawed student proof."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The student demonstrates a strong grasp of function execution, parameter passing mechanisms (value, reference, value-result), and global variable behavior.",
+          "Accurately computes program states after each step, showing understanding of variable scope and parameter copying.",
+          "Correctly identifies and applies assignment prompt details (e.g., specific function calls and parameter passing modes)."
+        ],
+        "reasoning": "The student shows consistent ability to explain complex concepts clearly, using precise technical language. They identify key aspects of parameter passing and global variable interactions, though some minor errors in initial prompt interpretation were corrected through teacher guidance.",
+        "strengths": [
+          "Clear step-by-step computation of program states",
+          "Accurate application of parameter passing rules",
+          "Ability to quote and apply prompt specifics appropriately"
+        ],
+        "weaknesses": [
+          "Initial misinterpretation of some prompt details (e.g., function call parameters)",
+          "Occasional need for teacher correction on prompt quoting"
+        ],
+        "suggestions": [
+          "Practice quoting exact prompt lines without error",
+          "Double-check parameter passing modes against original instructions"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The teacher provides specific, actionable feedback on errors (e.g., incorrect function call parameters, missing program state details).",
+          "Guides student to quote exact prompt lines and justify decisions using those lines.",
+          "Asks targeted questions to lead student to correct understanding without giving answers directly."
+        ],
+        "reasoning": "Feedback is consistently goal-directed, performance-focused, and provides clear next steps. The teacher helps the student understand both current performance and how to improve, though some repetitions could be streamlined.",
+        "strengths": [
+          "Specific identification of errors and required corrections",
+          "Use of targeted questioning to guide student thinking",
+          "Consistent focus on prompt details and justification"
+        ],
+        "weaknesses": [
+          "Some repetition in feedback due to student errors",
+          "Could occasionally summarize key points more concisely"
+        ],
+        "suggestions": [
+          "Provide more concise summaries of key errors",
+          "Use fewer repeated questions when student makes similar mistakes"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher demonstrates expert thinking by breaking down complex problems into step-by-step processes (e.g., computing program states after each assignment).",
+          "Uses think-aloud strategies to guide the student through logical reasoning (e.g., backward substitution in weakest precondition calculation).",
+          "Makes expert thinking visible through explicit state naming and symbolic computation."
+        ],
+        "reasoning": "The teacher consistently models expert problem-solving processes, making complex reasoning transparent. They use structured approaches (e.g., state naming, symbolic derivation) to guide the student, though some steps could be made more explicit for beginners.",
+        "strengths": [
+          "Clear step-by-step breakdown of complex problems",
+          "Use of symbolic computation to make reasoning visible",
+          "Structured approach to backward substitution"
+        ],
+        "weaknesses": [
+          "Some advanced steps may be less accessible to beginners",
+          "Could provide more explicit intermediate explanations in symbolic derivations"
+        ],
+        "suggestions": [
+          "Include more intermediate steps in complex derivations",
+          "Provide explicit links between steps in backward substitution"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 91,
+        "evidence": [
+          "The teacher provides structured hints and scaffolding (e.g., state naming conventions, backward substitution steps).",
+          "Gradually reduces support as the student demonstrates understanding (e.g., moving from detailed steps to targeted questions).",
+          "Adapts guidance based on student responses (e.g., correcting misinterpretations of prompt details)."
+        ],
+        "reasoning": "Coaching is strategically provided and adapted to student needs. The teacher effectively scaffolds complex tasks while encouraging independent thinking, though some repetitions could be minimized.",
+        "strengths": [
+          "Strategic use of hints and scaffolding",
+          "Adaptation of support based on student progress",
+          "Encouragement of independent problem-solving"
+        ],
+        "weaknesses": [
+          "Some repetition due to student errors",
+          "Could streamline scaffolding for more advanced steps"
+        ],
+        "suggestions": [
+          "Reduce repetition by summarizing key points earlier",
+          "Provide more direct guidance for complex symbolic steps"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "The student consistently explains their reasoning (e.g., justifying parameter passing modes, substitution steps).",
+          "Reflects on understanding by identifying and correcting errors (e.g., misinterpreted function calls).",
+          "Articulates thought processes in response to teacher prompts (e.g., explaining backward substitution rules)."
+        ],
+        "reasoning": "The student regularly engages in meaningful reflection, explaining their reasoning and evaluating their understanding. While they occasionally need teacher prompts to deepen reflection, their responses show growing independence.",
+        "strengths": [
+          "Clear explanation of reasoning processes",
+          "Willingness to identify and correct errors",
+          "Ability to articulate thought processes under guidance"
+        ],
+        "weaknesses": [
+          "Occasional need for teacher prompts to deepen reflection",
+          "Some explanations could be more concise"
+        ],
+        "suggestions": [
+          "Encourage more independent reflection without prompts",
+          "Practice concise articulation of key reasoning steps"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 93,
+        "evidence": [
+          "The student consistently participates in interactive learning, engaging in discussion, collaboration, and co-construction of understanding.",
+          "Actively responds to teacher prompts with detailed explanations and computations.",
+          "Demonstrates constructive engagement by summarizing, questioning, and self-correcting."
+        ],
+        "reasoning": "The student shows high-level engagement, consistently participating in interactive and constructive learning activities. They actively contribute to discussions, demonstrate deep thinking, and show commitment to understanding complex concepts.",
+        "strengths": [
+          "Active participation in discussion and collaboration",
+          "Constructive engagement through summarizing and questioning",
+          "Commitment to understanding and self-correction"
+        ],
+        "weaknesses": [
+          "Minor instances of initial misinterpretation",
+          "Could occasionally initiate more independent reflection"
+        ],
+        "suggestions": [
+          "Encourage more proactive initiation of reflection",
+          "Practice double-checking prompt details independently"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 88.9,
+    "interpretation": "Very Good pedagogy"
+  }
+}

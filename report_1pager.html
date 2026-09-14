@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pedagogy Judges — Project Report</title>
+<style>
+  @page { size: Letter; margin: 0.42in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1a1a1a;
+    font-size: 9.3pt;
+    line-height: 1.32;
+    max-width: 7.9in;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 14.5pt;
+    margin: 0 0 1px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8.5pt;
+    color: #555;
+    margin: 0 0 9px 0;
+  }
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    margin: 9px 0 3px 0;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #999;
+  }
+  p { margin: 3px 0; text-align: justify; }
+  ul { margin: 3px 0; padding-left: 16px; }
+  li { margin: 1px 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8.3pt;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 2px 5px;
+    text-align: center;
+  }
+  th { background: #f0f0f0; }
+  td:first-child, th:first-child { text-align: left; }
+  .score-banner {
+    background: #f5f5f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .score-banner .num {
+    font-size: 17pt;
+    font-weight: bold;
+  }
+  .score-banner .label {
+    font-size: 8.5pt;
+    color: #444;
+  }
+  .footer {
+    margin-top: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7.5pt;
+    color: #777;
+  }
+  .two-col {
+    display: flex;
+    gap: 18px;
+  }
+  .two-col > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<h1>Pedagogy Judges: A Multi-Model LLM Ensemble for Scoring Teaching Quality</h1>
+<div class="subtitle">Aryan Kumar</div>
+
+<h2>Research Question</h2>
+<p>
+Large language models are increasingly used to evaluate teaching quality in AI-tutoring
+transcripts, but a single LLM's judgment is an unreliable ground truth — it reflects one
+model's biases and blind spots, not a validated measure. This project asks: <em>can independent
+scores from multiple, architecturally different LLMs be combined to produce a more trustworthy
+pedagogy assessment, and where do such models agree or disagree?</em>
+</p>
+
+<h2>Methodology</h2>
+<p>
+A 6-factor pedagogy rubric (1–5 scale per factor) was built on established teaching-quality
+research: <strong>PCK</strong> (Shulman), <strong>Feedback</strong> (Hattie's Visible Learning),
+<strong>Modeling</strong> and <strong>Coaching</strong> (Cognitive Apprenticeship), <strong>Reflection</strong>
+(student articulation of reasoning), and <strong>Engagement</strong> (the ICAP framework's
+Passive→Active→Constructive→Interactive scale). The overall Pedagogy Score is
+<code>(sum of 6 factor scores / 30) × 100</code>.
+</p>
+<p>
+Three judges — OpenAI (gpt-5-mini), Groq (gpt-oss-120b), and Google Gemini — each receive the
+identical system prompt and rubric and independently score the same lesson transcript, returning
+structured JSON with a score, confidence, evidence, reasoning, strengths, weaknesses, and
+suggestions per factor. Because all three see the same instructions, any disagreement between
+them reflects genuine differences in model judgment rather than prompt variation. Per-factor
+scores are aggregated by mean, with the standard deviation across the three judges reported as an
+inter-rater agreement signal.
+</p>
+
+<h2>Results</h2>
+<p>On a sample transcript (a binary-search lesson with worked examples, paired practice, and
+peer explanation), the ensemble produced:</p>
+
+<div class="score-banner">
+  <div><div class="num">83.4 / 100</div><div class="label">Aggregated Pedagogy Score</div></div>
+  <div class="label" style="text-align:right; max-width:55%;">"Very Good pedagogy" — consistently
+  implemented practices that positively support student learning.</div>
+</div>
+
+<table>
+<tr><th>Factor</th><th>OpenAI</th><th>Groq</th><th>Gemini</th><th>Mean</th><th>Agreement (stdev)</th></tr>
+<tr><td>PCK</td><td>4</td><td>4</td><td>4</td><td>4.00</td><td>0.00</td></tr>
+<tr><td>Feedback</td><td>4</td><td>4</td><td>4</td><td>4.00</td><td>0.00</td></tr>
+<tr><td>Modeling</td><td>5</td><td>5</td><td>4</td><td>4.67</td><td>0.47</td></tr>
+<tr><td>Coaching</td><td>4</td><td>4</td><td>4</td><td>4.00</td><td>0.00</td></tr>
+<tr><td>Reflection</td><td>3</td><td>4</td><td>4</td><td>3.67</td><td>0.47</td></tr>
+<tr><td>Engagement</td><td>5</td><td>5</td><td>4</td><td>4.67</td><td>0.47</td></tr>
+</table>
+
+<p>
+The three judges reached <strong>exact unanimous agreement</strong> on half the rubric (PCK,
+Feedback, Coaching). Disagreement was mild and consistent everywhere it occurred: on Modeling,
+Reflection, and Engagement, two judges agreed and one differed by exactly one point — no judge
+diverged by more than a single point on any factor. This is the intended signal of the
+multi-judge design: it surfaces exactly where an evaluation is contestable instead of presenting
+a single confident-looking number.
+</p>
+
+<h2>Limitations &amp; Next Steps</h2>
+<div class="two-col">
+<div>
+<ul>
+<li><strong>No human ground truth yet.</strong> Judges agreeing with each other shows consistency,
+not correctness — the next step is comparing judge scores to real human expert ratings.</li>
+<li><strong>Aggregation is currently a plain mean.</strong> Each judge already outputs a
+confidence score per factor that the aggregation step does not yet use.</li>
+</ul>
+</div>
+<div>
+<ul>
+<li><strong>Single-transcript demonstration.</strong> A larger paired teacher-student dataset
+(278 experiment runs across multiple student/tutor model combinations) is already collected and
+ready for batch evaluation.</li>
+<li><strong>Per-episode scoring</strong> (scoring one question within a multi-question session)
+is not yet implemented.</li>
+</ul>
+</div>
+</div>
+
+<div class="footer">Code and full results: github.com/aryankumar1124/pedagogy_judges</div>
+
+</body>
+</html>

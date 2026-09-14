@@ -1,0 +1,499 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_gemma3_12b_gemini",
+    "student_model": "gemma3:12b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You've correctly identified the crucial difference with pass-by-reference - the direct modification of the original variables.",
+          "Teacher: You've correctly grasped the concept of value-result semantics. The modifications to `a` and `b` are indeed local, and the updates to `y` and `z` only occur when the values are copied back out at the end of the function call.",
+          "Teacher: You've correctly identified the input types required by the operator definition and what is actually provided in expression 3.",
+          "Teacher: That's correct! The types for `greater than(20, 10.5)` match the required `(int, float)` definition.",
+          "Teacher: You applied the substitution rule correctly once again!"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by consistently transforming complex programming concepts (pass-by-value, pass-by-reference, value-result, operator definitions, weakest precondition derivation) into clear, step-by-step explanations. The teacher uses precise language, corrects misconceptions (e.g., aliasing in pass-by-reference, operator type requirements), and adapts explanations to the student's evolving understanding. The teacher also effectively uses the student's own reasoning as a foundation for further explanation.",
+        "strengths": [
+          "Clear and accurate explanations of complex programming concepts",
+          "Effective use of student's partial solutions to guide toward correct understanding",
+          "Proactive identification and correction of student misconceptions",
+          "Adaptation of explanations to student's current level of understanding"
+        ],
+        "weaknesses": [
+          "Limited use of multiple representations (e.g., no visual diagrams or analogies for parameter passing modes)",
+          "Could occasionally provide more explicit connections between concepts (e.g., how pass-by-reference relates to aliasing in memory)"
+        ],
+        "suggestions": [
+          "Incorporate visual aids or analogies to explain abstract concepts like parameter passing modes",
+          "Explicitly connect new concepts to previously learned material to reinforce understanding",
+          "Provide more varied examples to illustrate the same concept from different angles"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: You've correctly identified the crucial difference with pass-by-reference - the direct modification of the original variables. Your trace of the first three steps is also spot on.",
+          "Teacher: That's a perfect explanation! You've correctly grasped the concept of value-result semantics.",
+          "Teacher: That's completely correct!",
+          "Teacher: You applied the substitution rule correctly once again!",
+          "Teacher: That is a fantastic summary! You've clearly articulated how working backward using substitution allows us to find the weakest precondition"
+        ],
+        "reasoning": "The teacher provides exceptional feedback that consistently addresses learning goals, current performance, and next steps. Feedback is specific, actionable, and directly tied to the student's work. The teacher validates correct understanding, identifies precise errors, and guides the student toward improvement without providing the answer outright. Feedback is timely, constructive, and consistently helps the student understand their current performance relative to the learning objectives.",
+        "strengths": [
+          "Consistently identifies strengths in student reasoning",
+          "Provides specific, actionable guidance for improvement",
+          "Directly addresses misconceptions with clear explanations",
+          "Encourages student reflection and self-correction",
+          "Maintains focus on learning goals throughout"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more explicit praise for effort and persistence",
+          "Might benefit from occasionally summarizing progress toward learning goals"
+        ],
+        "suggestions": [
+          "Include more explicit recognition of student effort and growth mindset",
+          "Periodically summarize the student's progress toward mastering the learning objectives"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You've correctly identified the crucial difference with pass-by-reference - the direct modification of the original variables.",
+          "Teacher: You've correctly grasped the concept of value-result semantics. The modifications to `a` and `b` are indeed local, and the updates to `y` and `z` only occur when the values are copied back out at the end of the function call.",
+          "Teacher: You applied the substitution rule correctly once again!",
+          "Teacher: That's spot on! You followed the exact same substitution logic"
+        ],
+        "reasoning": "The teacher demonstrates expert thinking through clear, step-by-step reasoning. The teacher models the problem-solving process by guiding the student through each step of tracing code execution, identifying parameter passing modes, and deriving weakest preconditions. The teacher's explanations reveal the underlying logic and decision-making process, making expert thinking visible. However, the teacher could occasionally use more explicit think-aloud strategies to make the modeling even more transparent.",
+        "strengths": [
+          "Demonstrates expert problem-solving processes through guided questions",
+          "Makes complex reasoning accessible through step-by-step breakdowns",
+          "Shows the logical connections between concepts",
+          "Models persistence and attention to detail in problem-solving"
+        ],
+        "weaknesses": [
+          "Could use more explicit think-aloud statements to make the modeling process even clearer",
+          "Occasionally assumes the student will make certain connections without explicitly stating them"
+        ],
+        "suggestions": [
+          "Incorporate more explicit think-aloud statements to model the expert reasoning process",
+          "Verbalize the 'why' behind each step in the problem-solving process"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Let's take a close look at part (b) where you have `update(x, z)` passed by reference.",
+          "Teacher: Notice what happens on the line `z = b + x`. In the function code, the actual variable on the left-hand side is `b` (`b = a - z`), not `z`.",
+          "Teacher: Let's check the function body again from top to bottom.",
+          "Teacher: Can you review what value-result (copy-in, copy-out) means for how parameters are accessed inside the function and when the actual arguments get updated?",
+          "Teacher: Based on that mismatch between the operator's requirements and the arguments provided in expression 3, how should you update your final summary for item 3?"
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding throughout the lesson. The teacher consistently provides structured guidance, hints, and questions that help the student progress toward understanding without giving away the answer. The support is strategically provided, adapted to the student's current level of understanding, and gradually reduced as the student demonstrates competence. The teacher effectively uses questioning to guide the student's thinking and encourages the student to self-correct.",
+        "strengths": [
+          "Provides strategic, well-timed hints and questions",
+          "Adapts support to the student's current understanding",
+          "Encourages student self-correction and independent thinking",
+          "Gradually reduces support as student competence grows",
+          "Uses questioning effectively to guide student reasoning"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more explicit connections between the hints and the underlying concepts"
+        ],
+        "suggestions": [
+          "Explicitly connect hints to the broader concepts being learned",
+          "Provide occasional summaries of the coaching strategies being used"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Okay, you're right to make me look closer at part (b) and that line `z = b + x`.",
+          "Student: I didn't fully appreciate that `z` wasn't just getting a new value, but that `b` was also being updated. I need to be more careful about how the parameters are linked when passing by reference.",
+          "Student: I was so focused on the pass-by-reference and the aliases that I completely overlooked the order of the statements and how that affects the values used in each calculation.",
+          "Student: I completely missed the crucial difference with pass-by-reference - the direct modification of the original variables.",
+          "Student: I now understand why the final values are x = 9, y = 4, and z = 14. This was a very helpful exercise in carefully tracing the execution and keeping track of the aliases."
+        ],
+        "reasoning": "The teacher effectively fosters reflection and articulation by consistently asking the student to explain their reasoning, identify their mistakes, and revise their understanding. The student is frequently asked to walk through their thought process, which encourages metacognition. However, the teacher could occasionally prompt the student to reflect more explicitly on their learning process and strategies, rather than just the content. The reflection is primarily content-focused rather than process-focused.",
+        "strengths": [
+          "Encourages students to explain their reasoning and thought processes",
+          "Prompts students to identify and correct their own mistakes",
+          "Fosters metacognition through guided questioning",
+          "Helps students articulate their understanding"
+        ],
+        "weaknesses": [
+          "Reflection is primarily content-focused rather than process-focused",
+          "Could occasionally prompt students to reflect on their learning strategies and growth"
+        ],
+        "suggestions": [
+          "Incorporate more explicit prompts for process reflection (e.g., 'What strategy helped you solve this?')",
+          "Encourage students to reflect on their learning journey and growth mindset"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Okay, let's tackle this. I'll try to work through each part of the question on my own first.",
+          "Student: Okay, you're right to make me look closer at part (b) and that line `z = b + x`.",
+          "Student: Okay, let's revise part (b) with the understanding that `b` and `z` are aliases when passed by reference.",
+          "Student: Okay, let's do part (c) correctly now, with `update(y, z)` and value-result (copy-in, copy-out) parameter passing",
+          "Student: Okay, let's tackle part (d): `update(y, x)` with pass-by-reference.",
+          "Student: Okay, let me think about this. So, we need to figure out what `u`, `v`, and `w` need to be *before* the code runs so that `w` will be 0 at the end."
+        ],
+        "reasoning": "The lesson demonstrates exceptional student engagement at the highest level of the ICAP framework. The student consistently participates in interactive learning through discussion, collaboration, and co-construction of knowledge with the teacher. The student actively constructs understanding by working through problems, explaining reasoning, and revising solutions based on feedback. The engagement is consistently constructive and interactive, with the student demonstrating deep cognitive involvement throughout the lesson.",
+        "strengths": [
+          "Student consistently engages in interactive learning (discussion, collaboration)",
+          "Student demonstrates deep cognitive involvement (constructive and interactive levels)",
+          "Student actively constructs understanding through problem-solving and explanation",
+          "Student persists through challenges and revises understanding based on feedback"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in student engagement"
+        ],
+        "suggestions": [
+          "Consider incorporating more peer-to-peer discussion to further enhance interactive engagement",
+          "Encourage students to articulate their thought processes even more explicitly"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You've got the core concept of pass-by reference! Since `b` is an alias for `z`, modifying `z` updates `b` simultaneously.",
+          "Teacher: Remember how `update(a, b)` defines the parameters `a` and `b`... what about `y`? Is `y` a formal parameter... or is it a local/global variable accessed directly?",
+          "Teacher: Not quite. When we work backward through an assignment statement like `x := e` to find the weakest precondition for a postcondition Q, we substitute the expression e in place of the variable x within Q."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge (PCK) by accurately diagnosing student misconceptions regarding parameter passing (aliasing vs. copying) and program verification rules. The teacher effectively distinguishes between formal parameters and global variables and correctly guides the application of the substitution rule for weakest preconditions. The explanations are clear and address specific logical errors in the student's reasoning.",
+        "strengths": [
+          "Accurate identification of complex conceptual pitfalls (e.g., aliasing effects in pass-by-reference).",
+          "Clear distinction between similar mechanisms (pass-by-value vs. value-result).",
+          "Precise correction of the weakest precondition derivation rule."
+        ],
+        "weaknesses": [
+          "Could potentially benefit from visual aids or more varied analogies for the abstract concept of memory aliasing, though the textual tracing was sufficient."
+        ],
+        "suggestions": [
+          "Consider using side-by-side comparisons of parameter passing modes to reinforce the differences visually for future students with similar difficulties."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Double-check the parameter passing mode specified in part (c) of the prompt... Can you review what value-result (copy-in, copy-out) means...",
+          "Teacher: You've correctly identified the input types... Based on that mismatch, what does that mean for whether expression 3 is typeable or not?",
+          "Teacher: Spot on! You applied the substitution rule correctly there."
+        ],
+        "reasoning": "The feedback is consistently constructive and actionable. The teacher confirms specific correct steps ('Spot on', 'That's correct') and provides clear guidance on how to fix errors by asking targeted questions that lead the student to discover the error themselves rather than just stating the correction. The feedback helps the student understand *why* their previous attempt was wrong and *how* to improve.",
+        "strengths": [
+          "Specific and timely feedback on each step.",
+          "Balances praise with corrective guidance.",
+          "Encourages self-correction through probing questions."
+        ],
+        "weaknesses": [
+          "The feedback loops can be repetitive if the student struggles significantly, though here the student eventually grasps the concepts."
+        ],
+        "suggestions": [
+          "Maintain this level of specific, step-by-step feedback to continue reinforcing procedural fluency."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Looking at the last assignment in our program, `w := w + v`, and our postcondition `w = 0`, what expression do we substitute for `w`...",
+          "Teacher: Let's check the function body again from top to bottom. Here are the actual lines of the function: 1. `a = a + y`..."
+        ],
+        "reasoning": "The teacher does not fully 'think aloud' to solve the problems independently. Instead, the teacher guides the student by asking them to perform the next step in the trace or derivation. While this supports learning, it is less of a modeling of the expert's internal thought process and more of a structured exercise. The teacher models *how to check* the code (listing lines) but leaves the core calculation/tracing to the student.",
+        "strengths": [
+          "Clear demonstration of how to re-examine source code when errors occur.",
+          "Structuring the verification process into manageable steps."
+        ],
+        "weaknesses": [
+          "Lack of explicit 'think-aloud' narration showing the expert's decision-making process for the first few steps of a new problem type.",
+          "Relies heavily on student execution rather than teacher modeling of the full solution."
+        ],
+        "suggestions": [
+          "For a particularly difficult first example, the teacher could explicitly narrate the first two steps of a trace to model the cognitive steps involved in tracking variable states, before asking the student to continue."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Take another look at how that affects the value of `z` right after that line executes... What should the value of `z` be at that exact moment?",
+          "Teacher: Now, you have your new postcondition for the second-to-last line: `w + v = 0`. Following the exact same substitution rule, what do you get when you work backward through the second assignment...",
+          "Teacher: Notice what happens on the line `z = b + x`... Take another look... What should the value of `z` be at that exact moment?"
+        ],
+        "reasoning": "The coaching is exemplary. The teacher uses a 'scaffolding' approach, breaking down complex multi-step problems into single, manageable cognitive steps. When the student makes an error, the teacher provides a hint or asks a specific guiding question that leads directly to the resolution without giving away the final answer. The support is adjusted dynamically: when the student is stuck on aliasing, the teacher focuses specifically on the aliasing definition; when the student is stuck on types, the teacher asks them to check the operator definition. This is high-quality, fading guidance.",
+        "strengths": [
+          "Strategic use of hints that promote independent problem solving.",
+          "Dynamic adaptation to student errors (different hints for different types of mistakes).",
+          "Maintains high expectations while providing necessary support."
+        ],
+        "weaknesses": [
+          "None significant observed in the transcript."
+        ],
+        "suggestions": [
+          "This is a strong example of coaching; no changes needed."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: I didn't fully appreciate that `z` wasn't just getting a new value, but that `b` was also being updated... I need to be more careful about how the parameters are linked when passing by reference.",
+          "Student: I was focused on the fact that `z` was passed as `b` and missed that the assignment was actually changing `b`.",
+          "Student: ...How would you summarize your final answer for the entire problem in your own words?"
+        ],
+        "reasoning": "Students are frequently asked to explain their reasoning and reflect on their errors. The teacher explicitly asks for summaries of the process ('How would you summarize... in your own words?') and prompts the student to articulate *why* they made a mistake ('What tripped you up?'). The student demonstrates growth in understanding by articulating their evolving mental models (from seeing parameters as copies to seeing them as aliases).",
+        "strengths": [
+          "Regular opportunities for metacognitive reflection on errors.",
+          "Requirement to summarize final answers explaining the logic.",
+          "Student articulates the conceptual shift clearly."
+        ],
+        "weaknesses": [
+          "Some reflection is prompted by the teacher's success rather than student-initiated."
+        ],
+        "suggestions": [
+          "Encourage students to identify which specific line of code or rule caused the confusion in their summary."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Student: Okay, let's revise part (b)... **Important:** Because `b` and `z` are aliases, this also updates `b` to 8.",
+          "Student: Let's retrace part (b) again... **This is where I was going wrong...**",
+          "Student: Okay, so I need to work backward through `v := 2*v - u` and use the same substitution rule."
+        ],
+        "reasoning": "The engagement is consistently at the Interactive and Constructive levels of the ICAP framework. The student is not passively listening; they are actively constructing their understanding by tracing code, revising their work, and engaging in a back-and-forth dialogue with the teacher. The student engages in 'co-construction' of knowledge, as the teacher provides the framework and hints, but the student performs the cognitive work of tracing, calculating, and justifying. The student also engages in argumentation/justification when defending or explaining their type systems analysis.",
+        "strengths": [
+          "High level of cognitive involvement (tracing, calculating, justifying).",
+          "Active collaboration between teacher and student to resolve complex problems.",
+          "Student takes ownership of the learning process by performing the steps."
+        ],
+        "weaknesses": [
+          "None observed; the student is highly active throughout."
+        ],
+        "suggestions": [
+          "Continue to assign problems that require iterative tracing and justification to maintain this level of constructive engagement."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student accurately traces variable changes in pass-by-value, pass-by-reference, and pass-by-value-result scenarios, demonstrating understanding of parameter passing mechanisms.",
+          "Identifies and explains why pass-by-result is not applicable when functions modify parameters, showing deep content knowledge."
+        ],
+        "reasoning": "The student demonstrates strong PCK by correctly applying concepts of parameter passing (pass-by-value, pass-by-reference, pass-by-value-result) and explaining their implications. They accurately trace variable changes and justify why pass-by-result is inappropriate when parameters are modified, indicating a solid grasp of the subject matter.",
+        "strengths": [
+          "Accurate application of parameter passing concepts",
+          "Clear explanations of variable modifications",
+          "Ability to justify theoretical concepts with practical examples"
+        ],
+        "weaknesses": [
+          "Initially overlooks aliasing effects in pass-by-reference, requiring teacher guidance",
+          "Needs prompting to consider global variable impacts"
+        ],
+        "suggestions": [
+          "Encourage proactive consideration of aliasing in pass-by-reference scenarios",
+          "Promote awareness of global variable interactions in function calls"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher provides specific, actionable feedback on aliasing in pass-by-reference, guiding student to revise traces and deepen understanding.",
+          "Feedback consistently links current performance to learning goals (e.g., understanding parameter passing mechanisms) and future improvement steps."
+        ],
+        "reasoning": "The teacher's feedback is highly effective, consistently addressing learning goals, current performance, and future improvement. It is clear, actionable, and directly contributes to the student's deeper understanding of complex concepts like aliasing and global variable interactions.",
+        "strengths": [
+          "Specific and actionable guidance",
+          "Clear linkage to learning goals",
+          "Promotes deeper conceptual understanding"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue providing detailed, goal-oriented feedback"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher models expert thinking by walking through variable traces, highlighting aliasing effects, and demonstrating how to revise incorrect assumptions.",
+          "Uses think-aloud strategies to make expert reasoning visible (e.g., explaining why pass-by-result is inapplicable)."
+        ],
+        "reasoning": "The teacher effectively models expert thinking by explicitly demonstrating how to trace variable changes, identify misconceptions, and revise understanding. Their think-aloud strategies make complex reasoning processes visible to the student.",
+        "strengths": [
+          "Clear demonstration of expert reasoning",
+          "Effective use of think-aloud strategies",
+          "Makes complex concepts accessible"
+        ],
+        "weaknesses": [
+          "Could incorporate more real-world examples to ground abstract concepts"
+        ],
+        "suggestions": [
+          "Incorporate real-world analogies for abstract concepts like aliasing"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher provides structured guidance (e.g., pointing out aliasing effects) and gradually reduces support as student gains competence.",
+          "Strategically prompts student to revise traces and explanations, fostering independence."
+        ],
+        "reasoning": "The teacher's coaching is highly effective, offering structured support that is gradually removed as the student demonstrates growing competence. Strategic prompts encourage independent problem-solving and deeper understanding.",
+        "strengths": [
+          "Strategic scaffolding",
+          "Gradual release of responsibility",
+          "Fosters independent problem-solving"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Maintain strategic coaching approach"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student consistently reflects on their understanding, articulating thought processes (e.g., realizing the impact of aliasing and global variables).",
+          "Evaluates their own traces and explanations, identifying mistakes and revising accordingly."
+        ],
+        "reasoning": "The student regularly engages in meaningful reflection, explaining their reasoning and evaluating their understanding. They demonstrate metacognitive awareness by identifying errors and revising their work based on teacher feedback.",
+        "strengths": [
+          "Articulates thought processes clearly",
+          "Identifies and corrects mistakes",
+          "Demonstrates metacognitive awareness"
+        ],
+        "weaknesses": [
+          "Could more explicitly evaluate the broader implications of concepts like aliasing"
+        ],
+        "suggestions": [
+          "Encourage broader reflection on conceptual implications"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student and teacher consistently engage in interactive learning through discussion, collaboration, and co-construction of understanding.",
+          "Student actively participates in problem-solving, revising traces, and justifying answers."
+        ],
+        "reasoning": "The interaction is highly interactive, with both student and teacher actively contributing to the co-construction of understanding. The student demonstrates high cognitive engagement through active participation in problem-solving and revision tasks.",
+        "strengths": [
+          "High level of interactive engagement",
+          "Active student participation",
+          "Collaborative problem-solving"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue fostering interactive and collaborative learning"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 87.8,
+    "interpretation": "Very Good pedagogy"
+  }
+}

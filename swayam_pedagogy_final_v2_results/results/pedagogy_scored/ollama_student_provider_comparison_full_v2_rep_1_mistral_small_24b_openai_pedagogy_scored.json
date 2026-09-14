@@ -1,0 +1,371 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_mistral_small_24b_openai",
+    "student_model": "mistral-small:24b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which exact phrase(s) in the assignment prompt tell you how names inside the function (like a, b, x, y, z) are treated \u2014 e.g., which are local copies, which are aliases, and how outputs are copied back? Quote the relevant line(s) from the prompt.",
+          "Teacher: Good\u2014that line is relevant. Now focus on (b). When you call update(x, z) with pass-by-reference, which variables do a and b alias (which globals)? After you execute the first statement inside the function, a = a + y, what are the current values of x, y, and z (write them out)? Use those current values when you evaluate the next statement y = b + x and show the value of the LHS for that line.",
+          "Teacher: Good. Now handle the third statement in the function: b = a - z. - Which variable is on the LHS (what does b alias)? - Using the current values (x = 5, y = 10, z = 5), compute the RHS a - z and give the new value assigned to the LHS. - Then state the updated values of x, y, and z after that assignment.",
+          "Teacher: Good\u2014that's correct: the output-copy sentence does not apply to pass-by-reference. That earlier point was a misconception and you fixed it.",
+          "Teacher: Good\u2014your revision for (3) is consistent. Now let's proceed one step at a time.",
+          "Teacher: Good \u2014 your backward substitutions are applied correctly and give wp: w = -2v + u + 3.",
+          "Teacher: Good \u2014 you corrected the misreading."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by consistently transforming complex programming concepts (e.g., parameter passing schemes, Hoare triples, weakest preconditions) into clear, step-by-step explanations. The teacher identifies and corrects student misconceptions (e.g., pass-by-reference vs. pass-by-result, misreadings of the prompt) and uses precise terminology. However, the teacher occasionally allows student misreadings to persist before correcting them, which slightly reduces the consistency of the PCK.",
+        "strengths": [
+          "Clear, step-by-step breakdown of complex concepts (e.g., parameter passing, weakest preconditions).",
+          "Proactive identification and correction of student misconceptions.",
+          "Use of precise terminology and structured guidance.",
+          "Adaptation to student needs by revisiting and clarifying points."
+        ],
+        "weaknesses": [
+          "Occasional delays in correcting student misreadings or misconceptions.",
+          "Some explanations could benefit from more varied examples or analogies to deepen understanding."
+        ],
+        "suggestions": [
+          "Address student misconceptions immediately to prevent reinforcement of incorrect ideas.",
+          "Incorporate more diverse examples or analogies to illustrate concepts like parameter passing schemes.",
+          "Encourage students to quote the prompt verbatim to avoid misreadings."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good\u2014that line is relevant.",
+          "Teacher: Good. Now handle the third statement in the function: b = a - z.",
+          "Teacher: Good\u2014that's correct: the output-copy sentence does not apply to pass-by-reference.",
+          "Teacher: Good \u2014 your backward substitutions are applied correctly and give wp: w = -2v + u + 3.",
+          "Teacher: Good \u2014 you corrected the misreading.",
+          "Teacher: Good \u2014 you correctly quoted Step 2."
+        ],
+        "reasoning": "The teacher provides consistent and actionable feedback, often affirming correct steps and guiding the student toward corrections. The feedback is specific, referencing exact lines or steps from the student's work. However, the feedback is sometimes limited to brief affirmations (e.g., 'Good') without deeper explanation of why a step is correct or how to improve.",
+        "strengths": [
+          "Feedback is timely and directly tied to student responses.",
+          "Affirmations are specific and reference the student's work.",
+          "Feedback guides the student toward corrections without providing the answer outright."
+        ],
+        "weaknesses": [
+          "Feedback is occasionally too brief (e.g., 'Good') and lacks depth or explanation.",
+          "Lacks explicit next steps or actionable advice in some cases."
+        ],
+        "suggestions": [
+          "Expand feedback to include explanations of why a step is correct or incorrect.",
+          "Provide more explicit next steps or actionable advice to guide the student further.",
+          "Use feedback to connect student work to broader concepts or principles."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Before we rework any calculations, which exact phrase(s) in the assignment prompt tell you how names inside the function (like a, b, x, y, z) are treated \u2014 e.g., which are local copies, which are aliases, and how outputs are copied back? Quote the relevant line(s) from the prompt.",
+          "Teacher: Good\u2014that line is relevant. Now focus on (b). When you call update(x, z) with pass-by-reference, which variables do a and b alias (which globals)? After you execute the first statement inside the function, a = a + y, what are the current values of x, y, and z (write them out)? Use those current values when you evaluate the next statement y = b + x and show the value of the LHS for that line.",
+          "Teacher: Good. Now handle the third statement in the function: b = a - z. - Which variable is on the LHS (what does b alias)? - Using the current values (x = 5, y = 10, z = 5), compute the RHS a - z and give the new value assigned to the LHS. - Then state the updated values of x, y, and z after that assignment."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by guiding the student through problem-solving steps, but the modeling is primarily through questioning rather than explicit demonstrations of the teacher's own thought process. The teacher does not consistently use think-aloud strategies or real-world examples to make their reasoning visible.",
+        "strengths": [
+          "Guides the student through problem-solving steps with structured questions.",
+          "Encourages the student to think critically and justify their reasoning."
+        ],
+        "weaknesses": [
+          "Lacks explicit demonstrations of the teacher's own thought process (e.g., think-aloud).",
+          "Does not consistently use real-world examples or analogies to model expert thinking."
+        ],
+        "suggestions": [
+          "Incorporate think-aloud strategies to explicitly model expert reasoning.",
+          "Use real-world examples or analogies to demonstrate how concepts apply in practice.",
+          "Provide worked examples to illustrate the problem-solving process."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good\u2014that line is relevant. Now focus on (b). When you call update(x, z) with pass-by-reference, which variables do a and b alias (which globals)? After you execute the first statement inside the function, a = a + y, what are the current values of x, y, and z (write them out)? Use those current values when you evaluate the next statement y = b + x and show the value of the LHS for that line.",
+          "Teacher: Good. Now handle the third statement in the function: b = a - z. - Which variable is on the LHS (what does b alias)? - Using the current values (x = 5, y = 10, z = 5), compute the RHS a - z and give the new value assigned to the LHS. - Then state the updated values of x, y, and z after that assignment.",
+          "Teacher: Good \u2014 your backward substitutions are applied correctly and give wp: w = -2v + u + 3.",
+          "Teacher: Good \u2014 you corrected the misreading."
+        ],
+        "reasoning": "The teacher provides structured guidance and scaffolding, breaking down complex problems into smaller, manageable steps. The teacher adapts their support to the student's progress, gradually reducing assistance as the student demonstrates competence. However, the scaffolding could be more explicitly faded to encourage independence.",
+        "strengths": [
+          "Provides structured, step-by-step guidance to support student learning.",
+          "Adapts support to the student's progress and needs.",
+          "Encourages the student to think critically and justify their reasoning."
+        ],
+        "weaknesses": [
+          "Scaffolding is not always explicitly faded to encourage student independence.",
+          "Could provide more opportunities for the student to self-correct before offering guidance."
+        ],
+        "suggestions": [
+          "Explicitly fade scaffolding as the student demonstrates competence.",
+          "Encourage the student to attempt self-correction before providing guidance.",
+          "Use open-ended questions to promote deeper thinking and independence."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: Okay, let's break down the pseudocode and the different cases for parameter passing.",
+          "Student: Pass-by-result, which does not copy actuals into formals at entry but only copies out at return, is inapplicable here because the function body reads a and b in the lines a = a + y and y = b + x before those formals would ever be assigned, leading to undefined behavior when trying to read uninitialized values of a and b.",
+          "Student: The exact phrase from the prompt that supports copying outputs back left-to-right is: 'output arguments are copied back to parameters in the left-to-right order.'"
+        ],
+        "reasoning": "The teacher encourages reflection by asking the student to justify their reasoning and quote the prompt. However, the student's reflection is often limited to paraphrasing or quoting the prompt, rather than deeply articulating their thought processes. The teacher does not consistently prompt the student to explain their reasoning in depth.",
+        "strengths": [
+          "Encourages the student to justify their reasoning and quote the prompt.",
+          "Prompts the student to reflect on their understanding of concepts."
+        ],
+        "weaknesses": [
+          "Student reflection is often limited to paraphrasing or quoting the prompt.",
+          "Lacks consistent prompts for deeper articulation of thought processes."
+        ],
+        "suggestions": [
+          "Prompt the student to explain their reasoning in greater depth, beyond quoting the prompt.",
+          "Encourage the student to reflect on their understanding and identify gaps or misconceptions.",
+          "Use open-ended questions to promote deeper reflection and articulation of thought processes."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student: Okay, let's break down the pseudocode and the different cases for parameter passing.",
+          "Student: Okay, so for case (b) where update(x, z) is called with pass-by-reference, the variables a and b alias x and z, respectively.",
+          "Student: The variable on the LHS is z, which aliases the global variable z. Using the current values (x = 15, y = 10, z = 0), we evaluate the RHS step by step:",
+          "Student: Pass-by-result, which does not copy actuals into formals at entry but only copies out at return, is inapplicable here because the function body reads a and b in the lines a = a + y and y = b + x before those formals would ever be assigned, leading to undefined behavior when trying to read uninitialized values of a and b."
+        ],
+        "reasoning": "The student is consistently engaged in constructive activities, such as breaking down problems, explaining reasoning, and justifying their answers. The engagement is primarily constructive (self-explaining, summarizing) and occasionally interactive (responding to the teacher's questions). However, there is limited evidence of collaborative or co-constructive engagement (e.g., peer discussion or joint problem-solving).",
+        "strengths": [
+          "Student is consistently engaged in constructive activities (e.g., self-explaining, summarizing).",
+          "Student responds thoughtfully to the teacher's questions and justifies their reasoning.",
+          "Engagement is sustained throughout the lesson."
+        ],
+        "weaknesses": [
+          "Limited evidence of interactive or collaborative engagement (e.g., peer discussion).",
+          "Engagement is primarily driven by the teacher's questions rather than student-initiated exploration."
+        ],
+        "suggestions": [
+          "Encourage more interactive or collaborative activities, such as peer discussion or joint problem-solving.",
+          "Provide opportunities for the student to initiate exploration or questions.",
+          "Use group activities or discussions to promote co-construction of knowledge."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You treated the assignment v := 2*v - u as the equation v = 2*v - u and tried to 'solve' it \u2014 that\u2019s a misconception.",
+          "Teacher: You mixed up terms. Value-result (aka copy-in/copy-out) does copy initial actual values into formals at entry; pass-by-result (output-only) does not copy in \u2014 it only copies out at return.",
+          "Teacher: Quick note: I see a likely misconception on (3) \u2014 you treated 5 (an int) as matching a float parameter."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by identifying specific, subtle misconceptions in computer science concepts (parameter passing, type systems, Hoare logic). The teacher correctly distinguishes between pass-by-reference, pass-by-value, and pass-by-result semantics, and clarifies the syntactic vs. semantic interpretation of assignment statements in formal methods. The teacher also correctly identifies a type-coercion misconception in the operator typing question.",
+        "strengths": [
+          "Accurately identifies deep CS misconceptions (e.g., treating assignment as alpha-equation in WP).",
+          "Clear definitions of parameter passing schemes (copy-in/copy-out vs output-only).",
+          "Correct handling of type strictness in operator overloading questions."
+        ],
+        "weaknesses": [
+          "The teacher struggles to verify the exact source text of the assignment prompt, leading to repetitive corrections that do not always confirm the specific wording the student is misquoting.",
+          "In the Hoare logic section, the teacher corrects the student's reading of 'v' for 'u' but does not explicitly model the full derivation of the termination condition (Part 3a) to ensure the student understands why termination is trivial for this specific loop-free code (or if loops are implied)."
+        ],
+        "suggestions": [
+          "Explicitly model the difference between a program fragment and a mathematical equation to reinforce the WP rule.",
+          "Provide a structural overview of why termination is guaranteed for straight-line code to prevent students from looking for non-existent division-by-zero errors."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: Your first two steps are correct.",
+          "Teacher: Close: the 'passed by reference' phrase does support treating a and b as aliases. But your use of... is a misconception.",
+          "Teacher: Good\u2014your revision for (3) is consistent."
+        ],
+        "reasoning": "The teacher provides frequent, specific, and actionable feedback. It rarely uses generic praise; instead it validates correct steps and immediately pivots to the next specific error. The feedback helps the student understand exactly which part of their logic was flawed (e.g., conflating aliasing with copy-back rules) and guides them to the correct conclusion.",
+        "strengths": [
+          "High specificity: Feedback targets exact lines of code and specific logical steps.",
+          "Balanced use of validation ('Good') and correction ('misconception').",
+          "Actionable directives: Always tells the student what to do next (e.g., 'Quote the relevant line', 'Revise the calculation')."
+        ],
+        "weaknesses": [
+          "In the latter half (Hoare logic), the feedback becomes repetitive regarding the 'verbatim quoting' instruction without always providing the correct quote first, which can be frustrating for the student who is trying to recall the exact text."
+        ],
+        "suggestions": [
+          "When correcting quotes of the prompt, provide the correct quote explicitly in the feedback so the student has a reference point for their revision."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Using the current values (x = 5, y = 10, z = 5), compute the RHS a - z and give the new value assigned to the LHS.",
+          "Teacher: Use that rule to transform the condition you found for the last statement (w + v = 0) across the statement v := 2*v - u..."
+        ],
+        "reasoning": "The teacher does not model the full solution. Instead, they use a guided discovery approach, asking the student to perform the computational steps. While this is effective for engagement, it limits the explicit 'modeling' of expert thinking. The teacher models the structure of the argument (what to hold constant, what to substitute) but not the full algebraic manipulation. The student is left to do the 'heavy lifting' without seeing the expert's internal reasoning process for variable substitution in complex constraints.",
+        "strengths": [
+          "Models the decomposition of complex problems into single-step verifications.",
+          "Demonstrates the expected format for justification (stating current state, applying rule, stating new state)."
+        ],
+        "weaknesses": [
+          "Lacks a 'think-aloud' segment where the teacher demonstrates a similar but different problem from start to finish.",
+          "Does not explicitly verbalize the cognitive strategy for tracking variable states in pass-by-reference scenarios beyond the specific instance."
+        ],
+        "suggestions": [
+          "Include a brief think-aloud demo for one of the variable tracking steps: 'I'm looking at line 2. I need to know what x, y, z are. Since a aliases x, when I see 'a', I check x.'",
+          "Show a full worked example of the WP substitution rule before asking the student to apply it, or at least walk through the first substitution explicitly."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Now focus on (b). When you call update(x, z)... which variables do a and b alias...",
+          "Teacher: One step at a time: what values are copied into the formal parameters a and b...",
+          "Teacher: Hint: remove 'as implied by' and simply append the quoted prompt phrase after your definition..."
+        ],
+        "reasoning": "The coaching is exceptional. The teacher uses a 'one step at a time' strategy, breaking down complex multi-line code execution into single-line verifications. This scaffolding is precisely calibrated: it provides just enough support to keep the student on track without doing the work for them. The hint provided near the end for the wording of the final sentence is a perfect example of fading support (focused on expression rather than logic). The teacher adjusts the scaffolding based on student performance (more direct questions when the student is lost, more open questions when they are on track).",
+        "strengths": [
+          "Excellent use of step-by-step scaffolding for complex state-tracking problems.",
+          "Hints are targeted and specific to the student's error (e.g., correcting logical conflation, then correcting linguistic precision).",
+          "Scaffolding effectively fades from structural support (which variable?) to content support (what is the value?) to precision support (wording/quotes)."
+        ],
+        "weaknesses": [
+          "The repetitive insistence on verbatim quoting of the prompt may feel like 'drilling' rather than coaching if the student is actually understanding the concept but misremembering the text. However, in this context, it serves to anchor the student to the source material."
+        ],
+        "suggestions": [
+          "Continue this approach. It is highly effective for complex procedural reasoning."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Student: So the updated steps for the first two lines are... (Student explains aliasing and calculation).",
+          "Student: My earlier phrasing was a misreading because I incorrectly paraphrased the prompt.",
+          "Student: The variable on the LHS is z, which aliases the global variable z... (Student explains evaluation order)."
+        ],
+        "reasoning": "The student is consistently asked to articulate their reasoning. They must state which variables alias which, why a calculation was done in a certain order, and why a specific quote supports their conclusion. The prompt explicitly asks the student to 'briefly explain your evaluation order' and 'state... why your earlier version was wrong.' This forces metacognitive reflection on both the cognitive process (how I tracked variables) and the source of error (misreading the prompt).",
+        "strengths": [
+          "Students are required to explain the 'why' behind their calculations, not just the 'what'.",
+          "Regular opportunities to reflect on and correct prior misconceptions (e.g., explaining why the 'copy-back' rule doesn't apply).",
+          "Reflection is tied directly to evidence (quoting the prompt)."
+        ],
+        "weaknesses": [
+          "The reflection can become rote in the final sections, focusing heavily on quoting text rather than deep conceptual reflection on the Hoare logic implications."
+        ],
+        "suggestions": [
+          "Encourage students to reflect on the *utility* of the concept: e.g., 'Why is pass-by-result dangerous here?' to deepen the reflection beyond just identifying the error."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Inside the function: 1. a = a + y => x = 3 + 2 => x = 5... (Student performs active calculation).",
+          "Student: So the final global values of x, y, and z... are x = 11, y = 4, z = -1.",
+          "Student: Pass-by-result... is inapplicable here because the function body reads a and b... (Student constructs argument)."
+        ],
+        "reasoning": "The engagement is consistently at the Interactive/Constructive level (ICAP framework). The student is not just listening; they are actively manipulating variables, tracking state, constructing logical arguments for type-checking, and revising their based on feedback. Every turn requires the student to produce new cognitive work (calculating a specific value, justifying a step, or revising a definition). There is no passive listening phase; the student is constantly 'doing' the computer science.",
+        "strengths": [
+          "High cognitive demand: Students must track multiple state variables simultaneously.",
+          "Constructive engagement: Students build the solution incrementally, testing hypotheses about aliasing and type rules.",
+          "No passive segments: Every teacher prompt leads to active student production."
+        ],
+        "weaknesses": [
+          "The repetitive nature of the 'quote the prompt' task towards the end may lower engagement levels if it feels mechanical, though it is still active in terms of text manipulation."
+        ],
+        "suggestions": [
+          "Maintain this high level of interaction. The balance of calculation and justification is ideal for this topic."
+        ]
+      }
+    },
+    "cohere": {
+      "error": "Failed to parse JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_output": "pson {\n  \"PCK\": {\n    \"score\": 3,\n    \"confidence\": 75,\n    \"evidence\": [\n      \"Student correctly identifies the need to analyze each statement backward to find the weakest precondition.\",\n      \"Student applies the WP rule for assignments, substituting expressions into the postcondition.\",\n      \"Student misreads the first statement as v := u + 3 instead of u := u + 3, leading to incorrect precondition derivation.\"\n    ],\n    \"reasoning\": \"The student demonstrates adequate understanding of weakest precondition (WP) concepts, correctly applying the WP rule for assignments. However, a critical misreading of the first statement (u := u + 3 vs. v := u + 3) leads to an incorrect derivation of the precondition. This error significantly impacts the overall correctness of the solution.\",\n    \"strengths\": [\n      \"Correct application of WP rule for assignments.\",\n      \"Understanding of backward analysis for precondition derivation.\"\n    ],\n    \"weaknesses\": [\n      \"Misreading of program statements leads to incorrect precondition.\",\n      \"Lack of careful verification of program details before applying rules.\"\n    ],\n    \"suggestions\": [\n      \"Double-check program statements before applying WP rules.\",\n      \"Practice identifying and correcting errors in precondition derivation.\"\n    ]\n  },\n  \"Feedback\": {\n    \"score\": 2,\n    \"confidence\": 80,\n    \"evidence\": [\n      \"Teacher provides specific corrections and guidance on misread statements and WP rule application.\",\n      \"Feedback is reactive rather than proactive, addressing errors after they occur.\",\n      \"Limited evidence of feedback helping student understand the underlying concepts.\"\n    ],\n    \"reasoning\": \"The teacher provides feedback that identifies specific errors and guides the student toward corrections. However, the feedback is primarily reactive, addressing mistakes after they occur rather than proactively preventing them. There is limited evidence that the feedback helps the student deeply understand the concepts or improve their approach independently.\",\n    \"strengths\": [\n      \"Specific corrections on misread statements and rule application.\",\n      \"Guided steps for correct WP rule usage.\"\n    ],\n    \"weaknesses\": [\n      \"Feedback is reactive rather than proactive.\",\n      \"Limited evidence of student understanding improvement.\"\n    ],\n    \"suggestions\": [\n      \"Provide more proactive feedback to prevent common errors.\",\n      \"Incorporate explanations of underlying concepts in feedback.\"\n    ]\n  },\n  \"Modeling\": {\n    \"score\": 2,\n    \"confidence\": 85,\n    \"evidence\": [\n      \"Student attempts to model the WP derivation process but makes critical errors in statement interpretation.\",\n      \"Incorrect modeling of the first statement leads to flawed precondition derivation.\",\n      \"Limited evidence of student understanding the relationship between program statements and WP rules.\"\n    ],\n    \"reasoning\": \"The student attempts to model the WP derivation process but makes critical errors in interpreting program statements. The incorrect modeling of the first statement (u := u + 3 vs. v := u + 3) leads to a flawed precondition derivation. There is limited evidence that the student understands how program statements relate to WP rules, indicating a need for more practice and guidance.\",\n    \"strengths\": [\n      \"Attempt to apply WP rules to program statements.\"\n    ],\n    \"weaknesses\": [\n      \"Critical errors in interpreting program statements.\",\n      \"Limited understanding of WP rule application.\"\n    ],\n    \"suggestions\": [\n      \"Practice interpreting program statements accurately.\",\n      \"Reinforce the relationship between program statements and WP rules.\"\n    ]\n  },\n  \"Coaching\": {\n    \"score\": 3,\n    \"confidence\": 80,\n    \"evidence\": [\n      \"Teacher provides step-by-step guidance on correcting misread statements and applying WP rules.\",\n      \"Coaching is responsive to student errors but does not proactively build independence.\",\n      \"Limited evidence of student applying corrections independently.\"\n    ],\n    \"reasoning\": \"The teacher provides step-by-step guidance to correct the student's errors and apply WP rules correctly. However, the coaching is primarily responsive to mistakes rather than proactively building the student's independence. There is limited evidence that the student can apply corrections independently, suggesting a need for more structured practice and scaffolding.\",\n    \"strengths\": [\n      \"Step-by-step guidance on error correction.\",\n      \"Responsive coaching to student mistakes.\"\n    ],\n    \"weaknesses\": [\n      \"Limited focus on building student independence.\",\n      \"Student struggles to apply corrections independently.\"\n    ],\n    \"suggestions\": [\n      \"Incorporate more structured practice to build independence.\",\n      \"Provide opportunities for student to apply corrections without immediate guidance.\"\n    ]\n  },\n  \"Reflection\": {\n    \"score\": 2,\n    \"confidence\": 70,\n    \"evidence\": [\n      \"Student reflects on errors after teacher feedback but does not demonstrate deep understanding of underlying concepts.\",\n      \"Limited evidence of student connecting mistakes to broader principles.\",\n      \"Reflection is superficial and focused on specific errors rather than conceptual understanding.\"\n    ],\n    \"reasoning\": \"The student reflects on errors after receiving teacher feedback but does not demonstrate a deep understanding of the underlying concepts. The reflection is superficial, focusing on specific errors rather than connecting mistakes to broader principles. There is limited evidence that the student is developing a conceptual framework to avoid similar errors in the future.\",\n    \"strengths\": [\n      \"Acknowledgment of specific errors after feedback.\"\n    ],\n    \"weaknesses\": [\n      \"Superficial reflection focused on specific errors.\",\n      \"Limited connection to broader conceptual understanding.\"\n    ],\n    \"suggestions\": [\n      \"Encourage deeper reflection on underlying concepts.\",\n      \"Help student connect specific errors to broader principles.\"\n    ]\n  },\n  \"Engagement\": {\n    \"score\": 3,\n    \"confidence\": 85,\n    \"evidence\": [\n      \"Student actively engages with the problem, attempting to apply WP rules and correct errors.\",\n      \"Engagement is primarily reactive to teacher feedback rather than proactive problem-solving.\",\n      \"Limited evidence of student taking initiative to verify program statements or apply rules independently.\"\n    ],\n    \"reasoning\": \"The student actively engages with the problem, attempting to apply WP rules and correct errors. However, the engagement is primarily reactive to teacher feedback rather than proactive problem-solving. There is limited evidence that the student takes initiative to verify program statements or apply rules independently, indicating a need for more guided practice and encouragement of independent thinking.\",\n    \"strengths\": [\n      \"Active engagement with problem-solving.\",\n      \"Attempt to apply WP rules and correct errors.\"\n    ],\n    \"weaknesses\": [\n      \"Engagement is reactive rather than proactive.\",\n      \"Limited independent verification of program statements.\"\n    ],\n    \"suggestions\": [\n      \"Encourage proactive problem-solving and independent verification.\",\n      \"Provide more guided practice to build confidence in applying rules independently.\"\n    ]\n  }\n}"
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 3,
+        "individual_scores": [
+          3,
+          3
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Coaching": {
+        "mean": 4.5,
+        "individual_scores": [
+          4,
+          5
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Reflection": {
+        "mean": 3.5,
+        "individual_scores": [
+          3,
+          4
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Engagement": {
+        "mean": 4.5,
+        "individual_scores": [
+          4,
+          5
+        ],
+        "agreement_stdev": 0.5
+      }
+    },
+    "pedagogy_score": 78.3,
+    "interpretation": "Good pedagogy"
+  }
+}

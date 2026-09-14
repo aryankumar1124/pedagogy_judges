@@ -1,0 +1,490 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_phi3_mini_gemini",
+    "student_model": "phi3:mini",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 3,
+        "confidence": 70,
+        "evidence": [
+          "Teacher explains pass-by-value and pass-by-reference with step-by-step code tracing: 'When parameters are passed by value into a function, the function receives copies of x and y (which are 3 and 2). Any changes made to the parameters a and b inside the function will modify those local copies, but the original global variables x and y outside the function remain unchanged.'",
+          "Teacher provides full solutions for all parts (a-d) and Question 2 with clear derivations: 'For update(x, y) passed by value with initial values x = 3, y = 2, z = 5: Inside the function, a and b are local copies of x and y.'",
+          "Teacher clarifies weakest precondition derivation: 'When computing the weakest precondition for an assignment statement like w := w + v with a postcondition Q: w = 0, we substitute the expression being assigned (w + v) in place of the variable w inside Q.'"
+        ],
+        "reasoning": "The teacher demonstrates strong conceptual understanding of parameter passing mechanisms and weakest precondition logic. However, the explanations are reactive (only provided after repeated student confusion) and lack proactive identification of common misconceptions. The teacher does not use multiple representations or analogies to explain concepts.",
+        "strengths": [
+          "Clear, accurate explanations of technical concepts (pass-by-value/reference, weakest precondition)",
+          "Step-by-step derivations provided for complex problems",
+          "Consistent use of code examples to illustrate concepts"
+        ],
+        "weaknesses": [
+          "Explanations are reactive rather than proactive",
+          "No evidence of addressing common student misconceptions",
+          "Lacks multiple representations or analogies",
+          "No adaptation to student needs beyond repeating explanations"
+        ],
+        "suggestions": [
+          "Proactively identify and address common misconceptions about parameter passing",
+          "Use analogies (e.g., 'pass-by-value is like making a photocopy') to explain concepts",
+          "Provide multiple representations (visual diagrams, memory models) for complex topics",
+          "Adapt explanations based on student responses rather than repeating the same approach"
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 60,
+        "evidence": [
+          "Teacher provides full solutions without first checking student understanding: 'Let's walk through the full solution for part (a) so you can review it'",
+          "Teacher gives complete derivations without guiding students through the process: 'Let's look at part (b) (pass by reference) together!' followed by full solution",
+          "No evidence of feedback on student performance or next steps"
+        ],
+        "reasoning": "The teacher provides correct information but does not engage in formative assessment or provide actionable feedback. The feedback is primarily in the form of complete solutions rather than guidance toward improvement.",
+        "strengths": [
+          "Provides accurate, complete solutions when students struggle",
+          "Maintains patience despite communication difficulties"
+        ],
+        "weaknesses": [
+          "No formative feedback on student performance",
+          "Solutions provided without first assessing student understanding",
+          "No guidance on next steps or how to improve",
+          "No identification of strengths/weaknesses in student work"
+        ],
+        "suggestions": [
+          "Ask probing questions to assess student understanding before providing solutions",
+          "Provide partial solutions and guide students to complete them",
+          "Give specific feedback on what students did well and where they need improvement",
+          "Offer actionable next steps for students to try"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 80,
+        "evidence": [
+          "Teacher demonstrates expert thinking through step-by-step code tracing: 'Line 1 (a = a + y): a becomes 3 + 2 = 5. Line 2 (y = b + x): modifies local variable y (the parameter b is 2, x is 3), so local y becomes 2 + 3 = 5.'",
+          "Teacher models weakest precondition derivation: 'When computing the weakest precondition for an assignment statement like w := w + v with a postcondition Q: w = 0, we substitute the expression being assigned (w + v) in place of the variable w inside Q.'",
+          "Teacher shows complete problem-solving process for all parts"
+        ],
+        "reasoning": "The teacher consistently models expert thinking through detailed, step-by-step demonstrations of problem-solving processes. The think-aloud approach is clear and thorough, though it could be more interactive.",
+        "strengths": [
+          "Consistent demonstration of expert problem-solving",
+          "Clear, step-by-step think-aloud explanations",
+          "Models both code execution and formal verification processes"
+        ],
+        "weaknesses": [
+          "Modeling is primarily one-way (teacher to student) with limited student participation",
+          "Could make the thinking process more interactive by involving students in the derivation"
+        ],
+        "suggestions": [
+          "Involve students in the modeling process by asking them to predict next steps",
+          "Use more think-aloud strategies during initial explanations",
+          "Encourage students to verbalize their own thinking processes"
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 50,
+        "evidence": [
+          "Teacher provides full solutions without scaffolding: 'Let's walk through the full solution for part (a) so you can review it'",
+          "Teacher attempts to simplify questions but still provides complete answers: 'Let's keep it extremely simple: can you just tell me what the initial value of variable x is in the setup (x = 3; y = 2; z = 5;)?'",
+          "No evidence of gradual fading of support or adaptive scaffolding"
+        ],
+        "reasoning": "The teacher provides support but it is not structured or adaptive. There is no evidence of scaffolding that fades as student competence grows, and the support is often in the form of complete solutions rather than hints or guidance.",
+        "strengths": [
+          "Provides support when students struggle",
+          "Attempts to simplify questions for clarity"
+        ],
+        "weaknesses": [
+          "Support is not structured or adaptive",
+          "No evidence of scaffolding that fades over time",
+          "Often provides complete solutions rather than hints",
+          "No differentiation based on student needs"
+        ],
+        "suggestions": [
+          "Provide hints and partial solutions instead of complete answers",
+          "Structure support to gradually increase student independence",
+          "Use questioning techniques to guide students toward solutions",
+          "Adapt the level of support based on student responses"
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 40,
+        "evidence": [
+          "No evidence of students being asked to explain their reasoning",
+          "No reflection activities or prompts in the transcript",
+          "Teacher does not ask students to articulate their thought processes"
+        ],
+        "reasoning": "There is no evidence in the transcript of students being asked to explain their reasoning, reflect on their understanding, or articulate their thought processes. The interaction is entirely teacher-directed with no student reflection.",
+        "strengths": [],
+        "weaknesses": [
+          "No student reflection activities",
+          "No prompts for students to explain their thinking",
+          "No opportunities for students to articulate understanding",
+          "Interaction is entirely one-way (teacher to student)"
+        ],
+        "suggestions": [
+          "Ask students to explain their reasoning before providing solutions",
+          "Incorporate reflection questions (e.g., 'How did you arrive at that answer?')",
+          "Use think-pair-share or other collaborative reflection activities",
+          "Encourage students to summarize what they've learned"
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 50,
+        "evidence": [
+          "Student responses are garbled and non-substantive: 'I's the_', 'In a)', 'You are you'",
+          "Teacher attempts to engage with questions but receives no meaningful student input",
+          "No evidence of constructive or interactive student activities"
+        ],
+        "reasoning": "The transcript shows very low levels of meaningful student engagement. The student responses are garbled and do not demonstrate active, constructive, or interactive participation. The teacher attempts to engage but the interaction remains at a passive level.",
+        "strengths": [
+          "Teacher makes consistent attempts to engage students with questions"
+        ],
+        "weaknesses": [
+          "Student responses are non-substantive and garbled",
+          "No evidence of active, constructive, or interactive engagement",
+          "Interaction is primarily teacher-directed with no student contribution"
+        ],
+        "suggestions": [
+          "Use more interactive activities (e.g., think-pair-share, group problem-solving)",
+          "Incorporate questions that require students to explain, predict, or evaluate",
+          "Provide opportunities for students to work through problems collaboratively",
+          "Use formative assessment techniques to check for understanding"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "When parameters are passed by value into a function, what happens to the local parameters a and b inside update in relation to the original variables x and y?",
+          "When parameters are passed by reference... they point to the exact same memory locations.",
+          "In value-result, the initial values are copied into the parameters at the start, and the final values of the parameters are copied back to the arguments in left-to-right order when the function exits."
+        ],
+        "reasoning": "The teacher provides accurate, clear, and structured explanations of complex computational concepts like pass-by-value, pass-by-reference, and weakest preconditions. The teacher successfully breaks down formal logic (Hoare logic) into manageable substitutions. However, the ability to address misconceptions or adapt explanations based on student input is limited because the student provides no coherent input to react to.",
+        "strengths": [
+          "Accurate technical definitions and explanations.",
+          "Clear step-by-step logical breakdowns of code execution and formal logic.",
+          "Consistent use of precise terminology."
+        ],
+        "weaknesses": [
+          "Limited ability to check for understanding or correct misconceptions due to lack of student feedback.",
+          "Explanations become repetitive when the student does not respond intelligibly."
+        ],
+        "suggestions": [
+          "Provide summary sheets or visual aids for complex formal logic steps.",
+          "Prepare simplified alternative explanations in case technical issues prevent dialogue."
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "It seems your messages continue to be affected by formatting or text rendering issues.",
+          "Since you've experienced repeated difficulty getting your response through clearly, let's walk through the full solution for part (a) so you can review it."
+        ],
+        "reasoning": "Feedback is primarily meta-cognitive and technical, addressing the garbling of messages rather than specific learning errors. When the teacher does provide learning feedback, it is often by simply providing the full solution after repeated failure to engage, rather than guiding the student to self-correct or identifying specific conceptual gaps.",
+        "strengths": [
+          "Patience with technical issues.",
+          "Recognition that the current interaction mode is not yielding learning outcomes."
+        ],
+        "weaknesses": [
+          "Lack of specific actionable feedback on student understanding.",
+          "Reliance on providing complete answers when student input is unintelligible, which does not help the student learn *how* to get there if they actually engaged."
+        ],
+        "suggestions": [
+          "If technical issues persist, shift to a worksheet or written instruction mode.",
+          "Use rubric-based feedback for submitted work if live dialogue fails."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Let's trace the first line of the function: a = a + y; Since a starts as 3 and y starts as 2, a becomes 3 + 2 = 5.",
+          "1. a = a + y; -> x becomes 3 + 2 = 5. 2. y = b + x; -> y (global) becomes 5 + 5 = 10.",
+          "When computing the weakest precondition... we substitute the expression being assigned (w + v) in place of the variable w inside Q."
+        ],
+        "reasoning": "The teacher explicitly models the problem-solving process by tracing variable states line-by-line and demonstrating the substitution method for weakest preconditions step-by-step. This makes the expert's cognitive process visible, even though the student cannot participate in the dialogue.",
+        "strengths": [
+          "Detailed step-by-step tracing of code execution.",
+          "Explicit demonstration of formal logic substitution rules.",
+          "Clear narrative flow of the 'thinking' process for solving the problems."
+        ],
+        "weaknesses": [
+          "Modeling is one-way (lecture-style) due to lack of student interaction.",
+          "No demonstration of debugging or error-checking processes."
+        ],
+        "suggestions": [
+          "Use think-aloud protocols written out in the chat for the student to read.",
+          "Include 'what if' scenarios in the modeling to show flexibility in solving."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Let's start off by looking at part (a). When parameters are passed by value...",
+          "Would you like to try tracing the next line...?",
+          "Can you substitute the expression... and tell me what condition you get?"
+        ],
+        "reasoning": "The teacher attempts to scaffold learning by breaking problems into smaller steps and asking guiding questions. However, because the student's responses are garbled, the scaffolding becomes a repetitive loop of asking and then providing the full answer. The scaffolding does not effectively fade or build independence due to the communication breakdown.",
+        "strengths": [
+          "Attempt to use Socratic questioning.",
+          "Breakdown of complex problems into sequential steps.",
+          "Persistent effort to keep the session on track."
+        ],
+        "weaknesses": [
+          "Scaffolding is ineffective because there is no student signal to adapt to.",
+          "Rapid retreat from coaching to full solution delivery."
+        ],
+        "suggestions": [
+          "Provide a structured worksheet with blanks for the student to fill out instead of live Q&A if connection is poor.",
+          "Time-box the attempts to coach before moving to independent practice resources."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 95,
+        "evidence": [
+          "Student: [Garbled text]",
+          "Teacher: It looks like your message might have gotten garbled or pasted incorrectly.",
+          "Student: [Garbled text]"
+        ],
+        "reasoning": "There is no evidence of student reflection, articulation of reasoning, or metacognition. The student provides no intelligible responses that could be interpreted as explaining reasoning or evaluating understanding. The interaction is entirely teacher-driven.",
+        "strengths": [
+          "None observed."
+        ],
+        "weaknesses": [
+          "Complete absence of student cognitive output.",
+          "No opportunity for student self-assessment or verbalization of thought processes."
+        ],
+        "suggestions": [
+          "Ask for short, specific text answers (e.g., 'Type only the number') to bypass formatting issues.",
+          "Post-lesson reflection prompt via email or next class."
+        ]
+      },
+      "Engagement": {
+        "score": 1,
+        "confidence": 95,
+        "evidence": [
+          "Student: [Garbled text throughout the entire transcript]",
+          "Teacher: Since your messages continue to encounter technical formatting issues... let me provide the full solution."
+        ],
+        "reasoning": "The engagement level is passive (listening/receiving). While the teacher attempts to prompt interactive engagement, the student is unable to participate due to technical errors. There is no evidence of active, constructive, or interactive learning activities being completed by the student. The student is essentially a passive recipient of the teacher's lecture.",
+        "strengths": [
+          "None observed."
+        ],
+        "weaknesses": [
+          "Total lack of student cognitive engagement in the activity.",
+          "Failure of the collaborative/interactive component of the tutoring session."
+        ],
+        "suggestions": [
+          "Switch to asynchronous learning materials where the student can process at their own pace without real-time input constraints.",
+          "Troubleshoot technical issues immediately to restore channel for interaction."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "The transcript shows no clear evidence of the teacher transforming subject matter into understandable forms for students. There are no examples of explanations, addressing misconceptions, or using analogies.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of clear explanations",
+          "No evidence of addressing student misconceptions",
+          "Absence of examples or analogies"
+        ],
+        "suggestions": [
+          "Provide clear and structured explanations of concepts",
+          "Incorporate examples and analogies to illustrate ideas",
+          "Actively identify and address common student misconceptions"
+        ]
+      },
+      "Feedback": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "There is no evidence in the transcript of the teacher providing feedback to students. No instances of identifying strengths, weaknesses, or next steps are present.",
+        "strengths": [],
+        "weaknesses": [
+          "Absence of feedback",
+          "No guidance for improvement",
+          "Lack of performance evaluation"
+        ],
+        "suggestions": [
+          "Provide specific feedback on student performance",
+          "Identify areas of strength and weakness",
+          "Offer actionable guidance for improvement"
+        ]
+      },
+      "Modeling": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "The transcript does not show the teacher demonstrating expert thinking or problem-solving processes. There are no examples of think-aloud strategies or real-world examples.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of expert thinking demonstration",
+          "No problem-solving processes shown",
+          "Absence of think-aloud strategies"
+        ],
+        "suggestions": [
+          "Demonstrate problem-solving processes explicitly",
+          "Use think-aloud strategies to make thinking visible",
+          "Incorporate real-world examples to illustrate concepts"
+        ]
+      },
+      "Coaching": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "There is no evidence of the teacher providing guidance, hints, or structured assistance during learning activities. No support is offered to students.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of support during learning",
+          "No guidance or hints provided",
+          "Absence of scaffolding"
+        ],
+        "suggestions": [
+          "Provide structured guidance and hints during activities",
+          "Offer support tailored to student needs",
+          "Gradually reduce support as students gain competence"
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "The transcript does not show students being asked to explain their reasoning or reflect on their understanding. There are no reflection activities present.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of reflection activities",
+          "No student explanation of reasoning",
+          "Absence of self-assessment"
+        ],
+        "suggestions": [
+          "Incorporate reflection activities into lessons",
+          "Ask students to explain their reasoning",
+          "Encourage self-assessment and evaluation of understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Insufficient Evidence"
+        ],
+        "reasoning": "The transcript shows no evidence of student engagement beyond passive participation. There are no interactive, constructive, or active learning activities.",
+        "strengths": [],
+        "weaknesses": [
+          "Primarily passive learning activities",
+          "Lack of active or interactive engagement",
+          "No constructive activities"
+        ],
+        "suggestions": [
+          "Incorporate active learning strategies",
+          "Encourage constructive activities like self-explanation",
+          "Promote interactive learning through discussion and collaboration"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 2.67,
+        "individual_scores": [
+          3,
+          4,
+          1
+        ],
+        "agreement_stdev": 1.25
+      },
+      "Feedback": {
+        "mean": 1.67,
+        "individual_scores": [
+          2,
+          2,
+          1
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3,
+        "individual_scores": [
+          4,
+          4,
+          1
+        ],
+        "agreement_stdev": 1.41
+      },
+      "Coaching": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          3,
+          1
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Reflection": {
+        "mean": 1,
+        "individual_scores": [
+          1,
+          1,
+          1
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 1.33,
+        "individual_scores": [
+          2,
+          1,
+          1
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 38.9,
+    "interpretation": "Needs significant improvement"
+  }
+}

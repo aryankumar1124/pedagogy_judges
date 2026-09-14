@@ -1,0 +1,484 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen3_30b_openai",
+    "student_model": "qwen3:30b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Which operator definition(s) from the prompt are you using for expression 1... Point to the exact definition(s) and explain, step by step, how the types flow.",
+          "Teacher: Does the operator set given in the prompt include any implicit conversions (for example, int -> float) that would let greater than(10, 5) be typeable? Point to the exact operator definition(s) in the prompt that support your conclusion and explain briefly how that affects expression (3).",
+          "Teacher: Small correction first: you wrote \"10/5\" which looks like a division expression \u2014 I think you meant \"10, 5\" (the integer literals).",
+          "Teacher: Quick check \u2014 a small inconsistency in (1). You wrote final type & output: string, \"10\" (evaluated as \"15\"). Which is correct?",
+          "Teacher: I assume explicit conversion is required (the expression must be rewritten with the conversion operator)."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by consistently guiding students to reference exact operator definitions, justify type flows, and correct misconceptions (e.g., literal typing, implicit conversions). The teacher also adapts explanations to address subtle points (e.g., explicit vs. implicit conversions) and ensures students ground their reasoning in the prompt's constraints.",
+        "strengths": [
+          "Proactively addresses misconceptions (e.g., literal typing, implicit conversions).",
+          "Uses precise, step-by-step reasoning tied to operator definitions.",
+          "Adapts explanations to student errors (e.g., correcting '10/5' to '10, 5').",
+          "Encourages students to cite exact evidence from the prompt."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed; minor typos (e.g., student's initial '10' output) are quickly corrected."
+        ],
+        "suggestions": [
+          "Continue emphasizing the distinction between operator signatures and literal typing rules to reinforce conceptual clarity."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good\u2014your step-by-step for (1) is clear.",
+          "Teacher: Good. Now, please revise your answers for all four expressions (1\u20134). For each one, name the exact operator definition(s) from the prompt you used and show the type flow...",
+          "Teacher: Nice\u2014your evaluations for (1) and (4) look consistent with the operator set.",
+          "Teacher: Good\u2014you're close. One step at a time:",
+          "Teacher: Quick check: which type does the literal 5 have in your reasoning\u2014int or float? Point to the operator definition(s) in the prompt that justify that choice...",
+          "Teacher: Small correction first: you wrote \"10/5\" which looks like a division expression \u2014 I think you meant \"10, 5\" (the integer literals)."
+        ],
+        "reasoning": "The teacher provides highly effective feedback by consistently identifying strengths (e.g., 'Good\u2014your step-by-step is clear'), pinpointing specific errors (e.g., 'Small correction first'), and guiding students to revise their reasoning with actionable next steps (e.g., 'revise your answers for all four expressions'). Feedback is always tied to learning goals (e.g., operator definitions, type flows).",
+        "strengths": [
+          "Feedback is specific, actionable, and tied to learning goals.",
+          "Balances praise with constructive criticism.",
+          "Encourages students to justify their reasoning with evidence.",
+          "Provides step-by-step guidance for improvement."
+        ],
+        "weaknesses": [
+          "No significant weaknesses; feedback could occasionally include more explicit 'next steps' for weaker students."
+        ],
+        "suggestions": [
+          "Explicitly state the learning goal (e.g., 'Your goal is to justify type flows using operator definitions') at the start of feedback to reinforce purpose."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Which operator definition(s) from the prompt are you using for expression 1... Point to the exact definition(s) and explain, step by step, how the types flow.",
+          "Teacher: Does the operator set given in the prompt include any implicit conversions... explain briefly how that affects expression (3).",
+          "Teacher: One small missing piece: the assignment asks for the final evaluated outputs for typeable expressions. For just one step now, please give those outputs...",
+          "Teacher: I assume explicit conversion is required (the expression must be rewritten with the conversion operator)."
+        ],
+        "reasoning": "The teacher regularly models expert thinking by demonstrating how to reference operator definitions, justify type flows, and correct misconceptions. However, the modeling is primarily reactive (responding to student errors) rather than proactive (e.g., think-alouds or preemptive demonstrations). The teacher does not consistently 'show' their own problem-solving process in real time.",
+        "strengths": [
+          "Demonstrates how to break down problems (e.g., type flows, operator definitions).",
+          "Models precision in reasoning (e.g., citing exact operator definitions).",
+          "Corrects misconceptions with clear, logical steps."
+        ],
+        "weaknesses": [
+          "Modeling is reactive rather than proactive (e.g., no think-alouds or preemptive demonstrations).",
+          "Lacks explicit 'showing' of the teacher's own problem-solving process."
+        ],
+        "suggestions": [
+          "Incorporate think-alouds (e.g., 'Let me walk through my own reasoning for expression 3...') to make expert thinking more visible.",
+          "Proactively model common pitfalls (e.g., 'A common mistake here is assuming implicit conversions\u2014let me show you why that\u2019s not the case...')."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good\u2014your step-by-step for (1) is clear. Now check one subtle point before you finalize all answers:",
+          "Teacher: Good. Now, please revise your answers for all four expressions (1\u20134). For each one, name the exact operator definition(s) from the prompt you used and show the type flow...",
+          "Teacher: Nice\u2014your evaluations for (1) and (4) look consistent with the operator set. Now one step at a time:",
+          "Teacher: Quick check: which type does the literal 5 have in your reasoning\u2014int or float? Point to the operator definition(s) in the prompt that justify that choice...",
+          "Teacher: Small correction first: you wrote \"10/5\" which looks like a division expression \u2014 I think you meant \"10, 5\" (the integer literals)."
+        ],
+        "reasoning": "The teacher provides exceptional coaching by offering structured, adaptive support. They guide students through complex reasoning (e.g., type flows, operator definitions) with incremental steps, correct errors, and fade support as students demonstrate competence (e.g., 'Now one step at a time'). The scaffolding is highly responsive to student needs.",
+        "strengths": [
+          "Provides incremental, adaptive guidance (e.g., 'one step at a time').",
+          "Corrects errors with clear, actionable feedback.",
+          "Fades support as students demonstrate understanding.",
+          "Encourages students to justify their reasoning independently."
+        ],
+        "weaknesses": [
+          "No significant weaknesses; could occasionally provide more explicit 'hints' for struggling students."
+        ],
+        "suggestions": [
+          "For weaker students, offer more explicit hints (e.g., 'What does the operator definition for greater than require for its second argument?')."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: 1. Typeable. The add(10,5) returns int (15), then int to string converts it to string. Final type: string, output: \"15\".",
+          "Student: For expression (1): add(10, 5) \u2192 15 (int) int to string(15) \u2192 \"15\" (string) Final type: string, output: \"15\"",
+          "Student: **Revised Final Answers for Expressions (1)\u2013(4):** [Detailed reasoning for each expression]",
+          "Teacher: Quick check \u2014 a small inconsistency in (1). You wrote final type & output: string, \"10\" (evaluated as \"15\"). Which is correct?"
+        ],
+        "reasoning": "The teacher consistently prompts students to articulate their reasoning (e.g., 'explain, step by step, how the types flow'), and students frequently engage in reflection (e.g., revising answers, justifying type flows). However, reflection is primarily reactive (in response to teacher prompts) rather than self-initiated. The teacher could encourage more independent reflection.",
+        "strengths": [
+          "Students regularly explain their reasoning (e.g., type flows, operator definitions).",
+          "Teacher prompts reflection with specific, actionable questions.",
+          "Students revise their work based on feedback, demonstrating metacognition."
+        ],
+        "weaknesses": [
+          "Reflection is largely teacher-driven rather than student-initiated.",
+          "Lacks explicit prompts for students to evaluate their own understanding (e.g., 'How confident are you in your answer?')."
+        ],
+        "suggestions": [
+          "Encourage students to self-assess their confidence in answers (e.g., 'Rate your confidence in this answer from 1-5 and explain why.').",
+          "Incorporate peer reflection (e.g., 'Compare your reasoning with a partner and discuss differences.')."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: 1. Typeable... 2. Not typeable... 3. Not typeable... 4. Typeable...",
+          "Student: I'm using the \"add(int, int) \u2192 int\" and \"int to string(int) \u2192 string\" definitions from the prompt.",
+          "Student: **Revised Final Answers for Expressions (1)\u2013(4):** [Detailed, step-by-step reasoning]",
+          "Student: **Key Correction for (1):** The output \"10\" in the initial draft was a typo...",
+          "Student: **Revised Answer for the New Question:** [Detailed reasoning for the new scenario]"
+        ],
+        "reasoning": "Students consistently engage in interactive learning (ICAP level: Interactive). They co-construct knowledge with the teacher through dialogue, revise their reasoning based on feedback, and articulate complex thought processes (e.g., type flows, operator definitions). The transcript shows high levels of cognitive involvement, including argumentation and co-construction of understanding.",
+        "strengths": [
+          "Students engage in high-level cognitive activities (e.g., explaining, justifying, revising).",
+          "Dialogue is collaborative and co-constructive.",
+          "Students demonstrate deep engagement with the material (e.g., correcting errors, addressing subtle points)."
+        ],
+        "weaknesses": [
+          "No significant weaknesses; could occasionally include more peer-to-peer interaction."
+        ],
+        "suggestions": [
+          "Incorporate peer discussions (e.g., 'Turn to your partner and explain your reasoning for expression 3.') to further enhance interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Does the operator set given in the prompt include any implicit conversions (for example, int -> float) that would let greater than(10, 5) be typeable?",
+          "Teacher: Small correction first: you wrote '10/5' which looks like a division expression \u2014 I think you meant '10, 5' (the integer literals).",
+          "Teacher: When you say adding the int to float(int) -> float operator makes greater than(10, 5) typeable, do you assume the typechecker will implicitly insert that conversion for you, or that the expression must be written with an explicit conversion?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by diagnosing and addressing subtle misconceptions regarding type systems, specifically the distinction between syntax, semantic definitions, and literal typing. The teacher forces the student to ground their reasoning in specific prompt evidence rather than general assumptions, correcting the student's conflation of operator signatures with literal type definitions.",
+        "strengths": [
+          "Precise identification of the nuance between implicit and explicit type conversion.",
+          "Correcting the student's reliance on operator signatures for literal typing.",
+          "Using '10/5' vs '10, 5' as a teaching moment for syntactic clarity."
+        ],
+        "weaknesses": [
+          "The lesson relies heavily on the specific constraints of the prompt, which might make it less generalizable if not connected to broader type theory concepts."
+        ],
+        "suggestions": [
+          "Briefly connect the explicit conversion rule to real-world languages (e.g., C vs. Python) to broaden the conceptual framework."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: I don't see any misconceptions in your revised reasoning \u2014 you correctly referenced the exact operator definitions...",
+          "Teacher: Quick check \u2014 a small inconsistency in (1). You wrote final type & output: string, \"10\" (evaluated as \"15\"). Which is correct?",
+          "Teacher: Nice \u2014 your revisions fix the earlier typo and your reasoning is consistent."
+        ],
+        "reasoning": "The feedback is highly specific, actionable, and formative. The teacher consistently identifies exactly where the student's reasoning breaks down (e.g., the typo in expression 1, the lack of evidence for literal types) and provides clear instructions on how to fix it. The feedback loop is tight, with each response directly addressing the previous error. ",
+        "strengths": [
+          "Specific identification of the typo in expression 1.",
+          "Clear guidance on the requirement to cite prompt text for typing rules.",
+          "Positive reinforcement of correct reasoning alongside corrections."
+        ],
+        "weaknesses": [
+          "The volume of corrections might be overwhelming for a weaker student without more summarization."
+        ],
+        "suggestions": [
+          "Provide a 'checklist' of requirements (cite operators, confirm literal types, show flow) at the start to help students self-assess before final submission."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Does the operator set given in the prompt include any implicit conversions (for example, int -> float) that would let greater than(10, 5) be typeable?",
+          "Teacher: If implicit: show the type flow as you did (with conversion inserted by the checker). If explicit: write the rewritten expression (e.g., greater than(10, int to float(5))) and its type flow."
+        ],
+        "reasoning": "The teacher models the 'expert mindset' by asking questions that demonstrate how a type checker or compiler would process the input. They model the thought process of checking for availability of conversion operators. However, the teacher does not perform a full 'think-aloud' demonstration from scratch; instead, they guide the student to perform the demonstration. ",
+        "strengths": [
+          "Modeling the distinction between implicit and explicit typing through hypothetical scenarios.",
+          "Demonstrating how to extract evidence from a problem statement."
+        ],
+        "weaknesses": [
+          "Does not explicitly narrate their own reasoning process (think-aloud) for a new, un-solved problem."
+        ],
+        "suggestions": [
+          "Include a brief 'mini-lecture' or think-aloud where the teacher solves a slightly different problem to show how to hunt for operator definitions."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Now one step at a time: For expression (2) only...",
+          "Teacher: Now one step: please quote the exact token(s) from the assignment prompt that show a float literal...",
+          "Teacher: If you feel uncertain about (3), use the hint: check whether any operator in the prompt allows int -> float conversion."
+        ],
+        "reasoning": "The teacher uses a powerful scaffolding strategy by breaking complex tasks into small, manageable steps ('One step at a time'). The support is gradually fading; initially, the teacher asks for step-by-step flows, then requires quoting evidence, and finally asks for a consolidated final answer. The high friction in the coaching (requiring exact quotes) is strategic to build discipline in type-checking logic. ",
+        "strengths": [
+          "Effective use of 'scaffolding unwinds' by breaking the problem into single expressions.",
+          "Providing targeted hints when the student is stuck on the 'implicit conversion' concept.",
+          "Forcing precise articulation of evidence (quoting prompts)."
+        ],
+        "weaknesses": [
+          "The strictness of requiring exact quotes might be seen as tedious by some students, though it is pedagogically valid for formal systems."
+        ],
+        "suggestions": [
+          "Offer a 'semantic summary' alternative for students who struggle with the text-citing requirement, provided the logic is sound."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which exact wording in the assignment prompt (quote it) supports your claim that numeric literals without a decimal point are typed as int?",
+          "Teacher: Quick check: which type does the literal 5 have in your reasoning\u2014int or float? Point to the operator definition(s) in the prompt that justify that choice...",
+          "Student: The prompt shows a float literal in '10.5'... and integer literals in '10' and '5'..."
+        ],
+        "reasoning": "The student is constantly forced to reflect on *why* they are making a decision, not just *what* the decision is. The 'Reflection' factor is highly engaged as the student must repeatedly justify their typing rules by referencing specific evidence. The student articulates the reasoning clearly, moving from intuition to evidence-based deduction. ",
+        "strengths": [
+          "Student consistently provides the 'why' behind their type assignments.",
+          "Student explicitly distinguishes between what an operator signature says and what a literal implies.",
+          "The dialogue forces metacognitive awareness of the problem constraints."
+        ],
+        "weaknesses": [
+          "The reflection is very tied to the specific prompt; it doesn't ask the student to reflect on their *learning process* generally."
+        ],
+        "suggestions": [
+          "Ask the student to identify *which* part of their initial intuition was wrong and what triggered the correction."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The entire transcript is a back-and-forth dialogue where the student actively constructs the solution piece by piece.",
+          "Student: Step by step: 1. First, add(10, 5) uses the add(int, int) \u2192 int operator... 2. Then, int to string(15)..."
+        ],
+        "reasoning": "The engagement is fully Interactive and Constructive (ICAP). The student is not passively receiving information; they are actively manipulating the logical structure of the code, testing hypotheses about types, and negotiating the rules with the teacher. The cognitive load is high as the student must track multiple constraints (operator signatures, literal types, conversion availability) simultaneously. ",
+        "strengths": [
+          "High cognitive demand requiring deep processing of type rules.",
+          "Interactive nature of the dialogue forces the student to defend their position.",
+          "Continuous active construction of the solution."
+        ],
+        "weaknesses": [
+          "No collaborative element with other students, but for a 1-on-1 tutoring session, this is fully interactive."
+        ],
+        "suggestions": [
+          "This is a strong example of high-level engagement for a tutoring context."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student accurately references operator definitions and literal types from the prompt (e.g., 'add(int, int) \u2192 int', '10.5' as float, '10' and '5' as int).",
+          "Correctly identifies type flows and reasons about typeability (e.g., 'add(10, 5) \u2192 int \u2192 string', 'greater than(10, 5)' fails due to missing float conversion).",
+          "Addresses subtle points like explicit vs. implicit conversions and operator constraints."
+        ],
+        "reasoning": "The student demonstrates exceptional understanding of the type system, accurately applying operator definitions and inferring literal types from prompt examples. They consistently provide clear, step-by-step reasoning for typeability judgments and handle complex scenarios like missing conversions.",
+        "strengths": [
+          "Precise use of prompt definitions and examples",
+          "Systematic type flow analysis",
+          "Ability to handle edge cases and subtle distinctions"
+        ],
+        "weaknesses": [
+          "Initially misattributed operator signatures as defining literal types (later corrected)"
+        ],
+        "suggestions": [
+          "Reinforce that operator signatures constrain inputs but don't define literal types",
+          "Encourage continued explicit reasoning about type flows"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides specific, actionable feedback (e.g., 'Check one subtle point before finalizing', 'Point to the exact operator definition').",
+          "Guides student to revise answers with clear instructions ('For each expression, name the exact operator definition...').",
+          "Identifies and corrects misconceptions (e.g., 'Small misconception: operator signatures don't define literal types')."
+        ],
+        "reasoning": "The teacher consistently provides feedback that is clear, specific, and directly tied to learning goals. Feedback addresses both strengths and areas for improvement, guiding the student toward deeper understanding without providing answers outright.",
+        "strengths": [
+          "Specificity and actionability",
+          "Focus on conceptual understanding",
+          "Scaffolding through targeted questions"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue using precise language in feedback",
+          "Maintain balance between guidance and student independence"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher demonstrates expert thinking through step-by-step questioning (e.g., 'Point to the exact definition... explain type flow').",
+          "Makes thinking visible by breaking down complex tasks into manageable steps.",
+          "Models how to infer literal types from examples and apply operator constraints."
+        ],
+        "reasoning": "The teacher consistently models expert problem-solving by guiding the student through logical steps, making implicit processes explicit. This approach helps students internalize both the content and the cognitive processes involved.",
+        "strengths": [
+          "Clear decomposition of complex tasks",
+          "Explicit modeling of reasoning processes",
+          "Focus on both content and cognitive strategies"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue using think-aloud strategies",
+          "Encourage students to articulate their own reasoning similarly"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides structured support through targeted questions (e.g., 'Which operator definition...?').",
+          "Gradually reduces support as student demonstrates competence (e.g., moving from step-by-step guidance to 'Quick check' questions).",
+          "Strategically prompts student to revise and refine answers."
+        ],
+        "reasoning": "The teacher expertly scaffolds learning by providing just enough support at each stage, gradually fading it as the student gains independence. This approach fosters both understanding and self-regulation.",
+        "strengths": [
+          "Strategic use of questioning",
+          "Gradual release of responsibility",
+          "Focus on student independence"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain balance between support and independence",
+          "Continue using targeted prompts to guide thinking"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student consistently explains reasoning and justifies conclusions (e.g., 'The literal 5 is an int because...').",
+          "Engages in meaningful reflection when prompted to revise answers.",
+          "Articulates thought processes in response to teacher questions (e.g., 'The prompt shows literal examples like 10.5...')."
+        ],
+        "reasoning": "The student demonstrates a high level of metacognition, consistently explaining their reasoning and reflecting on their understanding. This deep engagement with the material enhances learning and retention.",
+        "strengths": [
+          "Clear articulation of reasoning",
+          "Willingness to revise and refine answers",
+          "Engagement with teacher prompts"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Encourage continued self-explanation",
+          "Promote reflection as a habitual practice"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student actively participates in constructing understanding through detailed explanations and revisions.",
+          "Engages in interactive dialogue with the teacher (e.g., responding to 'Quick check' questions).",
+          "Collaboratively co-constructs knowledge by refining answers based on feedback."
+        ],
+        "reasoning": "The student consistently demonstrates interactive engagement, actively participating in the learning process. This high level of cognitive involvement, characterized by discussion, collaboration, and argumentation, significantly enhances learning outcomes.",
+        "strengths": [
+          "Active participation in knowledge construction",
+          "Responsive to teacher feedback",
+          "Collaborative engagement"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Encourage continued interactive participation",
+          "Promote collaborative learning opportunities"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.67,
+        "individual_scores": [
+          4,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 96.7,
+    "interpretation": "Excellent pedagogy"
+  }
+}

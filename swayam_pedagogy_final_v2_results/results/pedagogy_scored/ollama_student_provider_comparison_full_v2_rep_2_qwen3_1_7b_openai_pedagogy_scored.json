@@ -1,0 +1,508 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_qwen3_1_7b_openai",
+    "student_model": "qwen3:1.7b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Which exact phrase in the assignment prompt guided your next evaluation step? Quote that phrase and briefly explain how it tells you which variables (globals vs. parameters) are being assigned to and what you should record for each line.",
+          "Teacher: You quoted the right phrase, but I see a couple of misconceptions in your explanation (especially about pass-by-result). Before we redo that part, answer this one focused question: Which names in the function signature are parameters and which names are globals (list them)? Based on that, for the statement y = b + x which y is on the LHS \u2014 a parameter or a global?",
+          "Teacher: Good \u2014 you correctly identified parameters vs. globals. One important misconception remains about pass-by-result. Hint/question (one at a time): the phrase you quoted (\"output arguments are copied back to parameters in the left-to-right order.\") describes pass-by-result behavior. In your own words, say exactly what happens at (1) function call and (2) function return under pass-by-result: are initial values copied into the formal parameters? are final formal values copied back to the actuals? does the function need an explicit return value for pass-by-result to apply?",
+          "Teacher: You're still holding the misconception that pass-by-result depends on an explicit return. Quick correction: pass-by-result means no copy-in (the formal is not initialized from the actual at call time) and a copy-out happens at function return. It does not require the function to use an explicit return value."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge (PCK) by consistently identifying and addressing student misconceptions about parameter-passing mechanisms (e.g., pass-by-value, pass-by-reference, pass-by-result). The teacher uses precise language, provides targeted hints, and guides the student through incremental reasoning steps. The teacher also correctly interprets the assignment prompt and applies it to clarify the student's understanding.",
+        "strengths": [
+          "Consistently identifies and corrects student misconceptions with precision.",
+          "Uses targeted, focused questions to guide the student toward understanding.",
+          "Demonstrates deep understanding of parameter-passing semantics and their implications.",
+          "Provides clear, incremental reasoning steps to address complex concepts."
+        ],
+        "weaknesses": [
+          "At times, the teacher's corrections are repetitive, which may not be the most efficient use of time.",
+          "The teacher could occasionally provide more varied examples or analogies to reinforce understanding."
+        ],
+        "suggestions": [
+          "Introduce analogies or real-world examples to help the student visualize parameter-passing mechanisms.",
+          "Vary the types of questions (e.g., open-ended, hypothetical) to encourage deeper reflection.",
+          "Summarize key takeaways after addressing misconceptions to reinforce learning."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher: You quoted the right phrase, but I see a couple of misconceptions in your explanation (especially about pass-by-result).",
+          "Teacher: You're still holding the misconception that pass-by-result depends on an explicit return. Quick correction: pass-by-result means no copy-in (the formal is not initialized from the actual at call time) and a copy-out happens at function return. It does not require the function to use an explicit return value.",
+          "Teacher: Misconception: you keep treating the RHS a in a = a + y as if the caller\u2019s value were available under pass-by-result. It is not\u2014pass-by-result does not copy-in.",
+          "Teacher: One focused question: under pure pass-by-result (no copy-in), is the formal a initialized at call time? Look at the first statement in update: a = a + y Does this read a before assigning it? Based on that, revise your answer to part 2 and explain the reasoning you used.",
+          "Teacher: You're still holding two related misconceptions. Briefly: pass-by-result does not copy-in, and so the formal is a local that may be uninitialized at call time \u2014 the RHS a in a = a + y refers to that local, not the caller's value."
+        ],
+        "reasoning": "The teacher provides highly effective feedback by consistently identifying specific misconceptions, explaining why they are incorrect, and guiding the student toward the correct understanding. The feedback is actionable, targeted, and directly addresses the student's errors without being overly critical. The teacher also uses focused questions to prompt the student to reflect and revise their reasoning.",
+        "strengths": [
+          "Feedback is consistently specific, actionable, and tied to the student's exact errors.",
+          "The teacher provides clear explanations of why the student's reasoning is incorrect.",
+          "Feedback is timely and directly addresses the student's misconceptions.",
+          "The teacher uses questions to encourage the student to self-correct and reflect."
+        ],
+        "weaknesses": [
+          "The feedback could occasionally include more positive reinforcement to balance the corrections."
+        ],
+        "suggestions": [
+          "Incorporate more positive reinforcement (e.g., acknowledging correct parts of the student's reasoning) to maintain motivation.",
+          "Provide a brief summary of the correct understanding after addressing misconceptions to reinforce learning."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You quoted the right phrase, but I see a couple of misconceptions in your explanation (especially about pass-by-result). Before we redo that part, answer this one focused question: Which names in the function signature are parameters and which names are globals (list them)? Based on that, for the statement y = b + x which y is on the LHS \u2014 a parameter or a global?",
+          "Teacher: Good \u2014 you correctly identified parameters vs. globals. One important misconception remains about pass-by-result. Hint/question (one at a time): the phrase you quoted (\"output arguments are copied back to parameters in the left-to-right order.\") describes pass-by-result behavior. In your own words, say exactly what happens at (1) function call and (2) function return under pass-by-result: are initial values copied into the formal parameters? are final formal values copied back to the actuals? does the function need an explicit return value for pass-by-result to apply?",
+          "Teacher: You're still holding the misconception that pass-by-result depends on an explicit return. Quick correction: pass-by-result means no copy-in (the formal is not initialized from the actual at call time) and a copy-out happens at function return. It does not require the function to use an explicit return value."
+        ],
+        "reasoning": "The teacher models expert thinking by breaking down complex concepts (e.g., parameter-passing mechanisms) into smaller, manageable parts. The teacher demonstrates how to analyze and interpret the assignment prompt, and provides clear, logical reasoning to address the student's misconceptions. However, the teacher does not explicitly demonstrate their own problem-solving process (e.g., think-aloud) as frequently as they could.",
+        "strengths": [
+          "Demonstrates expert-level understanding of the subject matter.",
+          "Breaks down complex concepts into smaller, understandable parts.",
+          "Provides clear, logical reasoning to guide the student."
+        ],
+        "weaknesses": [
+          "Lacks explicit think-aloud demonstrations of the teacher's own problem-solving process.",
+          "Could provide more real-world examples or analogies to model expert thinking."
+        ],
+        "suggestions": [
+          "Incorporate think-aloud strategies to explicitly model the teacher's problem-solving process.",
+          "Use analogies or real-world examples to demonstrate how expert thinking applies to the concepts."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher: You quoted the right phrase, but I see a couple of misconceptions in your explanation (especially about pass-by-result). Before we redo that part, answer this one focused question: Which names in the function signature are parameters and which names are globals (list them)? Based on that, for the statement y = b + x which y is on the LHS \u2014 a parameter or a global?",
+          "Teacher: Good \u2014 you correctly identified parameters vs. globals. One important misconception remains about pass-by-result. Hint/question (one at a time): the phrase you quoted (\"output arguments are copied back to parameters in the left-to-right order.\") describes pass-by-result behavior. In your own words, say exactly what happens at (1) function call and (2) function return under pass-by-result: are initial values copied into the formal parameters? are final formal values copied back to the actuals? does the function need an explicit return value for pass-by-result to apply?",
+          "Teacher: You're still holding the misconception that pass-by-result depends on an explicit return. Quick correction: pass-by-result means no copy-in (the formal is not initialized from the actual at call time) and a copy-out happens at function return. It does not require the function to use an explicit return value.",
+          "Teacher: Misconception: you keep treating the RHS a in a = a + y as if the caller\u2019s value were available under pass-by-result. It is not\u2014pass-by-result does not copy-in.",
+          "Teacher: One focused question: under pure pass-by-result (no copy-in), is the formal a initialized at call time? Look at the first statement in update: a = a + y Does this read a before assigning it? Based on that, revise your answer to part 2 and explain the reasoning you used."
+        ],
+        "reasoning": "The teacher provides exceptional coaching by consistently guiding the student through incremental steps, addressing misconceptions, and providing targeted hints. The teacher adapts their support to the student's needs, gradually reducing guidance as the student demonstrates understanding. The coaching is strategic, adaptive, and highly effective in promoting student learning.",
+        "strengths": [
+          "Provides incremental, targeted guidance to address misconceptions.",
+          "Adapts support to the student's current understanding and needs.",
+          "Uses focused questions to scaffold the student's reasoning.",
+          "Gradually reduces support as the student demonstrates progress."
+        ],
+        "weaknesses": [
+          "Could occasionally provide more open-ended questions to encourage independent problem-solving."
+        ],
+        "suggestions": [
+          "Incorporate more open-ended questions to encourage the student to explore concepts independently.",
+          "Provide opportunities for the student to apply their understanding to new, related problems."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: The exact phrase in the assignment prompt that guided the evaluation is: 'If necessary, assume that output arguments are copied back to parameters in the left-to-right order.' This phrase clarifies that when parameters are passed by reference (e.g., in scenarios like (b) or (d)), any modifications to the parameters inside the function are reflected in the original variables.",
+          "Student: Under pure pass-by-result (no copy-in), formal parameters are not initialized at call time. In the line a = a + y, the formal a is not initialized, so the caller's original value is used.",
+          "Student: The function update(a, b) uses pass-by-result, but since it does not return any values, the parameters are not modified. Under pass-by-result (no copy-in), formal parameters are not initialized at call time."
+        ],
+        "reasoning": "The teacher encourages reflection by prompting the student to explain their reasoning, quote relevant parts of the prompt, and revise their explanations based on feedback. The student is frequently asked to articulate their thought processes, which promotes deeper understanding. However, the teacher could explicitly ask the student to reflect on their learning process or evaluate their own understanding more often.",
+        "strengths": [
+          "Encourages the student to explain their reasoning and articulate their thought processes.",
+          "Prompts the student to revise their explanations based on feedback.",
+          "Uses questions to guide the student toward deeper reflection."
+        ],
+        "weaknesses": [
+          "Could explicitly ask the student to reflect on their learning process or evaluate their own understanding more frequently.",
+          "Reflection activities are often tied to specific misconceptions rather than broader learning goals."
+        ],
+        "suggestions": [
+          "Incorporate explicit reflection prompts (e.g., 'How has your understanding of pass-by-result changed?') to encourage metacognition.",
+          "Ask the student to summarize their learning or key takeaways at the end of the session."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student: The exact phrase in the assignment prompt that guided the evaluation is: 'If necessary, assume that output arguments are copied back to parameters in the left-to-right order.' This phrase clarifies that when parameters are passed by reference (e.g., in scenarios like (b) or (d)), any modifications to the parameters inside the function are reflected in the original variables.",
+          "Student: Under pure pass-by-result (no copy-in), formal parameters are not initialized at call time. In the line a = a + y, the formal a is not initialized, so the caller's original value is used.",
+          "Student: The function update(a, b) uses pass-by-result, but since it does not return any values, the parameters are not modified. Under pass-by-result (no copy-in), formal parameters are not initialized at call time."
+        ],
+        "reasoning": "The student is highly engaged in the learning process, as evidenced by their detailed explanations, revisions, and responses to the teacher's prompts. The student frequently articulates their reasoning, demonstrates persistence in addressing misconceptions, and actively participates in the dialogue. The engagement is primarily constructive (self-explaining, questioning) and occasionally interactive (responding to the teacher's questions).",
+        "strengths": [
+          "The student demonstrates high levels of engagement, frequently explaining their reasoning and revising their answers.",
+          "The student actively participates in the dialogue, responding to the teacher's prompts and questions.",
+          "The student shows persistence in addressing misconceptions and refining their understanding."
+        ],
+        "weaknesses": [
+          "The engagement is primarily student-teacher interaction rather than peer-to-peer or collaborative learning.",
+          "Could benefit from more opportunities for the student to engage in independent problem-solving or discussion."
+        ],
+        "suggestions": [
+          "Incorporate collaborative activities or peer discussions to promote interactive engagement.",
+          "Provide opportunities for the student to engage in independent problem-solving or exploration."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You\u2019ve got a lingering misconception: you\u2019re treating \"w + 2v \u2212 u = 3\" and the pair \"u = v and w = \u2212v\" as if they were equivalent. They are not.",
+          "Teacher: Misconception: you mis-copied the program (it has three statements; there is no \u201cw := u\u201d), and you didn\u2019t apply the substitution to the condition you had (w + 2v - u = 0).",
+          "Teacher: Pass-by-result does not require an explicit return... Copy-out happens at function return regardless of an explicit return value."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by identifying specific, deep misconceptions in computer science concepts such as pass-by-result semantics, type checking (positionality of parameters), and Hoare logic (sequential state updates vs. algebraic solving). The teacher does not just correct the answer but explains the underlying mechanism (e.g., why the RHS variable refers to the local formal parameter, not the caller's value). However, the teacher rarely offers alternative analogies or multiple representations, relying heavily on direct correction and targeted questioning.",
+        "strengths": [
+          "Precisely identifies domain-specific misconceptions (e.g., confusing input and output arguments in pass-by-result).",
+          "Corrects the student's confusion between algebraic equations and sequential state updates in program execution.",
+          "Provides clear, authoritative definitions of technical terms like 'copy-in' and 'copy-out'."
+        ],
+        "weaknesses": [
+          "Relies almost exclusively on verbal correction rather than visual or symbolic modeling of the state changes.",
+          "The explanations are correct but can be dense for a student struggling with the mechanics."
+        ],
+        "suggestions": [
+          "Provide a visual diagram of variable state changes (stack frame vs. global scope) to reinforce the PCK concepts.",
+          "Use a simpler, real-world analogy for pass-by-result to anchor the abstract definition."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good \u2014 you correctly identified parameters vs. globals. One important misconception remains about pass-by-result.",
+          "Teacher: Good correction \u2014 you spotted the positionality misconception: (int, float) requires the second arg be a float, and the provided conversions include int -> string but not int -> float.",
+          "Teacher: Brief note on misconceptions: you keep treating assignments like algebraic identities instead of state-updating operations executed in sequence. That leads to incorrect substitutions and arithmetic slips."
+        ],
+        "reasoning": "The teacher provides regular, specific feedback that acknowledges what the student got right and precisely identifies what was wrong. The feedback is actionable, often guiding the student to the next specific step (e.g., 'Quote the operator signature you used'). The teacher is consistent in reinforcing the correct conceptual framework after each attempt. It falls short of 5 because the feedback often repeats the same core misconception without fully resolving the student's confusion in a single cycle, requiring many iterations.",
+        "strengths": [
+          "Balances praise ('Good catch') with specific technical corrections.",
+          "Feedback is granular, addressing specific lines of code or logic steps.",
+          "Consistently links student errors back to the fundamental definitions in the prompt."
+        ],
+        "weaknesses": [
+          "Repetitive structure in feedback can be frustrating or confusing if the student doesn't grasp the core issue.",
+          "Sometimes the feedback tells the student *what* is wrong more than *how* to fix the thinking process."
+        ],
+        "suggestions": [
+          "After identifying a recurring misconception, pause to explicitly differentiate the correct and incorrect mental models side-by-side.",
+          "Vary the feedback style to keep the student engaged during the long correction process."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: I see a couple of misconceptions... Before we redo that part, answer this one focused question...",
+          "Teacher: So, based on that, revise your answer for part 2 and explain the reasoning you used."
+        ],
+        "reasoning": "The teacher does not model the solution process directly. Instead, the teacher uses a Socratic approach, asking the student to perform the modeling work. While this is a valid teaching strategy, the factor 'Modeling' refers to the teacher demonstrating expert thinking. In this transcript, the teacher almost exclusively asks questions and points out errors without showing a completed example of a 'step-by-step simulation' or a 'proper WP derivation' themselves. The student is left to struggle with the modeling, leading to repeated errors. The teacher guides, but does not visibly think through a demonstration.",
+        "strengths": [
+          "Encourages the student to model their own reasoning by asking them to quote and explain.",
+          "Asks for 'concrete simulation' which is a form of modeling behavior expected from the student."
+        ],
+        "weaknesses": [
+          "Lack of a direct teacher demonstration (think-aloud) of how to correctly trace a pass-by-result function or derive a WP.",
+          "Student makes repeated errors in the same area, suggesting that without a model, the student cannot self-correct."
+        ],
+        "suggestions": [
+          "Provide one fully worked example for a similar but simpler problem to demonstrate the expected level of detail in state tracing.",
+          "Use a 'think-aloud' technique to model how an expert would approach the pass-by-result ambiguity."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Which exact phrase in the assignment prompt guided your next evaluation step? Quote that phrase... (Scaffolding to self-reference the prompt)",
+          "Teacher: One focused question (answer in one sentence, then revise part 2 in one or two sentences)... (Chunking the complex task)",
+          "Teacher: Pick concrete initial values... Then simulate the program in order... (Providing a structured path to the solution)"
+        ],
+        "reasoning": "The teacher employs strong scaffolding techniques. They break down complex problems into smaller, manageable chunks (one focused question at a time). They provide specific constraints on the response format (e.g., 'answer in one sentence') to limit cognitive load and focus on the core concept. The scaffolding is consistent and persistent, adjusting the prompt based on the student's repeated errors (shifting from conceptual questions to concrete simulation steps). The fade is not complete, but the support is highly structured and appropriate for the student's current level of misunderstanding.",
+        "strengths": [
+          "Effective use of 'focused questions' to isolate specific misconceptions.",
+          "Guides the student to use their own prompt/source material as a resource (self-regulation).",
+          "Clear instructions on how to structure the response to improve clarity."
+        ],
+        "weaknesses": [
+          "The scaffolding becomes somewhat repetitive, which might indicate a failure to adjust the strategy when the student is stuck.",
+          "Lack of explicit 'release' of responsibility; the student is still heavily directed at the end."
+        ],
+        "suggestions": [
+          "If the student continues to err, provide a partial model or a hint that explicitly shows the first step of the simulation to restart the chain.",
+          "Reduce the number of constraints if the student starts showing understanding, to encourage independent transfer."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: ...explain the reasoning you used.",
+          "Teacher: ...and explain what this tells you about whether w + 2v - u = 3 can be the actual weakest precondition.",
+          "Student: The key misconception was assuming pass-by-result required an explicit return, but it's about not initializing parameters at call time."
+        ],
+        "reasoning": "The teacher explicitly prompts the student to reflect on their reasoning and explain their logic. The student attempts to reflect, often articulating the misconception they *thought* they had or now have. However, the reflection is often superficial or incorrect because the underlying conceptual model is flawed. The student rarely deeply evaluates the *validity* of their understanding in a metacognitive way; they just answer the prompt. The teacher drives the reflection, but the student's ability to autonomously reflect on and correct their own thinking is not strongly demonstrated.",
+        "strengths": [
+          "Student is regularly asked to justify their steps.",
+          "Student attempts to identify the source of their error (even if inaccurately at first)."
+        ],
+        "weaknesses": [
+          "Reflection is often reactive to the teacher's correction rather than proactive self-assessment.",
+          "Student does not effectively use reflection to detect errors before submitting, leading to repetitive mistakes."
+        ],
+        "suggestions": [
+          "Ask the student to compare their current answer with a previous one to identify what changed in their thinking.",
+          "Encourage the student to predict the outcome of a simulation before doing the math, then reflect on why the prediction failed."
+        ]
+      },
+      "Engagement": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Student: ... (Provides detailed written responses to questions)",
+          "Teacher: One focused question...",
+          "Student: ... (Revises and resubmits)"
+        ],
+        "reasoning": "According to the ICAP framework, this interaction is primarily **Active** (the student is doing the work, answering questions, revising) rather than **Constructive** or **Interactive**. There is no discussion between peers, no co-construction, and no argumentation. The student is not generating new knowledge or exploring multiple viewpoints; they are responding to a single authoritative voice (the teacher) in a drill-like manner. The engagement is high in terms of activity level (lots of text, repeated attempts), but the cognitive depth is limited by the lack of social or constructive dialogue. It is not Passive because the student is not just listening, but it lacks the higher-order Interactive elements.",
+        "strengths": [
+          "Student is cognitively active, producing substantial text and attempting calculations.",
+          "Continuous back-and-forth keeps the student focused on the specific task."
+        ],
+        "weaknesses": [
+          "No peer interaction or collaborative construction of knowledge.",
+          "The format is linear (Q-A-Correction-Q-A), which limits exploration and argumentation.",
+          "Student is engaged in 'fixing' errors rather than 'building' understanding through discourse."
+        ],
+        "suggestions": [
+          "Introduce a peer discussion where students explain their pass-by-result logic to each other before resubmitting.",
+          "Ask the student to argue against a common misconception to deepen their own understanding constructively."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "The student attempts to explain concepts like pass-by-result, function signatures, and parameter vs. global variables, but consistently misinterprets key aspects.",
+          "For example, the student incorrectly treats the RHS 'a' in 'a = a + y' as referring to the caller's value under pass-by-result, despite the teacher's repeated corrections that pass-by-result does not copy-in and the formal 'a' is a local variable that may be uninitialized."
+        ],
+        "reasoning": "The student demonstrates a basic understanding of some programming concepts but struggles with deeper conceptual clarity. Key misconceptions about pass-by-result and parameter initialization persist despite multiple corrections, indicating a lack of transformation of content into understandable forms.",
+        "strengths": [
+          "Attempts to apply concepts like function signatures and parameter passing mechanisms.",
+          "Engages with the teacher's feedback and tries to revise explanations."
+        ],
+        "weaknesses": [
+          "Misinterprets pass-by-result semantics, particularly the absence of copy-in and the nature of formal parameters.",
+          "Struggles to differentiate between local formal parameters and caller's actual values.",
+          "Does not consistently address misconceptions even after direct feedback."
+        ],
+        "suggestions": [
+          "Provide concrete examples contrasting pass-by-value, pass-by-reference, and pass-by-result to clarify differences.",
+          "Use step-by-step diagrams to show how memory and variables are handled in each passing mechanism.",
+          "Incorporate interactive exercises where students must predict variable states under different passing mechanisms."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "The teacher provides feedback that identifies specific misconceptions (e.g., 'You're still holding the misconception that pass-by-result depends on an explicit return') and guides the student toward correct understanding.",
+          "However, feedback is often repetitive and does not always provide clear, actionable next steps for the student to correct their understanding."
+        ],
+        "reasoning": "The feedback helps the student understand current performance by pinpointing errors but lacks consistency in offering concrete guidance for improvement. It is functional but not deeply transformative.",
+        "strengths": [
+          "Identifies specific misconceptions in the student's explanations.",
+          "Uses focused questions to guide the student's thinking."
+        ],
+        "weaknesses": [
+          "Feedback becomes repetitive without escalating to more structured support.",
+          "Does not always provide clear, actionable steps for correcting misunderstandings."
+        ],
+        "suggestions": [
+          "Incorporate more structured scaffolds (e.g., step-by-step templates) for complex concepts.",
+          "Provide explicit examples of correct and incorrect reasoning to contrast misconceptions.",
+          "Offer summary feedback that synthesizes recurring errors and suggests targeted practice activities."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "The teacher occasionally demonstrates expert thinking by correcting misconceptions (e.g., explaining that pass-by-result does not require an explicit return), but does not consistently model the full thought process behind complex concepts.",
+          "For instance, the teacher does not explicitly demonstrate how to trace variable states through sequential assignments under pass-by-result."
+        ],
+        "reasoning": "While the teacher provides some demonstrations of expert thinking, these are not systematic or comprehensive enough to fully model the problem-solving process. The focus is more on correcting errors than on making thinking visible.",
+        "strengths": [
+          "Provides corrections to specific misconceptions.",
+          "Uses focused questions to guide student thinking."
+        ],
+        "weaknesses": [
+          "Does not consistently demonstrate the full thought process behind complex concepts.",
+          "Lacks explicit modeling of step-by-step problem-solving strategies."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to verbalize the reasoning process for complex problems.",
+          "Provide annotated code examples that show how variables are handled under different passing mechanisms.",
+          "Incorporate visual aids (e.g., memory diagrams) to model state changes during function execution."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "The teacher provides appropriate support through hints and questions (e.g., 'One focused question: under pure pass-by-result...') but does not consistently adjust the level of support based on the student's progress.",
+          "Support is gradually fading as the student revises answers, but the teacher does not explicitly acknowledge or reinforce the student's growing independence."
+        ],
+        "reasoning": "The teacher offers relevant guidance but does not systematically adapt support to the student's evolving needs. The coaching is appropriate but lacks strategic adjustment over time.",
+        "strengths": [
+          "Provides relevant hints and questions to guide student thinking.",
+          "Allows the student to revise answers independently."
+        ],
+        "weaknesses": [
+          "Does not explicitly adjust support based on student progress.",
+          "Lacks strategic reinforcement of student independence."
+        ],
+        "suggestions": [
+          "Explicitly acknowledge and reinforce student progress to build confidence.",
+          "Systematically reduce support as the student demonstrates mastery of sub-concepts.",
+          "Provide structured practice problems that gradually increase in complexity to foster independence."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 70,
+        "evidence": [
+          "The student occasionally explains their reasoning (e.g., 'The key misconception was assuming pass-by-result required an explicit return') but does not consistently engage in meaningful reflection or evaluate their understanding.",
+          "Reflections are often superficial, repeating previous explanations without deeper analysis of why misconceptions persist."
+        ],
+        "reasoning": "The student sporadically explains their thinking but does not consistently articulate or evaluate their understanding. Reflection activities are present but remain superficial.",
+        "strengths": [
+          "Attempts to identify misconceptions in their explanations.",
+          "Engages with the teacher's feedback to some extent."
+        ],
+        "weaknesses": [
+          "Reflections lack depth and do not evaluate understanding critically.",
+          "Does not consistently connect new insights to previous errors."
+        ],
+        "suggestions": [
+          "Prompt students to explicitly compare their initial and revised explanations to identify persistent errors.",
+          "Incorporate structured reflection prompts (e.g., 'What specifically changed in your understanding?').",
+          "Encourage students to predict how they would apply corrected concepts to new problems."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The student consistently participates in interactive learning by responding to the teacher's questions, revising explanations, and attempting to apply feedback.",
+          "While the engagement is primarily reactive (responding to teacher prompts), it demonstrates active participation in the learning process."
+        ],
+        "reasoning": "The student regularly engages in constructive activities (e.g., self-explaining, revising answers) and interacts with the teacher's guidance. The engagement is interactive but remains largely teacher-driven.",
+        "strengths": [
+          "Consistently responds to teacher prompts and attempts to apply feedback.",
+          "Demonstrates persistence in revising explanations despite recurring misconceptions."
+        ],
+        "weaknesses": [
+          "Engagement is primarily reactive rather than student-initiated.",
+          "Lacks collaborative or argumentative elements (e.g., peer discussion)."
+        ],
+        "suggestions": [
+          "Incorporate peer discussion activities to foster collaborative learning.",
+          "Encourage students to generate their own questions or examples related to the topic.",
+          "Provide opportunities for students to teach concepts back to the class or in small groups."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          4,
+          2
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Modeling": {
+        "mean": 3,
+        "individual_scores": [
+          4,
+          3,
+          2
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Reflection": {
+        "mean": 3,
+        "individual_scores": [
+          4,
+          3,
+          2
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Engagement": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 70.0,
+    "interpretation": "Good pedagogy"
+  }
+}

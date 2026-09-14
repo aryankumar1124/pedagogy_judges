@@ -1,16 +1,16 @@
 import os
 import json
-from openai import OpenAI
+import cohere
 
 from prompts.judge_prompt import build_system_prompt, build_user_prompt
 
-MODEL = "gpt-5-mini"  # swap to gpt-4.1 / gpt-5 / whichever you have access to
+MODEL = "command-a-03-2025"  # swap to whichever Cohere model you have access to
 
 
 def score_transcript(transcript: str) -> dict:
-    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    client = cohere.ClientV2(api_key=os.environ["COHERE_API_KEY"])
 
-    response = client.chat.completions.create(
+    response = client.chat(
         model=MODEL,
         response_format={"type": "json_object"},
         messages=[
@@ -19,7 +19,7 @@ def score_transcript(transcript: str) -> dict:
         ],
     )
 
-    raw_text = response.choices[0].message.content.strip()
+    raw_text = response.message.content[0].text.strip()
 
     try:
         return json.loads(raw_text)

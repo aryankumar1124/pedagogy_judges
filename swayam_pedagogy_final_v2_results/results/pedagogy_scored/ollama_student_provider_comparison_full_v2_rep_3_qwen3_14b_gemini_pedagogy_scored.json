@@ -1,0 +1,494 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_qwen3_14b_gemini",
+    "student_model": "qwen3:14b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let's trace through part (c) step-by-step to check the execution of the function update(y, z) under pass-by-value-result.",
+          "You've got it! Because y is not a parameter of the function, it refers directly to the global variable y.",
+          "You nailed the calculation and even anticipated the copy-back step!",
+          "You've correctly identified the input types required by the definition of greater than(int, float).",
+          "However, let's look at how programming languages and type systems often handle integer values when a float is expected.",
+          "Notice that the operator definition specifically lists greater than(int, float) \u2192 boolean and does not list any automatic promotion rule.",
+          "Let's look strictly at the substitution rule for weakest precondition: when executing an assignment statement x := E, we replace every occurrence of x in the postcondition with E.",
+          "Spot on! You correctly identified that we substitute 2v - u in place of v, leading to w \u2265 -(2v - u), which simplifies to w \u2265 -2v + u.",
+          "You've got a fantastic summary of the entire derivation."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by transforming complex concepts (pass-by-value-result, type systems, Hoare logic) into clear, step-by-step explanations. The teacher uses precise terminology, addresses student misconceptions proactively (e.g., clarifying parameter vs. global variable references, implicit type promotion), and adapts explanations to the student's evolving understanding. Multiple representations (e.g., tracing variable states, algebraic manipulation, substitution rules) are consistently employed to reinforce learning.",
+        "strengths": [
+          "Exceptional clarity in explaining abstract concepts (e.g., pass-by-value-result mechanics).",
+          "Proactive identification and correction of student misconceptions (e.g., parameter vs. global variable confusion).",
+          "Use of multiple representations (tracing, algebraic manipulation, substitution rules) to deepen understanding.",
+          "Adaptation of explanations to the student's level and evolving understanding.",
+          "Precise and accurate use of technical terminology (e.g., Hoare logic, weakest precondition)."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "That is correct.",
+          "Spot on!",
+          "You've got it!",
+          "You nailed the calculation and even anticipated the copy-back step!",
+          "You've correctly identified the input types required by the definition of greater than(int, float).",
+          "However, let's look at how programming languages and type systems often handle integer values when a float is expected.",
+          "You're very close!",
+          "Wonderful! You carefully walked through the substitution steps, applied the rule for multiplying by -1, and arrived at the correct final inequality.",
+          "Spot on! You correctly identified that we substitute 2v - u in place of v, leading to w \u2265 -(2v - u), which simplifies to w \u2265 -2v + u.",
+          "You've successfully worked through every part of the question. Great job!"
+        ],
+        "reasoning": "The teacher provides consistent, actionable, and specific feedback that directly addresses the student's reasoning. Feedback is timely, reinforces correct understanding, and guides the student toward deeper insights (e.g., 'You nailed the calculation and even anticipated the copy-back step!'). The teacher also uses feedback to scaffold learning by asking targeted questions (e.g., 'What do a and b become after executing this line?') and correcting misconceptions with explanations.",
+        "strengths": [
+          "Feedback is consistently specific, actionable, and tied to the student's work.",
+          "Reinforces correct reasoning and celebrates student progress (e.g., 'Spot on!', 'You've got it!').",
+          "Uses feedback to scaffold learning by asking guiding questions.",
+          "Corrects misconceptions with clear explanations.",
+          "Feedback is timely and directly addresses the student's current understanding."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let's trace through part (c) step-by-step to check the execution of the function update(y, z) under pass-by-value-result.",
+          "Initially, before the function is called, what are the values of the global variables x, y, and z based on the setup (x = 3; y = 2; z = 5)?",
+          "Now let's look at how pass-by-value-result initializes the local parameters a and b.",
+          "Now let's trace the first line of the function body: a = a + y;",
+          "Now let's look at the second line: y = b + x;",
+          "Now let's move to the third line: b = a - z;",
+          "Now let's tackle the fifth and final line of the function: z = x + a - b;",
+          "Let's look strictly at the substitution rule for weakest precondition: when executing an assignment statement x := E, we replace every occurrence of x in the postcondition with E.",
+          "Now, take that result (w \u2265 -2v + u) and apply the final assignment, u := u + 3, using the exact same substitution rule."
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes. The teacher demonstrates step-by-step reasoning, explicitly showing how to trace variable states, apply substitution rules, and derive logical conclusions. The teacher's think-aloud approach (e.g., 'Let's trace through part (c) step-by-step') makes expert reasoning visible and accessible to the student.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through step-by-step tracing and reasoning.",
+          "Uses think-aloud strategies to make problem-solving processes explicit.",
+          "Models the application of formal rules (e.g., substitution in Hoare logic).",
+          "Breaks down complex problems into manageable steps.",
+          "Provides real-world examples (e.g., type systems in programming languages) to contextualize abstract concepts."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Let's trace through part (c) step-by-step to check the execution of the function update(y, z) under pass-by-value-result.",
+          "Initially, before the function is called, what are the values of the global variables x, y, and z based on the setup (x = 3; y = 2; z = 5)?",
+          "Now let's look at how pass-by-value-result initializes the local parameters a and b.",
+          "Given that our current values at the start of the function are x = 3, y = 2, z = 5, a = 2, and b = 5, what becomes of a and any other variables after executing this first line?",
+          "Keep in mind what y refers to in this context and whether this modifies a local variable or a global variable.",
+          "However, let's look at how programming languages and type systems often handle integer values when a float is expected.",
+          "Let's look strictly at the substitution rule for weakest precondition: when executing an assignment statement x := E, we replace every occurrence of x in the postcondition with E.",
+          "Now, take that result (w \u2265 -2v + u) and apply the final assignment, u := u + 3, using the exact same substitution rule.",
+          "What do you get when you use 2*v'' - u'' for that substitution?"
+        ],
+        "reasoning": "The teacher provides structured, adaptive guidance that fades as the student demonstrates competence. The teacher asks targeted questions to scaffold the student's thinking, provides hints when needed, and allows the student to work through problems independently. The coaching is responsive to the student's current understanding and gradually reduces support as the student becomes more confident.",
+        "strengths": [
+          "Provides structured, step-by-step guidance to scaffold student learning.",
+          "Asks targeted questions to prompt deeper thinking and self-discovery.",
+          "Adapts support to the student's evolving understanding (e.g., fading guidance as the student masters concepts).",
+          "Uses hints and prompts to guide the student toward correct reasoning.",
+          "Encourages the student to articulate their thought process (e.g., 'What do a and b become after executing this line?')."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student: After the function update(y, z) is called with pass-by-value-result, the final values of the variables are: x = 11, y = 4, z = -1",
+          "Student: Explanation of Differences Between (c) and (b): ...",
+          "Student: When the function update(y, z) is called with pass-by-value-result, the local parameters a and b inside the function are initialized to the current values of the global variables y and z at the moment of the function call.",
+          "Student: After executing the line a = a + y;: a is updated to 2 + 2 = 4. Other variables (x, y, z, b) remain unchanged.",
+          "Student: After the second line (y = b + x), the global variable y is updated to 8, while the other variables remain unchanged from their values after the first line.",
+          "Student: After executing the third line b = a - z;, the values of the variables are: a: 4, b: -1, x: 3, y: 8, z: 5.",
+          "Student: After executing the fourth line x = b + y + a;, the values of the variables are: a: 4, b: -1, x: 11, y: 8, z: 5.",
+          "Student: After executing the fifth line z = x + a - b;, the values of the variables are: a: 4, b: -1, x: 11, y: 8, z: 16.",
+          "Student: After the function returns, the copy-back step in pass-by-value-result overwrites the original global variables y and z with the final values of the parameters a and b, respectively.",
+          "Student: The expressions are evaluated as follows: ...",
+          "Student: Key Principle: Under the assignment's context, integers are implicitly compatible with float expectations ...",
+          "Student: To determine the weakest precondition (wp) for the sequence of assignments ..."
+        ],
+        "reasoning": "The teacher consistently prompts the student to explain their reasoning, reflect on their understanding, and articulate their thought processes. The student is frequently asked to trace through steps, justify their answers, and summarize their understanding (e.g., 'Explanation of Differences Between (c) and (b)'). The dialogue is rich with opportunities for the student to engage in constructive and interactive reflection, as evidenced by the student's detailed explanations and summaries.",
+        "strengths": [
+          "Consistently prompts the student to explain their reasoning and articulate thought processes.",
+          "Encourages the student to reflect on their understanding (e.g., 'Key Principle' summaries).",
+          "Provides opportunities for the student to engage in constructive activities (e.g., tracing variable states, deriving inequalities).",
+          "Fosters interactive reflection through dialogue and questioning.",
+          "Student demonstrates high levels of reflection and articulation in their responses."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student: After the function update(y, z) is called with pass-by-value-result, the final values of the variables are: x = 11, y = 4, z = -1",
+          "Student: Explanation of Differences Between (c) and (b): ...",
+          "Student: When the function update(y, z) is called with pass-by-value-result, the local parameters a and b inside the function are initialized to the current values of the global variables y and z at the moment of the function call.",
+          "Teacher: Let's trace through part (c) step-by-step to check the execution of the function update(y, z) under pass-by-value-result.",
+          "Student: Initially, before the function is called, the global variables have the initial values set in the setup: x = 3, y = 2, z = 5.",
+          "Teacher: Great. Now, let's look at how pass-by-value-result initializes the local parameters a and b.",
+          "Student: When the function update(y, z) is called with pass-by-value-result, the local parameters a and b inside the function are initialized to the current values of the global variables y and z at the moment of the function call.",
+          "Teacher: That is correct. Now let's trace the first line of the function body: a = a + y;",
+          "Student: After executing the line a = a + y;: a is updated to 2 + 2 = 4. Other variables (x, y, z, b) remain unchanged.",
+          "Teacher: Spot on!",
+          "Student: After the second line (y = b + x), the global variable y is updated to 8, while the other variables remain unchanged from their values after the first line.",
+          "Teacher: You correctly noted that global y gets updated here. But wait\u2014since y was one of the arguments passed to update(y, z), does y refer to the global variable directly, or does it refer to something else inside the function?",
+          "Student: Ah, I see now! Since the function's parameters are a and b (copies of y and z), the y in the line y = b + x; refers to the global variable y, not the parameter a.",
+          "Teacher: You've got it!",
+          "Student: To determine the weakest precondition (wp) for the sequence of assignments ..."
+        ],
+        "reasoning": "The transcript demonstrates consistently high levels of student engagement, as defined by the ICAP framework. The student frequently engages in interactive and constructive activities, such as explaining their reasoning, tracing through code, and deriving logical conclusions. The dialogue is collaborative, with the teacher and student co-constructing understanding through questioning, explanation, and reflection. The student's responses show deep cognitive involvement, moving beyond passive listening to active participation and co-creation of knowledge.",
+        "strengths": [
+          "Student consistently engages in interactive and constructive activities (ICAP levels 3 and 4).",
+          "Dialogue is collaborative, with co-construction of understanding between teacher and student.",
+          "Student demonstrates deep cognitive involvement through detailed explanations and reasoning.",
+          "Teacher prompts and supports high levels of engagement through questioning and scaffolding.",
+          "Student frequently articulates their thought process, reflecting high engagement."
+        ],
+        "weaknesses": [],
+        "suggestions": []
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at expression #3: greater than(10, 5). Look closely at the definition given for greater than: greater than(int, float) \u2192 boolean",
+          "Teacher: Wait a minute! In your latest write-up, you mentioned that the second assignment is u := u + 3, but in Step 1, you stated that u does not appear in the postcondition. Look back at the program order in the prompt... All three assignments are part of the problem!",
+          "Teacher: Remember that in pass-by-reference, the parameters inside the function are direct aliases to the original variables passed in."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by breaking down complex concepts like parameter passing (pass-by-value-result vs pass-by-reference) and Hoare Logic weakest preconditions into manageable steps. The teacher effectively uses specific examples (tracing variable values line-by-line) to make abstract concepts concrete. The teacher also proactively addresses common misconceptions, such as the difference between local parameters and global variables in function calls, and the strict ordering of backward substitution in Hoare Logic. While the teacher occasionally relied on the student's self-correction regarding implicit type promotion, the overall transformation of subject matter into understandable forms is consistently effective.",
+        "strengths": [
+          "Effective use of step-by-step tracing to explain parameter passing semantics.",
+          "Clear identification and correction of structural errors in Hoare Logic derivations (e.g., missing assignments).",
+          "Use of 'alias' analogy for pass-by-reference to explain variable binding."
+        ],
+        "weaknesses": [
+          "The explanation for implicit integer-to-float promotion in type checking was somewhat indirect, requiring multiple hints before the student fully grasped the assignment's specific rules versus general language behavior."
+        ],
+        "suggestions": [
+          "Explicitly contrast the course's specific type rules with standard language behaviors earlier in the lesson to prevent confusion about strictness vs. implicit promotion."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: You've correctly identified the input types required by the definition of greater than(int, float). However, let's look at how programming languages... Is there an automatic way an integer might be treated in this context?",
+          "Teacher: Wait a minute! In your latest write-up... you stated that u does not appear in the postcondition. Look back at the program order in the prompt...",
+          "Teacher: Let's look closely at this step... If you want to keep w_prev positive, what do you get if you add u'' and subtract 2*v'' on both sides instead?"
+        ],
+        "reasoning": "The teacher provides frequent, specific feedback that identifies errors and guides the student toward the correct solution. The feedback is actionable; instead of just saying 'wrong,' the teacher asks targeted questions that lead the student to discover the error themselves (e.g., asking to check signs or look back at the problem statement). This approach helps the student understand their current performance and the next steps to improve. The feedback is consistent throughout the lesson, covering both calculation traces and logical deductions.",
+        "strengths": [
+          "Feedback is specific to the student's errors (e.g., sign changes, missed variables).",
+          "Uses Socratic questioning to guide correction rather than just providing the answer.",
+          "Consistent tone that encourages further exploration after corrections."
+        ],
+        "weaknesses": [
+          "In the type-checking section, the feedback loop was longer than necessary, with several back-and-forth exchanges before the strict rule was firmly established."
+        ],
+        "suggestions": [
+          "Summarize the corrected rule immediately after the student achieves the correct answer to consolidate learning and prevent reversion to the misconception."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's trace part (c) step-by-step to check the execution...",
+          "Teacher: Now let's tackle the fifth and final line... Using your current values... what are the values... after this line executes?"
+        ],
+        "reasoning": "The teacher demonstrates the *process* of solving the problems by guiding the student through each step, but rarely performs the cognitive labor of the derivation themselves. Instead of saying 'Here is how I would think about this substitution,' the teacher asks the student to perform the substitution. While this is a valid teaching strategy (guided discovery), it lacks explicit 'think-aloud' modeling where the teacher verbalizes their own problem-solving strategy or heuristics. The teacher models the *sequence* of steps but not the internal *reasoning* for choosing those steps. The student does most of the explanatory work, which is good for engagement, but the teacher's own expert thinking is not fully visible.",
+        "strengths": [
+          "The teacher models the structure of a solution (step-by-step tracing).",
+          "The teacher demonstrates how to verify answers by checking specific variable states."
+        ],
+        "weaknesses": [
+          "Lacks explicit 'think-aloud' narration where the teacher explores the problem space and justifies their choice of approach before prompting the student.",
+          "The teacher often waits for the student to make an error before correcting it, rather than pre-emptively modeling how to avoid common pitfalls."
+        ],
+        "suggestions": [
+          "Incorporate a brief think-aloud where the teacher works through one example completely, narrating their decision-making process (e.g., 'First I check the postcondition, then I look for the variable that appears in it...')."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Teacher: Initially, before the function is called, what are the values...?",
+          "Teacher: Ah, I see the confusion now!... What happens to the sign of w_prev when you moved it to the other side?",
+          "Teacher: You're very close! Let's look at step 4... What happens to both the inequality sign and the constant 3?"
+        ],
+        "reasoning": "The teacher provides excellent scaffolding. The support is highly structured: starting with basic initialization values, moving to line-by-step execution, and finally addressing complex algebraic manipulations. The scaffolding is adjusted dynamically; when the student gets the basics right, the teacher moves to more difficult conceptual hurdles (like sign errors in inequalities). The hints are graduated\u2014starting with broad reminders ('look at the definition') and narrowing down to specific algebraic steps ('what happens to the constant?'). As the student demonstrates competence, the teacher allows them to perform more of the derivation, fading support slightly while maintaining safety nets through verification questions.",
+        "strengths": [
+          "Graduated hints that guide without giving away the answer.",
+          "Scaffolding adapts to the student's demonstrated understanding (e.g., moving from simple assignment to complex inequality manipulation).",
+          "Effective use of 'checks' to ensure the student is on the right path before proceeding."
+        ],
+        "weaknesses": [
+          "None significant observed in the transcript."
+        ],
+        "suggestions": [
+          "Continue this adaptive pattern for more complex topics."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "Student: Ah, I see now! Since the function's parameters are a and b (copies of y and z), the y in the line y = b + x; refers to the global variable y...",
+          "Student: The confusion arises from a misinterpretation of the substitution step. Let's clarify the correct derivation...",
+          "Student: Summary of Type-Checking and Numeric Compatibility for Expressions #3 and #4... Key Takeaway: The assignment context allows integers to be used where floats are expected..."
+        ],
+        "reasoning": "Students are frequently asked to articulate their reasoning, particularly when errors occur or when summarizing understanding. The student reflects on their misconceptions (e.g., confusing parameter and global variable, sign errors in inequalities) and explicitly corrects their thinking. The lesson ends with a request to summarize the key principles, which the student does effectively. This articulation helps deepen understanding and ensures the student has internalized the concepts, not just calculated the answers.",
+        "strengths": [
+          "Students explicitly verbalize their understanding when correcting mistakes.",
+          "The lesson concludes with a synthesis of key concepts, reinforcing long-term retention.",
+          "Encourages metacognitive check ('Why did I think y was a parameter?')."
+        ],
+        "weaknesses": [
+          "Reflection is largely reactive (after making a mistake) rather than proactive (planning how to approach a new problem)."
+        ],
+        "suggestions": [
+          "Ask the student to reflect on *strategy* before starting a new type of problem (e.g., 'What is your plan for handling the backward substitution?')."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 94,
+        "evidence": [
+          "Student: After executing the line a = a + y: a is updated to 2 + 2 = 4... Other variables remain unchanged...",
+          "Student: Step 1: Reverse the Third Assignment w := w + v... Substituting the above gives: w' + v >= 0 => w' >= -v",
+          "Student: I see the confusion now!... The line b = a - z; sets the global x to 1..."
+        ],
+        "reasoning": "The engagement level is consistently 'Constructive' (ICAP framework). Students are not merely listening or copying; they are independently performing calculations, deriving preconditions, and constructing explanations. They actively process the information by applying rules to new instances (different function calls, different expressions). There is minimal 'Interactive' element (collaboration) because it is a one-on-one interaction, but the student is cognitively active throughout, building understanding from the ground up through direct application and self-explanation.",
+        "strengths": [
+          "Active problem-solving: Students perform the tracing and derivation, not just observe it.",
+          "Self-explaining: Students articulate the 'why' behind their steps (e.g., explaining why global y is modified).",
+          "High cognitive load management: The student manages complex state tracking across multiple lines of code."
+        ],
+        "weaknesses": [
+          "Engagement is individual; no peer collaboration or argumentation observed (expected in one-on-one setting)."
+        ],
+        "suggestions": [
+          "Continue providing problems that require multi-step construction of solutions to maintain high cognitive engagement."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student demonstrates exceptional understanding of pass-by-value-result and pass-by-reference concepts, explaining the differences clearly.",
+          "They accurately trace variable values step-by-step, showing deep comprehension of how parameters and global variables interact in both mechanisms.",
+          "The student proactively identifies and corrects potential misconceptions, such as clarifying when global variables are modified versus when parameters are copied back."
+        ],
+        "reasoning": "The student exhibits a profound grasp of the content, consistently applying precise knowledge to complex scenarios. They not only explain concepts but also anticipate and address potential misunderstandings, demonstrating Pedagogical Content Knowledge at the highest level.",
+        "strengths": [
+          "Exceptional clarity in explaining complex concepts",
+          "Proactive identification and correction of misconceptions",
+          "Accurate step-by-step tracing of variable values"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue reinforcing this level of depth and clarity in explanations"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher provides immediate, specific, and actionable feedback throughout the interaction, such as 'Spot on!' and 'You've got it!'",
+          "Feedback consistently links current performance to learning goals (e.g., tracing variable values correctly) and future improvement (e.g., 'This sets the stage for the rest of the function execution').",
+          "The teacher explicitly addresses common misconceptions and encourages reflection, as seen in 'Think about how pass-by-value-result handles the parameters.'"
+        ],
+        "reasoning": "The feedback is consistently clear, goal-oriented, and actionable. It not only affirms correct understanding but also guides the student toward deeper insights, exemplifying excellent feedback quality.",
+        "strengths": [
+          "Immediate and specific feedback",
+          "Clear linkage to learning goals and future steps",
+          "Encourages reflection and addresses misconceptions"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain this high standard of feedback quality"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher consistently demonstrates expert thinking by walking through complex processes step-by-step, making thought processes visible (e.g., tracing variable values in pass-by-value-result).",
+          "They use think-aloud strategies to explain why certain variables are modified or remain unchanged, as in 'This line only modifies `a`, using the global `y` (which is still `2` at this point).'",
+          "Real-world analogies and structured demonstrations are employed to illustrate abstract concepts like parameter passing mechanisms."
+        ],
+        "reasoning": "The teacher exemplifies expert modeling by consistently making their thought processes explicit and using structured demonstrations to bridge abstract concepts with concrete examples.",
+        "strengths": [
+          "Consistent use of think-aloud strategies",
+          "Clear step-by-step demonstrations",
+          "Effective use of real-world analogies"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue using this approach to model expert thinking"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The teacher provides strategically timed hints and scaffolding, such as 'Think about how pass-by-value-result handles the parameters,' which guides without giving away the answer.",
+          "Support is gradually faded as the student gains competence, as seen in the progression from guided tracing to independent problem-solving.",
+          "The teacher adapts support to student needs, offering more detailed explanations when necessary and stepping back when the student demonstrates understanding."
+        ],
+        "reasoning": "The coaching is highly strategic, with support tailored to the student's evolving competence. The teacher effectively balances guidance with independence, fostering self-reliance.",
+        "strengths": [
+          "Strategic use of hints and scaffolding",
+          "Gradual fading of support",
+          "Adaptive coaching based on student progress"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Maintain this strategic and adaptive coaching approach"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The student consistently articulates their reasoning, such as 'Ah, I see now! Since the function's parameters are `a` and `b` (copies of `y` and `z`), the `y` in the line `y = b + x;` refers to the global variable `y`.'",
+          "They evaluate their understanding and engage in meaningful reflection, as in 'This explains why the global `y` gets updated here, even though `a` is a copy of `y` from the start.'",
+          "The teacher explicitly prompts reflection, asking 'Think about how pass-by-value-result handles the parameters,' which encourages deeper thinking."
+        ],
+        "reasoning": "The student consistently and meaningfully reflects on their understanding, articulating reasoning and evaluating their thought processes. The teacher actively fosters this reflective practice.",
+        "strengths": [
+          "Consistent articulation of reasoning",
+          "Meaningful self-evaluation",
+          "Teacher prompts for deeper reflection"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue encouraging and modeling reflective practices"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "The interaction consistently involves **Interactive** engagement, with the student and teacher co-constructing understanding through dialogue, as seen in the back-and-forth tracing of variable values.",
+          "The student actively participates in **Constructive** activities, such as self-explaining, questioning, and summarizing their understanding of parameter passing mechanisms.",
+          "Collaborative problem-solving and argumentation are evident, as the teacher and student jointly resolve misconceptions and deepen understanding."
+        ],
+        "reasoning": "The engagement is consistently at the highest level of the ICAP framework, with interactive and collaborative learning dominating the interaction. The student is not just active but also constructively and interactively engaged.",
+        "strengths": [
+          "Consistent interactive and collaborative engagement",
+          "Active participation in constructive activities",
+          "Co-construction of understanding through dialogue"
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Continue fostering this high level of interactive engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          3,
+          5
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 93.4,
+    "interpretation": "Excellent pedagogy"
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_gemma3_4b_openai",
+    "student_model": "gemma3:4b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Question: given only the operators and conversions listed (note the only conversion is int -> string), which default type should you assign to the numeric literal 5: int or float?",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification.",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Quick check: which operator in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still holding the misconception: the key question is which operator in the given list converts an int to a float. Which one is it? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You\u2019re still assuming 5 is a float \u2014 that\u2019s the misconception to resolve. Which operator or conversion in the given list justifies treating the literal 5 as a float? If none does, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)? Using only the listed operators, revise your answer for (3) and explain each step of your reasoning (which operator signatures you match, what types you assign to the literals, and whether any conversion is available).",
+          "Teacher: You're still holding a misconception: the key question is which operator in the given list converts an int to a float. Which one is it? If none, what default type would you assign to the literal 5 (int or float)? Using only the listed operators, state the types you assign to 10 and 5, cite the greater than(int, float) signature, and revise your answer for (3) explaining each step (whether the argument types match and whether any conversion is available).",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Quick question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: Good \u2014 you acknowledged the confusion. Quick, focused correction and one step for you to do next. Misconception: the w you replace is the post-state occurrence of w that appears in the postcondition, not the w in the assignment. So R[w := w+v] for R \u2261 (w = 0) means replace the w on the left side of = in R by (w+v). That yields (w+v) = 0, NOT w = w + v.",
+          "Teacher: Good \u2014 you fixed the earlier pre/post confusion. Quick note: your substitution (w = 0)[w := w+v] = (w + v) = 0 was correct.",
+          "Teacher: Good \u2014 your substitutions are now correct and your final weakest-precondition formula is the right shape."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge (PCK) by consistently identifying and addressing student misconceptions about type systems and weakest preconditions. The teacher uses precise language to clarify the substitution rule for weakest preconditions and repeatedly corrects the student's confusion between pre- and post-state variable occurrences. The teacher also effectively references the assignment prompt to ground explanations in the given constraints. However, the teacher could provide more varied examples or analogies to help the student generalize the concepts beyond the specific problem.",
+        "strengths": [
+          "Consistently identifies and corrects student misconceptions with precision",
+          "Uses formal rules (e.g., substitution rule for weakest preconditions) to guide reasoning",
+          "References the assignment prompt to ground explanations in given constraints",
+          "Provides step-by-step guidance to help the student apply the substitution rule correctly"
+        ],
+        "weaknesses": [
+          "Could provide more varied examples or analogies to help the student generalize concepts",
+          "Sometimes repeats the same correction without varying the approach, which may not address the root of the misconception",
+          "Lacks explicit connection to broader pedagogical frameworks (e.g., Cognitive Apprenticeship) in the explanations"
+        ],
+        "suggestions": [
+          "Introduce analogies or real-world examples to illustrate the substitution rule in a more intuitive way",
+          "Vary the approach to correcting misconceptions (e.g., ask the student to explain the rule in their own words, or provide a counterexample)",
+          "Explicitly connect the teaching to broader frameworks like Cognitive Apprenticeship (e.g., modeling, coaching, scaffolding) to reinforce the learning process"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Question: given only the operators and conversions listed (note the only conversion is int -> string), which default type should you assign to the numeric literal 5: int or float?",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification.",
+          "Teacher: Good \u2014 you acknowledged the confusion. Quick, focused correction and one step for you to do next.",
+          "Teacher: Good \u2014 you fixed the earlier pre/post confusion. Quick note: your substitution (w = 0)[w := w+v] = (w + v) = 0 was correct.",
+          "Teacher: Good \u2014 your substitutions are now correct and your final weakest-precondition formula is the right shape.",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Quick check: which operator in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?"
+        ],
+        "reasoning": "The teacher provides consistent, targeted feedback that identifies specific misconceptions and guides the student toward correction. The feedback is actionable, as it often includes questions or hints to help the student self-correct. However, the feedback could be more explicit about the learning goals (e.g., 'Your goal is to understand how to apply the substitution rule correctly') and could occasionally include praise for correct steps to reinforce positive behavior.",
+        "strengths": [
+          "Feedback is specific, targeted, and addresses the root of the misconception",
+          "Feedback is actionable, often including questions or hints to guide the student",
+          "Feedback is consistent and persistent in addressing recurring misconceptions"
+        ],
+        "weaknesses": [
+          "Feedback could be more explicit about learning goals and next steps",
+          "Lacks occasional praise or reinforcement for correct steps, which could motivate the student",
+          "Feedback could be more varied in approach to address different learning styles"
+        ],
+        "suggestions": [
+          "Explicitly state the learning goal for each feedback instance (e.g., 'Your goal here is to understand the substitution rule for weakest preconditions')",
+          "Include occasional praise for correct steps to reinforce positive behavior (e.g., 'Great job identifying the substitution rule!')",
+          "Vary the feedback approach (e.g., use analogies, ask the student to explain their reasoning, or provide counterexamples)"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: Good \u2014 you acknowledged the confusion. Quick, focused correction and one step for you to do next. Misconception: the w you replace is the post-state occurrence of w that appears in the postcondition, not the w in the assignment. So R[w := w+v] for R \u2261 (w = 0) means replace the w on the left side of = in R by (w+v). That yields (w+v) = 0, NOT w = w + v.",
+          "Teacher: Good \u2014 your substitutions are now correct and your final weakest-precondition formula is the right shape."
+        ],
+        "reasoning": "The teacher demonstrates some modeling of expert thinking, particularly in explaining the substitution rule and correcting misconceptions. However, the modeling is limited to verbal explanations and does not include think-aloud strategies, demonstrations of the problem-solving process, or real-world examples. The teacher could more explicitly 'show their work' to make their reasoning visible to the student.",
+        "strengths": [
+          "Provides clear explanations of the substitution rule and other formal concepts",
+          "Demonstrates correct application of the substitution rule in examples"
+        ],
+        "weaknesses": [
+          "Lacks think-aloud strategies to make expert reasoning more visible",
+          "Does not demonstrate the problem-solving process step-by-step in a way that the student can emulate",
+          "Lacks real-world examples or analogies to illustrate abstract concepts"
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to model expert reasoning (e.g., 'Let me walk through my thought process as I apply the substitution rule...')",
+          "Demonstrate the problem-solving process step-by-step, showing how to apply the substitution rule in a concrete example",
+          "Incorporate real-world analogies or examples to make abstract concepts more tangible"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Quick question: which operator or conversion in the given list converts int -> float? (Hint: only int -> string is listed.) Given that, what default type would you assign to the literal 5 (int or float)?",
+          "Teacher: You're still assuming 5 is a float \u2014 that's the misconception to resolve. Question: given only the operators and conversions listed (note the only conversion is int -> string), which default type should you assign to the literal 5 (int or float)?",
+          "Teacher: Good \u2014 you acknowledged the confusion. Quick, focused correction and one step for you to do next.",
+          "Teacher: Now one step: compute (w = 0)[w := w + v] and simplify \u2014 write the resulting formula.",
+          "Teacher: Now one step: using that rule, apply wp to v := 2*v - u using the current precondition (w + v) = 0. Compute (w + v)[v := 2*v - u] (show the substitution) and simplify the resulting formula.",
+          "Teacher: Now one step: using that rule, apply wp to u := u + 3 with the current precondition (w + 2*v - u) = 0. Compute (w + 2*v - u)[u := u + 3] (show the replacement) and simplify the resulting formula.",
+          "Teacher: You\u2019re still holding the misconception that 5 can be treated as a float without justification. Question: which operator or conversion in the given list converts int -> float? If none, what default type would you assign to the literal 5 (int or float)?"
+        ],
+        "reasoning": "The teacher provides strong coaching by breaking down complex problems into smaller, manageable steps and guiding the student through each step with targeted questions and hints. The teacher also persistently addresses misconceptions and provides opportunities for the student to self-correct. However, the coaching could be more adaptive to the student's progress, with more gradual fading of support as the student demonstrates understanding.",
+        "strengths": [
+          "Breaks down complex problems into smaller, manageable steps",
+          "Guides the student through each step with targeted questions and hints",
+          "Persistently addresses misconceptions and provides opportunities for self-correction"
+        ],
+        "weaknesses": [
+          "Coaching could be more adaptive to the student's progress (e.g., fading support as the student demonstrates understanding)",
+          "Lacks explicit scaffolding that gradually reduces support as the student gains competence"
+        ],
+        "suggestions": [
+          "Gradually reduce the level of support as the student demonstrates understanding (e.g., provide less guidance for subsequent steps)",
+          "Explicitly scaffold the learning process by starting with more support and gradually fading it as the student progresses",
+          "Use a variety of coaching strategies (e.g., questioning, hinting, modeling) to address different learning needs"
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: Okay, let\u2019s break this down. When we\u2019re looking at `w := w + v` and the postcondition `w = 0`, we need to find what *had* to be true before this step to make the postcondition true.",
+          "Student: Okay, let\u2019s correct those misconceptions and then proceed with the second line\u2019s LHS.",
+          "Student: Okay, I understand. The core issue is that I\u2019m incorrectly assuming a float conversion is needed when it isn\u2019t.",
+          "Student: Okay, I've got it. The only operator that allows for an integer and a float is `greater than(int, float) -> boolean`.",
+          "Student: Okay, you\u2019re absolutely right to keep correcting me! The only operator that accepts a float as input is `greater than(int, float) -> boolean`."
+        ],
+        "reasoning": "The transcript shows some evidence of reflection, as the student occasionally explains their reasoning or acknowledges misconceptions. However, the teacher does not explicitly prompt the student to reflect on their understanding or articulate their thought processes. The reflection is largely student-initiated and superficial, focusing more on correcting errors than on deepening understanding.",
+        "strengths": [
+          "Student occasionally explains their reasoning or acknowledges misconceptions",
+          "Student demonstrates some self-awareness of their understanding"
+        ],
+        "weaknesses": [
+          "Teacher does not explicitly prompt the student to reflect on their understanding or articulate their thought processes",
+          "Reflection is largely student-initiated and superficial, focusing on correcting errors rather than deepening understanding",
+          "Lacks structured opportunities for the student to reflect on their learning process"
+        ],
+        "suggestions": [
+          "Explicitly prompt the student to reflect on their understanding (e.g., 'Can you explain why you think this is the correct approach?')",
+          "Encourage the student to articulate their thought processes more frequently (e.g., 'Walk me through how you arrived at this answer')",
+          "Incorporate structured reflection activities (e.g., 'What did you learn from this mistake?') to deepen understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student: Okay, let\u2019s tackle this assignment. It looks like we need to trace the values of x, y, and z after different calls to the `update` function.",
+          "Student: Okay, let\u2019s break this down. When we\u2019re looking at `w := w + v` and the postcondition `w = 0`, we need to find what *had* to be true before this step to make the postcondition true.",
+          "Student: Okay, let\u2019s correct those misconceptions and then proceed with the second line\u2019s LHS.",
+          "Student: Okay, I understand. The core issue is that I\u2019m incorrectly assuming a float conversion is needed when it isn\u2019t.",
+          "Student: Okay, you\u2019re absolutely right to keep correcting me! The only operator that accepts a float as input is `greater than(int, float) -> boolean`.",
+          "Student: Okay, let\u2019s break down this problem step-by-step.",
+          "Student: Okay, let\u2019s tackle this problem. It looks like we need to figure out how to make the program work correctly and then find the weakest precondition."
+        ],
+        "reasoning": "The student is highly engaged in the learning process, frequently initiating problem-solving and demonstrating active participation. The student regularly responds to the teacher's prompts, attempts to correct misconceptions, and shows persistence in tackling complex problems. The engagement is primarily constructive (e.g., explaining reasoning, reflecting on understanding) and occasionally interactive (e.g., responding to teacher questions). However, there is limited evidence of collaborative or discussion-based engagement with peers.",
+        "strengths": [
+          "Student is highly engaged and frequently initiates problem-solving",
+          "Student demonstrates active participation and persistence in tackling complex problems",
+          "Student regularly responds to the teacher's prompts and attempts to correct misconceptions"
+        ],
+        "weaknesses": [
+          "Engagement is primarily constructive and lacks collaborative or discussion-based elements",
+          "Limited evidence of interactive engagement with peers"
+        ],
+        "suggestions": [
+          "Encourage more interactive engagement by incorporating peer discussions or group problem-solving activities",
+          "Foster collaborative learning by having the student work with peers on complex problems",
+          "Incorporate more discussion-based activities to promote deeper engagement and understanding"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good\u2014you have the right numeric result for a (5), but your reasoning about which y was used is off.",
+          "Teacher: You\u2019re still assuming 5 is a float \u2014 that\u2019s the misconception to resolve.",
+          "Teacher: You mixed up pre- and post-state occurrences of w when applying the substitution rule."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by identifying specific, subtle misconceptions in the student's reasoning regarding parameter passing (formal vs. global variables), type inference (int vs. float literals), and Hoare logic (pre- vs. post-state occurrences). The teacher correctly transforms these abstract concepts into checkable constraints for the student. However, a score of 4 rather than 5 is assigned because the teacher fails to effectively resolve the persistent misconception in the type-checking section; the student repeats the same error multiple times without the teacher providing a clearer corrective model or analogy to fully clarify the concept.",
+        "strengths": [
+          "Precise identification of domain-specific errors (e.g., scope resolution, type constraints, variable states).",
+          "Clear articulated corrections that distinguish between similar concepts (e.g., formal parameters vs. global variables)."
+        ],
+        "weaknesses": [
+          "The strategy for correcting the 'literal 5 is a float' misconception was repetitive and ineffective, failing to break the student's loop.",
+          "Lack of a re-modeling step when the student struggled repeatedly with the same specific error."
+        ],
+        "suggestions": [
+          "Use a different analogy or a worked example for the type-constraint issue if the initial hint fails.",
+          "Explicitly define the rule for literal typing (e.g., 'unless a conversion is applied, literals default to int') to anchor the concept."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Nice work tracing \u2014 one quick issue first...",
+          "Teacher: Correct \u2014 a = 5 is right.",
+          "Teacher: Small correction first: b is not 0."
+        ],
+        "reasoning": "The teacher provides consistent, specific feedback that addresses both the goal (correcting the misconceptions) and the current performance. The feedback is actionable, telling the student exactly what to fix (e.g., 'cite the prompt lines'). However, the feedback becomes looping in the later sections, which slightly reduces the effectiveness of the 'next steps' guidance.",
+        "strengths": [
+          "Feedback is specific to the error made (e.g., pointing out the exact misinterpretation of LHS).",
+          "Balances praise with corrective guidance ('Nice catch on the LHS issue...')."
+        ],
+        "weaknesses": [
+          "Repetitive feedback in the type-checking section does not provide new information or a different angle to help the student move forward.",
+          "Does not explicitly summarize progress at the end of the long session to consolidate learning."
+        ],
+        "suggestions": [
+          "Vary the feedback strategy when the student is stuck (e.g., moving from hinting to explicit instruction if multiple hints fail).",
+          "End the session with a summary of the key principles learned."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Hint/question: look at the function header update(a, b). Which names are the formal parameters?",
+          "Teacher: Reminder of the rule you cited: wp(x := E, R) = R[x := E]..."
+        ],
+        "reasoning": "The teacher models the *process* of identifying variables and applying rules by asking probing questions and restating the formal rules. However, the teacher rarely provides a full 'think-aloud' demonstration of solving the problem from scratch. Instead, the teacher relies on the student to apply the modelled rules. This is a functional but not exceptional level of modeling.",
+        "strengths": [
+          "Explicitly restates formal rules (e.g., the WP substitution rule) to model expert notation.",
+          "Guides the student to look at specific parts of the problem (headers, declarations) as an expert would."
+        ],
+        "weaknesses": [
+          "Does not fully demonstrate the entire derivation process, leaving the student to infer the steps.",
+          "Relies heavily on the student to perform the substitution when the student is clearly struggling."
+        ],
+        "suggestions": [
+          "Provide a fully worked example of a similar but simpler problem when the student is stuck.",
+          "Model the 'thinking sounds' involved in deciding scope (e.g., 'I check if the variable is in the param list... if not, it's global.')."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Quick question before you re-trace case (a)... show the first assignment's LHS",
+          "Teacher: Now one step: compute (w + v)[v := 2*v - u]."
+        ],
+        "reasoning": "The teacher employs a strong scaffolding strategy, breaking complex problems into small, manageable steps. The teacher consistently asks the student to perform 'one step' at a time, providing immediate support when errors occur. This is a clear implementation of coaching that adapts to the student's level of struggle.",
+        "strengths": [
+          "Effective use of 'one step at a time' scaffolding to prevent cognitive overload.",
+          "Adaptive support: when the student misses a simple point (LHS), the teacher zooms in on that specific micro-step."
+        ],
+        "weaknesses": [
+          "The scaffolding becomes rigid when the student is stuck in a loop (the type-checking issue), lacking a 'back up and re-frame' move.",
+          "No clear plan for fading support, as the lesson ends with the student still making notation errors."
+        ],
+        "suggestions": [
+          "If a student is stuck after 2-3 hints, shift to a direct demonstration of the next step rather than repeating the hint.",
+          "Explicitly state when the student is ready to do the next step independently."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: ...explain your reasoning.",
+          "Teacher: ...briefly state which b and which x you used (formal/local or global) and their current values."
+        ],
+        "reasoning": "The teacher regularly asks the student to articulate their reasoning and cite evidence from the prompt. This encourages the student to externalize their thought process. However, the student's reflections are often superficial or repetitive, failing to show a deep metacognitive understanding of *why* their initial intuition was wrong, despite the teacher's prompts.",
+        "strengths": [
+          "Consistent requirement to 'explain your reasoning' and 'cite the prompt'.",
+          "Encourages the student to justify scope decisions explicitly."
+        ],
+        "weaknesses": [
+          "The student's reflections become rote ('Here's my revised answer...'), failing to deeply engage with the source of the misconception.",
+          "Lack of prompts asking the student to reflect on *why* they got it wrong the first time."
+        ],
+        "suggestions": [
+          "Ask 'What was your assumption initially that led to the error?' to promote deeper metacognition.",
+          "Require the student to summarize the general rule they derived before moving to the next specific instance."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student: Okay, let\u2019s break this down...",
+          "Student: ...Does that make sense?",
+          "Teacher: Question: which part(s) of the assignment prompt support your next step?"
+        ],
+        "reasoning": "The lesson is highly interactive (ICAP level 4-5). The student is not passive; they are constantly constructing arguments, testing code traces, and engaging in a dialogue to resolve errors. The cognitive load is high and constructive, as the student must actively manipulate variables and logic to answer the teacher's probing questions.",
+        "strengths": [
+          "High frequency of student output (constructive engagement).",
+          "Interactive dialogue where the student must defend or revise their logic based on challenges.",
+          "Active manipulation of code traces and logical formulas."
+        ],
+        "weaknesses": [
+          "The interaction becomes circular, which might lead to frustration or disengagement if it continued longer.",
+          "Limited collaboration (though this is a 1-on-1 setting, so interaction with the teacher is the primary channel)."
+        ],
+        "suggestions": [
+          "Use 'pause for thought' techniques to let the student process the hint before they respond.",
+          "Encourage the student to ask the teacher questions to further drive the interaction."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student demonstrates a strong grasp of programming concepts like parameter passing (value, reference, value-result), function behavior, and variable scope.",
+          "Accurately traces variable values through function calls, considering different parameter passing mechanisms.",
+          "Correctly identifies and explains misconceptions, such as the LHS interpretation and formal vs. global variables."
+        ],
+        "reasoning": "The student shows a deep understanding of the content, applying concepts accurately and explaining them clearly. They identify and correct their own misconceptions with teacher guidance, demonstrating strong PCK.",
+        "strengths": [
+          "Accurate tracing of variable values",
+          "Clear explanations of programming concepts",
+          "Ability to identify and correct misconceptions"
+        ],
+        "weaknesses": [
+          "Occasional confusion between formal and global variables",
+          "Initial misinterpretation of LHS requirement"
+        ],
+        "suggestions": [
+          "Encourage double-checking variable scope in function calls",
+          "Provide more practice with complex tracing scenarios"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides specific, actionable feedback on student's work, highlighting both strengths and areas for improvement.",
+          "Feedback is consistently tied to learning goals (e.g., correct LHS interpretation, understanding parameter passing).",
+          "Teacher uses questioning to guide student reflection and deeper understanding, rather than simply providing answers."
+        ],
+        "reasoning": "The teacher's feedback is exemplary, consistently addressing learning goals, current performance, and future improvement. It is clear, actionable, and promotes student reflection.",
+        "strengths": [
+          "Specific and actionable feedback",
+          "Consistent focus on learning goals",
+          "Use of questioning to guide reflection"
+        ],
+        "weaknesses": [
+          "None identified in the transcript"
+        ],
+        "suggestions": [
+          "Continue using this effective feedback approach"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher models expert thinking by demonstrating how to trace variable values and interpret function behavior.",
+          "Uses think-aloud strategies to show the process of identifying and correcting misconceptions.",
+          "Provides hints and questions to guide student thinking without giving away answers."
+        ],
+        "reasoning": "The teacher effectively models expert thinking, making their thought processes visible through demonstrations and guided questioning. This supports student learning by showing how to approach problems systematically.",
+        "strengths": [
+          "Clear demonstration of thought processes",
+          "Effective use of think-aloud strategies",
+          "Guided questioning to support student thinking"
+        ],
+        "weaknesses": [
+          "Could provide more explicit modeling of complex concepts"
+        ],
+        "suggestions": [
+          "Incorporate more real-world examples in modeling"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides structured guidance through hints and questions, gradually fading support as student gains competence.",
+          "Support is strategically provided to address specific misconceptions or challenges.",
+          "Teacher encourages student independence by asking them to explain their reasoning and identify next steps."
+        ],
+        "reasoning": "The teacher's coaching is highly effective, offering strategically timed and gradually fading support. This approach fosters student independence and deep understanding.",
+        "strengths": [
+          "Strategically timed support",
+          "Gradual fading of assistance",
+          "Promotion of student independence"
+        ],
+        "weaknesses": [
+          "None identified in the transcript"
+        ],
+        "suggestions": [
+          "Maintain this effective coaching approach"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student regularly reflects on their understanding, identifying misconceptions and explaining their reasoning.",
+          "Teacher prompts student reflection through targeted questions.",
+          "Student demonstrates ability to articulate their thought processes and revise their work based on feedback."
+        ],
+        "reasoning": "The student engages in meaningful reflection, explaining their reasoning and revising their work based on feedback. Teacher prompts further enhance this reflective process.",
+        "strengths": [
+          "Regular student reflection",
+          "Articulation of thought processes",
+          "Revision of work based on feedback"
+        ],
+        "weaknesses": [
+          "Some reflections are superficial, requiring teacher prompts for deeper analysis"
+        ],
+        "suggestions": [
+          "Encourage more independent, in-depth reflection"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student and teacher engage in interactive learning through discussion, collaboration, and co-construction of understanding.",
+          "Student actively participates in problem-solving, asking questions, and revising their work.",
+          "Learning activities involve constructive tasks (tracing, explaining, justifying) and interactive dialogue."
+        ],
+        "reasoning": "The engagement level is consistently interactive, with student and teacher collaborating to co-construct understanding. This high level of interaction significantly enhances learning.",
+        "strengths": [
+          "Interactive discussion and collaboration",
+          "Active student participation",
+          "Constructive learning tasks"
+        ],
+        "weaknesses": [
+          "None identified in the transcript"
+        ],
+        "suggestions": [
+          "Continue fostering this high level of interactive engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 78.8,
+    "interpretation": "Good pedagogy"
+  }
+}

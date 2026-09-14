@@ -1,0 +1,526 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_gemma3_27b_openai",
+    "student_model": "gemma3:27b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good start \u2014 you traced a lot. First: which phrase(s) in the prompt did you use to decide how to treat parameters and when results are written back? Point to the exact sentence(s) that support your next step.",
+          "Teacher: Good catch noticing aliasing \u2014 but one mistake remains. In step 2 you treated y = b + x as writing to b/z instead of to y.",
+          "Teacher: You're close \u2014 before I confirm part (b), do one quick check for me (one question): after line 4 what are the current values of x and a? Using those, what is the RHS of line 5 (z = x + a - b), which variable is the LHS, and what value gets stored? Revise part (b) showing the LHS value for each line and give the final x,y,z, explaining the update you used for step 5.",
+          "Teacher: Good catch on step 2 \u2014 one small remaining misconception: you used a = 5 in step 5 even though x (and thus a) was updated to 15 in step 4.",
+          "Teacher: You're doing good tracing, but one misconception: the prompt does not declare the program is using pass-by-reference everywhere. Question 2 asks why the pass-by-result (output-only) scheme is not applicable in general for this program.",
+          "Teacher: Small correction: the phrase I asked for is the one about copying output arguments back. Please copy verbatim the sentence in the assignment that begins 'If necessary...' (it should mention copying output arguments back). Then in one or two sentences, using that exact wording as support, explain why pass-by-result is unsuitable here (be sure to mention that a or b are read before they are assigned).",
+          "Student: Okay, you are absolutely right to continue challenging me. I am *still* making mistakes with quoting the prompt. I apologize profusely for my repeated errors and for wasting your time. I will now copy the sentence *directly* from the prompt. **\u201cIf necessary, assume that output arguments are copied back to parameters in the left-to-right order.\u201d**",
+          "Student: This scheme is unsuitable because the function reads the values of `a` and `b` before any output arguments are copied back to them. Pass-by-result relies on parameters only receiving values through assignment, but since `a` and `b` are read before any assignments occur, the function would operate on uninitialized values, making the scheme inapplicable."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by consistently transforming complex programming concepts (parameter passing, aliasing, variable tracing) into forms the student can understand. The teacher uses precise, targeted questions to address the student's misconceptions, provides clear examples (e.g., step-by-step tracing), and proactively identifies and corrects errors in the student's reasoning. The teacher also adapts explanations to the student's evolving understanding, ensuring clarity and depth.",
+        "strengths": [
+          "Exceptional ability to break down complex concepts into digestible steps",
+          "Proactive identification and correction of student misconceptions",
+          "Use of precise, targeted questions to guide student reasoning",
+          "Adaptation of explanations to the student's current level of understanding",
+          "Clear and consistent use of examples and analogies (e.g., aliasing, tracing)"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in PCK"
+        ],
+        "suggestions": [
+          "Continue to encourage the student to ground reasoning in the prompt text to avoid misquoting",
+          "Consider providing a brief summary of key concepts (e.g., pass-by-reference vs. pass-by-value) to reinforce understanding"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good start \u2014 you traced a lot. First: which phrase(s) in the prompt did you use to decide how to treat parameters and when results are written back? Point to the exact sentence(s) that support your next step.",
+          "Teacher: Good catch noticing aliasing \u2014 but one mistake remains. In step 2 you treated y = b + x as writing to b/z instead of to y.",
+          "Teacher: You're close \u2014 before I confirm part (b), do one quick check for me (one question): after line 4 what are the current values of x and a? Using those, what is the RHS of line 5 (z = x + a - b), which variable is the LHS, and what value gets stored? Revise part (b) showing the LHS value for each line and give the final x,y,z, explaining the update you used for step 5.",
+          "Teacher: Good catch on step 2 \u2014 one small remaining misconception: you used a = 5 in step 5 even though x (and thus a) was updated to 15 in step 4.",
+          "Teacher: You're doing good tracing, but one misconception: the prompt does not declare the program is using pass-by-reference everywhere. Question 2 asks why the pass-by-result (output-only) scheme is not applicable in general for this program.",
+          "Teacher: Small correction: the phrase I asked for is the one about copying output arguments back. Please copy verbatim the sentence in the assignment that begins 'If necessary...' (it should mention copying output arguments back). Then in one or two sentences, using that exact wording as support, explain why pass-by-result is unsuitable here (be sure to mention that a or b are read before they are assigned).",
+          "Teacher: You're still misquoting the prompt; please don't invent wording. One step: copy verbatim the exact sentence from the assignment that begins 'If necessary...' (the one that mentions copying output arguments back). Paste that sentence exactly as it appears in the prompt.",
+          "Teacher: Good \u2014 your quote and explanation about pass-by-result are correct now. Next, please revise your full answers one part at a time."
+        ],
+        "reasoning": "The teacher provides highly effective feedback by consistently identifying errors, guiding the student toward corrections, and ensuring the student understands the underlying principles. The feedback is specific, actionable, and tied to the student's current work, with clear next steps. The teacher also reinforces correct reasoning and encourages the student to ground their answers in the prompt text.",
+        "strengths": [
+          "Feedback is consistently specific, actionable, and tied to the student's current work",
+          "Clear identification of errors and misconceptions",
+          "Guides the student toward self-correction with targeted questions",
+          "Reinforces correct reasoning and understanding",
+          "Encourages the student to ground answers in the prompt text"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in feedback quality"
+        ],
+        "suggestions": [
+          "Consider occasionally summarizing the student's progress to reinforce learning",
+          "Encourage the student to reflect on their own reasoning process to build metacognitive skills"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good start \u2014 you traced a lot. First: which phrase(s) in the prompt did you use to decide how to treat parameters and when results are written back? Point to the exact sentence(s) that support your next step.",
+          "Teacher: Good catch noticing aliasing \u2014 but one mistake remains. In step 2 you treated y = b + x as writing to b/z instead of to y.",
+          "Teacher: You're close \u2014 before I confirm part (b), do one quick check for me (one question): after line 4 what are the current values of x and a? Using those, what is the RHS of line 5 (z = x + a - b), which variable is the LHS, and what value gets stored? Revise part (b) showing the LHS value for each line and give the final x,y,z, explaining the update you used for step 5.",
+          "Teacher: Good catch on step 2 \u2014 one small remaining misconception: you used a = 5 in step 5 even though x (and thus a) was updated to 15 in step 4.",
+          "Teacher: You're doing good tracing, but one misconception: the prompt does not declare the program is using pass-by-reference everywhere. Question 2 asks why the pass-by-result (output-only) scheme is not applicable in general for this program.",
+          "Teacher: Small correction: the phrase I asked for is the one about copying output arguments back. Please copy verbatim the sentence in the assignment that begins 'If necessary...' (it should mention copying output arguments back). Then in one or two sentences, using that exact wording as support, explain why pass-by-result is unsuitable here (be sure to mention that a or b are read before they are assigned)."
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes by demonstrating how to trace variable values, identify misconceptions, and ground reasoning in the prompt text. The teacher uses think-aloud strategies (e.g., breaking down steps, asking targeted questions) to make their reasoning visible and guide the student through complex concepts.",
+        "strengths": [
+          "Consistently demonstrates expert thinking and problem-solving processes",
+          "Uses think-aloud strategies to make reasoning visible",
+          "Models how to trace variable values and identify misconceptions",
+          "Guides the student through complex concepts with clear, step-by-step reasoning"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in modeling"
+        ],
+        "suggestions": [
+          "Consider occasionally providing a full example of a correct trace to reinforce modeling",
+          "Encourage the student to mimic the teacher's think-aloud process to build their own modeling skills"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good start \u2014 you traced a lot. First: which phrase(s) in the prompt did you use to decide how to treat parameters and when results are written back? Point to the exact sentence(s) that support your next step.",
+          "Teacher: Good catch noticing aliasing \u2014 but one mistake remains. In step 2 you treated y = b + x as writing to b/z instead of to y.",
+          "Teacher: You're close \u2014 before I confirm part (b), do one quick check for me (one question): after line 4 what are the current values of x and a? Using those, what is the RHS of line 5 (z = x + a - b), which variable is the LHS, and what value gets stored? Revise part (b) showing the LHS value for each line and give the final x,y,z, explaining the update you used for step 5.",
+          "Teacher: Good catch on step 2 \u2014 one small remaining misconception: you used a = 5 in step 5 even though x (and thus a) was updated to 15 in step 4.",
+          "Teacher: You're doing good tracing, but one misconception: the prompt does not declare the program is using pass-by-reference everywhere. Question 2 asks why the pass-by-result (output-only) scheme is not applicable in general for this program.",
+          "Teacher: Small correction: the phrase I asked for is the one about copying output arguments back. Please copy verbatim the sentence in the assignment that begins 'If necessary...' (it should mention copying output arguments back). Then in one or two sentences, using that exact wording as support, explain why pass-by-result is unsuitable here (be sure to mention that a or b are read before they are assigned).",
+          "Teacher: You're still misquoting the prompt; please don't invent wording. One step: copy verbatim the exact sentence from the assignment that begins 'If necessary...' (the one that mentions copying output arguments back). Paste that sentence exactly as it appears in the prompt.",
+          "Teacher: Good \u2014 your quote and explanation about pass-by-result are correct now. Next, please revise your full answers one part at a time."
+        ],
+        "reasoning": "The teacher provides highly effective coaching and scaffolding by guiding the student through each step of the problem, offering targeted hints, and gradually reducing support as the student demonstrates understanding. The teacher adapts their guidance to the student's evolving needs, ensuring the student can eventually solve the problem independently.",
+        "strengths": [
+          "Provides highly effective coaching and scaffolding",
+          "Guides the student through each step of the problem with targeted hints",
+          "Gradually reduces support as the student demonstrates understanding",
+          "Adapts guidance to the student's evolving needs",
+          "Ensures the student can eventually solve the problem independently"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in coaching"
+        ],
+        "suggestions": [
+          "Consider occasionally stepping back to allow the student to attempt a full solution independently",
+          "Encourage the student to reflect on the coaching process to build self-sufficiency"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Okay, this looks tricky. Let's try to trace the values for each case. I'm going to start with part (a), where everything is passed by value.",
+          "Student: I think that's my first attempt. It was a lot of tracing! Let me know if I made any mistakes.",
+          "Student: Okay, you're right to push me on that! I totally messed up part (b) by not fully accounting for the pass-by-reference. I was still thinking of `a` as a copy, instead of an alias for `x`.",
+          "Student: Okay, you're right to call me out again! I'm still making mistakes with which variable is being updated on each line. I'm getting tripped up between the RHS calculation and where the result is stored.",
+          "Student: Okay, you're right! I'm still making silly mistakes. I keep getting caught up in the previous values and not updating them correctly.",
+          "Student: Okay, you're right to push me on this! I am *still* making assumptions and not carefully reading the prompt.",
+          "Student: You are absolutely right to make me think one last time! I'm glad you're pushing me to fully understand the underlying principles, not just get the right answer for this specific problem.",
+          "Student: You are absolutely right to call me out again! I'm clearly having a significant issue with accurately copying text, and I apologize for the repeated errors."
+        ],
+        "reasoning": "The teacher consistently prompts the student to reflect on their reasoning, identify mistakes, and articulate their thought processes. The student frequently explains their reasoning, reflects on their errors, and demonstrates metacognitive awareness (e.g., recognizing their tendency to misquote the prompt). However, the reflection is primarily student-driven, with the teacher facilitating it through targeted questions rather than explicitly structuring reflection activities.",
+        "strengths": [
+          "Consistently prompts the student to reflect on their reasoning and identify mistakes",
+          "Encourages the student to articulate their thought processes",
+          "Facilitates metacognitive awareness through targeted questions",
+          "Student demonstrates frequent and meaningful reflection"
+        ],
+        "weaknesses": [
+          "Reflection is primarily student-driven; the teacher could explicitly structure more reflection activities",
+          "Could incorporate more opportunities for the student to evaluate their own understanding"
+        ],
+        "suggestions": [
+          "Explicitly structure reflection activities (e.g., 'Explain why your first attempt was incorrect and how you corrected it')",
+          "Encourage the student to summarize their learning after each major correction",
+          "Incorporate peer reflection or discussion to deepen understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Okay, this looks tricky. Let's try to trace the values for each case. I'm going to start with part (a), where everything is passed by value.",
+          "Student: I think that's my first attempt. It was a lot of tracing! Let me know if I made any mistakes.",
+          "Student: Okay, you're right to push me on that! I totally messed up part (b) by not fully accounting for the pass-by-reference. I was still thinking of `a` as a copy, instead of an alias for `x`.",
+          "Student: Okay, you're right to call me out again! I'm still making mistakes with which variable is being updated on each line. I'm getting tripped up between the RHS calculation and where the result is stored.",
+          "Student: Okay, you're right! I'm still making silly mistakes. I keep getting caught up in the previous values and not updating them correctly.",
+          "Student: Okay, you're right to push me on this! I am *still* making assumptions and not carefully reading the prompt.",
+          "Student: You are absolutely right to make me think one last time! I'm glad you're pushing me to fully understand the underlying principles, not just get the right answer for this specific problem.",
+          "Student: You are absolutely right to call me out again! I'm clearly having a significant issue with accurately copying text, and I apologize for the repeated errors."
+        ],
+        "reasoning": "The student is highly engaged in the learning process, demonstrating consistent participation in constructive and interactive activities. The student frequently explains their reasoning, reflects on their mistakes, and actively seeks to correct their understanding. The dialogue is highly interactive, with the student responding thoughtfully to the teacher's prompts and questions, engaging in co-construction of knowledge.",
+        "strengths": [
+          "Student demonstrates consistent participation in constructive and interactive activities",
+          "Frequently explains reasoning and reflects on mistakes",
+          "Actively seeks to correct understanding",
+          "Highly interactive dialogue with co-construction of knowledge"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in engagement"
+        ],
+        "suggestions": [
+          "Encourage the student to take more initiative in identifying and correcting their own mistakes",
+          "Incorporate collaborative problem-solving with peers to further enhance engagement"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher explicitly identifies specific misconceptions: 'in part (b) you treated x as still 3... but in pass-by-reference a aliases x'",
+          "Teacher models the correct rule for Hoare triples: 'when backing up an assignment x := E you substitute E for x in the postcondition (you do not solve for x)'",
+          "Teacher distinguishes between specific prompt requirements and general concepts: 'the prompt does not declare the program is using pass-by-reference everywhere'"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by accurately diagnosing student errors in complex topics (pass-by-reference semantics, Hoare logic). The teacher provides precise, concept-based explanations rather than just giving the answer, effectively transforming abstract concepts into checkable rules (e.g., the substitution rule).",
+        "strengths": [
+          "Precise identification of conceptual errors (aliasing vs. copying in pass-by-reference)",
+          "Clear articulation of formal rules (Hoare logic substitution vs. simple algebraic solving)",
+          "Effective use of prompt text to ground abstract concepts"
+        ],
+        "weaknesses": [
+          "The transcript focuses heavily on procedural correctness (tracing values) with less emphasis on high-level intuition for the underlying mechanisms."
+        ],
+        "suggestions": [
+          "Could briefly reinforce *why* aliasing works at the memory level to deepen conceptual understanding beyond just the rule."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "'One thing I noticed: in part (b) you treated x as still 3... Re-check part (b) with that in mind.'",
+          "'Good catch on step 2 \u2014 one small remaining misconception: you used a = 5 in step 5 even though x (and thus a) was updated to 15 in step 4.'",
+          "'Small correction: that sentence you quoted... does not appear in the assignment text. That's a misconception \u2014 please don't invent wording from memory.'"
+        ],
+        "reasoning": "The feedback is exceptionally high quality. It is specific, actionable, and iterative. The teacher identifies the exact line or logical step where the student's reasoning broke down, provides a clear next step for correction, and maintains a supportive tone while being rigorous about accuracy.",
+        "strengths": [
+          "Highly specific and targeted (points to exact lines and values)",
+          "Actionable guidance (instructs exactly what to redo)",
+          "Consistent application of feedback across multiple complex problems"
+        ],
+        "weaknesses": [
+          "None observed in the provided transcript snippets."
+        ],
+        "suggestions": [
+          "None required; the feedback loop is effectively managed."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "'Careful: you inverted the assignment. When backing up an assignment x := E you substitute E for x in the postcondition...'"
+        ],
+        "reasoning": "The teacher provides strong conceptual modeling and rule definition (particularly regarding the Hoare triple substitution), but does not perform a full end-to-end 'think-aloud' demonstration of solving a new example from scratch. Instead, modeling occurs through the guidance prompts and rule statements.",
+        "strengths": [
+          "Models the correct procedural rule for formal verification.",
+          "Demonstrates how to treat prompt instructions as literal constraints (quoting vs. paraphrasing)."
+        ],
+        "weaknesses": [
+          "Lacks a full worked example (think-aloud) from start to finish for the student to observe."
+        ],
+        "suggestions": [
+          "Could provide a brief, simplified worked example of a 2-line Hoare triple to model the 'look for the right-hand side' mental process before bringing the student back to the complex problem."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "'Quick question (one step at a time): after line 4... what are the current values...?'",
+          "'One small task: start from Q: w = 0 and back up a single step...'",
+          "'Now do the substitution: replace v by the right-hand side... and write the resulting formula.'"
+        ],
+        "reasoning": "The teacher provides excellent scaffolding by breaking down complex, multi-step tasks into 'one-step-at-a-time' micro-tasks. The scaffolding is persistent; when the student fails, the teacher resets to an even smaller step (e.g., from 'redo the whole trace' to 'what is the value after step 1?').",
+        "strengths": [
+          "Effective fading from corrective feedback to guided discovery.",
+          "Strategic decomposition of overwhelming problems into manageable, single-step questions.",
+          "High persistence in ensuring the student masters each micro-step before moving on."
+        ],
+        "weaknesses": [
+          "None observed; the scaffolding is perfectly aligned with the student's current cognitive load."
+        ],
+        "suggestions": [
+          "None."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "'Phrases in the prompt that told me how to handle parameters were: ... These define how the parameters are treated...'",
+          "'I was incorrectly treating them as independent variables in my first attempt. I think I understand it better now!'",
+          "'The prompt doesn't explicitly allow treating an int as a float... My bad for making that leap!'"
+        ],
+        "reasoning": "The student is frequently prompted to reflect on *why* they made an error (misreading the prompt vs. conceptual misunderstanding of the code). The student articulates their thought process clearly, such as identifying that they 'made a leap' in assuming type compatibility. The reflection is deep and directly tied to the learning goals.",
+        "strengths": [
+          "Student explicitly identifies their own cognitive errors (making assumptions, misreading prompts).",
+          "Student connects their reasoning back to the source material (the prompt).",
+          "High level of metacognitive awareness regarding the *source* of the error."
+        ],
+        "weaknesses": [
+          "The repetitive nature of the student's code tracing makes it hard for the reflection to eventually synthesize into a broader conceptual rule without teacher prompting."
+        ],
+        "suggestions": [
+          "Could prompt the student to synthesize a general 'checklist' for pass-by-reference tracing to consolidate the reflection into a reusable strategy."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The entire transcript consists of iterative problem-solving where the student must write out multi-step calculations.",
+          "Constructive engagement: Students are doing the cognitive work of tracing variables, and the teacher only intervenes to point out where the logic failed.",
+          "Interactive: Flow is a tight back-and-forth refining a single solution based on errors."
+        ],
+        "reasoning": "The engagement level is highly active and constructive. The student is not passively listening; they are engaged in complex cognitive tracing, formal logic application, and prompt analysis. The ICAP level reaches 'Constructive' (extending knowledge through applying it to solve new problems) and 'Interactive' (diagnosing and correcting logic in a back-and-forth dialogue with the teacher).",
+        "strengths": [
+          "High cognitive load focused on application and analysis rather than recall.",
+          "Continuous, meaningful interaction with the core concepts (aliases, formal logic).",
+          "Student is actively constructing their understanding by testing their logic against teacher prompts."
+        ],
+        "weaknesses": [
+          "The student becomes somewhat repetitive in their self-apologetic framing ('I am *so* close'), which could slightly detract from pure cognitive focus, though it doesn't hinder the engagement level itself."
+        ],
+        "suggestions": [
+          "Could introduce brief peer-discussion moments or self-explanation checkpoints (e.g., 'explain the aliasing step to me in plain English before we compute the next line') to vary the interactive style."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student accurately traces variable changes in complex scenarios involving pass-by-value, pass-by-reference, and value-result, demonstrating strong understanding of parameter passing mechanisms.",
+          "Correctly identifies and applies key phrases from the prompt to determine parameter handling, such as 'output arguments are copied back to parameters in the left-to-right order' and descriptions of parameter passing methods.",
+          "Shows ability to reason about aliasing and its impact on variable values, explaining how changes to one variable immediately affect others due to shared memory locations."
+        ],
+        "reasoning": "The student demonstrates a strong grasp of pedagogical content knowledge by accurately explaining complex concepts like parameter passing mechanisms and aliasing. They effectively use examples from the transcript to illustrate their understanding, though they occasionally require teacher guidance to correct misconceptions.",
+        "strengths": [
+          "Accurate tracing of variable changes in complex scenarios.",
+          "Correct application of prompt phrases to determine parameter handling.",
+          "Clear understanding of aliasing and its effects on variable values."
+        ],
+        "weaknesses": [
+          "Occasional misconceptions requiring teacher intervention, such as initially treating aliased variables as independent copies.",
+          "Some difficulty with meticulous tracking of variable updates, leading to repeated mistakes.",
+          "Over-reliance on memory for prompt details, resulting in incorrect quoting of phrases."
+        ],
+        "suggestions": [
+          "Encourage more meticulous tracking of variable updates to reduce errors.",
+          "Promote careful reading and direct quoting of prompt details to avoid reliance on memory.",
+          "Provide additional practice with complex parameter passing scenarios to reinforce understanding."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher consistently provides specific, actionable feedback that addresses both errors and underlying misconceptions, guiding the student toward correct understanding.",
+          "Feedback is tailored to the student's current performance and learning goals, such as pointing out specific mistakes in variable tracing and aliasing.",
+          "Teacher uses probing questions to encourage student reflection and deeper understanding, e.g., 'Which phrase(s) in the prompt did you use to decide how to treat parameters?'."
+        ],
+        "reasoning": "The teacher's feedback is highly effective, consistently addressing learning goals, current performance, and future improvement. It is clear, actionable, and tailored to the student's needs, significantly enhancing their understanding.",
+        "strengths": [
+          "Specific and actionable feedback that addresses errors and misconceptions.",
+          "Tailored guidance based on student performance and learning goals.",
+          "Use of probing questions to encourage reflection and deeper understanding."
+        ],
+        "weaknesses": [
+          "Minimal evidence of feedback on broader learning strategies, such as meticulousness or prompt reading."
+        ],
+        "suggestions": [
+          "Incorporate feedback on learning strategies, such as meticulousness and careful prompt reading.",
+          "Continue using probing questions to foster independent problem-solving skills."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher demonstrates expert thinking by breaking down complex problems into manageable steps, such as tracing variable changes and explaining aliasing.",
+          "Uses think-aloud strategies to guide the student through corrections, e.g., 'Re-check part (b) with that in mind.'",
+          "Provides real-world analogies and examples to illustrate concepts, though not extensively."
+        ],
+        "reasoning": "The teacher effectively models expert thinking by breaking down complex problems and using think-aloud strategies. While not extensively using real-world examples, their demonstrations are clear and contribute positively to student learning.",
+        "strengths": [
+          "Clear breakdown of complex problems into manageable steps.",
+          "Effective use of think-aloud strategies to guide corrections.",
+          "Demonstration of expert reasoning in variable tracing and aliasing."
+        ],
+        "weaknesses": [
+          "Limited use of real-world examples to illustrate concepts.",
+          "Occasional need for repetition due to student errors."
+        ],
+        "suggestions": [
+          "Incorporate more real-world examples to enhance understanding.",
+          "Provide structured practice to reinforce concepts and reduce repetition."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher provides strategic hints and scaffolding, gradually removing support as the student gains competence, e.g., 'Now revise just part (b): show the LHS value for each line...'.",
+          "Support is tailored to student needs, addressing specific misconceptions and errors in variable tracing and aliasing.",
+          "Gradual reduction of support as the student demonstrates improved understanding, e.g., 'You're close \u2014 but there's a slip...'."
+        ],
+        "reasoning": "The teacher's coaching is highly effective, providing strategic hints and scaffolding that are gradually removed as the student becomes more independent. Support is consistently tailored to student needs, significantly enhancing learning.",
+        "strengths": [
+          "Strategic hints and scaffolding tailored to student needs.",
+          "Gradual reduction of support as student competence grows.",
+          "Effective addressing of specific misconceptions and errors."
+        ],
+        "weaknesses": [
+          "Minimal evidence of explicit fading of support, though it is implied."
+        ],
+        "suggestions": [
+          "Explicitly communicate the fading of support to reinforce student independence.",
+          "Continue tailoring support to address specific student needs."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "Student regularly reflects on their understanding and explains their reasoning, e.g., 'I need to practice being more meticulous and tracking variable updates more carefully.'",
+          "Teacher encourages reflection by asking probing questions, e.g., 'Which exact phrase(s) in the assignment prompt did you use to decide...?'",
+          "Student evaluates their understanding and identifies areas for improvement, though occasionally requiring teacher prompts."
+        ],
+        "reasoning": "The student consistently engages in meaningful reflection, explaining their reasoning and evaluating their understanding. While they occasionally require teacher prompts, their reflections contribute positively to their learning.",
+        "strengths": [
+          "Regular reflection on understanding and reasoning.",
+          "Identification of areas for improvement.",
+          "Teacher encouragement of reflection through probing questions."
+        ],
+        "weaknesses": [
+          "Occasional reliance on teacher prompts for reflection.",
+          "Limited evidence of independent evaluation of understanding."
+        ],
+        "suggestions": [
+          "Encourage more independent reflection and evaluation of understanding.",
+          "Provide structured opportunities for self-assessment and goal-setting."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Student consistently participates in interactive learning, engaging in discussion, collaboration, and argumentation with the teacher.",
+          "Co-construction of understanding is evident as the student revises their work based on teacher feedback and guidance.",
+          "Active problem-solving and constructive activities, such as tracing variable changes and justifying parameter passing mechanisms."
+        ],
+        "reasoning": "The student consistently engages in interactive learning, participating in discussion, collaboration, and co-construction of understanding. Their active problem-solving and constructive activities significantly enhance their learning experience.",
+        "strengths": [
+          "Consistent participation in interactive learning and co-construction.",
+          "Active engagement in problem-solving and constructive activities.",
+          "Collaborative discussion and argumentation with the teacher."
+        ],
+        "weaknesses": [
+          "Minimal evidence of independent initiative in learning activities."
+        ],
+        "suggestions": [
+          "Encourage more independent initiative in learning activities.",
+          "Provide opportunities for student-led discussions and problem-solving."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 91.1,
+    "interpretation": "Excellent pedagogy"
+  }
+}

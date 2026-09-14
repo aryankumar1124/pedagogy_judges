@@ -1,0 +1,508 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_gemma3_12b_anthropic",
+    "student_model": "gemma3:12b",
+    "tutor_provider": "anthropic",
+    "tutor_model": "claude-haiku-4-5-20251001",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let me clarify something about the two different approaches you're mixing together. Here's the key distinction: When you compute the weakest precondition by working backward through the assignments, you're finding what must be true before the program runs to guarantee the postcondition holds.",
+          "Teacher: Let me refocus you: Trust your WP derivation. You computed it correctly with proper substitutions. The weakest precondition is u = w + 2*v - 3.",
+          "Teacher: Now, to check whether this is actually correct, ask yourself: If we assume u = w + 2*v - 3 holds before the program starts, does the program guarantee that w = 0 at the end?",
+          "Teacher: Here's a guiding question: The assignment prompt asks what restrictions the weakest precondition imposes. You've identified the relationship u = w + 2*v - 3. Now, think about this from a practical standpoint: If someone handed you initial values for all three variables u, v, and w, what would you need to check to verify that the precondition is satisfied?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by transforming complex concepts (weakest precondition, Hoare triples) into digestible explanations. They consistently use precise mathematical reasoning, address student misconceptions (e.g., mixing backward reasoning approaches), and adapt explanations to the student's evolving understanding. The teacher also provides multiple representations of concepts (forward/backward tracing, substitution rules) and proactively identifies where the student's reasoning might be flawed.",
+        "strengths": [
+          "Exceptional ability to explain abstract concepts (weakest precondition) through concrete examples and step-by-step reasoning",
+          "Proactive identification and correction of student misconceptions (e.g., mixing WP derivation with verification)",
+          "Multiple representations of concepts (forward/backward tracing, substitution rules)",
+          "Strong adaptation to student's evolving understanding",
+          "Precise mathematical reasoning and clear explanations of logical steps"
+        ],
+        "weaknesses": [
+          "Minor over-reliance on Socratic questioning at times, which could occasionally be balanced with more direct explanations to accelerate understanding"
+        ],
+        "suggestions": [
+          "Consider occasionally providing more direct explanations alongside Socratic questions to help students solidify their understanding",
+          "Explicitly state the key takeaway after resolving a misconception to reinforce learning"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Good work on your systematic approach! You're working backward through the program correctly.",
+          "Teacher: Excellent\u2014you've corrected that substitution!",
+          "Teacher: Perfect! You've got the substitution right.",
+          "Teacher: Excellent work! You've made a crucial breakthrough in understanding the difference between computing weakest preconditions and verifying them.",
+          "Teacher: Excellent observation! You've identified a real discrepancy.",
+          "Teacher: That's a solid observation!"
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses all three components of effective feedback (goals, current performance, next steps). Feedback is specific, actionable, and directly tied to the student's work. The teacher regularly identifies strengths (e.g., 'Excellent work!') and provides clear guidance for improvement (e.g., 'Trust your WP derivation'). Feedback is timely and helps the student understand both what they did well and where they need to improve.",
+        "strengths": [
+          "Consistently addresses all three components of effective feedback (goals, current performance, next steps)",
+          "Specific, actionable, and directly tied to student's work",
+          "Balances praise with constructive guidance",
+          "Timely and helps student understand both strengths and areas for improvement",
+          "Uses feedback to guide student toward deeper understanding"
+        ],
+        "weaknesses": [
+          "Could occasionally make the 'next steps' more explicit in some instances"
+        ],
+        "suggestions": [
+          "Ensure every piece of feedback explicitly connects to the learning goal",
+          "Consider occasionally summarizing the student's progress toward the goal"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Let me clarify something about the two different approaches you're mixing together. Here's the key distinction: When you compute the weakest precondition by working backward through the assignments, you're finding what must be true before the program runs to guarantee the postcondition holds.",
+          "Teacher: Now, to check whether this is actually correct, ask yourself: If we assume u = w + 2*v - 3 holds before the program starts, does the program guarantee that w = 0 at the end?",
+          "Teacher: Let me refocus you: Trust your WP derivation. You computed it correctly with proper substitutions. The weakest precondition is u = w + 2*v - 3.",
+          "Teacher: Here's my question: Look back at your original backward reasoning. You concluded that v = -w must hold. But according to the weakest precondition derivation, the constraint is u = w + 2*v - 3."
+        ],
+        "reasoning": "The teacher consistently makes their expert thinking visible through detailed explanations of reasoning processes. They demonstrate problem-solving strategies (WP derivation, forward/backward tracing) and explicitly model how to approach complex problems. The teacher's think-aloud style helps students understand the underlying logic and can apply it to similar problems.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through detailed explanations",
+          "Makes problem-solving strategies explicit and visible",
+          "Uses think-aloud style to reveal reasoning processes",
+          "Models how to approach complex problems systematically",
+          "Provides clear examples of correct reasoning"
+        ],
+        "weaknesses": [
+          "Could occasionally model incorrect approaches first to help students understand why they don't work"
+        ],
+        "suggestions": [
+          "Consider occasionally demonstrating common incorrect approaches and explaining why they fail",
+          "Explicitly label when you're modeling expert thinking (e.g., 'Let me show you how I would approach this...')"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Teacher: Let me ask you to look at step 2 more carefully. You wrote: WP(w + v = 0, v := 2*v - u) = 2*v - u = -w. Let me ask: When you apply the weakest precondition rule for an assignment v := E, you substitute E for v in the postcondition.",
+          "Teacher: Let me ask you to check your work: Can you rearrange w + 2*v - u - 3 = 0 into a simpler form?",
+          "Teacher: Let me ask: When you compute the weakest precondition by working backward through the assignments, you're finding what must be true before the program runs to guarantee the postcondition holds.",
+          "Teacher: Now, to check whether this is actually correct, ask yourself: If we assume u = w + 2*v - 3 holds before the program starts, does the program guarantee that w = 0 at the end?"
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding. They offer targeted hints and questions that guide the student toward correct understanding without giving away answers. The scaffolding is strategically provided and gradually adjusted as the student's competence grows. The teacher's questions are precisely calibrated to the student's current understanding and help them progress to the next level.",
+        "strengths": [
+          "Provides targeted hints and questions that guide without giving answers",
+          "Scaffolding is strategically provided and gradually adjusted",
+          "Questions are precisely calibrated to student's current understanding",
+          "Helps student progress to next level of understanding",
+          "Balances support with independence"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more explicit guidance when student is stuck on a fundamental concept"
+        ],
+        "suggestions": [
+          "Consider occasionally providing a 'scaffolded hint' that gives a bit more direction when student is completely stuck",
+          "Explicitly state when you're providing a hint vs. when you're expecting the student to figure it out independently"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Let me ask you to reconsider what you just said: 'I cannot construct a float literal using only the given operators.' That's correct\u2014you can't construct a float using the operators. But look at expression 4 again: 10.5 is already written there as a literal in the expression itself.",
+          "Teacher: Here's my question: In expression 4: and(greater than(20, 10.5), equals(\"hi\", \"hi\")) Is the 10.5: Already present as a literal value in the expression (like 20, \"hi\" are), OR Something that needs to be constructed using the available operators?",
+          "Teacher: Let me ask: When you apply the weakest precondition rule for an assignment v := E, you substitute E for v in the postcondition.",
+          "Teacher: Now, to check whether this is actually correct, ask yourself: If we assume u = w + 2*v - 3 holds before the program starts, does the program guarantee that w = 0 at the end?"
+        ],
+        "reasoning": "The teacher consistently prompts students to reflect on their reasoning and understanding. They ask questions that require students to explain their thought processes, evaluate their understanding, and engage in meaningful reflection. However, there are fewer instances of students actually articulating their reasoning compared to other factors, and the reflection is primarily teacher-driven rather than student-initiated.",
+        "strengths": [
+          "Consistently prompts students to reflect on their reasoning",
+          "Asks questions that require explanation of thought processes",
+          "Encourages evaluation of understanding",
+          "Promotes meaningful reflection through targeted questions"
+        ],
+        "weaknesses": [
+          "Reflection is primarily teacher-driven rather than student-initiated",
+          "Fewer instances of students actually articulating their reasoning compared to other factors",
+          "Could encourage more student-initiated reflection"
+        ],
+        "suggestions": [
+          "Encourage students to explain their reasoning more frequently without prompting",
+          "Ask students to summarize their understanding at key points",
+          "Create opportunities for students to reflect on their learning process"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Okay, I'll give this a shot. Let's do part (a) first...",
+          "Student: Okay, let me think this through carefully...",
+          "Student: Okay, you're right to point that out. I messed up the substitution in step 2 of the WP derivation...",
+          "Student: Okay, I think I see what happened...",
+          "Student: Okay, let me think about this...",
+          "Student: Okay, you're absolutely right to redirect me...",
+          "Student: Okay, I understand now...",
+          "Student: Okay, let me think about this. So, the goal is to find a precondition P..."
+        ],
+        "reasoning": "The transcript shows exceptional student engagement. The student consistently participates in constructive activities (self-explaining, questioning, summarizing) and frequently engages in interactive learning (discussion, collaboration, argumentation). The student demonstrates high cognitive involvement, actively working through problems, correcting mistakes, and engaging in deep reasoning. The dialogue is highly interactive with the teacher guiding the student through complex concepts.",
+        "strengths": [
+          "Consistent constructive and interactive engagement",
+          "High cognitive involvement (self-explaining, questioning, summarizing)",
+          "Active participation in problem-solving",
+          "Frequent interactive learning (discussion, collaboration)",
+          "Demonstrates deep reasoning and critical thinking"
+        ],
+        "weaknesses": [
+          "Minimal evidence of passive learning, which is actually a strength in this context"
+        ],
+        "suggestions": [
+          "Consider occasionally having the student work independently before discussing to ensure they're processing information",
+          "Encourage the student to articulate their thought process more frequently"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: 'Has `x` been modified *before* this line executes? ... Take another look at the sequence of assignments and tell me: what value of `x` should we actually be using...'",
+          "Teacher: 'In an assignment where operators have explicit, strict signatures, should we assume implicit type conversions... happen automatically, or should we follow the signatures exactly as written?'",
+          "Teacher: 'Here's the key distinction: When you compute the weakest precondition... you're finding what *must be true before the program runs*... But when you then try to verify that constraint by working backward *again*... you're doing something different...'"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge. They do not just correct errors; they diagnose the specific cognitive hurdles in complex topics like pass-by-reference aliasing, strict type checking vs. implicit conversion, and the distinction between computing and verifying preconditions. The teacher proactively identifies common misconceptions (e.g., assuming implicit type conversions in a strict system, or confusing local vs. global variable scopes) and uses targeted questions to dismantle them, representing the concepts through multiple lenses (operation trace vs. state change).",
+        "strengths": [
+          "Precise attribution of errors to specific conceptual misunderstandings (aliasing, scope, type strictness).",
+          "Effective distinction between similar but distinct concepts (e.g., computing WP vs. verifying WP).",
+          "Contextualization of abstract rules (type checking) against common real-world intuitions (Python-style implicit conversion) to clarify the specific problem constraints."
+        ],
+        "weaknesses": [
+          "The transcript contains some meta-level confusion where the 'student' role slips and provides meta-analysis of the tutoring, which the teacher has to manage, but this is a role-play artifact rather than a PCK failure."
+        ],
+        "suggestions": [
+          "Continue using concrete counter-examples to test student understanding of edge cases in type signatures and variable scoping."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: 'However, I want you to verify your final answer by checking one more detail. In the line `z = x + a - b`, what values are you using?'",
+          "Teacher: 'I need to pause here and recalibrate. Your reasoning process has been excellent, but I think we've overcorrected on the interpretation of this assignment.'",
+          "Teacher: 'Excellent observation! You've identified a real discrepancy. Now let's use that to guide your revision.'"
+        ],
+        "reasoning": "The feedback is highly actionable and specific. The teacher rarely gives a simple 'right/wrong' answer; instead, they pinpoint the exact line of code or logical step where the student's reasoning diverges from the correct model. The feedback consistently provides a 'next step' (e.g., 'Now that you have corrected step 2, move to the next assignment backward'). The teacher effectively balances praise with rigorous correction, ensuring the student understands *why* they were wrong and *how* to fix it.",
+        "strengths": [
+          "Feedback is granular, focusing on specific variable values or logical links.",
+          "Constructive tone that validates the student's effort while demanding precision.",
+          "Immediate follow-up questions to verify that the feedback was understood and applied."
+        ],
+        "weaknesses": [
+          "In the later sections, the length of the back-and-forth can be intense, though it is necessary for deep learning."
+        ],
+        "suggestions": [
+          "Maintain the practice of requiring the student to re-state the corrected rule before moving to the next problem instance to ensure retention."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: 'Let's refocus you: Trust your WP derivation... try working *forward* through the program... trace through each assignment. What values do u, v, and w have after each line?'",
+          "The teacher guides the *strategy* of modeling (forward vs backward) but primarily lets the student execute the steps."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by shifting the *methodology* of the solution (e.g., switching from backward derivation to forward verification for Hoare logic). However, the teacher does not extensively perform the 'think-aloud' process themselves. Instead, they prompt the student to visualize the state changes. While the strategic modeling is strong, the direct demonstration of the mechanical steps (the actual substitution or tracing) is left to the student with heavy scaffolding, rather than being fully modeled by the teacher.",
+        "strengths": [
+          "Clear modeling of *when* to use specific verification techniques (forward trace vs backward WP).",
+          "Explicitly naming the cognitive strategy ('Trust your WP derivation... try working forward')."
+        ],
+        "weaknesses": [
+          "The teacher rarely performs the calculation trace themselves to show the internal monologue of checking variable states, relying instead on the student to do the tracing under guidance."
+        ],
+        "suggestions": [
+          "For particularly complex traces, a brief 'Here is how I visualize the state table' could further aid students who struggle with mental bookkeeping."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: 'I want you to look at the assignment prompt one more time... The key phrase is 'using only the given operators.' ... This refers to the *operations* you can perform\u2014not whether literal values... can appear.'",
+          "Teacher: 'Let me ask you to check your work more carefully on one specific line... Has `x` been modified *before* this line executes?'",
+          "Teacher: 'Look at the line `x = b + y + a`... Since `b` is an alias... when you execute `b = a - z`, you're also changing the original `x`.'"
+        ],
+        "reasoning": "This is a textbook example of high-quality coaching. The teacher provides just enough scaffolding to move the student from their current error state to the next insight, removing the scaffolding once the student articulates the correct concept. The teacher anticipates the next likely error (e.g., the student forgetting the alias update in the final line) and pre-empts it with specific guidance. The support is dynamic, adjusting the level of abstraction based on the student's performance (e.g., moving from conceptual explanation to specific line-level checking when the student got the concept but failed the calculation).",
+        "strengths": [
+          "Precise 'nudging' that isolates the single point of failure in the student's reasoning.",
+          "Scaffolding that is consistently removed once the student demonstrates competence.",
+          "Anticipation of common pitfalls (aliasing in pass-by-reference) and proactive intervention."
+        ],
+        "weaknesses": [
+          "None significant; the coaching is consistently well-calibrated."
+        ],
+        "suggestions": [
+          "None."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Student: 'I was too quick in assuming `x` hadn't changed. Let's go back and look at the trace...'",
+          "Student: 'I was focusing on the local `x` within the function, and not correctly tracking how the assignment `b = a - z` *also* modified the original `x`.'",
+          "Student: 'Oh, I see my mistake. I was looking at the local `x`... but I needed to consider the *original* `x`...'"
+        ],
+        "reasoning": "The student is frequently asked to explain *why* their previous reasoning was flawed, not just to provide the correct answer. The student engages in metacognitive reflection, identifying their specific cognitive errors (e.g., 'assuming I could do that,' 'focusing on local vs global'). While the student does articulate their reasoning, the reflection is often triggered by the teacher's specific prompt to find the error, rather than being entirely self-directed before the prompt. However, the quality of the articulated reasoning is high.",
+        "strengths": [
+          "Student explicitly articulates the nature of their misconception (e.g., confusing local and global scope).",
+          "Student reflects on the process choice (e.g., realizing they added an unnecessary constraint in the Hoare logic)."
+        ],
+        "weaknesses": [
+          "Reflection is often reactive to the teacher's specific call-out, rather than the student proactively auditing their own multi-step trace before submitting."
+        ],
+        "suggestions": [
+          "Encourage the student to perform a brief 'self-audit' of their trace before submitting an answer, asking themselves 'Does every variable change match my mental model of the scope?' to build independent metacognition."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The entire transcript is a dialogue of Socratic questioning and student response.",
+          "Student: 'Let me think this through carefully...'",
+          "Teacher: 'Can you think through this scenario?' -> Student: 'Okay, let's see...'"
+        ],
+        "reasoning": "The engagement is fully Interactive and Constructive. The student is never passive; they must construct the solution step-by-step, defend their reasoning, and reconstruct it when challenged. The teacher's questions are designed to require the student to manipulate the logical structure of the code (ICAP: Interactive/Constructive). The student is constantly required to explain, justify, and recalculate, ensuring deep cognitive involvement.",
+        "strengths": [
+          "Consistent dialogue requiring verbalization of internal logic.",
+          "Tasks are decomposed into manageable interactive turns.",
+          "Student is actively involved in error correction and hypothesis testing."
+        ],
+        "weaknesses": [
+          "None."
+        ],
+        "suggestions": [
+          "None."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student demonstrates deep understanding of parameter passing concepts (pass-by-value, pass-by-reference, pass-by-value-result) and their implications.",
+          "Accurately traces variable modifications through complex function calls, considering aliasing effects.",
+          "Correctly identifies and explains the core issue with pass-by-value-result in part 2, showing strong conceptual grasp."
+        ],
+        "reasoning": "The student exhibits exceptional PCK, transforming abstract concepts into precise explanations and applying them to complex scenarios. They proactively identify misconceptions and adapt their reasoning based on feedback.",
+        "strengths": [
+          "Exceptional understanding of parameter passing mechanisms",
+          "Precise variable tracing and aliasing analysis",
+          "Ability to connect conceptual knowledge to practical code behavior"
+        ],
+        "weaknesses": [
+          "Initially overlooks the order of copying in pass-by-value-result (part c), but quickly corrects with guidance"
+        ],
+        "suggestions": [
+          "Encourage more systematic checking of edge cases in parameter passing scenarios",
+          "Provide opportunities to apply this knowledge to larger code examples"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides clear, actionable feedback that addresses specific misconceptions (e.g., part c's copying order, part d's aliasing effects).",
+          "Uses targeted questions to guide student thinking without giving away answers.",
+          "Confirms understanding through follow-up questions and requests for justification."
+        ],
+        "reasoning": "The teacher consistently provides high-quality feedback that addresses learning goals, current performance, and future improvement. Feedback is clear, specific, and actionable, fostering deep understanding.",
+        "strengths": [
+          "Clear identification of strengths and weaknesses",
+          "Use of Socratic questioning to guide discovery",
+          "Confirmation of understanding through targeted probes"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue using this highly effective feedback approach",
+          "Consider incorporating more opportunities for student self-assessment"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher consistently makes expert thinking visible through detailed think-aloud processes.",
+          "Demonstrates how to trace variable modifications step-by-step, considering aliasing effects.",
+          "Models systematic debugging strategies (e.g., checking specific lines of code for errors)."
+        ],
+        "reasoning": "The teacher excels at modeling expert thinking, making complex processes transparent through detailed demonstrations and think-aloud strategies. This significantly enhances student learning.",
+        "strengths": [
+          "Clear demonstration of expert problem-solving processes",
+          "Systematic approach to debugging and error analysis",
+          "Effective use of think-aloud strategies"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue modeling expert thinking in this highly effective manner",
+          "Consider incorporating more real-world examples in demonstrations"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher provides strategic hints and guidance that gradually fade as student competence grows.",
+          "Uses targeted questions to help student discover errors and correct them independently.",
+          "Adapts support level based on student's evolving understanding."
+        ],
+        "reasoning": "The teacher demonstrates masterful coaching, providing precisely the right level of support at each stage. Guidance is strategically offered and gradually removed as the student becomes more independent.",
+        "strengths": [
+          "Strategic provision of hints and scaffolding",
+          "Adaptive support based on student progress",
+          "Fostering of independent problem-solving"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Maintain this highly effective coaching approach",
+          "Consider incorporating more opportunities for student self-reflection on their learning process"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student consistently articulates their reasoning, evaluates their understanding, and engages in meaningful reflection.",
+          "Identifies errors in their own work and explains corrections clearly.",
+          "Demonstrates metacognitive awareness of their learning process."
+        ],
+        "reasoning": "The student excels at reflection, consistently explaining their thought processes, evaluating their understanding, and demonstrating awareness of their learning. This significantly enhances their problem-solving abilities.",
+        "strengths": [
+          "Clear articulation of reasoning processes",
+          "Ability to identify and correct errors independently",
+          "Strong metacognitive awareness"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Encourage continued development of reflective practices",
+          "Provide opportunities for student to reflect on their learning strategies"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student and teacher consistently engage in interactive learning through discussion, collaboration, and co-construction of understanding.",
+          "Student actively participates in problem-solving, asking clarifying questions and proposing solutions.",
+          "Teacher fosters interactive engagement through Socratic questioning and guided discovery."
+        ],
+        "reasoning": "The transcript demonstrates consistently high levels of interactive engagement. Both student and teacher actively participate in co-constructing understanding through discussion, collaboration, and argumentation.",
+        "strengths": [
+          "High level of interactive engagement",
+          "Active student participation in problem-solving",
+          "Effective use of Socratic questioning by teacher"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue fostering this highly interactive learning environment",
+          "Consider incorporating more opportunities for peer collaboration"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          3,
+          5
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 95.5,
+    "interpretation": "Excellent pedagogy"
+  }
+}

@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_gemma3_4b_openai",
+    "student_model": "gemma3:4b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Small misconception: a function\u2019s signature (greater than(int, float) \u2192 boolean) does not itself convert an argument\u2019s type \u2014 it only states what types are required.",
+          "Teacher: Which exact operator line in the prompt converts an int to a float? Quote the line(s). If there is none, what is the type of the literal 5 (int or float) and, based on that, is greater than(10, 5) typeable?",
+          "Teacher: Good catch correcting that misconception. To be sure, point to the exact operator-definition lines in the prompt that support your conclusion (which line(s) show the required parameter types and which line(s), if any, show available conversions).",
+          "Teacher: You mixed up int\u2192string with int\u2192float earlier \u2014 good catch. Quick question: which exact operator definition in the prompt converts an int to a float? If you find none, what does that imply about the type of the literal 5 and whether greater than(10, 5) is typeable?",
+          "Teacher: Misconception: a function\u2019s signature (greater than(int, float) \u2192 boolean) does not itself convert an argument\u2019s type \u2014 it only states what types are required.",
+          "Teacher: Good diagnosis: you invoked the WP rule but then treated the assignment as an equation to solve for v instead of substituting the RHS into the predicate.",
+          "Teacher: Good \u2014 you're right to focus on substitution. Your mistake was treating the assignment as an equation to be solved for the assigned variable instead of doing the WP substitution.",
+          "Teacher: Small misconception: the prompt sentence you quoted isn't the one that tells you to start the backward WP computation. The correct sentence is: 'compute the weakest precondition step by step, starting from Q : w = 0.'"
+        ],
+        "reasoning": "The teacher consistently demonstrates strong Pedagogical Content Knowledge (PCK) by transforming complex concepts (e.g., weakest preconditions, type systems, Hoare logic) into clear, actionable steps. The teacher identifies and corrects student misconceptions (e.g., treating assignments as equations, confusing type conversions) with precise explanations. The teacher also adapts explanations to the student's evolving understanding, using targeted questions and step-by-step guidance. However, the teacher occasionally allows the student to persist in minor misconceptions before correcting them, which slightly reduces consistency.",
+        "strengths": [
+          "Exceptional ability to identify and address student misconceptions with precision.",
+          "Clear, step-by-step explanations of complex concepts (e.g., WP rule, type systems).",
+          "Effective use of targeted questions to guide the student toward correct understanding.",
+          "Strong adaptation to the student's evolving understanding, adjusting explanations as needed."
+        ],
+        "weaknesses": [
+          "Occasionally allows minor misconceptions to persist before correcting them (e.g., student repeatedly treats assignments as equations).",
+          "Could provide more proactive analogies or examples to reinforce abstract concepts (e.g., WP rule)."
+        ],
+        "suggestions": [
+          "Address misconceptions more proactively to prevent repetition (e.g., immediately correct the student when they treat an assignment as an equation).",
+          "Incorporate more analogies or real-world examples to help the student grasp abstract concepts like weakest preconditions.",
+          "Encourage the student to verbalize their reasoning more explicitly to uncover hidden misconceptions earlier."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good start \u2014 a quick check before we lock answers in. Which part of the operator definitions supports your step in (3) where you treat 5 as a float for greater than(10, 5)?",
+          "Teacher: You're close, but there's a small misconception: you treated the literal 5 as if it could be a float for greater than(10, 5). Before changing your answer, point to the exact operator definition in the prompt that supports that step.",
+          "Teacher: Good point-catching so far \u2014 one quick question to check your reasoning: which operator definition in the given list converts an int to a float?",
+          "Teacher: Good catch correcting that misconception. To be sure, point to the exact operator-definition lines in the prompt that support your conclusion.",
+          "Teacher: You're close, but there's a small misconception: saying the operator 'allows for a float input' doesn\u2019t change the fact that the literal 5 is an integer unless there is an operator that converts ints to floats.",
+          "Teacher: Good \u2014 you're right to focus on substitution. Your mistake was treating the assignment as an equation to be solved for the assigned variable instead of doing the WP substitution.",
+          "Teacher: Small misconception: the prompt sentence you quoted isn't the one that tells you to start the backward WP computation."
+        ],
+        "reasoning": "The teacher provides consistent, actionable feedback that helps the student understand their errors and correct them. The feedback often includes specific guidance (e.g., pointing to exact lines in the prompt) and encourages the student to reflect on their reasoning. However, the feedback could be more explicit about the 'next steps' for improvement, and the teacher sometimes assumes the student will infer the correct path without explicit direction.",
+        "strengths": [
+          "Feedback is timely and directly addresses the student's errors.",
+          "Feedback often includes specific references to the prompt or rules (e.g., WP rule, operator definitions).",
+          "Feedback encourages the student to reflect on their reasoning and correct their own mistakes."
+        ],
+        "weaknesses": [
+          "Feedback could be more explicit about the 'next steps' for the student to take (e.g., 'Now, try substituting X for Y in the postcondition').",
+          "Occasionally assumes the student will infer the correct path without explicit direction."
+        ],
+        "suggestions": [
+          "Provide more explicit 'next steps' in feedback to guide the student toward the correct solution.",
+          "Use a consistent structure for feedback (e.g., 'Here\u2019s what you did well: ..., Here\u2019s what needs improvement: ..., Here\u2019s how to fix it: ...').",
+          "Encourage the student to self-assess their understanding by asking questions like, 'What do you think is the most important concept you need to remember here?'"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Which exact phrase in the assignment prompt supports your next step? Quote that phrase and explain how it applies to case (c) (value-result) \u2014 in particular, say how the quoted text tells you whether and when changes to a and b get copied back to the original variables and how aliasing/order might matter.",
+          "Teacher: Small misconception to correct first: in value-result (copy-in/copy-out), the formals are initialized at call time (copy-in) and only copied back to the actuals when the function returns (copy-out).",
+          "Teacher: Good work trying again \u2014 a couple small misconceptions to fix before you re-step through the body.",
+          "Teacher: Quick note on the remaining error: inside the function a and b are local names; references to y, x, z in the body refer to the globals.",
+          "Teacher: Good catch on the copy-outs \u2014 but there\u2019s an inconsistency in your reply.",
+          "Teacher: You're very close \u2014 one small persistent misconception remains. Copy-out does not copy a back into a itself; it copies the local formal back into the actual parameter that was passed at the call site."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by breaking down complex concepts (e.g., value-result passing, weakest preconditions) into smaller, manageable steps. However, the modeling is inconsistent. While the teacher often provides clear explanations of expert reasoning (e.g., copy-in/copy-out in value-result passing), they do not consistently make their own thought processes visible. For example, the teacher could have used a 'think-aloud' approach to model how they derive the weakest precondition, but instead, they often correct the student without fully demonstrating their own reasoning.",
+        "strengths": [
+          "Provides clear, step-by-step explanations of complex concepts (e.g., value-result passing).",
+          "Breaks down problems into smaller, manageable steps for the student.",
+          "Demonstrates patience and persistence in guiding the student toward correct understanding."
+        ],
+        "weaknesses": [
+          "Does not consistently model expert thinking through 'think-aloud' strategies.",
+          "Occasionally corrects the student without fully demonstrating the reasoning behind the correction.",
+          "Could provide more real-world examples or analogies to model expert thinking."
+        ],
+        "suggestions": [
+          "Use 'think-aloud' strategies to model expert reasoning (e.g., 'Let me walk you through how I would approach this problem...').",
+          "Provide more real-world examples or analogies to illustrate abstract concepts.",
+          "Demonstrate the problem-solving process more explicitly, showing each step of the teacher's own reasoning."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Which exact phrase in the assignment prompt supports your next step? Quote that phrase and explain how it applies to case (c) (value-result) \u2014 in particular, say how the quoted text tells you whether and when changes to a and b get copied back to the original variables and how aliasing/order might matter.",
+          "Teacher: Small misconception to correct first: in value-result (copy-in/copy-out), the formals are initialized at call time (copy-in) and only copied back to the actuals when the function returns (copy-out). Inside the function a and b are local names until return; the occurrences of x, y, z in the body refer to the globals.",
+          "Teacher: Good work trying again \u2014 a couple small misconceptions to fix before you re-step through the body. First say the copy-in values for a and b when calling update(y, z). Then step through each line, writing the value assigned to the LHS and whether that writes a local (a or b) or a global (x, y, z).",
+          "Teacher: Quick note on the remaining error: inside the function a and b are local names; references to y, x, z in the body refer to the globals \u2014 so assignments to y inside the body write the global y.",
+          "Teacher: Good catch on the copy-outs \u2014 but there\u2019s an inconsistency in your reply. You wrote that you copy local b (-1) to actual z (so z = -1), yet your final list still shows z = 16. Which is correct?",
+          "Teacher: You're very close \u2014 one small persistent misconception remains. Copy-out does not copy a back into a itself; it copies the local formal back into the actual parameter that was passed at the call site.",
+          "Teacher: Good diagnosis: you invoked the WP rule but then treated the assignment as an equation to solve for v instead of substituting the RHS into the predicate.",
+          "Teacher: One hint / task: explicitly substitute E = 2*v - u for the v that appears in (w + v) = 0."
+        ],
+        "reasoning": "The teacher provides consistent, structured guidance that adapts to the student's evolving understanding. The teacher breaks down complex problems into smaller steps, provides hints, and corrects misconceptions as they arise. The coaching is generally effective, but the teacher could be more explicit about when and how to fade support (e.g., by gradually reducing the level of detail in hints). Additionally, the teacher sometimes provides hints that are too specific, which may not encourage the student to think independently.",
+        "strengths": [
+          "Provides structured, step-by-step guidance that adapts to the student's needs.",
+          "Breaks down complex problems into smaller, manageable steps.",
+          "Consistently corrects misconceptions and provides targeted hints.",
+          "Demonstrates patience and persistence in guiding the student."
+        ],
+        "weaknesses": [
+          "Could be more explicit about fading support (e.g., gradually reducing the level of detail in hints).",
+          "Occasionally provides hints that are too specific, which may not encourage independent thinking."
+        ],
+        "suggestions": [
+          "Gradually reduce the level of detail in hints to encourage independent thinking (e.g., start with specific hints and transition to more open-ended questions).",
+          "Encourage the student to attempt the next step independently before providing hints.",
+          "Use a consistent framework for coaching (e.g., 'Here\u2019s what you\u2019ve done so far: ..., Here\u2019s what you need to do next: ..., Here\u2019s a hint if you\u2019re stuck: ...')."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: Okay, let\u2019s redo case (c) carefully.",
+          "Student: Okay, you\u2019re absolutely right to call me out! The line that really helps me understand what I need to do is: 'For each line in the function also write down the value of the LHS.'",
+          "Student: Okay, let\u2019s redo case (c) carefully. **Case (c): update(y, z) \u2013 Value-Result Passing**",
+          "Student: Okay, you\u2019re absolutely right to question me. The prompt doesn\u2019t include an operator that converts an integer to a float.",
+          "Student: Okay, you\u2019re absolutely right to call me out! The line that allows for a float input is: `greater than(int, float) \\u2192 boolean`.",
+          "Student: Okay, let\u2019s do this. The sentence in the prompt that tells me to start the backward WP computation is: 'compute the weakest precondition step by step, starting from Q : w = 0.'"
+        ],
+        "reasoning": "The teacher occasionally prompts the student to reflect on their reasoning (e.g., 'Which part of the operator definitions supports your step?'), but these prompts are not consistently integrated into the interaction. The student does engage in some reflection (e.g., revising their answers, acknowledging misconceptions), but the teacher could do more to encourage deeper reflection and articulation of thought processes. The reflection is present but not consistently fostered or deepened.",
+        "strengths": [
+          "The teacher occasionally prompts the student to reflect on their reasoning.",
+          "The student demonstrates some reflection by revising answers and acknowledging misconceptions."
+        ],
+        "weaknesses": [
+          "Reflection prompts are not consistently integrated into the interaction.",
+          "The teacher does not consistently encourage the student to articulate their thought processes or evaluate their understanding.",
+          "The student's reflection is often superficial (e.g., revising answers without deeper analysis)."
+        ],
+        "suggestions": [
+          "Incorporate more explicit reflection prompts (e.g., 'Explain why you think this is the correct approach.' or 'What do you think is the most important concept you\u2019ve learned so far?').",
+          "Encourage the student to articulate their thought processes more explicitly (e.g., 'Walk me through how you arrived at this answer.').",
+          "Use reflection as a tool for assessment (e.g., 'How confident are you in your answer, and why?')."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Student: Okay, let\u2019s tackle this assignment.",
+          "Student: Okay, let\u2019s redo case (c) carefully.",
+          "Student: Okay, you\u2019re absolutely right to call me out! The line that really helps me understand what I need to do is: 'For each line in the function also write down the value of the LHS.'",
+          "Student: Okay, let\u2019s redo case (c) carefully. **Case (c): update(y, z) \u2013 Value-Result Passing**",
+          "Student: Okay, you\u2019re absolutely right to question me. The prompt doesn\u2019t include an operator that converts an integer to a float.",
+          "Student: Okay, let\u2019s do this. The sentence in the prompt that tells me to start the backward WP computation is: 'compute the weakest precondition step by step, starting from Q : w = 0.'",
+          "Student: Okay, I see the mistake now. I was trying to apply the WP rule directly to the assignment statement, but I need to replace the *variable* `w` in the postcondition `w = 0` with the expression `w + v`.",
+          "Student: Okay, let\u2019s break down the substitution and the reasoning."
+        ],
+        "reasoning": "The student is highly engaged in the learning process, actively participating in problem-solving, revising answers, and responding to the teacher's prompts. The student demonstrates constructive engagement by explaining their reasoning, revising their work, and asking for clarification when needed. The engagement is consistently active and constructive, with the student frequently taking the initiative to redo work or clarify their understanding. However, the student's engagement is primarily constructive rather than interactive, as there is no evidence of collaboration or discussion with peers.",
+        "strengths": [
+          "The student is highly engaged and actively participates in problem-solving.",
+          "The student demonstrates constructive engagement by explaining their reasoning and revising their work.",
+          "The student frequently takes the initiative to redo work or clarify their understanding."
+        ],
+        "weaknesses": [
+          "The student's engagement is primarily constructive rather than interactive (no evidence of collaboration or discussion with peers).",
+          "The student could engage in more self-directed learning (e.g., exploring alternative approaches independently)."
+        ],
+        "suggestions": [
+          "Encourage the student to engage in more interactive learning (e.g., collaborating with peers or discussing concepts with the teacher).",
+          "Provide opportunities for the student to engage in self-directed learning (e.g., open-ended problems or projects).",
+          "Use group activities or discussions to foster interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Small misconception to correct first: in value-result (copy-in/copy-out), the formals are initialized at call time (copy-in) and only copied back to the actuals when the function returns (copy-out). Inside the function a and b are local names until return; the occurrences of x, y, z in the body refer to the globals.",
+          "Recall the assignment WP rule: wp(x := E, Q) = Q[E/x], i.e., replace occurrences of the left-hand variable x in Q by the right-hand expression E.",
+          "Misconception: a function\u2019s signature (greater than(int, float) \u2192 boolean) does not itself convert an argument\u2019s type \u2014 it only states what types are required."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by explicitly defining formal rules (WP rule, value-result semantics) and immediately distinguishing between correct concepts and common student errors. The teacher uses precise terminology (pre-state vs post-state, local vs global, copy-in vs copy-out) to clarify complex CS concepts. The teacher proactively identifies and corrects deep misconceptions, such as treating assignments as equations to be solved rather than substitutions, and clarifying the distinction between type signatures and type conversions.",
+        "strengths": [
+          "Precise definition of formal rules (WP rule, value-result passing).",
+          "Proactive identification of specific, deep misconceptions.",
+          "Clear distinction between syntactic forms and semantic meanings (e.g., type signatures vs. conversions)."
+        ],
+        "weaknesses": [
+          "The sheer density of corrections might be overwhelming for a novice, though necessary for correctness."
+        ],
+        "suggestions": [
+          "Consider using a visual trace table early on to reinforce the local vs. global variable distinction."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Two small misconceptions there: - We do NOT copy b from x at that line. b was copy-in at call time... - The name y in the body refers to the global y... Now redo exactly that line with those facts...",
+          "Good diagnosis: you invoked the WP rule but then treated the assignment as an equation to solve for v instead of substituting the RHS into the predicate. Hint / next step (one thing): take your current predicate... and replace the occurrence of v... by the expression...",
+          "Small misconception to correct first: the WP rule is substitution (R[E/x]); algebraic simplification after substitution is fine. What\u2019s important is you substitute the RHS for the variable, not treat the assignment as an equation..."
+        ],
+        "reasoning": "Feedback is consistent, actionable, and directly addresses the student's specific errors. The teacher not only points out *what* is wrong but explains *why* it is wrong and provides a concrete next step to fix it. The feedback clearly links the student's current performance to the learning goal (correct application of WP rules).",
+        "strengths": [
+          "Actionable next steps provided after every correction.",
+          "Clear identification of specific errors (e.g., 'treating assignment as an equation').",
+          "Reinforcement of correct reasoning alongside correction of incorrect reasoning."
+        ],
+        "weaknesses": [
+          "Some feedback is repeated almost verbatim when the student makes the same type of error, which could be condensed to maintain flow."
+        ],
+        "suggestions": [
+          "Use a summary table at the end of the session to consolidate all corrected misconceptions."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Recall the assignment WP rule: wp(x := E, Q) = Q[E/x], i.e., replace occurrences of the left-hand variable x in Q by the right-hand expression E. Apply that here: Q is w = 0 and E is w + v, so you should compute (w = 0)[w := w + v]. Write out that substitution and simplify...",
+          "Hint / next step (one thing): take your current predicate (w + v) = 0 and replace the occurrence of v in that predicate by the expression 2*v - u (the RHS of the assignment). To avoid the name-clash confusion, you can temporarily rename the pre-state v to v0 and write the substitution as w + (2*v0 - u) = 0.",
+          "Do the substitution explicitly and keep parentheses: - Start: R = w + (2*v0 - u) = 0... - Apply wp(u := u+3, R): replace each occurrence of u in R by (u+3): w + (2*v0 - (u + 3)) = 0 - Simplify..."
+        ],
+        "reasoning": "The teacher models the expert thinking process by explicitly stating the formal rule, defining the variable names (pre-state vs post-state), and showing the exact syntax for substitution. The teacher models how to handle name clashes (using v0) and explicitly writes out the substitution steps. This makes the invisible reasoning of formal logic visible to the student.",
+        "strengths": [
+          "Explicit modeling of the WP rule application.",
+          "Demonstration of how to handle variable name clashes.",
+          "Step-by-step walkthrough of the substitution process."
+        ],
+        "weaknesses": [
+          "The teacher sometimes gives the final answer or a very detailed hint immediately after a student error, rather than letting the student struggle a bit longer with a simpler cue."
+        ],
+        "suggestions": [
+          "Ask the student to predict the result of the next substitution before providing the full worked example."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Now, please revise case (c) with that in mind. First say the copy-in values for a and b... Then step through each line... Finally, do the copy-out left-to-right... (Do that before I give any further hints.)",
+          "Now one step at a time: first, state the copy-in values for a and b... Then compute the first line a = a + y... Please revise that single step and post it.",
+          "Hint / next step (one thing): take your current predicate... and replace the occurrence of v... Now simplify that formula and post the revised precondition..."
+        ],
+        "reasoning": "The teacher employs a high level of scaffolding by breaking complex tasks into single, manageable steps ('Now one step at a time'). The scaffolding is adaptive; when the student continues to err, the teacher provides more specific hints and constraints (e.g., 'Do that before I give any further hints', 'rename the pre-state v to v0'). The support is strategically faded as the student shows progress (e.g., allowing the student to complete the final algebra steps alone after the first successful substitution).",
+        "strengths": [
+          "Effective use of 'one step at a time' scaffolding.",
+          "Strategic timing of hints (waiting for student attempt before clarifying).",
+          "Adaptive support that tightens constraints when the student is stuck."
+        ],
+        "weaknesses": [
+          "The persistent nature of the student's errors required many repetitive coaching cycles, which may have been inefficient."
+        ],
+        "suggestions": [
+          "Use a graphic organizer or checklist to help the student self-monitor their application of the rule."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Okay, let\u2019s break down the substitution and the reasoning. I replaced the variable u in the postcondition... I did this because the Weakest Precondition rule requires us to substitute the RHS... We don\u2019t try to solve for u because... it\u2019s not what the WP rule is designed for.",
+          "I replaced the post-state variable w with w+v. We substitute because the Weakest Precondition rule is designed to find the most restrictive condition that makes the assignment true, not to solve for a variable.",
+          "Thanks for pointing out this crucial detail! I realized my mistake... I was focusing on the values after the body executed, rather than performing the copy-out step as instructed."
+        ],
+        "reasoning": "The student is regularly asked to explain their reasoning, not just provide answers. The student articulates the 'why' behind their actions (e.g., why we substitute instead of solve). The student also reflects on their own errors, acknowledging misconceptions and stating what they learned. This metacognitive articulation is a key part of the reflection factor.",
+        "strengths": [
+          "Student explicitly states the rule they are applying.",
+          "Student explains the rationale for their method (substitution vs. solving).",
+          "Student acknowledges and describes their own learning process/errors."
+        ],
+        "weaknesses": [
+          "Student sometimes defaults to a template response ('I think the weakest precondition is...') before engaging in deeper reasoning."
+        ],
+        "suggestions": [
+          "Ask the student to predict how their approach would change if the postcondition were different (e.g., w >= 0) to test depth of understanding."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Student: Okay, let's tackle this assignment... Here's my first attempt...",
+          "Student: Okay, you\u2019re right to push back. I made a mistake in how I was tracking the copy-in values. Let\u2019s redo that first line...",
+          "Student: Okay, I apologize for the repeated errors. Let's get this right...",
+          "Student: Okay, this is a fantastic, detailed conversation demonstrating a deep understanding... (Note: This student response appears to be a meta-commentary or error in the transcript, but previous turns show active engagement)."
+        ],
+        "reasoning": "The learning activity is highly interactive and constructive. The student is not passively receiving information; they are actively constructing their understanding through trial, error, and correction. The dialogue is a back-and-forth interaction where the student attempts, the teacher coaches, and the student revises. This fits the 'Constructive' and 'Interactive' levels of the ICAP framework. The student is constantly manipulating the formal rules and variables.",
+        "strengths": [
+          "Active problem-solving via trial and error.",
+          "Continuous dialogue and revision.",
+          "Student actively manipulates formal syntax and semantics."
+        ],
+        "weaknesses": [
+          "The loop of error-correction is repetitive, which might lead to fatigue."
+        ],
+        "suggestions": [
+          "Introduce a 'predict-observe-explain' phase where the student predicts the outcome of a step before executing it to reduce repetitive errors."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student demonstrates understanding of value-result passing, copy-in/copy-out semantics, and aliasing.",
+          "Correctly identifies that copy-in happens once at call time and copy-out happens at return.",
+          "Shows ability to trace variable values through function execution."
+        ],
+        "reasoning": "The student exhibits good pedagogical content knowledge by explaining value-result passing and its implications for variable updates. They correctly identify key concepts like copy-in/copy-out and aliasing, though they initially struggle with applying these concepts precisely.",
+        "strengths": [
+          "Clear understanding of value-result passing semantics",
+          "Ability to trace variable values step-by-step",
+          "Recognition of the importance of copy-in/copy-out timing"
+        ],
+        "weaknesses": [
+          "Initial misconceptions about when copy-in occurs",
+          "Confusion between local and global variables in function bodies",
+          "Difficulty applying copy-out rules consistently"
+        ],
+        "suggestions": [
+          "Provide more explicit examples of copy-in/copy-out with different parameter passing schemes",
+          "Use visual representations (e.g., diagrams) to show variable scopes and parameter passing",
+          "Incorporate exercises focusing specifically on aliasing and order of operations in parameter passing"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides specific corrections to misconceptions about copy-in/copy-out timing.",
+          "Gives step-by-step guidance for revising incorrect solutions.",
+          "Asks targeted questions to prompt student reflection and correction."
+        ],
+        "reasoning": "The teacher's feedback is consistently helpful, identifying specific errors and providing clear guidance for improvement. They use a combination of direct correction and questioning to help the student discover mistakes, though some opportunities for more open-ended questioning are missed.",
+        "strengths": [
+          "Precise identification of misconceptions",
+          "Clear, actionable guidance for revisions",
+          "Use of questioning to promote student reflection"
+        ],
+        "weaknesses": [
+          "Occasionally overly directive, limiting student's opportunity to self-correct",
+          "Could provide more explicit connections between errors and underlying concepts"
+        ],
+        "suggestions": [
+          "Incorporate more open-ended questions to encourage deeper conceptual understanding",
+          "Explicitly connect specific errors to broader principles (e.g., scope rules, parameter passing semantics)",
+          "Provide opportunities for student to explain their revised thinking before giving corrections"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher demonstrates expert thinking by breaking down complex concepts like copy-in/copy-out.",
+          "Uses think-aloud strategies to show how to approach problems systematically.",
+          "Models the process of identifying and correcting errors in reasoning."
+        ],
+        "reasoning": "The teacher effectively models expert thinking, particularly in their systematic approach to identifying and correcting errors. They demonstrate how to break down complex problems and apply rules consistently, though some opportunities to explicitly verbalize their thought processes are missed.",
+        "strengths": [
+          "Systematic breakdown of complex problems",
+          "Clear demonstration of error identification and correction",
+          "Use of think-aloud strategies for problem-solving"
+        ],
+        "weaknesses": [
+          "Could more explicitly verbalize thought processes during modeling",
+          "Occasionally assumes student understanding of underlying principles"
+        ],
+        "suggestions": [
+          "More explicitly verbalize thought processes during demonstrations",
+          "Check for understanding of foundational concepts before proceeding to complex applications",
+          "Incorporate more real-world analogies to connect abstract concepts to concrete situations"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 87,
+        "evidence": [
+          "Teacher provides structured guidance through step-by-step prompts.",
+          "Gradually reduces support as student demonstrates competence.",
+          "Offers hints and partial corrections when student struggles."
+        ],
+        "reasoning": "The teacher provides effective coaching, offering structured guidance and gradually fading support. They balance direct instruction with opportunities for student independence, though some instances of overly directive feedback limit student's opportunity to fully construct their own understanding.",
+        "strengths": [
+          "Structured, step-by-step guidance",
+          "Gradual fading of support",
+          "Use of hints to scaffold learning"
+        ],
+        "weaknesses": [
+          "Occasionally overly directive, limiting student independence",
+          "Could provide more opportunities for student to fully construct their own solutions"
+        ],
+        "suggestions": [
+          "Provide more opportunities for student to attempt solutions independently before offering guidance",
+          "Use more open-ended prompts to encourage student construction of understanding",
+          "Explicitly encourage student to articulate their thinking before providing feedback"
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student occasionally explains their reasoning, particularly when prompted by the teacher.",
+          "Some evidence of self-correction after teacher feedback.",
+          "Limited instances of student proactively reflecting on their understanding."
+        ],
+        "reasoning": "The student demonstrates some ability to explain their reasoning and reflect on their understanding, particularly when prompted. However, reflection is not consistently incorporated into the learning process, and the student rarely initiates self-reflection without teacher prompting.",
+        "strengths": [
+          "Ability to explain reasoning when prompted",
+          "Some evidence of self-correction",
+          "Willingness to engage with teacher feedback"
+        ],
+        "weaknesses": [
+          "Limited proactive reflection",
+          "Reliance on teacher prompting for reflection",
+          "Inconsistent articulation of thought processes"
+        ],
+        "suggestions": [
+          "Incorporate more structured reflection activities (e.g., think-pair-share, exit tickets)",
+          "Encourage student to explicitly articulate their thinking before and after each step",
+          "Provide opportunities for student to evaluate their own understanding and identify areas for improvement"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "Student actively participates in problem-solving, attempting multiple revisions.",
+          "Engages in constructive activities like self-explanation and summarizing.",
+          "Interactive learning through discussion and co-construction of understanding with the teacher."
+        ],
+        "reasoning": "The student demonstrates consistent engagement, actively participating in problem-solving and revising their work based on feedback. The interaction is largely constructive, with the student and teacher co-constructing understanding through discussion, though some opportunities for more student-led exploration are missed.",
+        "strengths": [
+          "Active participation in problem-solving",
+          "Willingness to revise and improve work",
+          "Constructive engagement through discussion"
+        ],
+        "weaknesses": [
+          "Limited student-led exploration",
+          "Reliance on teacher guidance for problem-solving strategies"
+        ],
+        "suggestions": [
+          "Encourage more student-led exploration and problem-solving",
+          "Provide opportunities for student to develop and articulate their own strategies",
+          "Incorporate more collaborative activities to promote peer interaction and co-construction of understanding"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 3.67,
+        "individual_scores": [
+          3,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 78.9,
+    "interpretation": "Good pedagogy"
+  }
+}

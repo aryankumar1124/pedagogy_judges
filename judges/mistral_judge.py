@@ -1,19 +1,18 @@
 import os
 import json
-from groq import Groq
+from mistralai.client import Mistral
 
 from prompts.judge_prompt import build_system_prompt, build_user_prompt
 
-MODEL = "qwen/qwen3.8-27b"  # swap to whichever Groq model you have access to
+MODEL = "mistral-medium-latest"  # swap to whichever Mistral model you have access to
 
 
 def score_transcript(transcript: str) -> dict:
-    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
 
-    response = client.chat.completions.create(
+    response = client.chat.complete(
         model=MODEL,
         response_format={"type": "json_object"},
-        max_tokens=8000,
         messages=[
             {"role": "system", "content": build_system_prompt()},
             {"role": "user", "content": build_user_prompt(transcript)},

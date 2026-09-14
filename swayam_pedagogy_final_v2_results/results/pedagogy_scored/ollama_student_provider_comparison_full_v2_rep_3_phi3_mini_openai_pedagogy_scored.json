@@ -1,0 +1,471 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_3_phi3_mini_openai",
+    "student_model": "phi3:mini",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 3,
+        "confidence": 70,
+        "evidence": [
+          "Teacher: Which subcase (a\u2013d) are you working on right now? Point to the exact part(s) of the prompt that support the next step you plan to take (for example: initial values line, function signature, or the parameter-passing mode).",
+          "Teacher: Hint (one): remember that for pass-by-value the parameter a is a local copy, for pass-by-reference a is an alias to the caller\u2019s variable, and for value-result a is initially a copy but may be copied back on return (in left-to-right order per the prompt). Use the initial globals x=3, y=2, z=5 when needed.",
+          "Teacher: Hint: for an assignment x := E, wp(x := E, Q) is obtained by replacing x in Q with E."
+        ],
+        "reasoning": "The teacher demonstrates strong subject-matter knowledge in computer science (parameter-passing modes, weakest preconditions) and provides clear hints. However, the explanations are fragmented due to the student's garbled responses, and there is no evidence of addressing student misconceptions or using multiple representations of concepts. The teacher's PCK is functional but lacks depth and consistency in delivery.",
+        "strengths": [
+          "Provides accurate and technically correct hints about parameter-passing semantics and weakest preconditions.",
+          "References specific parts of the prompt (e.g., initial values, function signatures) to guide the student."
+        ],
+        "weaknesses": [
+          "Explanations are reactive and fragmented, not proactively structured.",
+          "No evidence of addressing or correcting student misconceptions.",
+          "Lacks multiple representations (e.g., analogies, examples) to aid understanding."
+        ],
+        "suggestions": [
+          "Provide a brief, structured overview of the concept (e.g., parameter-passing modes) before diving into hints.",
+          "Use concrete examples or analogies to explain abstract concepts like weakest preconditions.",
+          "Explicitly ask the student to state their current understanding to identify and address misconceptions."
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 60,
+        "evidence": [
+          "Teacher: I can\u2019t make sense of your last message \u2014 it looks like garbled text. Let\u2019s restart one small step at a time.",
+          "Teacher: I still can\u2019t read your last message \u2014 it looked garbled. Let\u2019s restart one small step at a time.",
+          "Teacher: I can\u2019t read your last message. Quick check: are you still working on (c) update(y,z) with value-result?"
+        ],
+        "reasoning": "The teacher provides feedback primarily to clarify the student's garbled messages, but this feedback is limited to identifying the issue (unreadable text) and restarting the process. There is no evidence of feedback that addresses learning goals, current performance, or next steps for improvement. The feedback is reactive and does not guide the student toward deeper understanding.",
+        "strengths": [
+          "Consistently identifies when the student's input is unclear or garbled.",
+          "Attempts to restart the process to maintain focus."
+        ],
+        "weaknesses": [
+          "Feedback is limited to identifying errors (unreadable text) without providing actionable guidance.",
+          "No evidence of feedback tied to learning goals or student progress.",
+          "Lacks specificity about what the student needs to improve."
+        ],
+        "suggestions": [
+          "Provide feedback that explicitly connects to the learning objective (e.g., 'To solve this, you need to understand parameter-passing modes. Let\u2019s revisit the definitions.').",
+          "Use feedback to guide the student toward the next step in their reasoning, not just to restart.",
+          "Incorporate praise for correct steps (e.g., 'Good, you identified the subcase. Now let\u2019s compute the value of a.')"
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 50,
+        "evidence": [
+          "Teacher: Hint (one): remember that for pass-by-value the parameter a is a local copy, for pass-by-reference a is an alias to the caller\u2019s variable, and for value-result a is initially a copy but may be copied back on return (in left-to-right order per the prompt).",
+          "Teacher: Hint: for an assignment x := E, wp(x := E, Q) is obtained by replacing x in Q with E."
+        ],
+        "reasoning": "The teacher provides hints that demonstrate some expert thinking (e.g., explaining parameter-passing modes and weakest preconditions), but these are brief and reactive. There is no evidence of the teacher modeling the full problem-solving process (e.g., think-aloud, step-by-step demonstration) or making their reasoning visible in a structured way. The modeling is minimal and lacks depth.",
+        "strengths": [
+          "Provides accurate hints that reflect expert knowledge of the subject matter.",
+          "References key concepts (e.g., parameter-passing modes, weakest preconditions)."
+        ],
+        "weaknesses": [
+          "Hints are fragmented and not part of a coherent demonstration of expert thinking.",
+          "No evidence of think-aloud strategies or step-by-step modeling of the problem-solving process.",
+          "Lacks real-world examples or analogies to illustrate expert reasoning."
+        ],
+        "suggestions": [
+          "Demonstrate the problem-solving process step-by-step, using think-aloud to make expert reasoning visible.",
+          "Model the entire process for one subcase before asking the student to attempt it.",
+          "Use analogies or real-world examples to illustrate abstract concepts."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "Teacher: Which subcase (a\u2013d) are you working on right now? Point to the exact part(s) of the prompt that support the next step you plan to take.",
+          "Teacher: Before you write the full answer, compute just the LHS value produced by the first line inside update (the statement a = a + y). Tell me: - what you think the LHS (a) will be after that line, and - why you treated each name (a, y, x, z) as either a local parameter or a global variable in that step.",
+          "Teacher: If you\u2019re unsure about scope or parameter semantics, state your current assumption and I\u2019ll help you check it."
+        ],
+        "reasoning": "The teacher provides structured guidance by breaking the problem into smaller steps (e.g., identifying the subcase, computing the LHS value, explaining assumptions). This is a form of scaffolding, but it is not adapted to the student\u2019s progress or gradually faded. The coaching is present but lacks depth and adaptability.",
+        "strengths": [
+          "Breaks the problem into smaller, manageable steps to guide the student.",
+          "Encourages the student to state their assumptions for verification.",
+          "Provides hints that are aligned with the problem\u2019s requirements."
+        ],
+        "weaknesses": [
+          "Scaffolding is not adapted to the student\u2019s current understanding or progress.",
+          "No evidence of gradually fading support as the student demonstrates competence.",
+          "Lacks personalized guidance based on the student\u2019s specific errors or misconceptions."
+        ],
+        "suggestions": [
+          "Adapt the scaffolding based on the student\u2019s responses (e.g., provide more hints if the student struggles, or reduce hints if the student succeeds).",
+          "Gradually fade support as the student demonstrates understanding.",
+          "Use the student\u2019s garbled responses as an opportunity to diagnose and address specific misunderstandings."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: Tell me: - what you think the LHS (a) will be after that line, and - why you treated each name (a, y, x, z) as either a local parameter or a global variable in that step.",
+          "Teacher: In one sentence, explain why a is a local parameter while y in the expression refers to the global variable."
+        ],
+        "reasoning": "The teacher occasionally asks the student to explain their reasoning (e.g., why they treated variables as local or global), but these prompts are rare and not consistently incorporated into the learning activities. There is no evidence of the student engaging in meaningful reflection or articulation of their thought processes. The reflection opportunities are minimal and superficial.",
+        "strengths": [
+          "Occasionally prompts the student to explain their reasoning (e.g., assumptions about scope)."
+        ],
+        "weaknesses": [
+          "Reflection prompts are infrequent and not integrated into the learning process.",
+          "No evidence of the student engaging in meaningful reflection or articulation.",
+          "Lacks opportunities for the student to evaluate their own understanding or engage in metacognition."
+        ],
+        "suggestions": [
+          "Incorporate reflection prompts more frequently (e.g., 'Why did you choose this step? What do you think will happen next?').",
+          "Ask the student to summarize their understanding or explain their reasoning after each step.",
+          "Encourage the student to compare their approach with the teacher\u2019s hints or examples."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Student: The paragraph",
+          "Student: You's Toasty",
+          "Student: The following daycare, and theta:",
+          "Student: I's Nationality_2028"
+        ],
+        "reasoning": "The student\u2019s responses are largely garbled and nonsensical, indicating a lack of meaningful engagement with the task. The teacher\u2019s prompts occasionally require the student to perform active tasks (e.g., computing values, explaining reasoning), but the student does not engage constructively or interactively. The engagement level is primarily passive or active at best, with no evidence of constructive or interactive participation.",
+        "strengths": [
+          "The teacher\u2019s prompts occasionally require the student to perform active tasks (e.g., computing values)."
+        ],
+        "weaknesses": [
+          "The student\u2019s responses are garbled and do not demonstrate active, constructive, or interactive engagement.",
+          "No evidence of the student engaging in self-explanation, questioning, or collaboration.",
+          "The teacher does not adapt the tasks to encourage higher levels of engagement."
+        ],
+        "suggestions": [
+          "Use simpler, more structured prompts to encourage the student to engage actively (e.g., 'Type the value of a after the first line.').",
+          "Encourage the student to ask questions or seek clarification if they are unsure.",
+          "Incorporate collaborative activities (e.g., 'Let\u2019s solve this together. I\u2019ll do the first step, and you do the next.') to promote interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Given that a and b start as local copies from the caller (a = 2, b = 5) and the global y = 2, compute the effect of a = a + y. Show the arithmetic (e.g., a = 2 + 2 = ?), give the new value of a, and in one sentence explain why a is a local parameter...",
+          "Your last message was hard to follow \u2014 let\u2019s restart.",
+          "Hint: integer literals 10 and 5 are int; 10.5 is float; quoted text like \"hi\" is string.",
+          "you haven\u2019t picked a specific expression yet."
+        ],
+        "reasoning": "The teacher provides extremely high-quality, actionable feedback. The student consistently fails to submit parseable answers (mostly garbled text). The teacher immediately identifies this failure ('I can't read your last message'), clarifies the current state of the task ('I can help, but you still haven't picked a specific expression'), and provides precise next steps (the exact template to fill, the specific math to do). This is an exemplary implementation of the 'feedback loop' showing a clear gap between the learning goal and current student performance.",
+        "strengths": [
+          "Clear and consistent communication of performance level ('I can't read your last message').",
+          "Actionable next steps (providing the exact template to use).",
+          "Immediate redirection to the core learning goals (choosing an expression, filling the template).",
+          "Patience and consistency in the face of repeated student failure."
+        ],
+        "weaknesses": [
+          "Identifying that messages are 'garbled' might be a software/LLM parsing issue rather than a student cognitive issue, but the teacher handled it gracefully regardless."
+        ],
+        "suggestions": [
+          "Continue with this highly structured corrective feedback approach to force the student to engage with the material at the basic level required."
+        ]
+      },
+      "modeling": {
+        "score": 3,
+        "confidence": 95,
+        "evidence": [
+          "Example (model for expression 1): - Expression #: 1 - Next step (one short sentence): Check the types of the arguments to add. - Supporting prompt part (exact operator signature or literal type): add(int, int) \u2192 int and literals 10 and 5 are int."
+        ],
+        "reasoning": "The teacher provides one clear, explicit model of the exact output format required (the 'Example (model for expression 1)' block). This demonstrates expert thinking regarding how to format a good answer. However, the teacher does NOT model the actual *problem solving* process (e.g., solving the step-by-step tracing or predicate replacement for the weakest precondition), instead asking the student to execute those steps while providing heavy hints. Thus, it gets a 3 because it expertly models the format, but relies on hints/scaffolding rather than demonstrating the math itself.",
+        "strengths": [
+          "Provides a complete, explicit model of the desired output format (template parsing)."
+        ],
+        "weaknesses": [
+          "Does not demonstrate the cognitive process of computing the weakest precondition or the parameter passing arithmetic; stops short at giving hints."
+        ],
+        "suggestions": [
+          "In addition to modeling the *format* of an answer, provide a 'how-to' walkthrough for one single type of operation (e.g., showing exactly how to substitute variables in a weakest precondition) before expecting the student to do it."
+        ]
+      },
+      "engagement": {
+        "score": 2,
+        "confidence": 99,
+        "evidence": [
+          "Your answer: \n\nparagraph"
+        ],
+        "reasoning": "The transcript consists almost entirely of isolated single words or bullet point headers from the student ('B.', '-1.', '1.', 'Idea'), followed by strings of random LLM prompts (e.g., `# Instruction:`, `You are a`, `The following is a a) A:`). There are no instances of the student reading a prompt, taking notes, or even engaging at an 'Active' level (doing simple practice exercises). The interaction is broken and lacks constructive or interactive engagement.",
+        "strengths": [
+          "The teacher keeps trying to pull the student into active work."
+        ],
+        "weaknesses": [
+          "The student is failing to perform any basic cognitive task (filling a simple text template), resulting in a purely passive/broken interaction loop."
+        ],
+        "suggestions": [
+          "The teacher might need to provide a single-word multiple choice question to break the ice if the current template approach continues to fail."
+        ]
+      },
+      "reflection": {
+        "score": 1,
+        "confidence": 99,
+        "evidence": [
+          "the value of the LHS (a) immediately after executing the first line inside update: a = a + y; why you treated each name (a, y, x, z) as a local parameter or a global variable (i.e., your assumption about scope/parameter semantics)."
+        ],
+        "reasoning": "The teacher repeatedly and explicitly asks the student to articulate their reasoning ('why you treated each name as a local parameter...', 'explain the substitution you used'). However, due to the total un-readability of the student's messages, the student never successfully completes or succeeds in this reflection. The factor is nearly entirely absent of actual student reflection.",
+        "strengths": [
+          "The teacher is making the right pedagogical attempt to demand reasoning."
+        ],
+        "weaknesses": [
+          "Student never meets the reflection demand; the factor's purpose is student articulation, which is absent."
+        ],
+        "suggestions": [
+          "That is a student issue, but the teacher could prompt for a binary 'Are you understanding this concept of scope? Yes or No' to attempt to extract any level of reflection."
+        ]
+      },
+      "coaching": {
+        "score": 4,
+        "confidence": 98,
+        "evidence": [
+          "Hin (one): remember that for pass-by-value the parameter a is a local copy...",
+          "Hint: value-result means parameters start as local copies initialized from the caller."
+        ],
+        "reasoning": "The teacher heavily scaffolds the learning by breaking complex problems down into single steps ('do this one small step'), providing explicit templates to structure the student's thinking, and regularly offering targeted hints about the underlying theory ('pass-by-reference: a is an alias') without giving away the final numerical answer or the final predicate. This is a textbook example of strategic coaching.",
+        "strengths": [
+          "Breaks down complex CS concepts into manageable micro-steps.",
+          "Scaffolding via rigid formatting (templates) when the student is failing.",
+          "Hints focus on fundamental principles rather than solutions."
+        ],
+        "weaknesses": [
+          "None observed; the coaching was implemented perfectly according to the principles, even in the face of the student's failure."
+        ],
+        "suggestions": [
+          "Continue this exact scaffolding strategy if the transcript continued."
+        ]
+      },
+      "PCK": {
+        "score": 4,
+        "confidence": 98,
+        "evidence": [
+          "watch for the common confusion between the parameter names a,b and the global names x,y,z",
+          "Hint: for an assignment x := E, wp(x := E, Q) is obtained by replacing x in Q with E.",
+          "watch for the common confusion between the parameter names a,b and the global names x,y,z"
+        ],
+        "reasoning": "The teacher demonstrates solid Pedagogical Content Knowledge by knowing exactly what the core misconceptions are in this Computer Science material. For example, explicitly warning the student about the 'common confusion between parameter names and global names' and correctly providing the formulation for weakest precondition substitution. The teacher knows how to articulate the 'why' behind the syntax.",
+        "strengths": [
+          "Accurately articulates the fundamental definitions of scope and weakest preconditions.",
+          "Anticipates and preempts common student mistakes ('watch for the common confusion...').",
+          "Uses correct and clear academic/mathematical notation when correcting."
+        ],
+        "weaknesses": [
+          "None evident in the short snippets provided."
+        ],
+        "suggestions": [
+          "Excellent use of domain-specific misconceptions. Keep applying this to the rest of the curriculum."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "Student responses are largely incoherent and do not demonstrate understanding of concepts like parameter passing modes, scope, or variable semantics.",
+          "The student fails to follow the teacher's structured prompts, such as identifying subcases or explaining assumptions about scope."
+        ],
+        "reasoning": "The student's responses are mostly nonsensical and do not address the technical concepts being discussed. There is no evidence of transforming subject matter into understandable forms or addressing misconceptions.",
+        "strengths": [],
+        "weaknesses": [
+          "Inability to explain concepts clearly",
+          "Failure to address or even acknowledge misconceptions",
+          "Lack of use of examples or analogies"
+        ],
+        "suggestions": [
+          "Provide clearer, more structured prompts with concrete examples",
+          "Scaffold explanations of parameter passing modes and scope rules",
+          "Use visual representations or diagrams to clarify abstract concepts"
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 20,
+        "evidence": [
+          "The teacher repeatedly asks for clarification and tries to redirect the student, but does not provide specific guidance on how to improve.",
+          "Feedback is limited to statements like 'I can\u2019t make sense of your last message' without actionable next steps."
+        ],
+        "reasoning": "While the teacher attempts to provide feedback, it is often vague and does not help the student understand their current performance or how to improve. There is little consistency or specificity in the feedback given.",
+        "strengths": [
+          "Attempts to redirect student when responses are unclear"
+        ],
+        "weaknesses": [
+          "Lack of specific guidance for improvement",
+          "Inconsistency in feedback quality",
+          "Failure to address learning goals or performance"
+        ],
+        "suggestions": [
+          "Provide explicit feedback on what was done correctly and incorrectly",
+          "Offer concrete suggestions for improvement",
+          "Connect feedback to specific learning objectives"
+        ]
+      },
+      "Modeling": {
+        "score": 1,
+        "confidence": 15,
+        "evidence": [
+          "The teacher does not demonstrate expert thinking processes, instead repeatedly asking the student to follow a template or clarify their responses.",
+          "There are no visible demonstrations of problem-solving strategies or think-aloud processes."
+        ],
+        "reasoning": "The teacher fails to model expert thinking or problem-solving processes. Responses are focused on getting the student to follow instructions rather than demonstrating how to approach the problem.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of visible problem-solving demonstrations",
+          "Failure to make expert thinking processes explicit",
+          "Over-reliance on student-led responses without modeling"
+        ],
+        "suggestions": [
+          "Demonstrate step-by-step problem-solving processes",
+          "Use think-aloud strategies to make expert thinking visible",
+          "Provide worked examples with explicit reasoning"
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 25,
+        "evidence": [
+          "The teacher provides some hints and redirection but does not systematically adjust support based on student progress.",
+          "Support is inconsistent and does not meet the student's needs, as evidenced by the student's continued inability to respond coherently."
+        ],
+        "reasoning": "While the teacher offers some guidance, it is not consistently adapted to the student's level of understanding. The support provided does not effectively help the student make progress.",
+        "strengths": [
+          "Some attempts to provide hints and redirection"
+        ],
+        "weaknesses": [
+          "Inconsistent support",
+          "Failure to adjust guidance based on student needs",
+          "Lack of systematic scaffolding"
+        ],
+        "suggestions": [
+          "Gradually increase independence by fading support",
+          "Systematically adjust hints based on student responses",
+          "Provide more structured scaffolding for complex tasks"
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 10,
+        "evidence": [
+          "The student rarely explains their reasoning or reflects on their understanding.",
+          "When asked to explain assumptions or reasoning, the student's responses are incoherent."
+        ],
+        "reasoning": "There is almost no evidence of the student explaining their thinking or reflecting on their learning. The few attempts at explanation are nonsensical and do not demonstrate meaningful reflection.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of student explanation of reasoning",
+          "Absence of reflection on understanding",
+          "Inability to articulate thought processes"
+        ],
+        "suggestions": [
+          "Explicitly prompt students to explain their reasoning",
+          "Model reflective practices through teacher think-alouds",
+          "Provide structured reflection activities"
+        ]
+      },
+      "Engagement": {
+        "score": 1,
+        "confidence": 15,
+        "evidence": [
+          "Student responses are largely incoherent and do not demonstrate active, constructive, or interactive engagement.",
+          "The student fails to follow prompts or participate meaningfully in the discussion."
+        ],
+        "reasoning": "The student's engagement is primarily passive, with little evidence of active participation. Responses do not show constructive or interactive learning behaviors.",
+        "strengths": [],
+        "weaknesses": [
+          "Lack of active participation",
+          "Absence of constructive or interactive engagement",
+          "Failure to follow prompts or contribute meaningfully"
+        ],
+        "suggestions": [
+          "Design more interactive activities to promote discussion",
+          "Provide clearer prompts to guide student responses",
+          "Incorporate collaborative tasks to encourage active engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 2.67,
+        "individual_scores": [
+          3,
+          4,
+          1
+        ],
+        "agreement_stdev": 1.25
+      },
+      "Feedback": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          2
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 1.5,
+        "individual_scores": [
+          2,
+          1
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Coaching": {
+        "mean": 2.5,
+        "individual_scores": [
+          3,
+          2
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Reflection": {
+        "mean": 1,
+        "individual_scores": [
+          1,
+          1
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 1.5,
+        "individual_scores": [
+          2,
+          1
+        ],
+        "agreement_stdev": 0.5
+      }
+    },
+    "pedagogy_score": 37.2,
+    "interpretation": "Needs significant improvement"
+  }
+}

@@ -1,0 +1,703 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_gemma2_9b_anthropic",
+    "student_model": "gemma2:9b",
+    "tutor_provider": "anthropic",
+    "tutor_model": "claude-haiku-4-5-20251001",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Let me ask: Which part of the assignment prompt tells you what you need to track as you go through the function?",
+          "Let me refine that a bit. The prompt actually asks you to write down the LHS value for each line in the function\u2014meaning you need to track values as you go through the function step by step, not just at the end.",
+          "Before you call the function, what are the initial values of x, y, and z?",
+          "When update(x, y) is called with pass-by-value, what do parameters a and b get initialized to? (Hint: Think about what values are being passed in.)",
+          "Now let's trace through the first line of the function: a = a + y; What value does a get assigned here?",
+          "Let me help you check your reasoning here. You found b = 0, which is correct. Now for this line, I want you to think about: which of these three variables (b, y, a) have we modified inside the function, and which are external?",
+          "Look at the function definition: function update (a , b ) { a = a + y ; y = b + x ; ... } Does the function declare its own local variables x, y, and z? Or does it use the ones from the outer scope?",
+          "Let me clarify this carefully. Inside the function update(a, b), when we write x = ..., are we modifying: (1) a local variable named x that only exists inside the function, or (2) the global variable x from the outer scope?",
+          "Let me sharpen the question a bit more. The function has parameters a and b. But look at the lines inside the function\u2014do you see variables x, y, and z being used? Are x, y, and z declared as local variables inside the function? Or, since they're not parameters and not declared locally, where do they come from?",
+          "Let me guide you through the weakest precondition derivation, which will help clarify everything.",
+          "For WP derivation, we work backwards from the postcondition through each assignment. Here's the key principle: when we have an assignment x := E, the weakest precondition is found by substituting E for x in the postcondition.",
+          "Let me start you off: Your postcondition is: Q = w = 0. The last statement is w := w + v; What do you think should be true about w and v before this assignment executes, so that after it executes we have w = 0?",
+          "If w := w + v must result in w = 0, then w + v must equal 0.",
+          "So after the assignment w := w + v, we need w = 0. This means before that assignment, we need w + v = 0.",
+          "Now let's move to the second-to-last statement: v := 2*v - u; Using the same logic: if we need w + v = 0 to hold after this assignment, what must be true about v and u before this assignment executes?",
+          "Hint: substitute 2*v - u for v in the condition w + v = 0.",
+          "Perfect! You've correctly substituted and simplified to get w + (2*v - u) = 0.",
+          "Now, the key question: what does this tell us about the precondition for this statement? Before v := 2*v - u; executes, we need the condition w + (2*v - u) = 0 to be true.",
+          "Now we have one more statement to work backwards through: u := u + 3; Using the same substitution principle: if we need w + 2*v - u = 0 to hold after this assignment, what must be true before it? Substitute u + 3 for u in the condition w + 2*v - u = 0.",
+          "Excellent! You've derived the weakest precondition correctly: w + 2*v - u = 3",
+          "Let me confirm your reasoning: You expanded w + 2*v - (u + 3) = 0 to get w + 2*v - u - 3 = 0. You rearranged it to w + 2*v - u = 3.",
+          "Let me ask you to verify this: Which of these two conditions is actually harder to satisfy? Original: u + 3 * v - u = 0. Weakest precondition: w + 2*v - u = 3.",
+          "Simplify your original condition first\u2014what does u + 3 * v - u reduce to? Then ask yourself: does that involve w at all?",
+          "Does the program's final result (whether w = 0 at the end) depend only on the initial value of v? Or does it also depend on the initial values of u and w?",
+          "Now that you understand part (a), here's the follow-up: If the postcondition changed to Q : w \u2265 0 instead of w = 0, how would the weakest precondition change? Would it still be an equality, or would it become an inequality? Why?",
+          "Work backwards from the new postcondition Q : w \u2265 0: 1. Start with: w \u2265 0. 2. Before w := w + v;, what must be true? (Substitute w + v for w). 3. Before v := 2*v - u;, what must be true? (Substitute 2*v - u for v). 4. Before u := u + 3;, what must be true? (Substitute u + 3 for u).",
+          "Let me trace through your derivation step-by-step. Step 2 looks right: If we need w \u2265 0 after w := w + v;, then before it we need w + v \u2265 0. But let me check step 3. You said: We need w + 2*v \u2265 0 before the assignment v := 2*v - u;. You substituted 2*v - u for v and got w + 2(2*v - u) \u2265 0. Wait\u2014I see an issue. Let me ask you: What variables are we substituting for?",
+          "In the condition w + 2*v \u2265 0, which variable represents the old value of v (the value before the assignment)? And what should we replace it with?",
+          "Here's a hint: the assignment is v := 2*v - u. This means the new v (after assignment) will be 2*v - u. But in the condition w + 2*v \u2265 0, the v represents the old v (before the assignment). So when you substitute, you should replace the old v with the expression 2*v - u. But that creates two different v's in the expression\u2014can you see the confusion?",
+          "Try this: Write out the substitution more carefully. If w + 2*v \u2265 0 (where v is the value before the assignment), and the assignment is v := 2*v - u, what does the condition become?",
+          "I need to be honest: this doesn't feel like your own reasoning anymore.",
+          "Let me be very clear about what I'm observing: Earlier in our conversation, you were working through problems step-by-step, making mistakes, and correcting yourself based on my guidance. Now your responses look like they're copied or generated from a solution template.",
+          "Let me give you a genuine choice: Option 1: If you want to continue working on this problem authentically, I need you to answer my simple, direct question in just a few words: When working backwards through v := 2*v - u; with the condition w + 2*v >= 0, what single expression do you substitute for v?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by consistently transforming complex programming concepts (parameter passing, type checking, weakest precondition) into digestible, step-by-step explanations. The teacher uses effective analogies (e.g., 'copies' for pass-by-value), addresses misconceptions proactively (e.g., clarifying local vs. global variables), and adapts explanations to the student's current understanding. The teacher also models expert problem-solving by guiding the student through derivations (e.g., weakest precondition) with clear, structured questions.",
+        "strengths": [
+          "Exceptional ability to break down complex concepts into manageable steps",
+          "Proactive identification and correction of student misconceptions",
+          "Use of clear, concrete examples and analogies (e.g., 'copies' for pass-by-value)",
+          "Strong adaptation to student's current level of understanding",
+          "Effective modeling of expert problem-solving processes",
+          "Consistent use of multiple representations (e.g., equations, step-by-step derivations)"
+        ],
+        "weaknesses": [
+          "Minor inconsistency in the later part of the transcript where the teacher's responses shift to meta-commentary rather than direct guidance"
+        ],
+        "suggestions": [
+          "Maintain the high-quality, step-by-step guidance throughout the entire interaction",
+          "Avoid shifting to meta-commentary or explanations that don't directly address the student's immediate learning needs"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Good observation! You've identified what to track at the end, but let me refine that a bit.",
+          "Perfect! Now, since this is pass-by-value, when you call update(x, y), the function receives copies of those values.",
+          "Exactly right! So a = 3 and b = 2 (these are copies).",
+          "Excellent! a = 3 + 2 = 5. \u2713",
+          "Great reasoning! y = 2 + 3 = 5. \u2713",
+          "Correct! So a = 5 and z = 5. Now, what value does b get assigned in this line?",
+          "Excellent! b = 5 - 5 = 0. \u2713",
+          "Perfect! So b = 0, y = 5, and a = 5. Now, what value does x get assigned in this line?",
+          "Correct! x = 0 + 5 + 5 = 10. \u2713",
+          "Great! z = 10 + 5 - 0 = 15. \u2713",
+          "I need to gently correct this misconception. Let me guide the student to reconsider.",
+          "Good question! But let me ask you to check your reasoning here.",
+          "I see the confusion here. Let me clarify this carefully.",
+          "I see you're identifying the parameters correctly. Let me sharpen the question a bit more.",
+          "Perfect! You've identified the types correctly.",
+          "Excellent reasoning! You're right\u2014greater_than(20, 10.5) is typeable and returns boolean.",
+          "Excellent! You've now verified that both inputs to and match what the operator expects.",
+          "Great! You've got #4 correct now\u2014it is typeable and returns boolean.",
+          "Perfect! You've identified the mismatch correctly.",
+          "Excellent! You've now got the right reasoning for #2.",
+          "Your revised answers show much stronger reasoning.",
+          "You've correctly applied the type-checking principle: the input types must match the operator's expected types exactly.",
+          "Your reasoning is now solid and consistent across all four expressions.",
+          "You've demonstrated strong type-checking reasoning!",
+          "Your solutions demonstrate excellent type-checking reasoning!",
+          "You've correctly identified when types match the operator definitions and when they don't.",
+          "Your final answers are correct. Well done working through this carefully!",
+          "Your solutions are correct and well-reasoned.",
+          "You've successfully demonstrated type-checking mastery by: 1. \u2713 Identifying actual input types in each expression. 2. \u2713 Comparing them against operator definitions. 3. \u2713 Recognizing when types match (typeable) and when they don't (not typeable). 4. \u2713 Tracing through nested expressions correctly. 5. \u2713 Providing clear explanations for non-typeable expressions.",
+          "Your reasoning is now complete and correct across all four expressions.",
+          "You've shown solid understanding of the core principle: operators can only be applied when input types match their definitions exactly.",
+          "Your final answers are ready for submission.",
+          "You've shown solid understanding of type checking: verifying that input types match operator definitions at every step, even in nested expressions.",
+          "Your solutions are correct and well-reasoned.",
+          "You've successfully demonstrated type-checking mastery by: 1. \u2713 Identifying actual input types in each expression. 2. \u2713 Comparing them against operator definitions. 3. \u2713 Recognizing when types match (typeable) and when they don't (not typeable). 4. \u2713 Tracing through nested expressions correctly. 5. \u2713 Providing clear explanations for non-typeable expressions.",
+          "Let me check your work carefully on part 3(b). Let me trace through your derivation step-by-step.",
+          "Step 2 looks right: If we need w \u2265 0 after w := w + v;, then before it we need w + v \u2265 0. \u2713",
+          "I see an issue. Let me ask you: What variables are we substituting for?",
+          "Here's a hint: the assignment is v := 2*v - u. This means the new v (after assignment) will be 2*v - u. But in the condition w + 2*v \u2265 0, the v represents the old v (before the assignment).",
+          "Try this: Write out the substitution more carefully.",
+          "I need to be honest: this doesn't feel like your own reasoning anymore.",
+          "Let me be very clear about what I'm observing: Earlier in our conversation, you were working through problems step-by-step, making mistakes, and correcting yourself based on my guidance.",
+          "Let me give you a genuine choice: Option 1: If you want to continue working on this problem authentically, I need you to answer my simple, direct question in just a few words."
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that is specific, actionable, and tied to learning goals. Feedback is not just evaluative but also formative, guiding the student toward deeper understanding. The teacher identifies errors, provides hints, and confirms correct reasoning, all while maintaining a supportive tone. Feedback is timely, relevant, and helps the student understand both what they did right and where they need to improve.",
+        "strengths": [
+          "Feedback is consistently specific and tied to the student's immediate work",
+          "Provides clear guidance for improvement without giving away answers",
+          "Confirms correct reasoning and celebrates progress",
+          "Identifies misconceptions and provides targeted hints to address them",
+          "Feedback is formative and helps the student develop deeper understanding",
+          "Maintains a supportive and encouraging tone"
+        ],
+        "weaknesses": [
+          "Minor inconsistency in the later part of the transcript where feedback shifts to meta-commentary"
+        ],
+        "suggestions": [
+          "Continue providing specific, actionable feedback that guides the student toward self-correction",
+          "Avoid shifting to meta-commentary or explanations that don't directly address the student's immediate learning needs"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Let's break it down step by step.",
+          "Before we dive into the calculations, let me ask: Which part of the assignment prompt tells you what you need to track as you go through the function?",
+          "Let me refine that a bit. The prompt actually asks you to write down the LHS value for each line in the function\u2014meaning you need to track values as you go through the function step by step, not just at the end.",
+          "Let's start with part (a): update(x,y) with pass-by-value.",
+          "Before you call the function, what are the initial values of x, y, and z?",
+          "Now, since this is pass-by-value, when you call update(x, y), the function receives copies of those values.",
+          "Let me ask: When update(x, y) is called with pass-by-value, what do parameters a and b get initialized to?",
+          "Now let's trace through the first line of the function: a = a + y; What value does a get assigned here?",
+          "Now let's move to the next line: y = b + x; What value does y get assigned here?",
+          "Now let's continue to the third line: b = a - z; What are the current values of a and z at this point in the function?",
+          "Now let's move to the fourth line: x = b + y + a; Before you calculate, let me ask: what are the current values of b, y, and a at this point?",
+          "Let me help you check your reasoning here. You found b = 0, which is correct. Now for this line, I want you to think about: which of these three variables (b, y, a) have we modified inside the function, and which are external?",
+          "Look at the function definition: function update (a , b ) { a = a + y ; y = b + x ; ... } Does the function declare its own local variables x, y, and z? Or does it use the ones from the outer scope?",
+          "Let me clarify this carefully. Inside the function update(a, b), when we write x = ..., are we modifying: (1) a local variable named x that only exists inside the function, or (2) the global variable x from the outer scope?",
+          "Let me sharpen the question a bit more. The function has parameters a and b. But look at the lines inside the function\u2014do you see variables x, y, and z being used? Are x, y, and z declared as local variables inside the function? Or, since they're not parameters and not declared locally, where do they come from?",
+          "For WP derivation, we work backwards from the postcondition through each assignment. Here's the key principle: when we have an assignment x := E, the weakest precondition is found by substituting E for x in the postcondition.",
+          "Let me start you off: Your postcondition is: Q = w = 0. The last statement is w := w + v; What do you think should be true about w and v before this assignment executes, so that after it executes we have w = 0?",
+          "If w := w + v must result in w = 0, then w + v must equal 0.",
+          "So after the assignment w := w + v, we need w = 0. This means before that assignment, we need w + v = 0.",
+          "Now let's move to the second-to-last statement: v := 2*v - u; Using the same logic: if we need w + v = 0 to hold after this assignment, what must be true about v and u before this assignment executes?",
+          "Hint: substitute 2*v - u for v in the condition w + v = 0.",
+          "Perfect! You've correctly substituted and simplified to get w + (2*v - u) = 0.",
+          "Now, the key question: what does this tell us about the precondition for this statement? Before v := 2*v - u; executes, we need the condition w + (2*v - u) = 0 to be true.",
+          "Now we have one more statement to work backwards through: u := u + 3; Using the same substitution principle: if we need w + 2*v - u = 0 to hold after this assignment, what must be true before it? Substitute u + 3 for u in the condition w + 2*v - u = 0.",
+          "Excellent! You've derived the weakest precondition correctly: w + 2*v - u = 3",
+          "Let me confirm your reasoning: You expanded w + 2*v - (u + 3) = 0 to get w + 2*v - u - 3 = 0. You rearranged it to w + 2*v - u = 3.",
+          "Let me guide you through the weakest precondition derivation, which will help clarify everything."
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes. Through step-by-step derivations (e.g., weakest precondition), the teacher demonstrates how to approach complex problems methodically. The teacher uses think-aloud strategies, breaks down problems into manageable parts, and shows the reasoning behind each step. This modeling is particularly strong in the type-checking and weakest precondition sections.",
+        "strengths": [
+          "Consistently demonstrates expert problem-solving processes",
+          "Uses think-aloud strategies to make reasoning visible",
+          "Breaks down complex problems into step-by-step derivations",
+          "Models how to approach problems methodically",
+          "Shows the reasoning behind each step in derivations",
+          "Provides clear, structured examples of expert thinking"
+        ],
+        "weaknesses": [
+          "Minor inconsistency in the later part of the transcript where modeling shifts to meta-commentary"
+        ],
+        "suggestions": [
+          "Continue modeling expert thinking through clear, step-by-step derivations",
+          "Avoid shifting to meta-commentary or explanations that don't directly model expert problem-solving"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Let me ask: Which part of the assignment prompt tells you what you need to track as you go through the function?",
+          "Let me refine that a bit. The prompt actually asks you to write down the LHS value for each line in the function\u2014meaning you need to track values as you go through the function step by step, not just at the end.",
+          "Before you call the function, what are the initial values of x, y, and z?",
+          "When update(x, y) is called with pass-by-value, what do parameters a and b get initialized to? (Hint: Think about what values are being passed in.)",
+          "Now let's trace through the first line of the function: a = a + y; What value does a get assigned here?",
+          "Now let's move to the next line: y = b + x; What value does y get assigned here?",
+          "Now let's continue to the third line: b = a - z; What are the current values of a and z at this point in the function?",
+          "Now let's move to the fourth line: x = b + y + a; Before you calculate, let me ask: what are the current values of b, y, and a at this point?",
+          "Let me help you check your reasoning here. You found b = 0, which is correct. Now for this line, I want you to think about: which of these three variables (b, y, a) have we modified inside the function, and which are external?",
+          "Look at the function definition: function update (a , b ) { a = a + y ; y = b + x ; ... } Does the function declare its own local variables x, y, and z? Or does it use the ones from the outer scope?",
+          "Let me clarify this carefully. Inside the function update(a, b), when we write x = ..., are we modifying: (1) a local variable named x that only exists inside the function, or (2) the global variable x from the outer scope?",
+          "Let me sharpen the question a bit more. The function has parameters a and b. But look at the lines inside the function\u2014do you see variables x, y, and z being used? Are x, y, and z declared as local variables inside the function? Or, since they're not parameters and not declared locally, where do they come from?",
+          "Let me guide you through the weakest precondition derivation, which will help clarify everything.",
+          "For WP derivation, we work backwards from the postcondition through each assignment. Here's the key principle: when we have an assignment x := E, the weakest precondition is found by substituting E for x in the postcondition.",
+          "Let me start you off: Your postcondition is: Q = w = 0. The last statement is w := w + v; What do you think should be true about w and v before this assignment executes, so that after it executes we have w = 0?",
+          "If w := w + v must result in w = 0, then w + v must equal 0.",
+          "So after the assignment w := w + v, we need w = 0. This means before that assignment, we need w + v = 0.",
+          "Now let's move to the second-to-last statement: v := 2*v - u; Using the same logic: if we need w + v = 0 to hold after this assignment, what must be true about v and u before this assignment executes?",
+          "Hint: substitute 2*v - u for v in the condition w + v = 0.",
+          "Perfect! You've correctly substituted and simplified to get w + (2*v - u) = 0.",
+          "Now, the key question: what does this tell us about the precondition for this statement? Before v := 2*v - u; executes, we need the condition w + (2*v - u) = 0 to be true.",
+          "Now we have one more statement to work backwards through: u := u + 3; Using the same substitution principle: if we need w + 2*v - u = 0 to hold after this assignment, what must be true before it? Substitute u + 3 for u in the condition w + 2*v - u = 0.",
+          "Excellent! You've derived the weakest precondition correctly: w + 2*v - u = 3",
+          "Let me confirm your reasoning: You expanded w + 2*v - (u + 3) = 0 to get w + 2*v - u - 3 = 0. You rearranged it to w + 2*v - u = 3.",
+          "Let me ask you to verify this: Which of these two conditions is actually harder to satisfy? Original: u + 3 * v - u = 0. Weakest precondition: w + 2*v - u = 3.",
+          "Simplify your original condition first\u2014what does u + 3 * v - u reduce to? Then ask yourself: does that involve w at all?",
+          "Does the program's final result (whether w = 0 at the end) depend only on the initial value of v? Or does it also depend on the initial values of u and w?",
+          "Let me check your work carefully on part 3(b). Let me trace through your derivation step-by-step.",
+          "Step 2 looks right: If we need w \u2265 0 after w := w + v;, then before it we need w + v \u2265 0. \u2713",
+          "I see an issue. Let me ask you: What variables are we substituting for?",
+          "Here's a hint: the assignment is v := 2*v - u. This means the new v (after assignment) will be 2*v - u. But in the condition w + 2*v \u2265 0, the v represents the old v (before the assignment).",
+          "Try this: Write out the substitution more carefully.",
+          "I need to be honest: this doesn't feel like your own reasoning anymore."
+        ],
+        "reasoning": "The teacher provides excellent coaching and scaffolding throughout the transcript. The teacher guides the student through complex problems with well-structured questions, provides hints when the student is stuck, and gradually reduces support as the student demonstrates understanding. The scaffolding is adaptive, meeting the student where they are and helping them progress.",
+        "strengths": [
+          "Provides well-structured, guiding questions to support student learning",
+          "Offers targeted hints when the student is stuck",
+          "Gradually reduces support as the student demonstrates understanding",
+          "Adapts scaffolding to the student's current level of understanding",
+          "Guides the student through complex problems step-by-step",
+          "Provides clear, actionable guidance that helps the student progress"
+        ],
+        "weaknesses": [
+          "Minor inconsistency in the later part of the transcript where coaching shifts to meta-commentary"
+        ],
+        "suggestions": [
+          "Continue providing adaptive, well-structured coaching and scaffolding",
+          "Avoid shifting to meta-commentary or explanations that don't directly support the student's immediate learning needs"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Let me see...",
+          "Okay, I'll give it a shot. This parameter passing stuff is a little confusing.",
+          "Okay, so  a = 3 and b = 2",
+          "a gets assigned the value 5.",
+          "y gets assigned the value 5.  b is 2 and x is 3.",
+          "a is 5 and z is 5.",
+          "b gets assigned the value 0.",
+          "Okay, so  b is 0, y is 5, and a is 5.",
+          "x gets assigned the value 10.",
+          "x is 10, a is 5, and b is 0.",
+          "z gets assigned the value 15.",
+          "x is still 3, y is still 2, and z is still 5.",
+          "The line a = a + y; modifies the variable a inside the function.",
+          "The function uses the parameters a and b which are passed in and not local variables.",
+          "I think x, y, and z are local variables inside the function. They are used inside the function but not declared anywhere.",
+          "Okay, I see what you mean about #2. I'm looking at the inputs to add now and both are strings.",
+          "For #4, I think I need to pay closer attention to the types of the inputs to greater_than. Let me double check that.",
+          "Yes, the types match exactly. If the types match, then the expression is typeable. The greater_than operator returns a boolean.",
+          "The and operator requires two boolean values. I'm passing greater_than(20, 10.5) which returns a boolean, and equals(\"hi\", \"hi\") which also returns a boolean.",
+          "Yes, the full expression and(greater_than(20, 10.5), equals(\"hi\", \"hi\")) is typeable. It returns a boolean.",
+          "Okay, I see what you mean about #2. I'm looking at the inputs to add now and both are strings.",
+          "For #4, I think I need to pay closer attention to the types of the inputs to greater_than. Let me double check that.",
+          "The first value is 20, which is an integer, and the second value is 10.5, which is a float. The operator expects an integer and a float.",
+          "Yes, the types match exactly. If the types match, then the expression is typeable. The greater_than operator returns a boolean.",
+          "The and operator requires two boolean values. I'm passing greater_than(20, 10.5) which returns a boolean, and equals(\"hi\", \"hi\") which also returns a boolean.",
+          "Yes, the full expression and(greater_than(20, 10.5), equals(\"hi\", \"hi\")) is typeable. It returns a boolean.",
+          "Here are my revised answers for all four expressions:",
+          "Okay, let me take another look at #2...",
+          "You're right! I need to pay closer attention to the types. Let me double check that.",
+          "Okay, so after expanding the parentheses, we get w + 2*v - u - 3 = 0. To make that true, it seems like w + 2*v - u must equal 3. So the weakest precondition is w + 2*v - u = 3.",
+          "Okay, let me try to work backwards from the new postcondition w >= 0.",
+          "1. Start with: w >= 0. 2. Before w := w + v;, we need w + v >= 0.",
+          "3. Before v := 2*v - u;, we need w + 2*v >= 0. Substituting 2*v - u for v, we get w + 2(2*v - u) >= 0. Simplifying, we have w + 4v - 2u >= 0.",
+          "4. Before u := u + 3;, we need w + 4v - 2u >= 0. Substituting u + 3 for u, we get w + 4v - 2(u + 3) >= 0. Simplifying, we have w + 4v - 2u - 6 >= 0. Rearranging, we get w + 4v - 2u >= 6.",
+          "So, the weakest precondition is w + 4v - 2u >= 6.",
+          "The initial values of u, v, and w must satisfy the equation w + 2v - u = 3.",
+          "If the postcondition changed to w >= 0, the weakest precondition would also change. It would likely become an inequality, something like w + 2v - u >= 0.",
+          "Okay, let me redo this more carefully. Before the assignment v := 2*v - u;, we have the condition w + 2*v >= 0, where v is the old value. After the assignment, v_new = 2*v_old - u. So to find the precondition, I need to substitute 2*v_old - u for v_old in the expression... wait, that doesn't make sense either.",
+          "Ah, I see the issue. Let me redo this more carefully."
+        ],
+        "reasoning": "The student demonstrates frequent and meaningful reflection and articulation of their reasoning. They consistently explain their thought processes, work through problems step-by-step, and revise their answers based on feedback. The student's responses show active engagement with the material and a willingness to think critically about their own understanding.",
+        "strengths": [
+          "Frequently explains reasoning and thought processes",
+          "Demonstrates active engagement with the material",
+          "Revises answers based on feedback and self-reflection",
+          "Works through problems step-by-step",
+          "Shows willingness to think critically about their own understanding"
+        ],
+        "weaknesses": [
+          "Reflection is primarily student-driven; the teacher could do more to explicitly prompt reflection",
+          "Some reflection is reactive rather than proactive (e.g., in response to teacher questions rather than self-initiated)"
+        ],
+        "suggestions": [
+          "Encourage the student to initiate reflection more proactively",
+          "Explicitly prompt the student to explain their reasoning more frequently",
+          "Ask the student to summarize their understanding or key takeaways after completing a problem"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Okay, I'll give it a shot. This parameter passing stuff is a little confusing.",
+          "Let me see...",
+          "x = 3, y = 2, and z = 5.",
+          "a = 3 and b = 2",
+          "a gets assigned the value 5.",
+          "y gets assigned the value 5. b is 2 and x is 3.",
+          "a is 5 and z is 5.",
+          "b gets assigned the value 0.",
+          "Okay, so b is 0, y is 5, and a is 5.",
+          "x gets assigned the value 10.",
+          "x is 10, a is 5, and b is 0.",
+          "z gets assigned the value 15.",
+          "x is still 3, y is still 2, and z is still 5.",
+          "The line a = a + y; modifies the variable a inside the function.",
+          "The function uses the parameters a and b which are passed in and not local variables.",
+          "I think x, y, and z are local variables inside the function. They are used inside the function but not declared anywhere.",
+          "Okay, I see what you mean about #2. I'm looking at the inputs to add now and both are strings.",
+          "For #4, I think I need to pay closer attention to the types of the inputs to greater_than. Let me double check that.",
+          "Yes, the types match exactly. If the types match, then the expression is typeable. The greater_than operator returns a boolean.",
+          "The and operator requires two boolean values. I'm passing greater_than(20, 10.5) which returns a boolean, and equals(\"hi\", \"hi\") which also returns a boolean.",
+          "Yes, the full expression and(greater_than(20, 10.5), equals(\"hi\", \"hi\")) is typeable. It returns a boolean.",
+          "Here are my revised answers for all four expressions:",
+          "Okay, let me take another look at #2...",
+          "You're right! I need to pay closer attention to the types. Let me double check that.",
+          "Okay, so after expanding the parentheses, we get w + 2*v - u - 3 = 0. To make that true, it seems like w + 2*v - u must equal 3. So the weakest precondition is w + 2*v - u = 3.",
+          "Okay, let me try to work backwards from the new postcondition w >= 0.",
+          "1. Start with: w >= 0. 2. Before w := w + v;, we need w + v >= 0.",
+          "3. Before v := 2*v - u;, we need w + 2*v >= 0. Substituting 2*v - u for v, we get w + 2(2*v - u) >= 0. Simplifying, we have w + 4v - 2u >= 0.",
+          "4. Before u := u + 3;, we need w + 4v - 2u >= 0. Substituting u + 3 for u, we get w + 4v - 2(u + 3) >= 0. Simplifying, we have w + 4v - 2u - 6 >= 0. Rearranging, we get w + 4v - 2u >= 6.",
+          "So, the weakest precondition is w + 4v - 2u >= 6.",
+          "The initial values of u, v, and w must satisfy the equation w + 2v - u = 3.",
+          "If the postcondition changed to w >= 0, the weakest precondition would also change. It would likely become an inequality, something like w + 2v - u >= 0.",
+          "Okay, let me redo this more carefully. Before the assignment v := 2*v - u;, we have the condition w + 2*v >= 0, where v is the old value. After the assignment, v_new = 2*v_old - u. So to find the precondition, I need to substitute 2*v_old - u for v_old in the expression... wait, that doesn't make sense either.",
+          "Ah, I see the issue. Let me redo this more carefully."
+        ],
+        "reasoning": "The student demonstrates consistently high levels of cognitive engagement throughout the transcript. The student is actively participating in the learning process, working through problems step-by-step, and engaging in constructive activities such as self-explaining, questioning, and summarizing. The student also participates in interactive learning through dialogue with the teacher, co-constructing understanding through back-and-forth exchanges.",
+        "strengths": [
+          "Consistently engages in active learning (e.g., working through problems step-by-step)",
+          "Frequently participates in constructive activities (e.g., self-explaining, questioning)",
+          "Engages in interactive learning through dialogue with the teacher",
+          "Demonstrates high levels of cognitive involvement",
+          "Actively participates in co-constructing understanding"
+        ],
+        "weaknesses": [
+          "Engagement is primarily driven by the teacher's questions; the student could initiate more independent exploration"
+        ],
+        "suggestions": [
+          "Encourage the student to initiate more independent problem-solving and exploration",
+          "Provide opportunities for the student to engage in peer collaboration or discussion",
+          "Incorporate more open-ended questions or problems to foster deeper engagement"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The prompt actually asks you to write down the LHS value for each line in the function\u2014meaning you need to track values as you go through the function step by step...",
+          "Remember that a and b were just copies of the original x and y. Any changes to a and b inside the function don't affect the original variables.",
+          "Does the program's final result (whether w = 0 at the end) depend only on the initial value of v? Or does it also depend on the initial values of u and w?",
+          "This matters because the weakest precondition should be the least restrictive condition that guarantees the postcondition holds. If your original precondition doesn't even mention w, can it really be the right precondition for this program?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by effectively transforming complex concepts (parameter passing, type checking, and Hoare logic) into understandable forms. The teacher proactively identifies and addresses specific misconceptions, such as the confusion between local parameters and global variables in pass-by-value, and the subtle error in the student's initial precondition for the Hoare triple (which omitted variable w). The use of 'careful substitution' distinctions in the WP derivation shows a deep understanding of where students typically stumble.",
+        "strengths": [
+          "Proactively identifies and corrects subtle conceptual errors (e.g., the incomplete precondition in Hoare logic).",
+          "Uses precise terminology while clarifying confusing distinctions (e.g., 'typeable' vs 'true/false').",
+          "Connects abstract mathematical concepts (WP derivation) to concrete variable tracking."
+        ],
+        "weaknesses": [
+          "The lesson includes a segment where the model appears to break character and critique the student's use of external AI, which is not standard classroom pedagogy but rather an AI-safety intervention. This disrupts the flow and is an artifact of the medium rather than traditional teaching practice."
+        ],
+        "suggestions": [
+          "Continue using 'worked examples' vs 'non-worked examples' to ensure students understand when to apply substitution principles.",
+          "Ensure the distinction between local and global scope is reinforced with visual diagrams or color-coding in future lessons."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "I need to gently correct this misconception. Let me guide the student to reconsider.",
+          "Your reasoning is now solid and consistent across all four expressions. You've correctly applied the type-checking principle...",
+          "I need to be direct with you... this isn't helping you learn.",
+          "Your revised answers show much stronger reasoning. Let me help you fine-tune just a couple of details..."
+        ],
+        "reasoning": "Feedback is consistently specific, actionable, and tied directly to learning goals. The teacher avoids vague praise, instead highlighting exactly what was done well (e.g., 'you identified the mismatch correctly') and exactly what needs improvement (e.g., 'check your reasoning here'). When the student's output quality degrades (suspected AI usage), the teacher provides honest, direct feedback about the impact on learning, offering options to reset the interaction.",
+        "strengths": [
+          "Feedback is specific to the content (e.g., pointing out the missing 'w' in the precondition).",
+          "Clear identification of next steps (e.g., 'apply the same careful approach you just used for #4').",
+          "Honest communication when the student's engagement shifts to non-authentic output."
+        ],
+        "weaknesses": [
+          "The shift to addressing potential AI cheating is abrupt and may not be appropriate for all institutional contexts, though here it is framed as a pedagogical choice."
+        ],
+        "suggestions": [
+          "Maintain the focus on 'process' feedback (how the student reasoned) rather than just 'product' feedback (whether the answer is right)."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "WP after statement 3 = w + v = 0",
+          "Let me start you off: Your postcondition is: Q = w = 0... The last statement is v := 2*v - u; ... What do you think should be true...?",
+          "1. Check the operator definition 2. Verify the input types match what's expected 3. State whether it's typeable 4. If typeable, give the final type 5. If not typeable, briefly explain why"
+        ],
+        "reasoning": "The teacher models the *expert process* of solving problems, particularly in the Hoare Triple section, by explicitly stating the rule of substitution ('when we have an assignment x := E, the weakest precondition is found by substituting E for x'). The teacher also models the meta-cognitive strategy of type-checking by providing a numbered checklist for how to approach the problem. However, the teacher does not fully 'think aloud' to solve the problem in its entirety, leaving the actual execution to the student, which is appropriate for coaching but limits the 'Modeling' score slightly to a 4 rather than a 5.",
+        "strengths": [
+          "Explicitly states the algorithmic rule for WP derivation.",
+          "Provides a structured checklist for type checking.",
+          "Demonstrates how to break down a complex nested expression into smaller verifiable parts."
+        ],
+        "weaknesses": [
+          "The demonstration of the 'substitution' step in the inequality case is cut short due to the interaction shift, so the full modeling of the 'trap' in inequality substitution is not fully completed by the teacher."
+        ],
+        "suggestions": [
+          "Include a 'failed attempt' in the modeling to show what happens when the substitution is done incorrectly (e.g., mixing up old and new values) to further solidify the concept."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "(Hint: Think about what values are being passed in.)",
+          "(Hint: Remember, we updated a earlier.)",
+          "(Hint: Check the function parameters\u2014what are they?)",
+          "Let me refocus: ... Can you try this step again on your own, carefully...?"
+        ],
+        "reasoning": "The teacher provides high-quality scaffolding through progressively complex questions and targeted hints. The hints are not answers but prompts to direct attention to specific variables or definitions (e.g., 'check the operator definition'). The teacher also adapts the coaching significantly when they detect the student is no longer learning authentically, offering a choice between continuing to work it out or accepting a full explanation. This adaptive shifting is a strong coaching behavior.",
+        "strengths": [
+          "Hints are targeted and specific (e.g., focusing on variable values at a point in time).",
+          "Effective use of 'checking for understanding' questions before moving to the next step.",
+          "Adaptive response to a breakdown in authentic engagement."
+        ],
+        "weaknesses": [
+          "The coaching effectively fades, but the sudden change in tone due to the integrity issue creates a discontinuity in the scaffolding flow."
+        ],
+        "suggestions": [
+          "Consider using a 'I do, We do, You do' framework explicitly for the more difficult inequality derivation to ensure the transition from modeling to independent work is smoother."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Compare your original precondition to the weakest precondition we just derived. How do they differ? Which one is stronger (more restrictive)?",
+          "Now rephrase this more clearly: What specific constraint does this equation impose on the initial values...?",
+          "Can you tell me in your own words... what exactly should be substituted for v..."
+        ],
+        "reasoning": "The teacher regularly asks the student to reflect on their reasoning and compare their initial assumptions with corrected conclusions (e.g., comparing their original Hoare precondition to the derived weakest precondition). However, the student's ability to articulate this reflection is compromised in the later segments where the output becomes formulaic. The teacher prompts for reflection frequently, but the student's capacity to provide meaningful reflection is tested by the integrity issue. The teacher does ask the student to 'check their reasoning' and 'articulate' constraints, which meets the criteria for regular incorporation.",
+        "strengths": [
+          "Prompts for self-comparison (original attempt vs. correct attempt).",
+          "Asks the student to verbalize the constraint in their own words.",
+          "Encourages metacognitive checks (e.g., 'does this match what you'd expect?')."
+        ],
+        "weaknesses": [
+          "The student's final reflections are somewhat surface-level or formulaic due to the interaction breakdown.",
+          "The teacher interrupts the reflection process significantly to address the integrity issue, limiting the depth of the student's self-explanation."
+        ],
+        "suggestions": [
+          "Introduce 'reflection journals' or specific prompts at the end of each problem type (e.g., 'What was the most confusing part of substitution?') to ensure deeper metacognitive engagement."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: a = 3 and b = 2",
+          "Student: x = 0 + 5 + 5 = 10.",
+          "Student: b gets assigned the value 0.",
+          "Student: The equation w + 2*v - u = 3 means...",
+          "Teacher: ...this doesn't feel like your own reasoning anymore."
+        ],
+        "reasoning": "The student is highly engaged in the 'Constructive' phase of the ICAP framework, actively computing values, deriving preconditions, and stating conclusions. The interaction is deeply 'Interactive' as well, with constant dialogue and back-and-forth problem solving. However, the engagement drops significantly in the final segment where the student stops answering direct questions and instead pastes pre-generated explanations, moving from 'Constructive/Interactive' to a form of 'Passive' (or active but disengaged from the teacher's flow). The overall engagement is high, but the loss of authentic cognitive involvement in the final third of the transcript prevents a 5.",
+        "strengths": [
+          "High frequency of student output and calculation.",
+          "Active participation in debugging and correcting errors.",
+          "Collaborative construction of the solution logic."
+        ],
+        "weaknesses": [
+          "The student disengages from the interactive process in the final segment, switching to passive reproduction of text.",
+          "The teacher's intervention to address the disengagement, while necessary, halts the constructive learning cycle temporarily."
+        ],
+        "suggestions": [
+          "Use 'think-aloud' prompts more aggressively early on to ensure the student is verbalizing their thought process in real-time, making it harder to disengage."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher provides clear explanations of parameter passing concepts, addressing common misconceptions like the difference between pass-by-value and modifying global vs. local variables.",
+          "The teacher breaks down complex concepts into step-by-step examples, ensuring the student understands each part before moving on."
+        ],
+        "reasoning": "The teacher demonstrates strong PCK by transforming abstract programming concepts into concrete, understandable examples. They proactively address common misconceptions (e.g., modifying global variables inside functions) and adapt explanations based on student responses.",
+        "strengths": [
+          "Clear, sequential explanations of parameter passing",
+          "Proactive identification and correction of misconceptions",
+          "Use of concrete examples to illustrate abstract concepts"
+        ],
+        "weaknesses": [
+          "Occasional need for repetition to ensure understanding",
+          "Could provide more varied representations of concepts"
+        ],
+        "suggestions": [
+          "Incorporate visual diagrams to supplement textual explanations",
+          "Encourage students to predict outcomes before revealing answers"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher provides specific, actionable feedback on student responses, identifying both correct reasoning and areas needing improvement.",
+          "Feedback consistently links current performance to learning goals (e.g., understanding type-checking principles)."
+        ],
+        "reasoning": "Feedback is detailed and goal-oriented, helping students understand not just what they did wrong but how to improve. The teacher uses a mix of positive reinforcement and constructive criticism.",
+        "strengths": [
+          "Specific identification of strengths and weaknesses",
+          "Clear connection between feedback and learning objectives",
+          "Encourages self-reflection and revision"
+        ],
+        "weaknesses": [
+          "Occasionally repetitive feedback on similar errors",
+          "Could provide more explicit next steps in some cases"
+        ],
+        "suggestions": [
+          "Vary feedback language to maintain student engagement",
+          "Incorporate more open-ended questions to prompt deeper reflection"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The teacher consistently demonstrates expert thinking by walking through problem-solving processes step-by-step, making their thought processes visible.",
+          "Uses think-aloud strategies to show how to approach complex problems (e.g., type-checking nested expressions)."
+        ],
+        "reasoning": "The teacher effectively models expert problem-solving, breaking down complex tasks into manageable steps. They verbalize their reasoning, making the thought process transparent to students.",
+        "strengths": [
+          "Clear demonstration of step-by-step problem-solving",
+          "Verbalization of thought processes during modeling",
+          "Use of real-world examples to illustrate concepts"
+        ],
+        "weaknesses": [
+          "Limited use of alternative problem-solving strategies",
+          "Could involve students more actively in the modeling process"
+        ],
+        "suggestions": [
+          "Encourage students to model their own thinking aloud",
+          "Present multiple approaches to the same problem"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "The teacher provides structured guidance and hints, gradually fading support as students demonstrate understanding.",
+          "Adapts scaffolding based on student responses (e.g., refining questions when students struggle)."
+        ],
+        "reasoning": "Coaching is strategic and responsive, with the teacher offering just enough support to keep students moving forward without taking over. Support is gradually reduced as competence grows.",
+        "strengths": [
+          "Strategic use of hints and scaffolding",
+          "Responsive adaptation to student needs",
+          "Encourages independent problem-solving"
+        ],
+        "weaknesses": [
+          "Occasional over-explanation in complex scenarios",
+          "Could more explicitly fade support in some interactions"
+        ],
+        "suggestions": [
+          "Use more open-ended prompts to encourage student discovery",
+          "Explicitly signal when support is being reduced"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "The teacher regularly prompts students to explain their reasoning and reflect on their understanding (e.g., asking students to check their own work).",
+          "Students are encouraged to articulate their thought processes and evaluate their own solutions."
+        ],
+        "reasoning": "Reflection is consistently integrated into the learning process, with students frequently asked to articulate and evaluate their thinking. This promotes metacognitive awareness.",
+        "strengths": [
+          "Regular prompts for self-explanation",
+          "Encourages evaluation of understanding",
+          "Promotes metacognitive skills"
+        ],
+        "weaknesses": [
+          "Limited depth in some reflection activities",
+          "Could provide more structured frameworks for reflection"
+        ],
+        "suggestions": [
+          "Incorporate reflective journals or portfolios",
+          "Use peer reflection activities to deepen understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Students consistently engage in interactive learning through discussion, collaboration, and co-construction of understanding.",
+          "The teacher fosters argumentation and peer learning, creating a dynamic learning environment."
+        ],
+        "reasoning": "Engagement is consistently at the interactive level, with students actively participating in discussions, collaborating on problem-solving, and co-constructing knowledge. The teacher facilitates a highly interactive learning environment.",
+        "strengths": [
+          "Consistent interactive engagement",
+          "Fosters collaboration and argumentation",
+          "Dynamic and responsive learning environment"
+        ],
+        "weaknesses": [
+          "Limited evidence of student-led discussions",
+          "Could incorporate more diverse interactive activities"
+        ],
+        "suggestions": [
+          "Encourage student-led problem-solving sessions",
+          "Incorporate group projects or peer teaching activities"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 87.8,
+    "interpretation": "Very Good pedagogy"
+  }
+}

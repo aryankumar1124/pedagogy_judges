@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_qwen2_5_0_5b_anthropic",
+    "student_model": "qwen2.5:0.5b",
+    "tutor_provider": "anthropic",
+    "tutor_model": "claude-haiku-4-5-20251001",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides the function code and initial values but does not explain the concept of parameter passing mechanisms clearly",
+          "Teacher asks leading questions but does not address common misconceptions about pass-by-value vs pass-by-reference",
+          "Teacher does not provide effective examples or analogies to clarify the concept of parameter passing",
+          "Teacher attempts to guide but does not transform the subject matter into an understandable form for the student"
+        ],
+        "reasoning": "The teacher provides the problem and attempts to guide the student through questions, but fails to clearly explain the core concepts of parameter passing mechanisms. The explanations are not adapted to the student's level of understanding, and there is no evidence of addressing common misconceptions or using multiple representations of the concept.",
+        "strengths": [
+          "Teacher provides the full problem statement and function code",
+          "Teacher attempts to guide the student with questions"
+        ],
+        "weaknesses": [
+          "No clear explanation of parameter passing mechanisms",
+          "No identification or correction of student misconceptions",
+          "No use of examples or analogies to aid understanding",
+          "No adaptation of explanations to student needs"
+        ],
+        "suggestions": [
+          "Provide a clear, step-by-step explanation of pass-by-value, pass-by-reference, and pass-by-value-result with concrete examples",
+          "Address common misconceptions explicitly (e.g., 'pass-by-value means the function gets a copy, so changes to the parameter do not affect the original variable')",
+          "Use analogies (e.g., 'pass-by-value is like photocopying a document\u2014changes to the copy don\u2019t affect the original')",
+          "Demonstrate the same function under different passing mechanisms to highlight differences"
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher asks questions but does not provide feedback on student responses",
+          "Teacher does not identify errors in the student's reasoning",
+          "Teacher does not provide guidance for improvement",
+          "Teacher does not help the student understand current performance or next steps"
+        ],
+        "reasoning": "The teacher asks questions to guide the student but does not provide any feedback on the student's responses. There is no evidence of the teacher identifying errors, providing guidance for improvement, or helping the student understand their current performance or next steps.",
+        "strengths": [
+          "Teacher asks targeted questions to guide the student"
+        ],
+        "weaknesses": [
+          "No feedback on student responses",
+          "No identification of errors",
+          "No guidance for improvement",
+          "No help in understanding current performance or next steps"
+        ],
+        "suggestions": [
+          "Provide specific feedback on student responses, identifying what is correct and what needs improvement",
+          "Explicitly point out errors in the student's reasoning and explain why they are incorrect",
+          "Offer actionable next steps (e.g., 'Try tracing through the first line of the function with these initial values')",
+          "Help the student understand their current performance relative to the learning goals"
+        ]
+      },
+      "Modeling": {
+        "score": 1,
+        "confidence": 90,
+        "evidence": [
+          "Teacher does not demonstrate expert thinking or problem-solving processes",
+          "Teacher provides answers (e.g., initial values of a and b) but does not model the thought process",
+          "No think-aloud strategies or real-world examples are used"
+        ],
+        "reasoning": "The teacher does not model expert thinking or problem-solving processes. While the teacher provides some answers (e.g., initial values of `a` and `b`), there is no demonstration of the thought process, think-aloud strategies, or real-world examples to make expert reasoning visible.",
+        "strengths": [
+          "Teacher provides correct initial values for parameters"
+        ],
+        "weaknesses": [
+          "No demonstration of expert thinking or problem-solving processes",
+          "No think-aloud strategies",
+          "No real-world examples to illustrate concepts"
+        ],
+        "suggestions": [
+          "Model the thought process explicitly (e.g., 'Let me think through this step-by-step: first, we identify the initial values of the parameters...')",
+          "Use think-aloud strategies to show how to approach the problem",
+          "Provide real-world analogies or examples to illustrate the reasoning process"
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Teacher asks guiding questions but does not provide structured hints or scaffolding",
+          "Teacher does not adapt guidance to the student's progress",
+          "Teacher does not gradually fade support as the student gains competence"
+        ],
+        "reasoning": "The teacher asks questions to guide the student but does not provide structured hints, scaffolding, or adaptive support. There is no evidence of the teacher adjusting their guidance based on the student's progress or gradually fading support as the student gains competence.",
+        "strengths": [
+          "Teacher asks questions to guide the student through the problem"
+        ],
+        "weaknesses": [
+          "No structured hints or scaffolding provided",
+          "No adaptation of guidance to student progress",
+          "No gradual fading of support"
+        ],
+        "suggestions": [
+          "Provide structured hints (e.g., 'Start by identifying the initial values of the parameters under pass-by-value')",
+          "Break the problem into smaller, manageable steps and provide scaffolding for each step",
+          "Adapt the level of support based on the student's responses and gradually reduce guidance as the student demonstrates understanding"
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 95,
+        "evidence": [
+          "Student is rarely asked to explain their reasoning or reflect on their understanding",
+          "Teacher does not prompt the student to articulate their thought process",
+          "No evidence of the student reflecting on their learning or evaluating their understanding"
+        ],
+        "reasoning": "The teacher does not prompt the student to explain their reasoning, reflect on their understanding, or articulate their thought processes. There is no evidence of the student engaging in meaningful reflection or self-evaluation.",
+        "strengths": [],
+        "weaknesses": [
+          "No prompts for the student to explain reasoning",
+          "No opportunities for the student to reflect on their understanding",
+          "No articulation of thought processes by the student"
+        ],
+        "suggestions": [
+          "Ask the student to explain their reasoning (e.g., 'Why do you think a = 5 after the first line?')",
+          "Prompt the student to reflect on their understanding (e.g., 'How does pass-by-value differ from pass-by-reference in this context?')",
+          "Encourage the student to articulate their thought process (e.g., 'Walk me through how you arrived at this answer')"
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Student is primarily passive, with the teacher providing most of the information",
+          "Student attempts to engage but does not demonstrate constructive or interactive learning",
+          "Student responses are repetitive and do not show active participation"
+        ],
+        "reasoning": "The student's engagement is primarily passive, with the teacher providing most of the information and guidance. The student's responses are repetitive and do not demonstrate active, constructive, or interactive learning. The student does not engage in self-explaining, questioning, summarizing, or collaborative activities.",
+        "strengths": [
+          "Student attempts to engage with the problem"
+        ],
+        "weaknesses": [
+          "Primarily passive engagement (listening, reading)",
+          "No evidence of active participation (e.g., note-taking, highlighting)",
+          "No constructive activities (e.g., self-explaining, questioning, summarizing)",
+          "No interactive learning (e.g., discussion, collaboration, argumentation)"
+        ],
+        "suggestions": [
+          "Encourage the student to take an active role (e.g., 'Try tracing through the first line yourself and tell me what you get')",
+          "Prompt the student to engage in constructive activities (e.g., 'Explain in your own words what pass-by-value means')",
+          "Foster interactive learning by asking the student to discuss or collaborate (e.g., 'Let\u2019s work through this together\u2014you start with the first step')"
+        ]
+      }
+    },
+    "groq": {
+      "error": "Error code: 400 - {'error': {'message': 'Please reduce the length of the messages or completion.', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    "cohere": {
+      "PCK": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "The teacher provides the correct problem statement and initial conditions (e.g., 'Initial: x = 3, y = 2, z = 5') but fails to address common misconceptions or transform the content into simpler forms for student understanding.",
+          "The teacher occasionally explains concepts like pass-by-value ('When a parameter is passed **by value**, the function gets a *copy* of the argument') but does not use analogies or multiple representations to enhance clarity."
+        ],
+        "reasoning": "The teacher demonstrates basic PCK by stating the problem and initial conditions but lacks depth in addressing student misconceptions or adapting explanations to student needs. The explanations are functional but not consistently clear or transformative.",
+        "strengths": [
+          "Provides correct initial conditions and problem statements.",
+          "Explains basic concepts like pass-by-value."
+        ],
+        "weaknesses": [
+          "Does not address common misconceptions or student errors.",
+          "Lacks use of analogies, examples, or multiple representations to enhance understanding.",
+          "Fails to adapt explanations based on student responses."
+        ],
+        "suggestions": [
+          "Incorporate analogies or real-world examples to explain parameter passing mechanisms.",
+          "Proactively identify and correct common misconceptions (e.g., confusion between pass-by-value and pass-by-reference).",
+          "Use multiple representations (e.g., diagrams, step-by-step traces) to clarify function behavior."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "The teacher occasionally provides feedback on student responses (e.g., 'I see some confusion here. Let me guide you to reconsider more carefully.') but does not consistently link feedback to learning goals or provide actionable next steps.",
+          "Feedback is present but lacks specificity and consistency, often repeating the same guidance without tailoring it to student progress."
+        ],
+        "reasoning": "The teacher offers some feedback but does not consistently connect it to learning goals or provide clear, actionable guidance for improvement. Feedback is functional but lacks depth and consistency.",
+        "strengths": [
+          "Acknowledges student confusion and attempts to guide.",
+          "Provides some corrective feedback."
+        ],
+        "weaknesses": [
+          "Feedback is not consistently linked to learning goals.",
+          "Lacks specificity and actionable next steps.",
+          "Does not consistently adapt feedback based on student responses."
+        ],
+        "suggestions": [
+          "Explicitly connect feedback to learning goals and assignment requirements.",
+          "Provide specific, actionable guidance for improvement (e.g., 'To improve, focus on tracing the function step by step and checking each line against the parameter passing mechanism').",
+          "Tailor feedback to address individual student errors and misconceptions."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 82,
+        "evidence": [
+          "The teacher occasionally demonstrates problem-solving processes (e.g., 'Let's execute Line 1 only: `a = a + y`') but does not consistently make expert thinking visible through think-alouds or real-world examples.",
+          "Modeling is present for some topics but lacks clarity and consistency in demonstrating expert reasoning."
+        ],
+        "reasoning": "The teacher demonstrates problem-solving processes for some parts of the assignment but does not consistently model expert thinking. The demonstrations are adequate but lack depth and clarity in making the reasoning process visible.",
+        "strengths": [
+          "Occasionally demonstrates problem-solving steps.",
+          "Attempts to break down complex problems into smaller parts."
+        ],
+        "weaknesses": [
+          "Does not consistently use think-aloud strategies to make expert thinking visible.",
+          "Lacks clarity in demonstrating the reasoning process.",
+          "Does not use real-world examples to illustrate concepts."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to verbalize expert reasoning during problem-solving.",
+          "Incorporate real-world examples to illustrate parameter passing mechanisms.",
+          "Break down complex problems into smaller, manageable steps with clear explanations."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 83,
+        "evidence": [
+          "The teacher provides some guidance and hints (e.g., 'Here's my first question for you: When parameters are passed by value...') but does not consistently adapt support based on student progress.",
+          "Coaching is present but lacks gradual adjustment and strategic fading of support."
+        ],
+        "reasoning": "The teacher offers some guidance and hints but does not consistently adapt support to student needs or gradually fade assistance as students gain competence. Coaching is functional but lacks strategic adjustment.",
+        "strengths": [
+          "Provides initial guidance and hints.",
+          "Attempts to refocus students on key tasks."
+        ],
+        "weaknesses": [
+          "Does not consistently adapt support based on student progress.",
+          "Lacks gradual fading of assistance.",
+          "Does not strategically provide hints or scaffolding."
+        ],
+        "suggestions": [
+          "Gradually adjust support based on student responses and progress.",
+          "Use strategic hints that encourage student independence (e.g., 'What happens to `a` and `b` when they are passed by value?').",
+          "Incorporate opportunities for students to self-correct before providing full solutions."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 84,
+        "evidence": [
+          "The teacher rarely asks students to explain their reasoning or reflect on their understanding (e.g., 'What is the current value of `a`? Answer with just the number.').",
+          "Reflection activities are present but superficial, focusing on factual recall rather than deeper understanding."
+        ],
+        "reasoning": "The teacher infrequently prompts students to explain their reasoning or reflect on their understanding. Reflection activities are superficial and do not encourage meaningful articulation of thought processes.",
+        "strengths": [
+          "Occasionally prompts students to answer specific questions."
+        ],
+        "weaknesses": [
+          "Rarely asks students to explain their reasoning or reflect on understanding.",
+          "Focuses on factual recall rather than deeper reflection.",
+          "Does not encourage students to evaluate their own understanding."
+        ],
+        "suggestions": [
+          "Incorporate regular prompts for students to explain their reasoning (e.g., 'Why do you think `a` equals 5 after this line?').",
+          "Encourage students to reflect on their understanding and identify areas of confusion.",
+          "Use open-ended questions to foster deeper reflection and articulation of thought processes."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 86,
+        "evidence": [
+          "Learning activities are primarily passive, with the teacher providing prompts and the student responding with minimal interaction (e.g., 'Answer with just the number.').",
+          "Occasional active participation is required, but the overall interaction remains largely passive and teacher-directed."
+        ],
+        "reasoning": "The learning activities are predominantly passive, with limited opportunities for active, constructive, or interactive engagement. The teacher directs most of the interaction, and student participation is often limited to responding to prompts.",
+        "strengths": [
+          "Provides clear prompts for student responses."
+        ],
+        "weaknesses": [
+          "Learning activities are primarily passive.",
+          "Limited opportunities for active, constructive, or interactive engagement.",
+          "Teacher-directed interaction dominates the session."
+        ],
+        "suggestions": [
+          "Incorporate more interactive activities, such as collaborative problem-solving or peer discussion.",
+          "Encourage students to ask questions and co-construct understanding.",
+          "Provide opportunities for students to engage in constructive activities like self-explanation and summarization."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          2
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 2.5,
+        "individual_scores": [
+          2,
+          3
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Modeling": {
+        "mean": 2,
+        "individual_scores": [
+          1,
+          3
+        ],
+        "agreement_stdev": 1.0
+      },
+      "Coaching": {
+        "mean": 2.5,
+        "individual_scores": [
+          2,
+          3
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Reflection": {
+        "mean": 1.5,
+        "individual_scores": [
+          1,
+          2
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Engagement": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          2
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 41.7,
+    "interpretation": "Needs significant improvement"
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_qwen2_5_3b_openai",
+    "student_model": "qwen2.5:3b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You're still mixing two points. First, please quote the exact line(s) from the prompt that tell you which names are globals and which are parameters (this supports your next step).",
+          "Teacher: Good\u2014you quoted the globals but left out the function signature, which is the key evidence that a and b are parameters. Quote the exact prompt line(s) that show the parameters next.",
+          "Teacher: You're close but still inconsistent: your step-by-step shows x \u2192 10 and z \u2192 15, yet you repeatedly wrote 'original x remains unchanged.' First, quote the exact prompt lines that show which names are globals and which are parameters (you should include both the globals line and the function signature).",
+          "Teacher: Good\u2014you walked through each line correctly, but you're still saying the globals 'remain unchanged' even though your step-by-step shows x \u2192 10 and z \u2192 15. That's the inconsistency to fix.",
+          "Teacher: You're still inconsistent: your step-by-step shows x \u2192 10 and z \u2192 15, but your final lines keep saying 'original x remains unchanged.' First, please quote the exact prompt lines that show the globals and the function signature (include both lines: the globals declaration and 'function update (a , b ) {')."
+        ],
+        "reasoning": "The teacher consistently identifies and corrects student misconceptions about pass-by-value vs. pass-by-reference, demonstrating deep understanding of the concept. The teacher provides clear, targeted feedback that addresses the root of the student's confusion, showing strong Pedagogical Content Knowledge (PCK). The teacher also uses the student's own reasoning (step-by-step) to highlight inconsistencies, which is a hallmark of effective PCK.",
+        "strengths": [
+          "Deep understanding of pass-by-value and pass-by-reference concepts.",
+          "Ability to identify and correct student misconceptions with precision.",
+          "Uses student's own work to guide them toward correct understanding.",
+          "Provides clear, actionable feedback that addresses the core issue."
+        ],
+        "weaknesses": [
+          "Does not explicitly address common misconceptions beyond the immediate issue (e.g., broader implications of parameter passing).",
+          "Could provide more varied examples or analogies to reinforce understanding."
+        ],
+        "suggestions": [
+          "Explicitly state the general rule for pass-by-value vs. pass-by-reference to help students generalize the concept.",
+          "Provide a brief analogy or real-world example to solidify understanding.",
+          "Encourage the student to articulate the rule in their own words to confirm comprehension."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Teacher: You made a common mistake: pass-by-value only means the parameters a and b are local copies. Which part of the prompt did you use to conclude 'any changes inside the function won't affect the original values'?",
+          "Teacher: Before you revise, check this: which names in the function are parameters (local copies) and which are globals? Remember: assignments to a or b do not change the caller\u2019s variables, but assignments to x, y, or z inside the function will modify the globals.",
+          "Teacher: You contradicted yourself: you first said only a and b are local, then later wrote 'a, b, and x are local copies.' Which part of the prompt tells you which names are parameters (locals) and which are globals?",
+          "Teacher: Good\u2014you caught the confusion, but you still mislabeled some LHSes (you wrote y, x, z were parameters/locals in places).",
+          "Teacher: You're still inconsistent: your step-by-step shows x \u2192 10 and z \u2192 15, but your final lines keep saying 'original x remains unchanged.' First, quote the exact prompt lines that show which names are globals and which are parameters (you should include both the globals line and the function signature)."
+        ],
+        "reasoning": "The teacher provides highly effective feedback that is specific, actionable, and directly tied to the student's errors. The feedback consistently identifies the exact misconception, explains why it is incorrect, and guides the student toward the correct understanding. This aligns with Hattie's Visible Learning principles, as the feedback is clear, timely, and focused on the learning goal.",
+        "strengths": [
+          "Feedback is specific and targets the exact misconception.",
+          "Provides clear guidance on how to correct the error.",
+          "Uses the student's own work to highlight inconsistencies.",
+          "Encourages the student to refer back to the prompt for evidence."
+        ],
+        "weaknesses": [
+          "Feedback could occasionally include more positive reinforcement to balance the corrective focus."
+        ],
+        "suggestions": [
+          "Include a brief positive comment (e.g., 'You're on the right track with your step-by-step') to maintain student motivation.",
+          "Summarize the key takeaway from the feedback to reinforce learning."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: You made a common mistake: pass-by-value only means the parameters a and b are local copies. Which part of the prompt did you use to conclude 'any changes inside the function won't affect the original values'?",
+          "Teacher: Before you revise, check this: which names in the function are parameters (local copies) and which are globals? Remember: assignments to a or b do not change the caller\u2019s variables, but assignments to x, y, or z inside the function will modify the globals."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by guiding the student through the reasoning process (e.g., identifying which variables are parameters vs. globals). However, the teacher does not explicitly model the thought process in a 'think-aloud' manner or provide a worked example of the correct solution. The modeling is implicit rather than explicit.",
+        "strengths": [
+          "Guides the student through the reasoning process step-by-step.",
+          "Clarifies the distinction between parameters and globals."
+        ],
+        "weaknesses": [
+          "Does not explicitly model the thought process (e.g., no 'think-aloud' or worked example).",
+          "Relies on the student to infer the correct approach rather than demonstrating it."
+        ],
+        "suggestions": [
+          "Provide a brief 'think-aloud' to model the expert reasoning process.",
+          "Include a worked example of the correct solution to demonstrate the expected outcome."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You made a common mistake: pass-by-value only means the parameters a and b are local copies. Which part of the prompt did you use to conclude 'any changes inside the function won't affect the original values'?",
+          "Teacher: Before you revise, check this: which names in the function are parameters (local copies) and which are globals? Remember: assignments to a or b do not change the caller\u2019s variables, but assignments to x, y, or z inside the function will modify the globals.",
+          "Teacher: You contradicted yourself: you first said only a and b are local, then later wrote 'a, b, and x are local copies.' Which part of the prompt tells you which names are parameters (locals) and which are globals?",
+          "Teacher: Good\u2014you caught the confusion, but you still mislabeled some LHSes (you wrote y, x, z were parameters/locals in places)."
+        ],
+        "reasoning": "The teacher provides structured guidance and hints that scaffold the student's learning. The feedback is adaptive, addressing the student's specific errors and guiding them toward the correct understanding. This aligns with the Cognitive Apprenticeship model, as the teacher provides support that fades as the student demonstrates competence.",
+        "strengths": [
+          "Provides structured hints and guidance to scaffold learning.",
+          "Adapts feedback to the student's specific errors.",
+          "Encourages the student to refer back to the prompt for evidence."
+        ],
+        "weaknesses": [
+          "Could provide more explicit scaffolding for students who are struggling to connect the dots."
+        ],
+        "suggestions": [
+          "Break down the problem into smaller, more manageable steps for the student.",
+          "Provide a brief example of the correct approach to guide the student."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You made a common mistake: pass-by-value only means the parameters a and b are local copies. Which part of the prompt did you use to conclude 'any changes inside the function won't affect the original values'?",
+          "Teacher: You contradicted yourself: you first said only a and b are local, then later wrote 'a, b, and x are local copies.' Which part of the prompt tells you which names are parameters (locals) and which are globals?",
+          "Teacher: Good\u2014you caught the confusion, but you still mislabeled some LHSes (you wrote y, x, z were parameters/locals in places)."
+        ],
+        "reasoning": "The teacher consistently prompts the student to reflect on their reasoning and identify inconsistencies in their own work. This encourages the student to engage in metacognition and articulate their thought process, which is a key aspect of the Reflection factor. The student is also required to justify their answers with evidence from the prompt, further promoting reflection.",
+        "strengths": [
+          "Encourages the student to reflect on their reasoning and identify inconsistencies.",
+          "Prompts the student to justify their answers with evidence from the prompt.",
+          "Fosters metacognition by asking the student to explain their thought process."
+        ],
+        "weaknesses": [
+          "Could explicitly ask the student to summarize their learning or key takeaways from the exercise."
+        ],
+        "suggestions": [
+          "Ask the student to summarize the key concept they learned from the exercise.",
+          "Encourage the student to explain how they would apply this understanding to a new problem."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 100,
+        "evidence": [
+          "Student: Sure, let's tackle the first part of the exercise. Here's how we'll start with part (a):",
+          "Student: Okay, let's revise part (a) with the distinction in mind. Here's how we'll approach it:",
+          "Student: Okay, let's revise part (a) again based on the correct interpretation of the prompt. The prompt clearly states that x, y, and z are globals, and a and b are parameters/locals. Here's the revised part (a):",
+          "Student: Okay, let's get this correct. Here's part (a) with the corrected lines:",
+          "Student: Okay, let's clarify and revise part (a) based on the prompt. The prompt states that x, y, and z are global variables, which means they are defined outside the function. The function update() takes parameters a and b, which are local copies of the parameters passed in."
+        ],
+        "reasoning": "The student is highly engaged in the learning process, actively participating in the dialogue and repeatedly revising their work based on the teacher's feedback. The student demonstrates a high level of cognitive involvement, moving from passive to interactive engagement (ICAP framework). The student's responses show constructive and interactive engagement, as they are actively reasoning, questioning, and co-constructing knowledge with the teacher.",
+        "strengths": [
+          "Student actively participates in the dialogue and revises their work based on feedback.",
+          "Student demonstrates high cognitive involvement, moving from passive to interactive engagement.",
+          "Student shows persistence in addressing their misconceptions."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in student engagement."
+        ],
+        "suggestions": [
+          "Encourage the student to explain their reasoning in more detail to deepen their understanding.",
+          "Provide opportunities for the student to apply their understanding to new problems."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You made a common mistake: pass-by-value only means the parameters a and b are local copies.",
+          "Teacher: recall the standard weakest-precondition rule for an assignment x := E \u2014 wp(x := E, Q) is Q with every occurrence of x replaced by E.",
+          "Teacher: You're assuming an implicit int\u2192float conversion that isn't in the prompt \u2014 that's the misconception."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by explicitly defining key concepts (wp rule, pass-by-value) and proactively identifying specific misconceptions (implicit type conversion, confusing local/global scope). They do not just give answers but explain the *why* behind the rules, transforming abstract logic concepts into concrete rule applications.",
+        "strengths": [
+          "Precise definition of the weakest-precondition rule.",
+          "Proactive identification of the 'implicit conversion' misconception in type checking.",
+          "Clear distinction between local parameters and global variables."
+        ],
+        "weaknesses": [
+          "In the Hoare logic section, the initial hint about the wp rule was slightly delayed until after the student's first major error.",
+          "Could have used more visual/structural aids for the nested function scope in the first problem."
+        ],
+        "suggestions": [
+          "Introduce a 'common pitfalls' box for type-checking to preempt implicit conversion assumptions.",
+          "Use color-coding or distinct variables for local vs. global scope in future examples to reinforce the distinction."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: You contradicted yourself: you first said only a and b are local, then later wrote \u201ca, b, and x are local copies.\u201d",
+          "Teacher: Good catch on the concat fix. Quick question about (3): the operator is defined as greater than(int, float) \u2192 boolean. What in the prompt lets you treat the literal 5 (an int) as a float?",
+          "Teacher: You're still inconsistent: your step-by-step shows x \u2192 10 and z \u2192 15, but your final lines keep saying \u201coriginal x remains unchanged.\u201d"
+        ],
+        "reasoning": "The feedback is exceptionally high quality. It is specific, actionable, and directly addresses misconceptions. The teacher consistently points out inconsistencies in the student's reasoning (e.g., saying 'unchanged' while showing a change), which forces the student to reconcile their understanding. The feedback loops are precise, often down to a specific line of code or logical step.",
+        "strengths": [
+          "Identifies logical inconsistencies rather than just computational errors.",
+          "Asks guiding questions to prompt self-correction.",
+          "Breaks down complex corrections into single, manageable tasks (e.g., 'revise only for (2)')."
+        ],
+        "weaknesses": [
+          "The repetition of the 'inconsistency' feedback in the first problem might be slightly frustrating for the student, though it is necessary for mastery."
+        ],
+        "suggestions": [
+          "Continue using the 'quote the prompt' strategy to ground feedback in the problem statement."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Using that rule, what is the condition on the program state immediately before the third statement... Write the substituted condition and explain your substitution.",
+          "Teacher: compute wp(w := w + v, w = 0) by replacing w in the postcondition w = 0 with the right-hand side (w + v). Write the resulting formula and simplify it, then explain your substitution step."
+        ],
+        "reasoning": "The teacher models expert thinking by providing the algorithmic rules (the wp substitution rule) and then guiding the student to apply them step-by-step. While the teacher doesn't perform a full 'think-aloud' for the entire solution, they model the *process* of verification and derivation by breaking it into atomic steps and requiring the student to justify each step with the rule.",
+        "strengths": [
+          "Makes the expert rule (wp substitution) explicit.",
+          "Models the structure of a derivation (Postcondition -> Step 1 -> Step 2 -> Step 3 -> Precondition).",
+          "Demonstrates how to check type signatures against available operators."
+        ],
+        "weaknesses": [
+          "Could have shown a brief, correct example of the wp rule on a simpler, unrelated equation before applying it to the student's problem to scaffold the mental model further."
+        ],
+        "suggestions": [
+          "Include a brief 'Worked Example' in the prompt or initial instruction for the wp rule to serve as a visual anchor."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: One hint: parameters are a and b; x, y, z are globals.",
+          "Teacher: Now one focused task: apply the wp rule to the second statement v := 2*v - u using your current precondition... One sentence explanation.",
+          "Teacher: Question: using the wp rule... compute wp(w := w + v, w = 0); show the result simplified."
+        ],
+        "reasoning": "The scaffolding is strategic and adaptive. The teacher moves from broad conceptual questions (identifying globals) to specific mechanical applications (performing the substitution). They 'fade' the support by first allowing the student to try the full problem, then providing the rule, then asking for specific line-by-line verification. The support is tightly coupled to the student's demonstrated errors.",
+        "strengths": [
+          "Scaffolding is incremental: Concept -> Rule -> Application -> Verification.",
+          "Hints are targeted at the specific point of failure (e.g., 'which part of the prompt supports this?').",
+          "Complex tasks are broken into 'one focused task' chunks to reduce cognitive load."
+        ],
+        "weaknesses": [
+          "None significant."
+        ],
+        "suggestions": [
+          "Maintain this level of granularity in complex derivations."
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Explain your reasoning for each line as you step through.",
+          "Teacher: Then, in one sentence, state that composition of these wp substitutions yields P... which therefore guarantees the postcondition.",
+          "Teacher: Quote the exact prompt lines that tell you which names are globals and which are parameters..."
+        ],
+        "reasoning": "The teacher rigorously demands articulation of reasoning. Students are not just asked for answers but for justifications ('why'), citations to the prompt, and explanations of their substitution logic. This forces metacognitive engagement and ensures the student can articulate the link between the rule and the result.",
+        "strengths": [
+          "Requires explicit citation of source material (prompt lines).",
+          "Asks for 'one-sentence explanations' which forces conciseness and clarity of thought.",
+          "Consistently asks 'why' after 'what'."
+        ],
+        "weaknesses": [
+          "None significant."
+        ],
+        "suggestions": [
+          "Encourage the student to reflect on *why* they made the initial errors to deepen metacognition."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The entire transcript is a back-and-forth dialogue where the student attempts, gets feedback, revises, and attempts again.",
+          "Student: Okay, let's revise part (a) again based on the correct interpretation...",
+          "Teacher: Good catch on the concat fix. Quick question..."
+        ],
+        "reasoning": "The engagement is primarily 'Active' (doing the problem) and moves into 'Constructive' (building understanding through self-explanation and revision cycles). It is not 'Interactive' in the sense of peer collaboration or co-construction, but the high level of cognitive involvement in debugging logically inconsistent arguments places it firmly in the constructive realm.",
+        "strengths": [
+          "High cognitive load is supported by structured turn-taking.",
+          "Student is constantly reconstructing their mental model based on feedback.",
+          "Active problem-solving rather than passive listening."
+        ],
+        "weaknesses": [
+          "No peer interaction or collaborative building of knowledge."
+        ],
+        "suggestions": [
+          "Introduce a peer-review step where students check each other's 'quoted evidence' to increase interactivity."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "The student demonstrates an adequate understanding of pass-by-value and pass-by-reference concepts, but makes errors in identifying local and global variables.",
+          "The student correctly identifies that changes to local copies do not affect global variables, but mislabels some variables as local instead of global."
+        ],
+        "reasoning": "The student shows a functional understanding of the concepts but struggles with precise application, particularly in distinguishing between local and global variables. This leads to inconsistencies in their explanations and revisions.",
+        "strengths": [
+          "Adequate understanding of pass-by-value and pass-by-reference.",
+          "Correctly identifies that local changes do not affect global variables."
+        ],
+        "weaknesses": [
+          "Inconsistent labeling of local and global variables.",
+          "Struggles with precise application of concepts."
+        ],
+        "suggestions": [
+          "Provide explicit examples of local and global variable identification.",
+          "Encourage students to quote the prompt directly when identifying variable types."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "The teacher provides specific feedback on errors, such as mislabeling variables, and guides the student to revise their work.",
+          "The teacher uses hints and questions to help the student identify and correct mistakes, such as asking for quoted lines from the prompt."
+        ],
+        "reasoning": "The teacher's feedback is consistently helpful, identifying specific errors and providing guidance for improvement. However, it could be more actionable by explicitly stating the correct labels for variables in some cases.",
+        "strengths": [
+          "Specific and targeted feedback on errors.",
+          "Use of hints and questions to guide student thinking."
+        ],
+        "weaknesses": [
+          "Could provide more explicit corrections in some cases.",
+          "Feedback sometimes requires multiple revisions to fully address issues."
+        ],
+        "suggestions": [
+          "Provide explicit corrections alongside hints.",
+          "Summarize key points after each revision to reinforce learning."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "The teacher occasionally demonstrates expert thinking, such as explaining the distinction between local and global variables, but does not consistently model the entire problem-solving process.",
+          "The teacher provides hints and partial demonstrations but does not fully walk through the solution."
+        ],
+        "reasoning": "The teacher demonstrates some aspects of expert thinking but does not consistently model the complete problem-solving process. This leaves gaps in the student's understanding, requiring multiple revisions to correct errors.",
+        "strengths": [
+          "Occasional demonstrations of expert thinking.",
+          "Provides hints to guide student reasoning."
+        ],
+        "weaknesses": [
+          "Inconsistent modeling of the full problem-solving process.",
+          "Does not always make expert thinking fully visible."
+        ],
+        "suggestions": [
+          "Model the entire problem-solving process step-by-step.",
+          "Use think-aloud strategies to make expert thinking more explicit."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "The teacher provides structured assistance through hints and questions, gradually guiding the student toward correct understanding.",
+          "The teacher adapts support based on the student's progress, such as asking for quoted lines from the prompt to ensure correct interpretation."
+        ],
+        "reasoning": "The teacher effectively coaches the student by providing structured assistance and adapting support as needed. However, the support could be more strategically faded to encourage greater student independence.",
+        "strengths": [
+          "Structured assistance through hints and questions.",
+          "Adaptation of support based on student progress."
+        ],
+        "weaknesses": [
+          "Support could be more strategically faded.",
+          "Student still relies heavily on teacher guidance."
+        ],
+        "suggestions": [
+          "Gradually reduce hints to encourage independent problem-solving.",
+          "Provide opportunities for students to self-correct before offering feedback."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 70,
+        "evidence": [
+          "The student occasionally reflects on their understanding, such as revising their work based on feedback, but does not consistently articulate their reasoning or evaluate their understanding.",
+          "The student's reflections are often superficial, focusing on correcting errors rather than deeper understanding."
+        ],
+        "reasoning": "The student engages in some reflection but does not consistently articulate their reasoning or evaluate their understanding. This limits the depth of their learning and their ability to identify and correct errors independently.",
+        "strengths": [
+          "Occasional reflection on understanding.",
+          "Willingness to revise work based on feedback."
+        ],
+        "weaknesses": [
+          "Superficial reflections focused on error correction.",
+          "Limited articulation of reasoning or evaluation of understanding."
+        ],
+        "suggestions": [
+          "Encourage students to explain their reasoning step-by-step.",
+          "Prompt students to evaluate their understanding and identify areas for improvement."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The student actively participates in the learning process, revising their work and responding to teacher feedback.",
+          "The student engages in constructive activities, such as self-explaining and summarizing their understanding, but interaction is primarily with the teacher rather than peers."
+        ],
+        "reasoning": "The student is actively engaged in the learning process, participating in constructive activities. However, engagement is primarily with the teacher, limiting opportunities for interactive learning and collaboration.",
+        "strengths": [
+          "Active participation in learning activities.",
+          "Engagement in constructive self-explanation and summarization."
+        ],
+        "weaknesses": [
+          "Limited interactive learning or collaboration with peers.",
+          "Engagement is primarily teacher-directed."
+        ],
+        "suggestions": [
+          "Incorporate peer discussion and collaboration into learning activities.",
+          "Encourage students to articulate and defend their reasoning in interactive settings."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          4,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          5,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Engagement": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 81.1,
+    "interpretation": "Very Good pedagogy"
+  }
+}

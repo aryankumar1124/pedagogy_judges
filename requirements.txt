@@ -1,4 +1,4 @@
 groq
-openai
-google-generativeai
+mistralai
+cohere
 python-dotenv

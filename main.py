@@ -1,5 +1,5 @@
 """
-Runs all 3 judges (OpenAI, Groq, Gemini) on the same transcript,
+Runs all 3 judges (Mistral, Groq, Cohere) on the same transcript,
 using the identical unified prompt. Prints each judge's scores,
 a naive mean-aggregated pedagogy score, and basic agreement info.
 
@@ -8,7 +8,7 @@ median vs outlier-detection) is the NEXT thing to build once you can see
 real disagreement patterns.
 
 Usage:
-    Put OPENAI_API_KEY, GROQ_API_KEY, GOOGLE_API_KEY in a .env file
+    Put MISTRAL_API_KEY, GROQ_API_KEY, COHERE_API_KEY in a .env file
     (see .env.example), or export them in your shell, then:
     python main.py path/to/transcript.txt
 """
@@ -22,13 +22,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from judges import openai_judge, groq_judge, gemini_judge
+from judges import mistral_judge, groq_judge, cohere_judge
 from rubrics.pedagogy_rubric import FACTORS, interpret_score
 
 JUDGES = {
-    "openai": openai_judge.score_transcript,
+    "mistral": mistral_judge.score_transcript,
     "groq": groq_judge.score_transcript,
-    "gemini": gemini_judge.score_transcript,
+    "cohere": cohere_judge.score_transcript,
 }
 
 

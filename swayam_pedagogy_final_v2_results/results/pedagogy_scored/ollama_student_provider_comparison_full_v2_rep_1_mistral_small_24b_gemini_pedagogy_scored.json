@@ -1,0 +1,548 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_mistral_small_24b_gemini",
+    "student_model": "mistral-small:24b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a look at your answer for Part 1(c) where parameters are passed by **value-result**. Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?",
+          "Teacher: Notice how during the execution of `update`, statements like `y = b + x` modify a local variable named `y`. Since `y` is just a local variable inside the function in value-result mode (and not a reference to the caller's `y`), what does that local `y` hold, and how does it affect the line `b = a - z`?",
+          "Teacher: You've got a great grasp on when the copy-back happens for value-result!",
+          "Teacher: You've done a thorough breakdown of value-result semantics!",
+          "Teacher: Spot on! You nailed the definition and reasoning: pass-by-result leaves the parameters uninitialized when the function starts, but the very first line (`a = a + y`) attempts to *read* from `a` before it has been assigned a value, leading to undefined or garbage values.",
+          "Teacher: You've correctly identified the required input types from the definition (`int, float`).",
+          "Teacher: You've applied the substitution correctly for that step!",
+          "Teacher: You've got the substitution down correctly!",
+          "Teacher: That rearrangement is spot on!",
+          "Teacher: That rearrangement and interpretation are completely correct!"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by transforming complex concepts (parameter passing schemes, Hoare triples, type systems) into clear, digestible explanations. The teacher consistently identifies and corrects student misconceptions (e.g., value-result semantics, pass-by-result applicability, numeric promotion in type systems) and uses effective analogies and step-by-step reasoning. The teacher also adapts explanations to the student's evolving understanding, as seen in the iterative refinement of answers.",
+        "strengths": [
+          "Exceptional ability to break down complex concepts into understandable parts",
+          "Proactive identification and correction of student misconceptions",
+          "Use of clear, step-by-step reasoning and analogies",
+          "Adaptation of explanations to student's current understanding",
+          "Strong alignment with Shulman's PCK (subject matter knowledge + pedagogical knowledge)"
+        ],
+        "weaknesses": [
+          "Minimal evidence of addressing common misconceptions beyond the immediate context (e.g., broader pitfalls in parameter passing)",
+          "Could occasionally provide more varied examples to reinforce understanding"
+        ],
+        "suggestions": [
+          "Include more diverse examples to illustrate edge cases in parameter passing schemes",
+          "Explicitly connect concepts to broader programming principles (e.g., how value-result relates to call-by-value and call-by-reference)",
+          "Encourage students to generalize their understanding to other contexts"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?",
+          "Teacher: Can you check your reasoning for part (c) keeping the copy-back timing in mind?",
+          "Teacher: Notice how during the execution of `update`, statements like `y = b + x` modify a local variable named `y`. Since `y` is just a local variable inside the function in value-result mode (and not a reference to the caller's `y`), what does that local `y` hold, and how does it affect the line `b = a - z`?",
+          "Teacher: Take a look at the line `x = b + y + a;` in the function. Which `y` is being used in that calculation\u2014the local variable `y` that was just updated on the previous line, or something else?",
+          "Teacher: You've correctly identified the required input types from the definition (`int, float`). But let's check expression #4: `greater than(20, 10.5)`. What are the types of the inputs in `greater than(20, 10.5)`, and how do they compare to the required `int, float` definition?",
+          "Teacher: You've laid out the two possibilities clearly: strict type matching versus implicit conversion.",
+          "Teacher: You've successfully worked through all parts of the assignment now. Do you have any questions about any of the other expressions?",
+          "Teacher: You've done a thorough job working backward through the statements!",
+          "Teacher: You applied the substitution correctly for that step!",
+          "Teacher: You've got the substitution down correctly!"
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses learning goals, current performance, and next steps. Feedback is actionable, specific, and often framed as questions to guide the student's thinking (Socratic method). The teacher also validates correct answers and provides immediate, targeted corrections for errors, aligning with Hattie's Visible Learning principles.",
+        "strengths": [
+          "Feedback is consistently specific, actionable, and aligned with learning goals",
+          "Uses Socratic questioning to guide student reasoning",
+          "Validates correct answers and provides immediate corrections",
+          "Encourages self-reflection and deeper understanding",
+          "Strong alignment with Hattie's Visible Learning (feedback is timely, specific, and focused on improvement)"
+        ],
+        "weaknesses": [
+          "Feedback is occasionally repetitive (e.g., multiple similar prompts for the same concept)",
+          "Could occasionally summarize key takeaways more explicitly"
+        ],
+        "suggestions": [
+          "Vary feedback strategies to include more peer-like dialogue or collaborative problem-solving",
+          "Provide periodic summaries of key concepts to reinforce learning",
+          "Encourage students to articulate their own reasoning more frequently"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Let's take a look at your answer for Part 1(c) where parameters are passed by **value-result**. Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?",
+          "Teacher: Notice how during the execution of `update`, statements like `y = b + x` modify a local variable named `y`. Since `y` is just a local variable inside the function in value-result mode (and not a reference to the caller's `y`), what does that local `y` hold, and how does it affect the line `b = a - z`?",
+          "Teacher: Take a look at the line `x = b + y + a;` in the function. Which `y` is being used in that calculation\u2014the local variable `y` that was just updated on the previous line, or something else?",
+          "Teacher: You've got a great grasp on when the copy-back happens for value-result!",
+          "Teacher: Spot on! You nailed the definition and reasoning: pass-by-result leaves the parameters uninitialized when the function starts, but the very first line (`a = a + y`) attempts to *read* from `a` before it has been assigned a value, leading to undefined or garbage values.",
+          "Teacher: You've correctly identified the required input types from the definition (`int, float`). But let's check expression #4: `greater than(20, 10.5)`. What are the types of the inputs in `greater than(20, 10.5)`, and how do they compare to the required `int, float` definition?",
+          "Teacher: You've laid out the two possibilities clearly: strict type matching versus implicit conversion.",
+          "Teacher: You've done a thorough job working backward through the statements!",
+          "Teacher: You applied the substitution correctly for that step!",
+          "Teacher: You've got the substitution down correctly!"
+        ],
+        "reasoning": "The teacher consistently models expert thinking and problem-solving processes, particularly in the context of parameter passing schemes, type systems, and program verification. The teacher demonstrates step-by-step reasoning, asks guiding questions, and explicitly connects concepts to underlying principles (e.g., value-result semantics, Hoare triples). This aligns strongly with Cognitive Apprenticeship (modeling, coaching, scaffolding) and the ICAP framework (interactive engagement).",
+        "strengths": [
+          "Consistently demonstrates expert thinking through step-by-step reasoning",
+          "Uses think-aloud strategies to make reasoning visible",
+          "Connects concepts to underlying principles and broader contexts",
+          "Models problem-solving strategies explicitly",
+          "Strong alignment with Cognitive Apprenticeship (modeling, coaching, scaffolding)"
+        ],
+        "weaknesses": [
+          "Could occasionally model alternative approaches or perspectives to encourage flexibility in thinking",
+          "Minimal use of real-world examples to contextualize abstract concepts"
+        ],
+        "suggestions": [
+          "Incorporate more real-world analogies or examples to contextualize abstract concepts",
+          "Model alternative problem-solving approaches to encourage flexibility",
+          "Encourage students to compare and contrast different methods"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?",
+          "Teacher: Can you check your reasoning for part (c) keeping the copy-back timing in mind?",
+          "Teacher: Notice how during the execution of `update`, statements like `y = b + x` modify a local variable named `y`. Since `y` is just a local variable inside the function in value-result mode (and not a reference to the caller's `y`), what does that local `y` hold, and how does it affect the line `b = a - z`?",
+          "Teacher: Take a look at the line `x = b + y + a;` in the function. Which `y` is being used in that calculation\u2014the local variable `y` that was just updated on the previous line, or something else?",
+          "Teacher: You've got a great grasp on when the copy-back happens for value-result!",
+          "Teacher: Spot on! You nailed the definition and reasoning: pass-by-result leaves the parameters uninitialized when the function starts, but the very first line (`a = a + y`) attempts to *read* from `a` before it has been assigned a value, leading to undefined or garbage values.",
+          "Teacher: You've correctly identified the required input types from the definition (`int, float`). But let's check expression #4: `greater than(20, 10.5)`. What are the types of the inputs in `greater than(20, 10.5)`, and how do they compare to the required `int, float` definition?",
+          "Teacher: You've laid out the two possibilities clearly: strict type matching versus implicit conversion.",
+          "Teacher: You've done a thorough job working backward through the statements!",
+          "Teacher: You applied the substitution correctly for that step!",
+          "Teacher: You've got the substitution down correctly!"
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding, guiding the student through complex problems with targeted questions and hints. The support is strategically provided and gradually reduced as the student demonstrates competence (e.g., moving from detailed guidance on value-result semantics to more independent problem-solving in later parts). This aligns with the ICAP framework (interactive engagement) and Cognitive Apprenticeship (coaching, scaffolding).",
+        "strengths": [
+          "Provides strategic, targeted hints and questions to guide student thinking",
+          "Gradually reduces support as student competence grows",
+          "Encourages independent problem-solving while providing necessary guidance",
+          "Strong alignment with Cognitive Apprenticeship (coaching, scaffolding)",
+          "Strong alignment with ICAP framework (interactive engagement)"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more open-ended prompts to encourage exploration",
+          "Minimal evidence of fading support explicitly (though it is implied)"
+        ],
+        "suggestions": [
+          "Incorporate more open-ended prompts to encourage exploration and creativity",
+          "Explicitly signal when support is being reduced to encourage independence",
+          "Encourage students to reflect on their own problem-solving strategies"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Oh, I see what you mean. For value-result, the changes to the parameters `a` and `b` are copied back to the actual arguments `y` and `z` at the end of the function. Let me re-evaluate part (c) with that in mind.",
+          "Student: I see what you mean. During the execution of `update`, the local variable `y` inside the function is modified by the statement `y = b + x`. This local `y` holds the value `8` (from `b + x` which is `5 + 3`). However, this local `y` does not affect the actual argument `y` passed to the function until the end of the function execution when the value-result copying happens.",
+          "Student: Oh, I see. Since `y` is not declared as a parameter or a local variable inside the function itself, where does the function look when it encounters the name `y` in an expression like `a + y`? Is `y` considered a local variable, or does it refer to something else in the enclosing scope?",
+          "Student: I think that in many programming languages, an integer literal like `5` can often be treated as a float `5.0` if the context requires it.",
+          "Student: I think the author included a specific `int to string` operator because they wanted to emphasize explicit type conversion.",
+          "Student: Oh, I see. If we consider the standard rule of numeric promotion where an `int` can be used where a `float` is required, then the expression `greater than(10, 5)` would be typeable.",
+          "Student: So, the equation expressed in terms of `u` is: `u = 2*v - 3 + w`",
+          "Student: So, the inequality expressed in terms of `u` is: `u \u2264 2*v - 3 + w`"
+        ],
+        "reasoning": "The teacher consistently prompts the student to explain their reasoning, reflect on their understanding, and articulate their thought processes. The student frequently engages in meaningful reflection, as seen in their detailed responses and re-evaluations. However, the reflection is primarily driven by the teacher's questions rather than spontaneous student-initiated reflection. This aligns with the ICAP framework (constructive and interactive engagement) but could be enhanced with more student-initiated reflection.",
+        "strengths": [
+          "Teacher consistently prompts students to explain reasoning and reflect on understanding",
+          "Students frequently articulate thought processes and re-evaluate their work",
+          "Reflection is often deep and connected to underlying principles",
+          "Strong alignment with ICAP framework (constructive and interactive engagement)"
+        ],
+        "weaknesses": [
+          "Reflection is primarily teacher-driven rather than student-initiated",
+          "Could encourage more spontaneous or independent reflection from students"
+        ],
+        "suggestions": [
+          "Encourage students to initiate reflection independently (e.g., 'What do you think about this?')",
+          "Incorporate more open-ended reflection prompts (e.g., 'How does this concept connect to what you already know?')",
+          "Use journaling or written reflections to deepen understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Alright, let's break down the pseudocode and the questions step by step.",
+          "Student: Oh, I see what you mean. For value-result, the changes to the parameters `a` and `b` are copied back to the actual arguments `y` and `z` at the end of the function. Let me re-evaluate part (c) with that in mind.",
+          "Student: I see what you mean. During the execution of `update`, the local variable `y` inside the function is modified by the statement `y = b + x`. This local `y` holds the value `8` (from `b + x` which is `5 + 3`). However, this local `y` does not affect the actual argument `y` passed to the function until the end of the function execution when the value-result copying happens.",
+          "Student: Oh, I see. Since `y` is not declared as a parameter or a local variable inside the function itself, where does the function look when it encounters the name `y` in an expression like `a + y`? Is `y` considered a local variable, or does it refer to something else in the enclosing scope?",
+          "Student: I think that in many programming languages, an integer literal like `5` can often be treated as a float `5.0` if the context requires it.",
+          "Student: I think the author included a specific `int to string` operator because they wanted to emphasize explicit type conversion.",
+          "Student: Oh, I see. If we consider the standard rule of numeric promotion where an `int` can be used where a `float` is required, then the expression `greater than(10, 5)` would be typeable.",
+          "Student: So, the equation expressed in terms of `u` is: `u = 2*v - 3 + w`",
+          "Student: So, the inequality expressed in terms of `u` is: `u \u2264 2*v - 3 + w`",
+          "Student: Thanks for the help! I really appreciate it. I feel much more confident about program verification now."
+        ],
+        "reasoning": "The student is consistently engaged at the highest level of the ICAP framework (Interactive). The dialogue is highly collaborative, with the student actively participating in discussions, asking clarifying questions, and co-constructing knowledge with the teacher. The student frequently explains their reasoning, reflects on their understanding, and engages in meaningful problem-solving. This is evident in the detailed, step-by-step responses and the student's willingness to revisit and refine their answers.",
+        "strengths": [
+          "Student consistently engages in interactive learning (discussion, collaboration, co-construction)",
+          "Student actively participates in problem-solving and reasoning",
+          "Student frequently explains their thought processes and reflects on understanding",
+          "Strong alignment with ICAP framework (interactive engagement)",
+          "High level of cognitive involvement and collaboration"
+        ],
+        "weaknesses": [
+          "Minimal evidence of passive or active engagement (as expected in a high-quality interactive session)"
+        ],
+        "suggestions": [
+          "Encourage students to take on more leadership in discussions (e.g., 'Can you explain this to me?')",
+          "Incorporate peer-to-peer collaboration to further enhance interactive engagement",
+          "Use group activities or debates to deepen interactive learning"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?",
+          "Teacher: Look closely at the definition of the greater than operator in the prompt: what are the required input types for greater than?",
+          "Teacher: You've laid out the two possibilities clearly: strict type matching versus implicit conversion. Look back at the first expression... Why do you think the author... included a specific int to string operator if types could be automatically converted?"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by using Socratic questioning to guide the student through complex concepts like parameter passing and type systems. The teacher effectively identifies common misconceptions, such as confusion between local and global variables in value-result calling and the assumption of implicit type promotion. The use of specific cues (like the presence of an explicit conversion operator) to infer system rules shows deep understanding of how to teach these topics.",
+        "strengths": [
+          "Effectively uses Socratic questioning to address misconceptions about parameter passing.",
+          "Identifies the need for explicit type conversion rules based on problem context clues.",
+          "Clear explanations of scope and variable resolution within functions."
+        ],
+        "weaknesses": [
+          "The explanation for why pass-by-result causes undefined behavior could have been more explicitly tied to the specific 'garbage values' resulting from uninitialized reads in the first line, though this was largely handled by the student after prompting.",
+          "The distinction between 'value-result' and 'result' could be elaborated further with different examples if the student struggled, though this student did not struggle."
+        ],
+        "suggestions": [
+          "Provide a visual diagram of memory locations (stack frames) to help visualize the copy-in/out phases of value-result passing.",
+          "Offer more explicit comparison examples between strict type checking languages (like Java) and dynamic ones (like Python) to solidify the concept of numeric promotion."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a look at your answer for Part 1(c) where parameters are passed by value-result. Remember how value-result works... Can you check your reasoning for part (c) keeping the copy-back timing in mind?",
+          "Teacher: Spot on! The function's local variable y is indeed updated to 8 and used right there in the subsequent calculations.",
+          "Teacher: You've correctly identified the required input types from the definition (int, float). But let's check expression #4... What are the types of the inputs..."
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback that identifies the error and gives a clear hint on how to correct it (e.g., 'keeping the copy-back timing in mind'). The feedback is consistent and balanced, alternating between affirmation of correct steps and targeted redirection when errors occur. It helps the student understand not just that they were wrong, but why, and how to proceed.",
+        "strengths": [
+          "Feedback is specific rather than generic (e.g., pointing to 'copy-back timing').",
+          "Constructive tone that encourages re-evaluation rather than just stating the correct answer.",
+          "Consistent pattern of affirming specific correct logical steps."
+        ],
+        "weaknesses": [
+          "The feedback loop is very fast, sometimes moving to the next step before fully consolidating the previous one, though the student seemed to grasp it."
+        ],
+        "suggestions": [
+          "After the student corrects the error, explicitly ask them to state the rule they just learned to ensure retention.",
+          "Summarize the key takeaways from the feedback at the end of the session more formally."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "The teacher rarely demonstrates the full step-by-step solution independently, instead relying on the student to perform steps guided by questions.",
+          "Teacher: You applied the substitution correctly for that step! Now let's look at the next statement..."
+        ],
+        "reasoning": "The teacher does not model expert thinking or problem-solving processes by solving a new example or thinking aloud through a complex problem from start to finish. Instead, the teacher acts as a guide, directing the student to perform the modeling (self-explanation) themselves. While this is a valid pedagogical strategy (reciprocal teaching), the rubric specifically asks for the *teacher* demonstrating expert thinking. The teacher validates the student's work but does not provide a 'think-aloud' demonstration of how an expert would approach the initial problem setup.",
+        "strengths": [
+          "Guidance allows the student to engage in the cognitive process directly."
+        ],
+        "weaknesses": [
+          "Lack of explicit 'think-aloud' modeling by the teacher.",
+          "Teacher does not demonstrate how to *start* the problem decomposition if the student were stuck at the beginning; they likely relied on the student's initial attempt."
+        ],
+        "suggestions": [
+          "Begin the session with a shorter, similar problem where the teacher models the full solution process, including dead ends and corrections.",
+          "Use verbal scaffolding like 'I would first check the scope because...' to make expert heuristics visible."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Take a look at the line x = b + y + a; in the function. Which y is being used in that calculation\u2014the local variable y that was just updated on the previous line, or something else?",
+          "Teacher: Look closely at the definition... what are the required input types...?",
+          "Teacher: Let's double-check how the parameters a and b are initialized at the very start... What initial values are copied into..."
+        ],
+        "reasoning": "The teacher demonstrates excellent coaching by using precise, graduated hints. They do not give away the answer but point the student to the specific part of the code or definition where the information lies. This scaffolding fades as the student's competency increases; initially, questions are more about checking variables, later they are about interpreting system rules (type promotion). The support is consistently appropriate to the student's current performance level.",
+        "strengths": [
+          "High-quality Socratic questioning that directs attention to relevant evidence.",
+          "Scaffolding is adapted to the specific error (e.g., distinguishing between local and global scope).",
+          "Consistent engagement that keeps the student on track without taking over."
+        ],
+        "weaknesses": [
+          "In the type-checking section, the teacher allowed the student to struggle with the 'promotion' concept slightly longer before intervening with the 'standard type system' hint, which could be seen as either good or slow depending on perspective, but ultimately effective."
+        ],
+        "suggestions": [
+          "Maintain this high level of targeted questioning.",
+          "Perhaps provide a visual aid or written checklist for the steps (e.g., 'Check Scope -> Check Init -> Check Promotion') to support student autonomy."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Student: I see what you mean... I see now that the copy-back timing is crucial for value-result parameter passing.",
+          "Student: That's a really insightful observation about the int to string operator!... This aligns with the idea of strict type checking...",
+          "Student: I feel much more confident about program verification now."
+        ],
+        "reasoning": "The student is regularly asked to articulate their reasoning and explain their thought process (e.g., 'Can you explain what happens...'). The student explicitly reflects on the specific concepts that caused confusion (scope, timing, type rules). The final statement indicates metacognitive reflection on their confidence levels. However, deeper reflective questions about *why* a certain approach failed initially or *how* they would apply this to a new context are limited.",
+        "strengths": [
+          "Student articulates reasoning clearly after each correction.",
+          "Student identifies the core concept that led to the initial error (copy-back timing).",
+          "Metacognitive summary of confidence at the end."
+        ],
+        "weaknesses": [
+          "Reflection is mostly reactive (correcting errors) rather than proactive (planning how to solve similar future problems).",
+          "The student often repeats the teacher's phrasing rather than generating independent generalizations."
+        ],
+        "suggestions": [
+          "Ask the student to summarize the *rule* they learned in their own words without looking at the notes.",
+          "Prompt for transfer: 'How would you check for this type of error if the function had 5 parameters?'"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The transcript is a dialogue where the student performs all the computational work (tracing values, type checking).",
+          "Student: Let's break down the execution... Step 1... Step 2...",
+          "Student: I think the assignment prompt doesn't mention anything about numeric promotion... This means that the expression... is still not typeable."
+        ],
+        "reasoning": "The student is engaged in constructive and interactive levels of ICAP. They are not passive listeners; they are actively tracing code, evaluating types, and arguing their case (Interactive/Constructive). They are 'co-constructing' the solution with the teacher. While not purely collaborative (since it's 1-on-1), the dynamic is highly interactive. The student is actively manipulating the code and reasoning, not just listening.",
+        "strengths": [
+          "High level of active participation in problem-solving.",
+          "Student engages in argumentation and justification of their answers (e.g., defending strict vs. implicit typing).",
+          "Cognitive engagement is high as the student must maintain state for variables across multiple steps."
+        ],
+        "weaknesses": [
+          "The interaction is linear and sequential, lacking any branching or multi-perspective discussion."
+        ],
+        "suggestions": [
+          "Introduce a 'flipped' activity where the student identifies a potential error in a provided solution to change the role.",
+          "Encourage peer interaction if this were a group setting, or simulate multiple perspectives (e.g., 'What would a strict language compiler say vs. a dynamic interpreter?')."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The student demonstrates a strong understanding of pseudocode execution, parameter passing schemes (value, reference, value-result), and local variable scoping.",
+          "They accurately trace variable values through complex function calls, considering both global and local variable states.",
+          "The student identifies and explains the timing of value-result copy-back, a critical concept in parameter passing."
+        ],
+        "reasoning": "The student shows excellent content knowledge, consistently applying concepts correctly and explaining their reasoning. They handle intricate scenarios involving variable scope and parameter passing semantics.",
+        "strengths": [
+          "Accurate tracing of variable values",
+          "Clear understanding of parameter passing schemes",
+          "Ability to explain complex concepts like value-result copy-back"
+        ],
+        "weaknesses": [
+          "Occasional need for teacher prompts to clarify specific details (e.g., local variable initialization)"
+        ],
+        "suggestions": [
+          "Encourage independent verification of edge cases (e.g., uninitialized local variables)"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "The teacher consistently provides specific, actionable feedback that addresses both current performance and future improvement.",
+          "Examples: 'Look closely at what happens to `y` and `z` during the execution of `update` and when those values are actually written back to the callers.'",
+          "The teacher guides the student to discover their own mistakes and correct them, fostering deeper understanding."
+        ],
+        "reasoning": "The feedback is consistently clear, specific, and focused on learning goals. It helps the student understand both their current performance and how to improve, demonstrating excellent feedback quality.",
+        "strengths": [
+          "Specific and actionable guidance",
+          "Focus on both current performance and future improvement",
+          "Encourages student discovery and correction"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue using this effective feedback approach"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "The teacher consistently demonstrates expert thinking by making their thought processes visible through detailed explanations and step-by-step reasoning.",
+          "Examples: 'Remember how value-result works: the actual argument's value is copied into the parameter when the function starts, but when does the copy-back to the actual argument happen?'",
+          "The teacher uses real-world analogies and think-aloud strategies to clarify complex concepts."
+        ],
+        "reasoning": "The teacher excels at modeling expert thinking, consistently making their reasoning processes explicit and accessible to the student. This significantly enhances the student's understanding.",
+        "strengths": [
+          "Clear and detailed explanations",
+          "Use of think-aloud strategies",
+          "Effective analogies and real-world examples"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Maintain this high standard of modeling"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "The teacher provides strategic hints and scaffolding that gradually fade as the student gains competence.",
+          "Examples: 'Can you check your reasoning for part (c) keeping the copy-back timing in mind?'",
+          "The teacher encourages the student to take ownership of their learning by asking guiding questions rather than providing direct answers."
+        ],
+        "reasoning": "The teacher demonstrates excellent coaching skills, providing appropriate support that is gradually adjusted to the student's growing independence. This approach fosters deep understanding and self-reliance.",
+        "strengths": [
+          "Strategic use of hints and scaffolding",
+          "Gradual fading of support",
+          "Encourages student ownership of learning"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue using this effective coaching approach"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "The student consistently articulates their reasoning, evaluates their understanding, and engages in meaningful reflection throughout the lesson.",
+          "Examples: 'I see what you mean. For value-result, the changes to the parameters `a` and `b` are copied back to the actual arguments `y` and `z` at the end of the function.'",
+          "The student demonstrates the ability to self-correct and deepen their understanding through reflection."
+        ],
+        "reasoning": "The student excels at reflection, consistently explaining their thought processes and evaluating their understanding. This deep engagement with the material significantly enhances their learning.",
+        "strengths": [
+          "Clear articulation of reasoning",
+          "Ability to self-correct through reflection",
+          "Deep engagement with the material"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Encourage continued reflective practices"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "The student consistently participates in interactive learning, engaging in discussion, collaboration, and co-construction of understanding with the teacher.",
+          "Examples: 'Thanks for pointing that out! I see now that the copy-back timing is crucial for value-result parameter passing.'",
+          "The student actively questions, summarizes, and builds upon their understanding throughout the lesson."
+        ],
+        "reasoning": "The student demonstrates the highest level of engagement, consistently participating in interactive and collaborative learning activities. This deep involvement significantly enhances their understanding and learning outcomes.",
+        "strengths": [
+          "Active participation in discussion and collaboration",
+          "Ability to question and summarize effectively",
+          "Co-construction of understanding with the teacher"
+        ],
+        "weaknesses": [
+          "None significant in this transcript"
+        ],
+        "suggestions": [
+          "Continue fostering this high level of engagement"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          2,
+          5
+        ],
+        "agreement_stdev": 1.41
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 90.0,
+    "interpretation": "Excellent pedagogy"
+  }
+}

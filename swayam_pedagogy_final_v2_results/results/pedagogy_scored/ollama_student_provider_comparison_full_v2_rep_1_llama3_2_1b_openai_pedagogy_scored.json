@@ -1,0 +1,498 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_llama3_2_1b_openai",
+    "student_model": "llama3.2:1b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Pass-by-value copies the actual argument values into the formals.",
+          "Teacher: Quick clarification: pass-by-value copies the actual argument values into the formals. So for update(x,y) with x=3 and y=2: a starts as 3, b starts as 2.",
+          "Teacher: Misconception: a and b are not 0. In update(x,y) with pass-by-value, formals are initialized from the actual argument values.",
+          "Teacher: You're still using a = 0 and b = 0 \u2014 that\u2019s a misconception. Pass-by-value copies the actual argument values into the formals."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge (PCK) by consistently and clearly explaining the concept of pass-by-value, correcting the student's misconception about initializing formal parameters to 0. The teacher uses precise language and references the prompt to ground explanations in the assignment context. However, the teacher does not provide multiple representations or analogies, and the focus is narrow (only pass-by-value is addressed in depth).",
+        "strengths": [
+          "Clear and accurate explanations of pass-by-value parameter passing.",
+          "Proactive identification and correction of student misconceptions.",
+          "Use of concrete examples (x=3, y=2) to illustrate concepts.",
+          "References to the assignment prompt to ground explanations."
+        ],
+        "weaknesses": [
+          "Limited to a single concept (pass-by-value) without broader context or multiple representations.",
+          "No use of analogies or alternative explanations to deepen understanding.",
+          "No explicit addressing of other parameter-passing modes (e.g., pass-by-reference) beyond brief mentions."
+        ],
+        "suggestions": [
+          "Provide multiple representations (e.g., diagrams, analogies) to explain parameter-passing modes.",
+          "Explicitly contrast pass-by-value with other modes (pass-by-reference, value-result) to clarify differences.",
+          "Encourage the student to generalize the concept beyond the specific example."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: I notice you left x,y,z unchanged in every case \u2014 that suggests you may be assuming the function has no effect in all parameter modes.",
+          "Teacher: Two issues I notice: you set a and b to 0 (they should be initialized from the actual arguments), and you mis-copied the second line of the function (it is 'y = b + x', not 'b = b + x').",
+          "Teacher: Misconception: a and b are not 0. Pass-by-value copies the actual argument values into the formals.",
+          "Teacher: You're repeating the lines instead of answering \u2014 that's the earlier misconception."
+        ],
+        "reasoning": "The teacher provides feedback that identifies errors (e.g., misconceptions, incorrect function lines) but often does not explicitly guide the student toward improvement or next steps. Feedback is consistent in pointing out issues but lacks actionable guidance for correction. The teacher does not consistently tie feedback to learning goals or provide structured next steps.",
+        "strengths": [
+          "Consistently identifies specific errors and misconceptions.",
+          "Uses evidence from the student's work to justify feedback.",
+          "Repeatedly corrects the same misconception to reinforce understanding."
+        ],
+        "weaknesses": [
+          "Feedback is often limited to identifying errors without providing clear guidance for improvement.",
+          "Lacks explicit connection to learning goals or objectives.",
+          "No structured next steps or hints to help the student self-correct."
+        ],
+        "suggestions": [
+          "Provide actionable next steps (e.g., 'Try re-reading the prompt's definition of pass-by-value and reattempt the initialization of a and b').",
+          "Explicitly connect feedback to the learning goal (e.g., 'Understanding parameter-passing modes is critical for this assignment').",
+          "Use a feedback framework (e.g., 'What you did well: ..., What needs improvement: ..., Next steps: ...')."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: So for update(x,y) with x=3 and y=2: a starts as 3, b starts as 2. Compute the first statement: a = a + y -> a = 3 + 2 = 5.",
+          "Teacher: Now your turn (one step): the next statement is y = b + x. Using b (local) = 2 and global x = 3, what is the LHS (the global y) after that line? Show the arithmetic."
+        ],
+        "reasoning": "The teacher occasionally demonstrates expert thinking (e.g., computing the first statement step-by-step) but does not consistently model the problem-solving process. The modeling is limited to small, isolated steps and lacks a think-aloud approach or visibility into the teacher's reasoning for more complex parts of the problem.",
+        "strengths": [
+          "Provides step-by-step demonstrations for specific parts of the problem.",
+          "Uses concrete arithmetic to illustrate the process."
+        ],
+        "weaknesses": [
+          "Modeling is inconsistent and limited to small, isolated steps.",
+          "Lacks a think-aloud approach to make expert reasoning visible.",
+          "Does not model the broader problem-solving strategy (e.g., backward calculation for weakest preconditions)."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to model the entire problem-solving process, not just isolated steps.",
+          "Demonstrate how to approach the problem from start to finish, including reasoning and decision-making.",
+          "Model the backward calculation process explicitly for the weakest precondition task."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Quick hint: look at the call line 'update(x,y) where all parameters are passed by value.' What does pass-by-value mean for the initial values of a and b in that call?",
+          "Teacher: Hint to check your algebra: write w_new in terms of the old variables (w_old and v_old) using the assignment, set w_new = 0, then solve for the relationship between w_old and v_old.",
+          "Teacher: Quick clarification: pass-by-value copies the actual argument values into the formals."
+        ],
+        "reasoning": "The teacher provides hints and guidance to help the student correct misconceptions, but the coaching is often repetitive and does not adapt to the student's progress. The teacher does not gradually fade support or provide structured scaffolding tailored to the student's needs. The hints are sometimes too vague or not actionable.",
+        "strengths": [
+          "Provides hints to guide the student toward the correct answer.",
+          "Uses questions to prompt the student to think critically (e.g., 'What does pass-by-value mean for the initial values of a and b?').",
+          "Repeatedly reinforces key concepts through hints."
+        ],
+        "weaknesses": [
+          "Coaching is repetitive and does not adapt to the student's evolving understanding.",
+          "Hints are sometimes too vague or not actionable (e.g., 'look at the call line').",
+          "Lacks structured scaffolding or gradual fading of support."
+        ],
+        "suggestions": [
+          "Provide more actionable and specific hints (e.g., 'The prompt states that pass-by-value copies the actual argument values into the formals. For update(x,y), what are the actual arguments?').",
+          "Use a scaffolding framework (e.g., 'First, do X. Then, do Y. Finally, check Z.').",
+          "Gradually reduce support as the student demonstrates understanding."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 95,
+        "evidence": [
+          "Student: I'll follow the pseudocode step by step for each case.",
+          "Student: For case (a) where all parameters are passed by value, the values of x, y, and z after the calls to update() will be: ...",
+          "Student: I think the expression 'int to string(add(10, 5))' should be typeable and its final type should be 'string'.",
+          "Student: The final type of the expression 'int to string(add(10, 5))' is 'string'. The expected output value is 'string (int to string(add(10, 5)))'."
+        ],
+        "reasoning": "The transcript shows no evidence of the teacher prompting the student to explain their reasoning, reflect on their understanding, or articulate their thought processes. The student's responses are largely procedural (e.g., listing values) or repetitive, with no opportunities for reflection or articulation of understanding. The teacher does not ask the student to justify their answers or reflect on their learning.",
+        "strengths": [
+          "None identified in the transcript."
+        ],
+        "weaknesses": [
+          "No prompts for the student to explain their reasoning or reflect on their understanding.",
+          "No opportunities for the student to articulate their thought processes.",
+          "No reflection activities or metacognitive prompts."
+        ],
+        "suggestions": [
+          "Ask the student to explain their reasoning (e.g., 'Why did you initialize a and b to 0? What does pass-by-value mean to you?').",
+          "Prompt the student to reflect on their understanding (e.g., 'How does this example help you understand parameter-passing modes?').",
+          "Encourage the student to articulate their thought process (e.g., 'Walk me through how you arrived at this answer.')."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 90,
+        "evidence": [
+          "Student: I'll follow the pseudocode step by step for each case.",
+          "Student: For case (a) where all parameters are passed by value, the values of x, y, and z after the calls to update() will be: ...",
+          "Student: a = a + y; b = b + x",
+          "Student: I'm not sure where to start with the first Hoare triple. Can I define a precondition P that sets u to 0, and then see if it's valid?"
+        ],
+        "reasoning": "The student's engagement is primarily active (e.g., following pseudocode, listing values, repeating lines) but lacks constructive or interactive elements. The student does not engage in self-explanation, questioning, or collaboration. The teacher's prompts do not elevate the student's engagement beyond active participation.",
+        "strengths": [
+          "Student demonstrates active engagement by attempting to solve the problem step-by-step.",
+          "Student responds to the teacher's prompts, even if repetitively."
+        ],
+        "weaknesses": [
+          "Student engagement is largely passive or active (e.g., repeating lines, listing values) without constructive or interactive elements.",
+          "No evidence of self-explanation, questioning, or collaboration.",
+          "Teacher does not design activities to promote higher levels of engagement (e.g., discussion, debate, co-construction)."
+        ],
+        "suggestions": [
+          "Design tasks that require the student to explain their reasoning or justify their answers (constructive engagement).",
+          "Encourage the student to ask questions or challenge assumptions (interactive engagement).",
+          "Use collaborative activities (e.g., pair programming, peer discussion) to promote interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: I notice you left x,y,z unchanged in every case \u2014 that suggests you may be assuming the function has no effect in all parameter modes.",
+          "Teacher: Two issues I notice: you set a and b to 0 (they should be initialized from the actual arguments), and you mis-copied the second line of the function...",
+          "Teacher: Quick misconception check: w - v = 0 means w = v, which doesn't match the assignment w := w + v."
+        ],
+        "reasoning": "The teacher identifies specific misconceptions (pass-by-value mechanics, WP algebra) and attempts to correct them. However, the explanations are often restrictive and repetitive without providing sufficient alternative representations or analogies to break the student's fixation. The teacher fails to effectively transform the content into a form the student can grasp, as the student continues to repeat incorrect logic despite multiple corrections.",
+        "strengths": [
+          "Specifically identifies the nature of student errors (e.g., assuming formals are 0)."
+        ],
+        "weaknesses": [
+          "Lacks effective analogies or alternative explanations to correct the persistent misconceptions.",
+          "Explanations are often just re-statements of the correct rule rather than constructing understanding."
+        ],
+        "suggestions": [
+          "Use variable shadows or visual diagrams to distinguish formal vs. global variables.",
+          "Provide a concrete, simple example of pass-by-value before asking the student to trace the complex case."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt tells you how parameters are handled/copy\u2011back (i.e., value vs. reference vs. value\u2011result)?",
+          "Teacher: You keep repeating the lines instead of answering \u2014 that's the earlier misconception. Quick clarification: pass-by-value copies the actual argument values into the formals."
+        ],
+        "reasoning": "The teacher provides frequent feedback on errors, pointing out where the student went wrong. However, the feedback is largely focused on identifying errors rather than guiding the student toward a successful solution. It lacks actionable next steps that help the student overcome the specific cognitive hurdle, often resulting in a repetitive cycle of error identification.",
+        "strengths": [
+          "Feedback is immediate and specific to the errors made.",
+          "Consistently asks the student to reference the prompt."
+        ],
+        "weaknesses": [
+          "Does not provide sufficient scaffolding to help the student fix the error.",
+          "Repetitive nature of the feedback may be frustrating and ineffective."
+        ],
+        "suggestions": [
+          "Provide partial solution frameworks or worked examples to guide the student through the correction.",
+          "Acknowledge the student's effort while redirecting their approach."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: So for update(x,y) with x=3 and y=2: - a starts as 3, b starts as 2.",
+          "Teacher: Compute the first statement: a = a + y -> a = 3 + 2 = 5."
+        ],
+        "reasoning": "The teacher occasionally models the correct procedure by providing the initial values and the result of the first step when the student is stuck. However, this modeling is not consistently applied or explained with the 'why' behind the steps, and it is often followed by an instruction to 'show your work' rather than a full demonstration of the expert thinking process for the entire problem.",
+        "strengths": [
+          "Teacher provides the correct initial state when the student is completely blocked."
+        ],
+        "weaknesses": [
+          "Modeling is reactive rather than proactive.",
+          "Does not fully demonstrate the expert problem-solving process for complex steps like the WP derivation."
+        ],
+        "suggestions": [
+          "Think aloud more thoroughly when introducing new concepts like Pass-by-Value or WP derivation.",
+          "Model the entire tracing process once to establish the correct method before asking the student to replicate it."
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Which part of the assignment prompt tells you how a and b are initialized for the call update(x,y)?",
+          "Teacher: Now one step: substitute v_after = 2*v_before - u_before into w_before = -v_after and solve algebraically."
+        ],
+        "reasoning": "The teacher attempts to provide scaffolding by breaking problems into smaller steps and directing the student to specific parts of the prompt. However, the support is inconsistent; the teacher often just repeats the same question when the student fails, rather than adjusting the level of support or providing a different hint. The scaffolding does not effectively fade or adapt to the student's persistent failure.",
+        "strengths": [
+          "Attempts to break down complex tasks into one-step instructions."
+        ],
+        "weaknesses": [
+          "Scaffolding is often too generic (e.g., 'look at the prompt').",
+          "Does not adapt support when the student repeatedly fails the same step."
+        ],
+        "suggestions": [
+          "Provide graduated hints (Level 1: conceptual, Level 2: procedural, Level 3: specific calculation).",
+          "Recognize when a student is stuck and temporarily take over the step to model it, then hand it back."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 95,
+        "evidence": [
+          "Student: a = a + y b = b + x (repeated multiple times)",
+          "Student: The final answer is: 0"
+        ],
+        "reasoning": "There is almost no evidence of the student explaining their reasoning or reflecting on their understanding. The student primarily outputs formulas or repeating lines of code without justification. When the teacher asks for reasoning, the student often provides a superficial or incorrect justification that is not engaged with deeply. The student does not articulate their thought process effectively.",
+        "strengths": [
+          "Student sometimes attempts to justify answers (e.g., in the type checking section)."
+        ],
+        "weaknesses": [
+          "Justifications are often vague or circular.",
+          "Student does not reflect on *why* they made the previous mistake."
+        ],
+        "suggestions": [
+          "Ask 'Why did you choose that value?' to elicit deeper reasoning.",
+          "Require the student to state the rule before applying it."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 90,
+        "evidence": [
+          "Student: I'll follow the pseudocode step by step for each case.",
+          "Student: I'm not sure where to start with the first Hoare triple."
+        ],
+        "reasoning": "The student is engaged in the activity of attempting to solve the problems, which moves beyond passive listening. However, the engagement is largely 'Active' (doing calculations) rather than 'Constructive' (building understanding) or 'Interactive' (collaborative problem-solving with the teacher). The interaction is often one-sided, with the teacher repeating questions and the student repeating answers, lacking the back-and-forth dialogue that characterizes higher-level engagement.",
+        "strengths": [
+          "Student is willing to attempt multiple times.",
+          "Student asks a clarifying question in the WP section."
+        ],
+        "weaknesses": [
+          "Lack of constructive engagement, such as self-explaining or questioning the teacher's hints effectively.",
+          "Interaction is repetitive and not progressing toward co-construction of knowledge."
+        ],
+        "suggestions": [
+          "Encourage the student to explain their thought process out loud (or in text) before computing.",
+          "Create a more interactive dialogue where the teacher responds to the student's specific confusion with targeted exploration."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: I notice you left x,y,z unchanged in every case \u2014 that suggests you may be assuming the function has no effect in all parameter modes.",
+          "Teacher: Two issues I notice: you set a and b to 0 (they should be initialized from the actual arguments), and you mis-copied the second line of the function (it is 'y = b + x', not 'b = b + x').",
+          "Teacher: Misconception: a and b are not 0. In update(x,y) with pass-by-value, formals are initialized from the actual argument values."
+        ],
+        "reasoning": "The teacher demonstrates adequate PCK by identifying student misconceptions about parameter passing modes and formal parameter initialization. They clarify that pass-by-value copies actual argument values into formal parameters, correcting the student's assumption that a and b should be initialized to 0. However, the teacher does not provide multiple representations of concepts or proactively address potential misconceptions beyond those directly presented by the student.",
+        "strengths": [
+          "Identifies and corrects student misconceptions about pass-by-value parameter initialization",
+          "Provides clear explanations of how formal parameters are initialized from actual arguments"
+        ],
+        "weaknesses": [
+          "Does not proactively address potential misconceptions beyond those directly presented",
+          "Lacks multiple representations or analogies to deepen understanding"
+        ],
+        "suggestions": [
+          "Provide examples contrasting pass-by-value with other parameter passing modes",
+          "Use diagrams or step-by-step traces to show how values flow between actual and formal parameters"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Two issues I notice: you set a and b to 0 (they should be initialized from the actual arguments), and you mis-copied the second line of the function (it is 'y = b + x', not 'b = b + x').",
+          "Teacher: You earlier set a and b to 0 \u2014 that\u2019s a misconception. Pass-by-value copies the actual argument values into the formals.",
+          "Teacher: Misconception: a and b are not 0. The program begins with x = 3, y = 2, z = 5 and the call is update(x,y) with pass-by-value, so the formals are copies of those globals."
+        ],
+        "reasoning": "The teacher provides regular feedback that identifies specific errors (e.g., incorrect initialization, copying mistakes) and connects them to underlying misconceptions. Feedback is clear and actionable, guiding the student toward correct understanding. However, feedback is primarily reactive rather than proactively addressing potential issues.",
+        "strengths": [
+          "Identifies specific errors and links them to conceptual misunderstandings",
+          "Provides clear, actionable guidance for correction"
+        ],
+        "weaknesses": [
+          "Feedback is mostly reactive rather than proactive",
+          "Does not consistently summarize progress or preview next steps"
+        ],
+        "suggestions": [
+          "Incorporate more proactive feedback by anticipating common misconceptions",
+          "Summarize key points and preview next steps after each correction"
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: Now, let\u2019s focus on one case at a time. For (a) update(x,y) with pass\u2011by\u2011value: what are the initial values of the formal parameters a and b when the function starts? Then step through each line in the function and write the value of the left\u2011hand side after that line",
+          "Teacher: Quick question: for update(x,y) with x = 3 and y = 2, what are a and b at the start of the function? Then compute a after the first statement a = a + y (use the global y = 2)."
+        ],
+        "reasoning": "The teacher occasionally models expert thinking by guiding the student through step-by-step processes, such as tracing function execution line-by-line. However, the teacher does not consistently demonstrate their own thinking process or use think-aloud strategies. Modeling is present but not highly developed.",
+        "strengths": [
+          "Guides student through step-by-step problem-solving processes",
+          "Asks questions that prompt the student to apply expert thinking"
+        ],
+        "weaknesses": [
+          "Does not consistently demonstrate the teacher's own thinking process",
+          "Lacks explicit think-aloud strategies or visible expert reasoning"
+        ],
+        "suggestions": [
+          "Explicitly verbalize thought processes while solving problems",
+          "Use think-aloud strategies to make expert reasoning more visible"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Now, let\u2019s focus on one case at a time. For (a) update(x,y) with pass\u2011by\u2011value: what are the initial values of the formal parameters a and b when the function starts?",
+          "Teacher: Quick hint: look at the call line \u201cupdate(x,y) where all parameters are passed by value.\u201d What does pass-by-value mean for the initial values of a and b in that call?",
+          "Teacher: You're repeating the lines instead of answering \u2014 that's the earlier misconception. Quick clarification: pass-by-value copies the actual argument values into the formals."
+        ],
+        "reasoning": "The teacher provides regular guidance and hints that are adapted to the student's progress. They strategically prompt the student to think through problems and clarify misconceptions. However, support is not consistently faded as the student gains competence, and the teacher occasionally steps in too quickly.",
+        "strengths": [
+          "Provides adapted hints and guidance based on student responses",
+          "Encourages student thinking through strategic questioning"
+        ],
+        "weaknesses": [
+          "Does not consistently fade support as student competence grows",
+          "Occasionally intervenes too quickly instead of letting student struggle productively"
+        ],
+        "suggestions": [
+          "Gradually reduce hints and let the student apply concepts independently",
+          "Encourage more student self-explanation before providing corrections"
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Teacher: You keep repeating the two lines and haven\u2019t answered the earlier question \u2014 that\u2019s a misconception (you earlier set a and b to 0).",
+          "Teacher: Good \u2014 you were repeating the function lines, but you earlier set a and b to 0, which is a misconception."
+        ],
+        "reasoning": "The teacher occasionally prompts the student to reflect on their thinking, particularly when identifying misconceptions. However, reflection activities are superficial and not consistently incorporated into the lesson. The student is rarely asked to explicitly explain their reasoning or evaluate their understanding.",
+        "strengths": [
+          "Occasionally identifies misconceptions and prompts reflection",
+          "Notes when student responses indicate misunderstanding"
+        ],
+        "weaknesses": [
+          "Reflection activities are superficial and inconsistent",
+          "Student is rarely asked to explicitly articulate or evaluate their thinking"
+        ],
+        "suggestions": [
+          "Incorporate regular reflection prompts throughout the lesson",
+          "Ask students to explicitly explain their reasoning and evaluate their understanding"
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Student: For case (a), update(x,y) where all parameters are passed by value, the initial values of the formal parameters a and b when the function starts are a = 0 and b = 0.",
+          "Teacher: Quick question: for update(x,y) with x = 3 and y = 2, what are a and b at the start of the function? Then compute a after the first statement a = a + y (use the global y = 2).",
+          "Student: The final type of the expression 'int to string(add(10, 5))' is 'string'. The concrete expected output is '15'."
+        ],
+        "reasoning": "Students are regularly engaged in constructive activities, such as self-explaining function behavior, computing values step-by-step, and applying concepts to specific cases. However, interaction remains primarily between teacher and individual students rather than among students themselves.",
+        "strengths": [
+          "Students frequently engage in active and constructive learning tasks",
+          "Teacher prompts require students to apply and explain concepts"
+        ],
+        "weaknesses": [
+          "Limited evidence of interactive learning (e.g., discussion, collaboration)",
+          "Most engagement is teacher-student rather than student-student"
+        ],
+        "suggestions": [
+          "Incorporate more opportunities for student-student interaction",
+          "Encourage collaborative problem-solving and peer explanation"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 3,
+        "individual_scores": [
+          4,
+          2,
+          3
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Feedback": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          2,
+          3
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 3,
+        "individual_scores": [
+          3,
+          2,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Reflection": {
+        "mean": 1.33,
+        "individual_scores": [
+          1,
+          1,
+          2
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 2.67,
+        "individual_scores": [
+          2,
+          2,
+          4
+        ],
+        "agreement_stdev": 0.94
+      }
+    },
+    "pedagogy_score": 52.2,
+    "interpretation": "Needs significant improvement"
+  }
+}

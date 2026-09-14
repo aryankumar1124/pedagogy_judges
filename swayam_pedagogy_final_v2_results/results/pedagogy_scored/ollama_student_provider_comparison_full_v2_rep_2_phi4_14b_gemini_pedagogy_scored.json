@@ -1,0 +1,507 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_phi4_14b_gemini",
+    "student_model": "phi4:14b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a close look at part (1). In each line of the function, the prompt asks you to write down the value of the LHS (Left-Hand Side). For instance, on line 1, the statement is `a = a + y`. What is the Left-Hand Side of that statement?",
+          "Teacher: That's right, `y` refers to the global variable outside the function! Now, since `y` is accessed globally during line 2 (`y = b + x`), and `x` was already updated on line 1, what does that mean for the value of `y` when line 2 runs?",
+          "Teacher: You've correctly noted that the RHS is evaluated using the value of `z` at the start of the line. Now let's apply that same careful tracking to lines 4 and 5 in part (b).",
+          "Teacher: Take a close look at the variable `z` in that expression `a - z`. Since `z` is the same variable that was passed as `b`, what happens to the value of `z` *during* the evaluation of `b = a - z` when `b` (and therefore `z`) is modified on the LHS?",
+          "Teacher: That is a fantastic realization about how `y` behaves as a global variable!",
+          "Teacher: You've got the right idea about how pass-by-reference works! But let's look closely at line 2: `y = b + x`. Even though `x` has been updated to 5, is `y` a parameter of the function `update(a, b)`?"
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by transforming complex concepts (parameter passing mechanisms, global vs. local variables, LHS/RHS evaluation) into forms students can understand. The teacher uses clear explanations, addresses misconceptions proactively (e.g., clarifying global variable behavior), and employs effective examples (tracing through each line of code). The teacher also adapts explanations to student needs, as seen in the iterative questioning that guides students to correct understanding.",
+        "strengths": [
+          "Exceptional ability to break down complex programming concepts into digestible steps",
+          "Proactive identification and correction of student misconceptions (e.g., global variable behavior)",
+          "Use of multiple representations (code tracing, algebraic substitution, conceptual explanations)",
+          "Strong adaptation to student needs through iterative questioning and feedback"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in PCK demonstration"
+        ],
+        "suggestions": [
+          "Consider occasionally summarizing key concepts after detailed explanations to reinforce learning",
+          "Could introduce more analogies to help students connect abstract concepts to familiar ideas"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: That's correct, the LHS of line 1 is `a`. Now, when we consider parameter passing (like pass-by-reference or pass-by-value-result), what happens to the *original* variables outside the function when a local parameter (like `a` or `b`) appears on the LHS of an assignment inside the function?",
+          "Teacher: You've got the right idea about how pass-by-reference works! But let's look closely at line 2: `y = b + x`. Even though `x` has been updated to 5, is `y` a parameter of the function `update(a, b)`?",
+          "Teacher: That is a fantastic realization about how `y` behaves as a global variable!",
+          "Teacher: You're tracking those changes nicely. Now, look closely at line 3 (`b = a - z`). Remember that in part (b), `z` was passed by reference as the second parameter `b`. How does this impact your calculation for line 3?",
+          "Teacher: That's a thorough tracing of line 5!",
+          "Teacher: Now that you've got the hang of tracking the exact parameter passing behavior, how do you think this same step-by-step logic applies to parts (c) and (d)?"
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses learning goals, current performance, and next steps. The feedback is specific, actionable, and guides students toward deeper understanding. The teacher identifies both correct reasoning and areas needing clarification, then provides targeted questions to help students self-correct.",
+        "strengths": [
+          "Feedback consistently identifies strengths, weaknesses, and next steps",
+          "Questions are designed to guide students to discover answers themselves",
+          "Feedback is timely and directly addresses student responses",
+          "Encourages reflection and deeper understanding through iterative questioning"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in feedback quality"
+        ],
+        "suggestions": [
+          "Could occasionally provide more explicit praise for correct answers to build student confidence",
+          "Might benefit from occasionally summarizing the feedback loop to help students see their progress"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Let's take a close look at part (1). In each line of the function, the prompt asks you to write down the value of the LHS (Left-Hand Side). For instance, on line 1, the statement is `a = a + y`. What is the Left-Hand Side of that statement?",
+          "Teacher: That's right, `y` refers to the global variable outside the function! Now, since `y` is accessed globally during line 2 (`y = b + x`), and `x` was already updated on line 1, what does that mean for the value of `y` when line 2 runs?",
+          "Teacher: You've correctly noted that the RHS is evaluated using the value of `z` at the start of the line. Now let's apply that same careful tracking to lines 4 and 5 in part (b).",
+          "Teacher: Take a close look at the variable `z` in that expression `a - z`. Since `z` is the same variable that was passed as `b`, what happens to the value of `z` *during* the evaluation of `b = a - z` when `b` (and therefore `z`) is modified on the LHS?",
+          "Teacher: That is a fantastic realization about how `y` behaves as a global variable!",
+          "Teacher: Now, with that updated value of `y` in mind, look ahead to line 3 (`b = a - z`). Remember that in part (b), `z` was passed by reference as the second parameter `b`. How does this impact your calculation for line 3?"
+        ],
+        "reasoning": "The teacher consistently makes expert thinking visible through detailed demonstrations of problem-solving processes. The teacher uses think-aloud strategies, carefully traces through each step of code execution, and explains the reasoning behind each decision. This modeling helps students understand not just what to do, but how to think about complex programming concepts.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through detailed step-by-step reasoning",
+          "Uses think-aloud strategies to make cognitive processes visible",
+          "Provides real-world examples through code tracing",
+          "Models careful attention to detail in problem-solving"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in modeling"
+        ],
+        "suggestions": [
+          "Could occasionally model alternative approaches to the same problem to show multiple solution paths",
+          "Might benefit from occasionally modeling common mistakes and how to avoid them"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 96,
+        "evidence": [
+          "Teacher: That's correct, the LHS of line 1 is `a`. Now, when we consider parameter passing (like pass-by-reference or pass-by-value-result), what happens to the *original* variables outside the function when a local parameter (like `a` or `b`) appears on the LHS of an assignment inside the function?",
+          "Teacher: You've got the right idea about how pass-by-reference works! But let's look closely at line 2: `y = b + x`. Even though `x` has been updated to 5, is `y` a parameter of the function `update(a, b)`?",
+          "Teacher: That is a fantastic realization about how `y` behaves as a global variable!",
+          "Teacher: You're tracking those changes nicely. Now, look closely at line 3 (`b = a - z`). Remember that in part (b), `z` was passed by reference as the second parameter `b`. How does this impact your calculation for line 3?",
+          "Teacher: That's a thorough tracing of line 5!",
+          "Teacher: Now that you've got the hang of tracking the exact parameter passing behavior, how do you think this same step-by-step logic applies to parts (c) and (d)?"
+        ],
+        "reasoning": "The teacher provides excellent coaching and scaffolding throughout the lesson. The guidance is strategic, with hints and questions that gradually build student understanding. The support is adapted to student progress, with the teacher providing more detailed guidance when students struggle and allowing more independence as students demonstrate understanding. The scaffolding fades appropriately as students become more competent.",
+        "strengths": [
+          "Provides strategic guidance through well-timed questions and hints",
+          "Adapts support to student progress and needs",
+          "Gradually fades scaffolding as students demonstrate understanding",
+          "Encourages independent thinking while providing necessary support"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in coaching"
+        ],
+        "suggestions": [
+          "Could occasionally provide more explicit scaffolding for students who might be struggling more",
+          "Might benefit from occasionally checking for understanding before moving to the next step"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Student: In pass-by-reference, the function directly modifies the original variables. Here's how it works: [detailed explanation]",
+          "Student: In part (b), when we use pass-by-reference, any changes to the parameter `a` inside the function directly affect the original variable `x`. So, when we execute line 1 (`a = a + y`), `a` is updated to 5, and since `a` refers to `x`, `x` is immediately updated to 5 as well.",
+          "Student: In this scenario, you're dealing with pass-by-reference, which means that the function directly modifies the original variables rather than working with copies. Let's break down what happens during the evaluation of `b = a - z` in the function `update(a, b)`: [detailed explanation]",
+          "Student: Let's carefully evaluate line 5 using the correct expression from the pseudocode: `z = x + a - b`. [detailed step-by-step]",
+          "Student: By carefully tracking the parameter passing behavior, we can see how each mechanism affects the final values of the global variables.",
+          "Student: By understanding that `x` within the function is a local variable and not a parameter or global variable, we see that its changes do not affect the global `x` until the function ends, and there is no copy-back for `x` in this scenario."
+        ],
+        "reasoning": "The lesson transcript shows exceptional levels of student reflection and articulation. Students are consistently asked to explain their reasoning, trace through their thought processes, and reflect on their understanding. The students demonstrate deep engagement with the material through their detailed explanations and step-by-step reasoning. The teacher creates an environment where reflection is a natural part of the learning process.",
+        "strengths": [
+          "Students consistently articulate reasoning and thought processes",
+          "Reflection activities are deeply integrated into learning",
+          "Students demonstrate meaningful evaluation of their understanding",
+          "Teacher creates an environment that encourages and values reflection"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in reflection activities"
+        ],
+        "suggestions": [
+          "Could occasionally ask students to reflect on how their understanding has changed from the beginning to the end of the lesson",
+          "Might benefit from occasionally having students compare their reasoning with peers"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Alright, let's tackle this parameter passing exercise step by step.",
+          "Student: In pass-by-reference, the function directly modifies the original variables. Here's how it works: [detailed explanation]",
+          "Student: In part (b), when we use pass-by-reference, any changes to the parameter `a` inside the function directly affect the original variable `x`. So, when we execute line 1 (`a = a + y`), `a` is updated to 5, and since `a` refers to `x`, `x` is immediately updated to 5 as well.",
+          "Student: Let's carefully evaluate line 5 using the correct expression from the pseudocode: `z = x + a - b`. [detailed step-by-step]",
+          "Student: By carefully tracking the parameter passing behavior, we can see how each mechanism affects the final values of the global variables.",
+          "Student: By understanding that `x` within the function is a local variable and not a parameter or global variable, we see that its changes do not affect the global `x` until the function ends, and there is no copy-back for `x` in this scenario."
+        ],
+        "reasoning": "The lesson demonstrates exceptional student engagement at the Interactive level of the ICAP framework. Students are consistently participating in discussion, collaboration, and co-construction of knowledge. They are not just passively receiving information but actively constructing understanding through dialogue with the teacher and each other. The students demonstrate high levels of cognitive involvement through their detailed explanations, questioning, and step-by-step reasoning.",
+        "strengths": [
+          "Students consistently participate in interactive learning (discussion, collaboration, co-construction)",
+          "High levels of cognitive involvement through detailed explanations and reasoning",
+          "Students engage in argumentation and justification of their thinking",
+          "Teacher creates an environment that fosters interactive engagement"
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in student engagement"
+        ],
+        "suggestions": [
+          "Could occasionally incorporate more peer-to-peer discussion to further enhance interactive engagement",
+          "Might benefit from occasionally having students work in small groups to solve problems collaboratively"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: That's right, `y` refers to the global variable outside the function! Now, since `y` is accessed globally during line 2 (`y = b + x`)... Can you trace line 2 again with this in mind?",
+          "Teacher: Let's take a closer look at your derivation for **Step 1**... When you replace $u$ in the expression with $(u + 3)$, let's re-verify the algebraic simplification...",
+          "Teacher: ...let's look strictly at where `u` was located in that expression. How does that substitution affect the `u` that was already there? Can you articulate what the expression looks like immediately after making that substitution, before any algebraic rearrangement?"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by effectively distinguishing between local and global variables and correcting the student's misconception that `y` was a local variable. The teacher also provides precise guidance on the mechanics of weakest precondition derivation, specifically focusing on the substitution step and the order of operations (working backwards). The explanations are clear and directly address the core concepts of the assignment.",
+        "strengths": [
+          "Clear identification and correction of the misconception regarding variable scope (global vs. local).",
+          "Precise guidance on the mechanics of backward substitution in Hoare logic.",
+          "Effective use of guiding questions to help the student discover the correct logic."
+        ],
+        "weaknesses": [
+          "Could have provided a brief visual or pictorial model of variable aliasing (pointer vs. copy) to further solidify the concept for a broader audience, though the text-based explanation was sufficient here."
+        ],
+        "suggestions": [
+          "Consider using a 'whiteboard-style' breakdown of memory locations (parameters vs. globals) to visually reinforce the difference between pass-by-value and pass-by-reference."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You've got the right idea about how pass-by-reference works! But let's look closely at line 2: `y = b + x`. Even though `x` has been updated to 5, is `y` a parameter of the function `update(a, b)`?",
+          "Teacher: Wait a minute\u2014look back at the original pseudocode. Is `y` declared as a local variable... or does it already exist outside the function?",
+          "Teacher: Take a close look at the exact text of line 5 in the pseudocode. It is `z = x + a - b`, but in your calculation for line 5, you wrote `z = x - y`."
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback that identifies exactly where the student's reasoning diverged from the correct path. Instead of just saying 'incorrect,' the teacher points to the specific line and variable causing the error and asks targeted questions to guide the student back. The feedback is consistent throughout the session.",
+        "strengths": [
+          "Specific identification of errors (e.g., confusing line 5 expression).",
+          "Use of Socratic questioning to prompt self-correction.",
+          "Positive reinforcement combined with corrective guidance."
+        ],
+        "weaknesses": [
+          "The repetition at the end of the transcript (student summarizing multiple times) suggests the feedback loop didn't require any further intervention, but the feedback itself wasn't varied or extended to deeper conceptual checks after the initial correction."
+        ],
+        "suggestions": [
+          "After the student corrects the error, ask a follow-up question that requires applying that specific correction to a new, similar scenario to ensure transfer of knowledge."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Let's take a close look at part (1). In each line of the function, the prompt asks you to write down the value of the LHS... What is the Left-Hand Side of that statement?",
+          "Teacher: ...let's look strictly at where `u` was located in that expression. How does that substitution affect the `u` that was already there? Can you articulate what the expression looks like immediately after making that substitution, before any algebraic rearrangement?"
+        ],
+        "reasoning": "The teacher engages in 'guided discovery' rather than full 'think-aloud' modeling. They model the *process* of checking work and identifying variable scope by asking the student to look at specific parts of the code. However, the teacher does not explicitly narrate their own internal thought process for a new, unsolved problem. Instead, they guide the student through the student's existing work. This is a form of cognitive apprenticeship (coaching) but lacks the explicit 'think-aloud' demonstration of expert problem solving from scratch.",
+        "strengths": [
+          "Teacher models the correct way to inspect code (checking LHS/RHS, checking scope).",
+          "Demonstrates accurate algebraic manipulation logic in the Hoare logic section."
+        ],
+        "weaknesses": [
+          "No explicit 'think-aloud' where the teacher solves a new problem from start to finish while narrating their thought process.",
+          "The modeling is largely reactive to student errors rather than proactive demonstration of expert strategy."
+        ],
+        "suggestions": [
+          "Before asking the student to solve, have the teacher solve one example step while explicitly verbalizing the decision-making process (e.g., 'I am wondering which variable is passed... let me check the parameter list...')."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Wait a minute\u2014look back at the original pseudocode. Is `y` declared as a local variable...?",
+          "Teacher: You've got the right idea... But let's look closely at line 2...",
+          "Teacher: Take a close look at the exact text of line 5... Can you check what variables are actually used... and recalculate...",
+          "Teacher: ...Can you articulate what the expression looks like immediately after making that substitution, before any algebraic rearrangement?"
+        ],
+        "reasoning": "The teacher provides excellent hierarchical scaffolding. When the student struggles, the teacher does not give the answer but provides progressively more specific hints. They guide the student from the general concept (scope) to the specific line (line 2), then to the specific variable (y), and finally to the specific text of the code. This 'scaffolding and fading' is exemplary; the teacher supports the student until the student can trace the logic independently.",
+        "strengths": [
+          "Progressive sequence of hints (General -> Specific Line -> Specific Variable -> Specific Text).",
+          "Effective use of 'Wait a minute' to pause and redirect without overwhelming the student.",
+          "Supports the student in self-identifying the error in the Hoare logic derivation."
+        ],
+        "weaknesses": [
+          "None observed in the transcript. The coaching is highly effective."
+        ],
+        "suggestions": [
+          "Maintain this level of scaffolding for all complex multi-step problems."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: ...This change to `x` directly affects line 2... So, the updated value of `x` from line 1 influences the result of line 2...",
+          "Student: ...We've correctly worked backward from the postcondition through each assignment to derive the weakest precondition. This ensures that the initial conditions are set such that the desired postcondition is achieved...",
+          "Teacher: ...Can you articulate that final result and how you reason about it?"
+        ],
+        "reasoning": "The student is frequently asked to articulate their reasoning, not just provide the final number. The teacher explicitly asks 'how you reason about it' and 'explain your step-by-step reasoning.' The student responds by explaining the causal link between lines (e.g., how line 1 affects line 2). This goes beyond calculation to conceptual articulation.",
+        "strengths": [
+          "Teacher explicitly requests articulation of reasoning, not just answers.",
+          "Student consistently explains the 'why' behind the calculations (e.g., scope impact, substitution logic).",
+          "The final summary requires the student to synthesize the entire process."
+        ],
+        "weaknesses": [
+          "The reflection becomes repetitive at the end without adding new cognitive load or depth."
+        ],
+        "suggestions": [
+          "Ask the student to predict what would happen if the parameter passing mechanism was changed before executing the trace, to deepen reflective thinking."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: ...Let's break down the execution of line 3 with this in mind...",
+          "Student: ...Let's carefully track the values through lines 4 and 5...",
+          "Student: ...Let's summarize what we've done..."
+        ],
+        "reasoning": "The student is actively engaged in constructive activities (tracing code, debugging logic, summarizing) and interactive learning (responding to teacher prompts, correcting errors). The session is not passive listening; the student is constantly performing cognitive work (calculating values, checking scope). However, it remains a one-on-one dyad, so 'interactive' in the sense of peer collaboration is absent, but the cognitive engagement is high (Constructive/Active+).",
+        "strengths": [
+          "High level of active participation in tracing and debugging.",
+          "Student takes ownership of the recalculation and summarization.",
+          "Continuous dialogue keeps the student cognitively invested."
+        ],
+        "weaknesses": [
+          "The extreme repetition of the summary at the end indicates a break in productive engagement, possibly due to a system glitch or over-completion of the task."
+        ],
+        "suggestions": [
+          "Introduce a variation in problem type or difficulty once the core problem is solved to maintain cognitive engagement without repetitive summarization."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The student demonstrates a strong understanding of parameter passing concepts, including pass-by-value, pass-by-reference, and pass-by-value-result.",
+          "They accurately trace variable changes through function calls, considering both local and global scopes.",
+          "The student correctly identifies and explains the impact of parameter passing methods on original variables."
+        ],
+        "reasoning": "The student shows a good grasp of the content, explaining concepts clearly and applying them to solve problems. They address misconceptions about variable scope and parameter passing, demonstrating strong PCK.",
+        "strengths": [
+          "Accurate tracing of variable changes",
+          "Clear explanations of parameter passing methods",
+          "Ability to identify and correct misconceptions"
+        ],
+        "weaknesses": [
+          "Occasional confusion between local and global variables",
+          "Some steps in tracing could be more detailed"
+        ],
+        "suggestions": [
+          "Encourage more explicit distinction between local and global variables",
+          "Provide practice with complex parameter passing scenarios"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The teacher provides specific feedback on the student's reasoning, guiding them to consider variable scope and parameter passing methods.",
+          "Feedback is action-oriented, helping the student refine their understanding and improve their problem-solving approach."
+        ],
+        "reasoning": "The teacher's feedback is constructive, addressing both strengths and areas for improvement. It helps the student understand the goals, current performance, and next steps.",
+        "strengths": [
+          "Specific and actionable feedback",
+          "Focus on both conceptual understanding and problem-solving skills"
+        ],
+        "weaknesses": [
+          "Could provide more explicit guidance on common pitfalls",
+          "Feedback is sometimes repetitive"
+        ],
+        "suggestions": [
+          "Incorporate more varied examples in feedback",
+          "Use analogies to reinforce complex concepts"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher models expert thinking by demonstrating how to trace variable changes and consider parameter passing methods.",
+          "They use think-aloud strategies to make their thought processes visible, helping the student understand the reasoning behind each step."
+        ],
+        "reasoning": "The teacher effectively models expert problem-solving, making their thought processes transparent. This helps the student internalize the reasoning behind each step.",
+        "strengths": [
+          "Clear demonstration of thought processes",
+          "Use of think-aloud strategies",
+          "Real-world examples of parameter passing"
+        ],
+        "weaknesses": [
+          "Could provide more diverse modeling scenarios",
+          "Some steps in modeling could be slower for better comprehension"
+        ],
+        "suggestions": [
+          "Incorporate more interactive modeling activities",
+          "Slow down complex steps for better student understanding"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "The teacher provides structured guidance, offering hints and scaffolding to help the student trace variable changes and understand parameter passing.",
+          "Support is gradually adjusted as the student demonstrates growing competence."
+        ],
+        "reasoning": "The teacher offers appropriate support, tailoring it to the student's needs. Guidance is gradually reduced as the student becomes more independent.",
+        "strengths": [
+          "Strategic provision of hints and scaffolding",
+          "Adaptation of support based on student progress"
+        ],
+        "weaknesses": [
+          "Could provide more explicit prompts for self-reflection",
+          "Sometimes allows student to struggle longer than necessary"
+        ],
+        "suggestions": [
+          "Encourage more student-led problem-solving",
+          "Provide clearer prompts for self-assessment"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "The student is regularly prompted to explain their reasoning and reflect on their understanding of parameter passing.",
+          "They articulate their thought processes, evaluating their understanding and identifying areas for improvement."
+        ],
+        "reasoning": "Reflection is consistently incorporated into the learning activities. The student is encouraged to explain their reasoning and evaluate their understanding.",
+        "strengths": [
+          "Regular incorporation of reflection activities",
+          "Student articulation of thought processes"
+        ],
+        "weaknesses": [
+          "Reflection activities could be more structured",
+          "Student sometimes repeats explanations without deeper reflection"
+        ],
+        "suggestions": [
+          "Provide more structured reflection prompts",
+          "Encourage deeper analysis of problem-solving strategies"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The student consistently engages in interactive learning, discussing parameter passing methods and co-constructing solutions with the teacher.",
+          "They participate in argumentation, questioning, and summarizing, demonstrating high cognitive involvement."
+        ],
+        "reasoning": "The student is highly engaged, participating in interactive and constructive activities. They collaborate with the teacher, demonstrating deep cognitive involvement.",
+        "strengths": [
+          "Consistent participation in interactive learning",
+          "High level of cognitive involvement",
+          "Active collaboration and co-construction of solutions"
+        ],
+        "weaknesses": [
+          "Could initiate more independent problem-solving",
+          "Sometimes relies heavily on teacher guidance"
+        ],
+        "suggestions": [
+          "Encourage more independent exploration of concepts",
+          "Provide opportunities for student-led discussions"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 87.8,
+    "interpretation": "Very Good pedagogy"
+  }
+}

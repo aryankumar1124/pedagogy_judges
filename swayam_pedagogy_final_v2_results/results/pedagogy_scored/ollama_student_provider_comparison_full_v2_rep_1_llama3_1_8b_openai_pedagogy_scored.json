@@ -1,0 +1,395 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_llama3_1_8b_openai",
+    "student_model": "llama3.1:8b",
+    "tutor_provider": "openai",
+    "tutor_model": "gpt-5-mini",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good catch that something was off \u2014 one key misconception to fix first: which names are actually formals. Look at the prompt line 'function update (a , b )' and the top-level lines 'x = 3; y = 2; z = 5;'. Which part of the prompt tells you which identifiers are formals and which are globals?",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals. So a and b are separate local copies (for pass-by-value).",
+          "Teacher: Misconception: you set the formals a and b to 0 \u2014 that\u2019s not correct. In pass-by-value the formals are initialized to the values of the actual arguments.",
+          "Teacher: Two small misconceptions to fix first (brief): - a and b are the formals (function header). So a = ... updates the local a, not global x. - For update(x,y), a is initialized to the value of actual x (3) and b to the value of actual y (2).",
+          "Teacher: Quick clarification, then one question: - Misconceptions to fix: a and b are the function formals (from 'function update(a, b)'), not globals. - Under pass-by-value the formals are initialized to the actual argument values (not to 0) \u2014 updating a does not change global x.",
+          "Teacher: Good \u2014 your substitution step looks algebraically correct (you replaced v by 2*v - u in w = -v and simplified to w = -2*v + u). Be explicit about what those occurrences mean: the v and u on the right-hand side are the pre-state values before the v-assignment, and w on the left is the pre-state value before that assignment.",
+          "Teacher: Which part of the assignment prompt supports your next step? (Hint: the instruction to compute the WP step by step.)"
+        ],
+        "reasoning": "The teacher consistently demonstrates strong Pedagogical Content Knowledge by identifying and addressing student misconceptions about formal vs. global variables, pass-by-value semantics, and weakest precondition calculations. The explanations are clear, use precise terminology, and directly reference the prompt to ground the reasoning. The teacher also adapts explanations to the student's evolving understanding, showing depth in PCK.",
+        "strengths": [
+          "Clear identification and correction of misconceptions (e.g., formal vs. global variables).",
+          "Use of precise terminology and references to the prompt.",
+          "Adaptation of explanations to the student's current understanding.",
+          "Effective use of examples and step-by-step reasoning."
+        ],
+        "weaknesses": [
+          "Occasional repetition of the same misconception correction without immediate progress.",
+          "Could provide more varied examples or analogies to reinforce understanding."
+        ],
+        "suggestions": [
+          "Provide a concise summary of key concepts (e.g., formal vs. global) after correcting misconceptions to reinforce learning.",
+          "Use analogies or real-world examples to help students grasp abstract concepts like pass-by-value.",
+          "Encourage students to paraphrase their understanding to check for comprehension."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: Good catch that something was off \u2014 one key misconception to fix first: which names are actually formals.",
+          "Teacher: You're close but two misconceptions remain: (1) a and b are the formals (function header), and (2) you misused the global values when computing b + x.",
+          "Teacher: Good\u2014you quoted the operator signature. Quick check: which part of the prompt supports your claim that the literals 10 and 5 are integers (rather than one being a float)?",
+          "Teacher: Good\u2014you're on the right track. One step: point to the exact parts of the prompt that show (a) how integer and float literals are written (e.g., 10 vs 10.5) and (b) the greater than signature.",
+          "Teacher: You corrected the earlier contradiction\u2014good. Now one step at a time.",
+          "Teacher: Good \u2014 your substitution step looks algebraically correct.",
+          "Teacher: Good catch that something went wrong \u2014 you found a real issue."
+        ],
+        "reasoning": "The teacher provides consistent, actionable feedback that identifies specific misconceptions and guides the student toward correction. The feedback is timely, specific, and often includes hints or questions to prompt deeper thinking. However, the feedback could be more structured to explicitly link current performance to next steps.",
+        "strengths": [
+          "Timely and specific identification of misconceptions.",
+          "Use of guiding questions to prompt student reflection.",
+          "Encouragement of step-by-step reasoning."
+        ],
+        "weaknesses": [
+          "Feedback sometimes lacks explicit next steps or actionable guidance.",
+          "Could more consistently connect feedback to learning goals."
+        ],
+        "suggestions": [
+          "Structure feedback using the 'goal-current-next' framework to explicitly link current performance to next steps.",
+          "Provide more explicit praise for correct reasoning to reinforce positive behaviors.",
+          "Use a consistent format for feedback to make it easier for students to follow."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals. So a and b are separate local copies (for pass-by-value).",
+          "Teacher: Misconception: you set the formals a and b to 0 \u2014 that\u2019s not correct. In pass-by-value the formals are initialized to the values of the actual arguments.",
+          "Teacher: Two small misconceptions to fix first (brief): - a and b are the formals (function header). So a = ... updates the local a, not global x. - For update(x,y), a is initialized to the value of actual x (3) and b to the value of actual y (2).",
+          "Teacher: Quick clarification, then one question: - Misconceptions to fix: a and b are the function formals (from 'function update(a, b)'), not globals. - Under pass-by-value the formals are initialized to the actual argument values (not to 0) \u2014 updating a does not change global x."
+        ],
+        "reasoning": "The teacher demonstrates expert thinking by breaking down complex concepts (e.g., formal vs. global variables, pass-by-value) and guiding the student through the reasoning process. However, the modeling is somewhat implicit and could be more explicit in demonstrating the teacher's own problem-solving process (e.g., think-alouds).",
+        "strengths": [
+          "Clear breakdown of complex concepts into manageable steps.",
+          "Use of precise terminology and references to the prompt.",
+          "Guiding the student through the reasoning process."
+        ],
+        "weaknesses": [
+          "Modeling is often implicit rather than explicit (e.g., no think-alouds).",
+          "Could demonstrate more of the teacher's own problem-solving process."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to make expert thinking more visible.",
+          "Demonstrate the problem-solving process step-by-step, showing the teacher's own reasoning.",
+          "Provide real-world examples or analogies to illustrate abstract concepts."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: Good catch that something was off \u2014 one key misconception to fix first: which names are actually formals.",
+          "Teacher: You're close but two misconceptions remain: (1) a and b are the formals (function header), and (2) you misused the global values when computing b + x.",
+          "Teacher: Good\u2014you quoted the operator signature. Quick check: which part of the prompt supports your claim that the literals 10 and 5 are integers (rather than one being a float)?",
+          "Teacher: Good\u2014you're on the right track. One step: point to the exact parts of the prompt that show (a) how integer and float literals are written (e.g., 10 vs 10.5) and (b) the greater than signature.",
+          "Teacher: You corrected the earlier contradiction\u2014good. Now one step at a time.",
+          "Teacher: Good \u2014 your substitution step looks algebraically correct.",
+          "Teacher: Good catch that something went wrong \u2014 you found a real issue."
+        ],
+        "reasoning": "The teacher provides consistent scaffolding by breaking down problems into smaller steps, guiding the student through each part, and offering hints or questions to prompt deeper thinking. The coaching is adaptive, as the teacher adjusts the level of support based on the student's responses. However, the scaffolding could be more structured to gradually fade support.",
+        "strengths": [
+          "Consistent scaffolding through step-by-step guidance.",
+          "Adaptive support based on the student's current understanding.",
+          "Use of guiding questions to prompt reflection and deeper thinking."
+        ],
+        "weaknesses": [
+          "Scaffolding could be more structured to gradually fade support.",
+          "Could provide more explicit hints or examples to guide the student."
+        ],
+        "suggestions": [
+          "Use a structured approach to scaffolding, gradually reducing support as the student demonstrates competence.",
+          "Provide more explicit hints or examples to guide the student toward the correct answer.",
+          "Encourage the student to attempt the next step independently before providing additional support"
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: Good catch that something was off \u2014 one key misconception to fix first: which names are actually formals.",
+          "Teacher: You're close but two misconceptions remain: (1) a and b are the formals (function header), and (2) you misused the global values when computing b + x.",
+          "Teacher: Good\u2014you quoted the operator signature. Quick check: which part of the prompt supports your claim that the literals 10 and 5 are integers (rather than one being a float)?",
+          "Teacher: Good\u2014you're on the right track. One step: point to the exact parts of the prompt that show (a) how integer and float literals are written (e.g., 10 vs 10.5) and (b) the greater than signature.",
+          "Teacher: You corrected the earlier contradiction\u2014good. Now one step at a time.",
+          "Student: I think I see the problem now. In the original code, the first statement is a = a + y, but the LHS of 'a' is actually the global variable 'x', not the formal parameter 'a'. So, the correct statement should be x = x + y, not a = a + y."
+        ],
+        "reasoning": "The teacher prompts the student to reflect on their reasoning and identify misconceptions, but the reflection is primarily driven by the teacher's questions rather than the student's independent articulation. The student does occasionally reflect (e.g., 'I think I see the problem now'), but these instances are limited and often follow the teacher's guidance.",
+        "strengths": [
+          "Teacher prompts reflection through targeted questions.",
+          "Student occasionally articulates their reasoning (e.g., identifying misconceptions)."
+        ],
+        "weaknesses": [
+          "Reflection is primarily teacher-driven rather than student-initiated.",
+          "Student reflection is limited and often follows the teacher's guidance.",
+          "Could encourage more independent reflection and articulation from the student."
+        ],
+        "suggestions": [
+          "Encourage the student to independently articulate their reasoning before providing feedback.",
+          "Use open-ended questions to prompt deeper reflection and self-explanation.",
+          "Provide opportunities for the student to summarize their understanding or explain their thought process."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Let me try to answer the question. First, I'll go through each case and write down the values of x, y, and z after the call to update().",
+          "Student: I think I understand what you're getting at. In the update() function, the names 'a', 'b', 'x', 'y', and 'z' are all formal parameters.",
+          "Student: I think I see the problem now. In the original code, the first statement is a = a + y, but the LHS of 'a' is actually the global variable 'x', not the formal parameter 'a'.",
+          "Student: Let's start by analyzing the given program fragment. The program has three statements: 1. nu := u + 3; 2. nv := 2*v - u; 3. nw := w + v;",
+          "Student: I'm going to perform a forward-execution proof to check my result.",
+          "Student: I think I made a mistake in my previous answer. When I changed the value of w in the second step, I shouldn't have changed it."
+        ],
+        "reasoning": "The student is actively engaged in the learning process, attempting to solve problems, articulate reasoning, and correct mistakes. The engagement is primarily constructive (e.g., self-explaining, questioning, summarizing) and occasionally interactive (e.g., responding to the teacher's prompts). However, the engagement is largely driven by the teacher's questions rather than independent exploration.",
+        "strengths": [
+          "Student actively attempts to solve problems and articulate reasoning.",
+          "Student demonstrates constructive engagement (e.g., self-explaining, summarizing).",
+          "Student responds to the teacher's prompts and corrects mistakes."
+        ],
+        "weaknesses": [
+          "Engagement is largely driven by the teacher's questions rather than independent exploration.",
+          "Could encourage more interactive engagement (e.g., discussion, collaboration)."
+        ],
+        "suggestions": [
+          "Encourage more independent problem-solving and exploration.",
+          "Provide opportunities for collaborative learning or peer discussion.",
+          "Use open-ended tasks to promote deeper engagement and critical thinking"
+        ]
+      }
+    },
+    "groq": {
+      "error": "Error code: 413 - {'error': {'message': 'Request too large for model `qwen/qwen3.8-27b` in organization `org_01m28qfbq2e2dvgy4se2dv1rct` service tier `on_demand` on input tokens per minute (ITPM): Limit 7000, Requested 15915, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Student: I think I understand what you're getting at. In the update() function, the names 'a', 'b', 'x', 'y', and 'z' are all formal parameters.",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals.",
+          "Student: The lines that tell us the initial global values are the top-level lines 'x = 3; y = 2; z = 5;'. The lines that tell us the names of the formals are the function header 'function update(a, b)'."
+        ],
+        "reasoning": "The teacher effectively guides the student in identifying formal parameters vs. globals, a critical concept in programming. The student initially confuses these but eventually understands the distinction, as evidenced by correctly identifying the function header and global variable declarations. The teacher's scaffolding and the student's eventual correct identification demonstrate good PCK.",
+        "strengths": [
+          "Teacher effectively identifies and addresses a common misconception.",
+          "Student demonstrates understanding of formal parameters and globals after guidance."
+        ],
+        "weaknesses": [
+          "Student initially confuses formal parameters with globals.",
+          "Limited evidence of student independently applying this knowledge to new contexts."
+        ],
+        "suggestions": [
+          "Provide more examples contrasting formal parameters and globals in different contexts.",
+          "Encourage students to explicitly label parameters and globals in their code."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals.",
+          "Teacher: Misconception: you set the formals a and b to 0 \u2014 that\u2019s not correct. In pass-by-value the formals are initialized to the values of the actual arguments.",
+          "Teacher: You're repeatedly giving '5' without the requested steps and have mixed up formals vs. globals before. I can\u2019t proceed unless you show reasoning."
+        ],
+        "reasoning": "The teacher provides consistently clear, specific, and actionable feedback. They identify misconceptions, provide corrections, and guide the student toward deeper understanding. The feedback is tailored to the student's errors and consistently pushes for better reasoning and explanation.",
+        "strengths": [
+          "Feedback is consistently clear, specific, and actionable.",
+          "Teacher identifies misconceptions and provides corrections.",
+          "Feedback is tailored to the student's errors and learning needs."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in the feedback quality."
+        ],
+        "suggestions": [
+          "Continue providing detailed and specific feedback.",
+          "Encourage students to reflect on feedback and apply it to future problems."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals.",
+          "Teacher: Misconception: you set the formals a and b to 0 \u2014 that\u2019s not correct. In pass-by-value the formals are initialized to the values of the actual arguments.",
+          "Teacher: You're repeatedly giving '5' without the requested steps and have mixed up formals vs. globals before. I can\u2019t proceed unless you show reasoning."
+        ],
+        "reasoning": "The teacher effectively models expert thinking by explicitly explaining the distinction between formal parameters and globals, correcting misconceptions, and guiding the student through the reasoning process. The teacher makes their thought process visible by breaking down complex concepts and asking targeted questions.",
+        "strengths": [
+          "Teacher effectively explains complex concepts.",
+          "Teacher makes expert thinking visible through explanations and questions.",
+          "Teacher corrects misconceptions and guides reasoning."
+        ],
+        "weaknesses": [
+          "Limited evidence of the teacher modeling the entire problem-solving process from start to finish.",
+          "Student does not fully demonstrate independent modeling of expert thinking."
+        ],
+        "suggestions": [
+          "Model the entire problem-solving process more explicitly.",
+          "Encourage students to articulate their reasoning steps aloud."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: Good start \u2014 one important misconception to check before we proceed: which names inside update are the formal parameters and which are globals?",
+          "Teacher: You're mixing up formals and globals. The function header 'function update(a, b)' makes a and b the formals; the top-level 'x = 3; y = 2; z = 5;' are globals.",
+          "Teacher: Misconception: you set the formals a and b to 0 \u2014 that\u2019s not correct. In pass-by-value the formals are initialized to the values of the actual arguments.",
+          "Teacher: You're repeatedly giving '5' without the requested steps and have mixed up formals vs. globals before. I can\u2019t proceed unless you show reasoning."
+        ],
+        "reasoning": "The teacher provides strategic and adaptive support, gradually fading guidance as the student progresses. They start with hints, provide direct instruction when needed, and consistently push the student to think independently. The teacher's scaffolding is highly effective in helping the student overcome misconceptions and build understanding.",
+        "strengths": [
+          "Teacher provides strategic and adaptive support.",
+          "Guidance is gradually faded as student progresses.",
+          "Scaffolding is highly effective in overcoming misconceptions."
+        ],
+        "weaknesses": [
+          "No significant weaknesses observed in coaching and scaffolding."
+        ],
+        "suggestions": [
+          "Continue providing adaptive and strategic support.",
+          "Encourage students to take more ownership of their learning as they progress."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 75,
+        "evidence": [
+          "Student: I think I understand what you're getting at. In the update() function, the names 'a', 'b', 'x', 'y', and 'z' are all formal parameters.",
+          "Student: The lines that tell us the initial global values are the top-level lines 'x = 3; y = 2; z = 5;'. The lines that tell us the names of the formals are the function header 'function update(a, b)'."
+        ],
+        "reasoning": "The student occasionally reflects on their understanding, as evidenced by statements like 'I think I understand what you're getting at.' However, the reflection is often superficial and does not consistently demonstrate deep understanding or evaluation of their own reasoning. The student struggles to apply concepts independently, suggesting limited reflection.",
+        "strengths": [
+          "Student occasionally reflects on their understanding.",
+          "Some evidence of self-explanation and reasoning."
+        ],
+        "weaknesses": [
+          "Reflection is often superficial and does not demonstrate deep understanding.",
+          "Limited evidence of student evaluating their own reasoning."
+        ],
+        "suggestions": [
+          "Encourage more explicit and deeper reflection on reasoning and understanding.",
+          "Provide prompts for students to evaluate their own thought processes."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "Student: Let me try to answer the question.",
+          "Student: I think I understand what you're getting at.",
+          "Student: The final answer is $\boxed{5}$. ",
+          "Teacher: You're repeatedly giving '5' without the requested steps and have mixed up formals vs. globals before. I can\u2019t proceed unless you show reasoning."
+        ],
+        "reasoning": "The student is actively engaged in the learning process, attempting to answer questions and respond to the teacher's prompts. However, the engagement is primarily constructive rather than interactive. The student often provides incomplete answers, requiring the teacher to push for more detailed reasoning. The interaction is more teacher-led than collaborative.",
+        "strengths": [
+          "Student is actively engaged in attempting to answer questions.",
+          "Evidence of constructive engagement in problem-solving."
+        ],
+        "weaknesses": [
+          "Engagement is primarily constructive rather than interactive.",
+          "Student often provides incomplete answers, requiring teacher intervention."
+        ],
+        "suggestions": [
+          "Encourage more interactive engagement, such as discussion and collaboration.",
+          "Prompt students to provide complete and detailed reasoning in their responses."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4.5,
+        "individual_scores": [
+          4,
+          5
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Modeling": {
+        "mean": 3.5,
+        "individual_scores": [
+          3,
+          4
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Coaching": {
+        "mean": 4.5,
+        "individual_scores": [
+          4,
+          5
+        ],
+        "agreement_stdev": 0.5
+      },
+      "Reflection": {
+        "mean": 3,
+        "individual_scores": [
+          3,
+          3
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 78.3,
+    "interpretation": "Good pedagogy"
+  }
+}

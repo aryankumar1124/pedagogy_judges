@@ -1,0 +1,476 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen3_30b_gemini",
+    "student_model": "qwen3:30b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at expression #3: `greater than(10, 5)`. Look closely at the definition given in the prompt for `greater than`: what are the required input types for its first and second arguments?",
+          "Teacher: Notice how `add(int, int)` works with integers even though the operator definition specifies `int`. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: Check the operator definitions provided at the very beginning of the prompt. Do any of them mention implicit type conversion, or do they rely strictly on the exact types listed?",
+          "Teacher: That's correct! The definitions rely strictly on the exact types specified.",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner `greater than` and `equals` functions, as well as how they feed into the outer `and` function, is completely correct."
+        ],
+        "reasoning": "The teacher demonstrates deep Pedagogical Content Knowledge by guiding the student through complex type system concepts (e.g., strict vs. implicit type conversion) with precise references to operator definitions. The teacher uses the student's initial misconceptions (e.g., implicit conversion) as teachable moments, clarifying the exact type requirements and reinforcing the rules through targeted questions.",
+        "strengths": [
+          "Exceptional clarity in explaining type system rules and operator definitions.",
+          "Proactive identification and correction of student misconceptions (e.g., implicit conversion).",
+          "Use of multiple representations (e.g., breaking down expressions step-by-step, referencing definitions).",
+          "Strong adaptation to student needs by building on their partial understanding."
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Consider occasionally summarizing key takeaways to reinforce learning (e.g., 'Remember: strict type systems require exact matches unless conversion is explicitly allowed')."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: That's correct! The definitions rely strictly on the exact types specified.",
+          "Teacher: That's spot on! Both arguments for that inner expression match the exact types required by `greater than`.",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner `greater than` and `equals` functions, as well as how they feed into the outer `and` function, is completely correct.",
+          "Teacher: Fantastic! Your explanations and reasoning for both expressions are spot on, adhering strictly to the provided operator definitions and type rules."
+        ],
+        "reasoning": "The teacher provides consistent, specific feedback that validates correct answers and explains why they are correct. The feedback often includes reinforcement of the underlying concepts (e.g., 'strictly on the exact types specified'). However, the feedback could occasionally include more explicit next steps or guidance for improvement.",
+        "strengths": [
+          "Feedback is timely and directly tied to student responses.",
+          "Reinforces correct reasoning and aligns it with the problem's rules.",
+          "Encourages deeper understanding by referencing definitions and rules."
+        ],
+        "weaknesses": [
+          "Feedback is primarily evaluative (e.g., 'correct', 'spot on') rather than formative (e.g., 'Next, try applying this to a new example').",
+          "Lacks explicit next steps for improvement in some cases."
+        ],
+        "suggestions": [
+          "Add more formative feedback by suggesting how the student can apply their understanding to new problems or edge cases.",
+          "Occasionally ask the student to self-assess or reflect on their reasoning (e.g., 'How did you arrive at this conclusion?')."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Notice how `add(int, int)` works with integers even though the operator definition specifies `int`. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: Take another look at the prompt or your programming knowledge\u2014how are integer literals typically treated when compared with floats?",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner `greater than` and `equals` functions, as well as how they feed into the outer `and` function, is completely correct."
+        ],
+        "reasoning": "The teacher models expert thinking by posing questions that guide the student through the problem-solving process (e.g., 'how are integer literals typically treated?'). The teacher also demonstrates the step-by-step breakdown of expressions, but there is limited use of explicit think-aloud strategies or real-world analogies.",
+        "strengths": [
+          "Models problem-solving through targeted, guiding questions.",
+          "Demonstrates step-by-step analysis of expressions.",
+          "Encourages the student to think critically about type systems."
+        ],
+        "weaknesses": [
+          "Limited use of explicit think-aloud strategies (e.g., 'Let me walk you through my thought process...').",
+          "Few real-world analogies or examples to illustrate concepts."
+        ],
+        "suggestions": [
+          "Incorporate more explicit think-alouds to make expert reasoning visible (e.g., 'Here\u2019s how I would approach this: first, I check the operator definition...').",
+          "Use analogies or real-world examples to explain type systems (e.g., comparing type rules to grammar rules in language)."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at expression #3: `greater than(10, 5)`. Look closely at the definition given in the prompt for `greater than`: what are the required input types for its first and second arguments?",
+          "Teacher: Notice how `add(int, int)` works with integers even though the operator definition specifies `int`. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: Check the operator definitions provided at the very beginning of the prompt. Do any of them mention implicit type conversion, or do they rely strictly on the exact types listed?",
+          "Teacher: Now, with expression #3 being not typeable, how does that affect expression #4: `and(greater than(20, 10.5), equals(\"hi\", \"hi\"))`? Take a look at the first argument inside the `and` function.",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?"
+        ],
+        "reasoning": "The teacher provides exceptional coaching and scaffolding by guiding the student through the problem with targeted questions, hints, and prompts. The support is strategic, gradually fading as the student demonstrates understanding (e.g., moving from guiding questions to independent summarization). The teacher adapts the level of support to the student's progress.",
+        "strengths": [
+          "Provides structured, targeted questions to guide the student.",
+          "Gradually reduces support as the student gains confidence and competence.",
+          "Adapts scaffolding to the student's current understanding.",
+          "Encourages independent reasoning and summarization."
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Consider occasionally asking the student to explain their reasoning to a peer or in their own words to further solidify understanding."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: Oh, right! So for the `greater than(int, float)` operator, if the second argument is an integer like 5, it can be implicitly converted to a float (5.0) because most type systems allow that. So `greater than(10, 5)` is actually typeable\u2014it\u2019s just like how `add(10, 5)` works with integers even though it specifies `int`. The integer 5 gets treated as a float here. So expression #3 *is* typeable, and the output would be `true` because 10 > 5.0 is true. My mistake earlier was forgetting about implicit conversion for floats.",
+          "Student: Expression #3: `greater than(10, 5)` **Not typeable.** The operator requires the second argument to be a *float* (as defined: `greater than(int, float)`), but `5` is an integer (not a float). There\u2019s no implicit conversion allowed\u2014types must match exactly.",
+          "Student: Expression #4: `and(greater than(20, 10.5), equals(\"hi\", \"hi\"))` **Typeable.** - `greater than(20, 10.5)`: First argument `20` is `int` (matches), second argument `10.5` is `float` (matches). Output: `true` (boolean). - `equals(\"hi\", \"hi\")`: Both arguments are `string` (matches). Output: `true` (boolean). - `and(true, true)`: Both inputs are `boolean` (matches). Output: `true` (boolean). Final type: `boolean`, output: `true`.",
+          "Student: **Consistency check:** - #3 fails because `5` is an integer (violates `greater than`'s `float` requirement). - #4 succeeds because `10.5` is a *float* (matches the requirement), avoiding the #3 issue. Both expressions now align with strict type rules."
+        ],
+        "reasoning": "The teacher consistently prompts the student to reflect on their reasoning and articulate their thought processes. The student demonstrates deep reflection by explaining their initial misconceptions, correcting them, and summarizing their reasoning for multiple expressions. However, the reflection is primarily student-driven, and the teacher could occasionally model reflection explicitly.",
+        "strengths": [
+          "Student is frequently asked to explain and justify their reasoning.",
+          "Student demonstrates metacognition by identifying and correcting their own mistakes.",
+          "Reflection is integrated into the problem-solving process."
+        ],
+        "weaknesses": [
+          "Teacher does not explicitly model reflection (e.g., 'Let me show you how I reflect on my own reasoning...').",
+          "Reflection is primarily reactive (correcting mistakes) rather than proactive (e.g., predicting potential errors)."
+        ],
+        "suggestions": [
+          "Encourage the student to reflect proactively by asking questions like, 'What are some common mistakes people make with type systems?'",
+          "Model reflection by occasionally sharing your own thought process or mistakes."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Oh, right! So for the `greater than(int, float)` operator, if the second argument is an integer like 5, it can be implicitly converted to a float (5.0) because most type systems allow that. So `greater than(10, 5)` is actually typeable... My mistake earlier was forgetting about implicit conversion for floats.",
+          "Student: Expression #3: `greater than(10, 5)` **Not typeable.** The operator requires the second argument to be a *float*... There\u2019s no implicit conversion allowed\u2014types must match exactly.",
+          "Student: Expression #4: `and(greater than(20, 10.5), equals(\"hi\", \"hi\"))` **Typeable.** - `greater than(20, 10.5)`: First argument `20` is `int` (matches), second argument `10.5` is `float` (matches). Output: `true` (boolean).",
+          "Student: **Consistency check:** - #3 fails because `5` is an integer... - #4 succeeds because `10.5` is a *float*... Both expressions now align with strict type rules.",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?"
+        ],
+        "reasoning": "The student is consistently engaged at the **Interactive** level of the ICAP framework. They actively participate in dialogue, construct explanations, and co-create understanding with the teacher. The student frequently self-explains, questions, and summarizes their reasoning, demonstrating high cognitive involvement.",
+        "strengths": [
+          "Student consistently engages in constructive and interactive activities (e.g., explaining, summarizing, questioning).",
+          "Dialogue is collaborative, with the student and teacher co-constructing knowledge.",
+          "Student demonstrates metacognition and deep processing of concepts."
+        ],
+        "weaknesses": [],
+        "suggestions": [
+          "Consider incorporating more peer-to-peer discussion or group work to further enhance interactive engagement."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "Teacher: Notice how add(int, int) works with integers even though the operator definition specifies int. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: Check the operator definitions provided at the very beginning of the prompt. Do any of them mention implicit type conversion, or do they rely strictly on the exact types listed?"
+        ],
+        "reasoning": "The teacher effectively addressed a common misconception regarding strict type systems versus implicit type conversion (coercion). By prompting the student to check the specific problem constraints against general programming knowledge, the teacher demonstrated strong Pedagogical Content Knowledge. The explanation helped the student distinguish between general language rules and specific problem definitions.",
+        "strengths": [
+          "Proactively identified the likely source of error (assumption of implicit type conversion).",
+          "Used Socratic questioning to guide the student to the specific constraints of the problem rather than just stating the rule."
+        ],
+        "weaknesses": [
+          "The initial prompt about 'most type systems' might have briefly reinforced the incorrect assumption before the correction, though it was quickly resolved."
+        ],
+        "suggestions": [
+          "Explicitly contrasting a strict type system with a dynamic/loose type system could further solidify the PCK for future learners."
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 88,
+        "evidence": [
+          "Teacher: That's correct! The definitions rely strictly on the exact types specified.",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner greater than and equals functions, as well as how they feed into the outer and function, is completely correct.",
+          "Teacher: Fantastic! Your explanations and reasoning for both expressions are spot on, adhering strictly to the provided operator definitions and type rules."
+        ],
+        "reasoning": "The feedback was specific, actionable, and tied directly to the learning goals. Instead of generic praise, the teacher highlighted exactly which parts of the student's reasoning were correct (e.g., matching inner/outer function types). The feedback also confirmed the correction of the misconception in expression #3.",
+        "strengths": [
+          "Feedback was descriptive and validated specific cognitive steps.",
+          "The teacher confirmed the correction of the error clearly before moving on.",
+          "The final summary request ensured the feedback was consolidated into a correct final answer."
+        ],
+        "weaknesses": [
+          "Once the error was corrected, the feedback shifted to validation rather than probing for deeper understanding, though this was appropriate given the task completion."
+        ],
+        "suggestions": [
+          "Could have asked a follow-up question about what would happen if the types were reversed to further test robustness."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "There are no instances where the teacher demonstrates the solving process themselves; all steps are completed by the student under guidance."
+        ],
+        "reasoning": "The teacher did not model the thinking process (think-aloud) or solve a similar example themselves. Instead, they guided the student to generate the model themselves. While the student's work demonstrates the model, the teacher's role was facilitative, not demonstrative. According to the rubric, this lacks explicit teacher modeling of expert thinking.",
+        "strengths": [
+          "The guided discovery allowed the student to build mental models through doing."
+        ],
+        "weaknesses": [
+          "No explicit demonstration of the expert heuristics (e.g., 'I would always check the innermost parentheses first') was provided by the teacher.",
+          "Reliance on student inquiry without a provided expert template."
+        ],
+        "suggestions": [
+          "If a student were stuck, the teacher could have modeled solving expression #1 or #2 before asking the student to try #3."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Look closely at the definition given in the prompt for greater than: what are the required input types for its first and second arguments?",
+          "Teacher: Check the operator definitions provided at the very beginning of the prompt. Do any of them mention implicit type conversion, or do they rely strictly on the exact types listed?",
+          "Teacher: Given that, what is the output type of greater than(20, 10.5) according to its operator definition, and how does that fit into the outer and function?"
+        ],
+        "reasoning": "The teacher provided effective scaffolding by breaking the complex nested expression into manageable sub-questions. The hints were graduated, starting with identifying types, then checking for conversion rules, and finally verifying the output types for the outer function. This allowed the student to eventually solve the problem independently.",
+        "strengths": [
+          "Scaffolding was tailored to the specific error (type checking).",
+          "The teacher faded support as the student demonstrated competence, moving from specific hints to verification questions.",
+          "The questioning sequence logically built toward the final solution."
+        ],
+        "weaknesses": [
+          "The support was very specific to this exact problem type; no general transferable strategy was explicitly taught beyond the context."
+        ],
+        "suggestions": [
+          "Explicitly naming the strategy (e.g., 'We are using recursive type checking') could help the student apply this scaffolding logic to other problems."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "Student: Oh, right! So for the greater than(int, float) operator, if the second argument is an integer like 5, it can be implicitly converted to a float (5.0) because most type systems allow that... My mistake earlier was forgetting about implicit conversion for floats.",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?",
+          "Student: Expression #3: greater than(10, 5) **Not typeable.** The operator requires the second argument to be a float... Consistency check: #3 fails because 5 is an integer..."
+        ],
+        "reasoning": "The student was prompted to reflect on their initial error, articulate the cause (forgetting implicit conversion rules vs. strict definitions), and synthesize their final reasoning. The final summary requirement forced the student to articulate the distinction between expressions #3 and #4, demonstrating metacognitive reflection on consistency.",
+        "strengths": [
+          "Explicit correction of the mental model regarding type conversion.",
+          "Final synthesis task required the student to evaluate the consistency of their answers.",
+          "The student clearly articulated the 'why' behind both the failure and success of the expressions."
+        ],
+        "weaknesses": [
+          "The reflection was primarily triggered by an error rather than being a routine part of the learning process for successful answers."
+        ],
+        "suggestions": [
+          "Could have asked the student to reflect on *how* they knew to check the definitions, reinforcing the strategy."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "The entire interaction is a dialogue where the student does the cognitive work: 'Student: The definition says greater than(int, float), so the second argument needs to be a float. But 5 is an integer, not a float, so it's not typeable.'",
+          "Student: No, none of the operator definitions mention implicit type conversion... Since 5 is an integer (not a float), and the definition doesn\u2019t allow implicit conversion, expression #3 is *not* typeable.",
+          "Student: Expression #3: greater than(10, 5) **Not typeable.**... Consistency check: #3 fails because 5 is an integer..."
+        ],
+        "reasoning": "The engagement is highly constructive and interactive. The student is not passively listening; they are actively analyzing, hypothesizing, checking, and communicating complex logical structures. The interaction involves argumentation (initial wrong hypothesis vs. correction) and co-construction of the correct solution via dialogue. This meets the highest level of ICAP (Interactive/Constructive) as the student generates and defends their reasoning.",
+        "strengths": [
+          "Student performed all the cognitive analysis, type-checking, and logical deduction.",
+          "High level of verbal articulation of complex abstract concepts.",
+          "The student actively challenged their own initial understanding and refined it based on teacher prompts."
+        ],
+        "weaknesses": [
+          "The interaction is one-on-one; lack of peer collaboration limits the 'interactive' aspect to teacher-student dyad, though the cognitive level is high."
+        ],
+        "suggestions": [
+          "Could introduce a peer element where the student explains the solution to another student to further deepen the constructive engagement."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Notice how `add(int, int)` works with integers even though the operator definition specifies `int`. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: That's correct! The definitions rely strictly on the exact types specified.",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner `greater than` and `equals` functions, as well as how they feed into the outer `and` function, is completely correct."
+        ],
+        "reasoning": "The teacher demonstrates exceptional PCK by guiding the student through complex type system concepts, addressing misconceptions about implicit conversion, and ensuring the student understands the strict type requirements. The teacher uses precise language and real-world programming examples to clarify concepts.",
+        "strengths": [
+          "Clear and precise explanations of type system concepts",
+          "Proactive identification and correction of student misconceptions",
+          "Use of real-world programming examples to illustrate points"
+        ],
+        "weaknesses": [
+          "None significant; the teacher's PCK is consistently strong throughout the transcript"
+        ],
+        "suggestions": [
+          "Continue using real-world examples to deepen student understanding"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: That's correct! The definitions rely strictly on the exact types specified.",
+          "Teacher: Great job breaking down expression #4 step-by-step! Your reasoning for both the inner `greater than` and `equals` functions, as well as how they feed into the outer `and` function, is completely correct.",
+          "Teacher: Fantastic! Your explanations and reasoning for both expressions are spot on, adhering strictly to the provided operator definitions and type rules."
+        ],
+        "reasoning": "The teacher provides consistent, clear, and actionable feedback that addresses the student's current performance, learning goals, and future improvement. Feedback is specific, timely, and encourages deeper understanding.",
+        "strengths": [
+          "Specific and actionable feedback",
+          "Consistent reinforcement of correct understanding",
+          "Encourages deeper reflection and application of concepts"
+        ],
+        "weaknesses": [
+          "None significant; feedback is highly effective throughout"
+        ],
+        "suggestions": [
+          "Maintain the high quality of feedback in future interactions"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Notice how `add(int, int)` works with integers even though the operator definition specifies `int`. In many type systems, if an operator expects a float, can an integer be used instead (implicit conversion), or does it strictly require a float?",
+          "Teacher: Take another look at the prompt or your programming knowledge\u2014how are integer literals typically treated when compared with floats?"
+        ],
+        "reasoning": "The teacher effectively models expert thinking by guiding the student through thought processes and encouraging them to apply prior knowledge. However, there is limited explicit think-aloud or step-by-step demonstration of problem-solving processes.",
+        "strengths": [
+          "Guides student through thought processes",
+          "Encourages application of prior knowledge"
+        ],
+        "weaknesses": [
+          "Limited explicit think-aloud or step-by-step modeling"
+        ],
+        "suggestions": [
+          "Incorporate more explicit think-aloud strategies to make expert thinking more visible"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Take another look at the prompt or your programming knowledge\u2014how are integer literals typically treated when compared with floats?",
+          "Teacher: Check the operator definitions provided at the very beginning of the prompt. Do any of them mention implicit type conversion, or do they rely strictly on the exact types listed?",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?"
+        ],
+        "reasoning": "The teacher provides strategic and adaptive coaching, offering hints and structured assistance that gradually fades as the student gains competence. The teacher encourages independent thinking and self-correction while ensuring understanding.",
+        "strengths": [
+          "Strategic and adaptive support",
+          "Encourages independent thinking and self-correction",
+          "Gradually fades support as student gains competence"
+        ],
+        "weaknesses": [
+          "None significant; coaching is highly effective throughout"
+        ],
+        "suggestions": [
+          "Continue using this approach to foster student independence"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Oh, right! So for the `greater than(int, float)` operator, if the second argument is an integer like 5, it can be implicitly converted to a float (5.0) because most type systems allow that. So `greater than(10, 5)` is actually typeable\u2014it\u2019s just like how `add(10, 5)` works with integers even though it specifies `int`. The integer 5 gets treated as a float here. So expression #3 *is* typeable, and the output would be `true` because 10 > 5.0 is true. My mistake earlier was forgetting about implicit conversion for floats.",
+          "Student: **Consistency check:** #3 fails because `5` is an integer (violates `greater than`'s `float` requirement). #4 succeeds because `10.5` is a *float* (matches the requirement), avoiding the #3 issue. Both expressions now align with strict type rules.",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?"
+        ],
+        "reasoning": "The student consistently articulates reasoning, evaluates understanding, and engages in meaningful reflection. The teacher encourages this by prompting for summaries and consistency checks, fostering deep metacognitive awareness.",
+        "strengths": [
+          "Consistent articulation of reasoning",
+          "Meaningful reflection on understanding and mistakes",
+          "Teacher encouragement of metacognitive processes"
+        ],
+        "weaknesses": [
+          "None significant; reflection is highly effective throughout"
+        ],
+        "suggestions": [
+          "Maintain this emphasis on reflection in future lessons"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: Oh, right! So for the `greater than(int, float)` operator, if the second argument is an integer like 5, it can be implicitly converted to a float (5.0) because most type systems allow that.",
+          "Student: **Consistency check:** #3 fails because `5` is an integer (violates `greater than`'s `float` requirement). #4 succeeds because `10.5` is a *float* (matches the requirement), avoiding the #3 issue. Both expressions now align with strict type rules.",
+          "Teacher: Could you summarize your final updated answers and reasoning for expressions #3 and #4 all in one place to make sure everything looks consistent?"
+        ],
+        "reasoning": "The student consistently engages in interactive learning, collaborating with the teacher to co-construct understanding. The dialogue involves deep discussion, argumentation, and joint problem-solving, moving beyond passive or active engagement to interactive participation.",
+        "strengths": [
+          "Consistent interactive engagement",
+          "Co-construction of understanding through dialogue",
+          "Deep discussion and argumentation"
+        ],
+        "weaknesses": [
+          "None significant; engagement is highly interactive throughout"
+        ],
+        "suggestions": [
+          "Continue fostering this level of interactive engagement in future lessons"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          4,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          2,
+          4
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Coaching": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 88.9,
+    "interpretation": "Very Good pedagogy"
+  }
+}

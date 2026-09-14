@@ -6,372 +6,384 @@
         "score": 4,
         "confidence": 90,
         "evidence": [
-          "\"That's the core idea behind binary search. Let me think through this out loud... Say I'm looking for the number 42 in this sorted list... I start by checking the middle element, 23. Since 42 is bigger than 23, I know the answer must be in the right half.\"",
-          "\"Great question \u2014 binary search only works on sorted data, that's a common misconception.\"",
-          "Dictionary analogy: \"Can anyone tell me what happens when you look up a word in a dictionary? Do you start from page 1?\""
+          "Teacher: 'Can anyone tell me what happens when you look up a word in a dictionary? Do you start from page 1?' (analogy)",
+          "Teacher: 'Let me think through this out loud as if I were solving it for the first time. Say I'm looking for the number 42 in this sorted list: [3, 8, 15, 23, 42, 56, 91]. I start by checking the middle element, 23...'",
+          "Teacher: 'Great question \u2014 binary search only works on sorted data, that's a common misconception.'"
         ],
-        "reasoning": "The teacher uses a familiar analogy (dictionary), provides a concrete worked example with a specific list, and explicitly names and corrects a common misconception (requires sorted data). Explanations are clear and linked to the key insight (eliminating half the search space).",
+        "reasoning": "The teacher translates the abstract algorithm into an accessible everyday analogy (dictionary lookup), provides a concrete worked example and a think-aloud trace of steps, and explicitly addresses a key common misconception (requirement that data be sorted). This demonstrates solid pedagogical content knowledge though the presentation relies on a single representation and example.",
         "strengths": [
-          "Uses an everyday analogy to introduce the concept (dictionary lookup).",
-          "Works through a concrete numerical example step-by-step.",
-          "Explicitly identifies and corrects a common misconception (unsorted lists)."
+          "Uses a relatable analogy (dictionary) to build initial intuition.",
+          "Models a step-by-step worked example on a concrete list.",
+          "Proactively addresses an important misconception about sorted data."
         ],
         "weaknesses": [
-          "Limited variety of representations (no visual diagram, no pseudocode or complexity notation presented).",
-          "Doesn't address edge cases (duplicates, even-length lists, not-found scenarios) in the transcript."
+          "Limited use of multiple representations (no diagram/visual trace, pseudocode, or runtime notation).",
+          "Only one main worked example; edge cases (not-found, duplicates, iterative vs recursive) are not explored.",
+          "No explicit discussion of performance (e.g., Big O) or generalization to larger inputs."
         ],
         "suggestions": [
-          "Add a visual depiction (array with pointers) and show the algorithm on several different examples (including edge cases).",
-          "Introduce the algorithm's complexity (big-O) and relate it to the example to deepen conceptual understanding.",
-          "Show pseudocode or a short code trace so students can see the formal procedure alongside the conceptual explanation."
+          "Add visual traces (highlighting array halves on a board or animation) and present corresponding pseudocode to connect conceptual and formal views.",
+          "Demonstrate additional examples including not-found cases, duplicates, and both iterative/recursive implementations.",
+          "Include a brief discussion of time complexity and ask students to predict the number of steps for larger lists to deepen conceptual understanding."
         ]
       },
       "Feedback": {
         "score": 4,
-        "confidence": 80,
+        "confidence": 85,
         "evidence": [
-          "\"I'll come around and give hints if you get stuck.\"",
-          "\"I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again.\"",
-          "\"Perfect explanation.\""
+          "Teacher: 'Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck.'",
+          "Teacher: 'I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again.'",
+          "Teacher: 'Exactly right.' / 'Perfect explanation.'",
+          "Teacher: 'For homework, try tracing through one more example and be ready to explain your reasoning to the class tomorrow.'"
         ],
-        "reasoning": "The teacher provides corrective feedback (points out the incorrect strategy and gives corrective instruction), offers to circulate and give hints (formative support), and gives positive reinforcement for good explanations. Feedback targets the task and offers an immediate next step (start from middle).",
+        "reasoning": "The teacher provides formative feedback: corrective prompts when students make a common error, positive reinforcement when explanations are correct, and a clear next-step (homework). Feedback is timely and identifies errors and strengths, and sets a follow-up task.",
         "strengths": [
-          "Timely, actionable corrective feedback during the activity.",
-          "Provides encouragement and affirms correct student reasoning.",
-          "Plans for in-the-moment support by circulating and giving hints."
+          "Timely corrective feedback during student practice (redirecting them to the middle).",
+          "Positive reinforcement when students correctly explain reasoning.",
+          "Clear next step via homework to practice the skill further."
         ],
         "weaknesses": [
-          "Feedback is primarily oral and situational; there is little evidence of individualized, diagnostic feedback or explicit success criteria.",
-          "No written or rubric-based guidance shown to help students know how to improve beyond the immediate hint."
+          "Feedback is somewhat general rather than highly specific (e.g., no targeted micro-step suggestions or diagnostic questions for individual students).",
+          "No explicit success criteria or rubric communicated to guide improvement.",
+          "Limited evidence of individualized actionable next steps beyond 'try again' and homework."
         ],
         "suggestions": [
-          "Use explicit success criteria or a brief checklist for correct binary search tracing so students know what 'good' looks like.",
-          "When providing hints, label them by level (e.g., hint 1: conceptual, hint 2: procedural) to scaffold without giving away answers.",
-          "Provide brief written feedback or model student responses so learners can revisit the guidance after class."
+          "Provide more specific, actionable feedback (e.g., 'Check the element at index 3, then compare and narrow to indices 4\u20136; explain why you exclude index 1\u20132').",
+          "Use quick formative checks (e.g., short exit tickets or a checklist) so feedback can be tailored to student errors.",
+          "When giving praise, pair it with a 'next target' to make strengths directly linked to further improvement."
         ]
       },
       "Modeling": {
         "score": 5,
         "confidence": 90,
         "evidence": [
-          "\"Let me think through this out loud as if I were solving it for the first time... I start by checking the middle element, 23. Since 42 is bigger than 23, I know the answer must be in the right half.\""
+          "Teacher: 'Let me think through this out loud as if I were solving it for the first time. Say I'm looking for the number 42 in this sorted list... I start by checking the middle element, 23. Since 42 is bigger than 23, I know the answer must be in the right half.'",
+          "Teacher: 'That's the core idea behind binary search.'"
         ],
-        "reasoning": "The teacher explicitly uses a think-aloud to demonstrate expert problem-solving, showing the decision process (check middle, compare, eliminate half). That makes internal reasoning visible and models how to approach the problem, which supports students' procedural and conceptual learning.",
+        "reasoning": "The teacher explicitly used a think-aloud strategy to demonstrate expert problem solving, making the decision process visible (choosing the middle, comparing, deciding which half to eliminate). This is a clear example of modeling reasoning rather than just giving answers.",
         "strengths": [
-          "Clear think-aloud modeling of decision-making steps.",
-          "Connects the modeled steps to the underlying principle (eliminating half the search space)."
+          "Explicit think-aloud that reveals the decision-making process.",
+          "Stepwise demonstration that connects the abstract idea to concrete actions on a data example.",
+          "Clarifies the key insight (eliminating half the elements) rather than only stating the algorithm."
         ],
         "weaknesses": [
-          "Modeling is limited to a single numeric example in the transcript; other important modeling (pseudocode, iterative vs recursive, handling not-found) is not shown."
+          "Modeling is focused on a single worked example; other variations or approaches (e.g., iterative vs recursive) are not modeled.",
+          "No modeling of debugging or handling of tricky cases (not-found, duplicates)."
         ],
         "suggestions": [
-          "Extend modeling to include a visual pointer diagram and a code/pseudocode trace to connect conceptual and formal representations.",
-          "Model handling of common edge cases (not found, duplicates, even-length list) and debugging of errors students typically make."
+          "Model multiple strategies and edge cases, including a failed search and how to detect it.",
+          "Show how the algorithm maps to pseudocode and then to an implementation sketch to bridge to programming.",
+          "Occasionally model common student mistakes and how to diagnose/fix them (e.g., off-by-one errors)."
         ]
       },
       "Coaching": {
         "score": 4,
-        "confidence": 85,
+        "confidence": 82,
         "evidence": [
-          "\"Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck.\"",
-          "\"I noticed some of you jumped straight to checking the first element \u2014 remember... Try starting from the middle again.\""
+          "Teacher: 'Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck.'",
+          "[Students work in pairs. Teacher circulates.]",
+          "Teacher: 'I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again.'"
         ],
-        "reasoning": "The teacher assigns practice in pairs and offers to circulate and provide hints, and intervenes with corrective guidance when a common error appears. This demonstrates active coaching and scaffolding during the task.",
+        "reasoning": "The teacher circulates and offers hints and corrective prompts during practice, indicating active coaching and scaffolding. However, there is no clear evidence that support is being systematically faded as competence grows or that help is tailored in multiple steps for individual learners.",
         "strengths": [
-          "Provides in-the-moment support and corrective prompts while students practice.",
-          "Encourages peer explanation, which can amplify coaching through collaboration."
+          "Active circulation and readiness to provide hints during pair work.",
+          "Responsive correction of observed student errors (redirecting strategy).",
+          "Encourages peer work combined with teacher support."
         ],
         "weaknesses": [
-          "No clear evidence of graduated fading of support as competence grows.",
-          "No differentiated scaffolds shown for learners at different proficiency levels in the transcript."
+          "No clear evidence of graduated release or intentional fading of support during the activity.",
+          "Limited visible evidence of differentiated scaffolds for students at different levels of understanding.",
+          "Hints described are general rather than stepwise nudges that build independence."
         ],
         "suggestions": [
-          "Plan and document tiered hints/prompts that progressively reduce support (e.g., from guided questions to independent practice).",
-          "Differentiate coaching by preparing extension tasks for students who finish early and targeted micro-tasks for students who struggle.",
-          "Use quick formative checks (exit tickets, quick written justification) to decide when to withdraw support."
+          "Use a planned scaffold sequence: give more structured support to novices (worked steps), then gradually reduce prompts as competence grows.",
+          "Employ diagnostic questioning to identify specific misconceptions and tailor hints (e.g., ask, 'What indices remain after your first comparison? Why?').",
+          "Provide scaffolded worksheets with fading prompts or challenge extensions for more advanced pairs."
         ]
       },
       "Reflection": {
-        "score": 3,
-        "confidence": 80,
+        "score": 4,
+        "confidence": 85,
         "evidence": [
-          "\"Can you explain to your partner why we only look at that half now?\"",
-          "Student A: \"Because we know 8 has to be smaller than 23, and the list is sorted, so it can't be on the right side.\"",
-          "\"Before we move on, can anyone tell me why binary search is faster...\" Student B: \"Because you cut the list in half each time instead of just going one by one.\"",
-          "\"For homework, try tracing through one more example and be ready to explain your reasoning to the class tomorrow.\""
+          "Teacher: 'Can you explain to your partner why we only look at that half now?'",
+          "Student A: 'Because we know 8 has to be smaller than 23, and the list is sorted, so it can't be on the right side.'",
+          "Teacher: 'Before we move on, can anyone tell me why binary search is faster than checking every element one by one?' Student B: 'Because you cut the list in half each time instead of just going one by one.'"
         ],
-        "reasoning": "Students are asked to articulate reasoning to partners and the class and to prepare explanations for the next day; these are opportunities for reflection and articulation. However, reflection is occasional and mostly oral rather than structured or metacognitive.",
+        "reasoning": "Students are prompted to explain reasoning to partners and to the class, demonstrating articulation of understanding and some metacognitive processing. Reflection is present and used to check conceptual understanding, though it appears occasional rather than deeply structured.",
         "strengths": [
-          "Students explain their reasoning aloud to peers and the class, demonstrating articulation of thought.",
-          "Homework asks students to prepare to explain reasoning, encouraging future reflection."
+          "Students are asked to explain their reasoning to partners and the class (constructive explanation).",
+          "Teacher uses student explanations to confirm understanding and surface reasoning."
         ],
         "weaknesses": [
-          "Reflection activities are ad hoc and not structured (no written reasoning, no prompts for metacognitive evaluation).",
-          "Limited evidence of teacher-facilitated reflective questioning that prompts evaluation of strategy choice or error analysis."
+          "Reflection activities are brief and verbal; no written or structured reflection is used to consolidate learning.",
+          "No evidence of prompting students to evaluate their own errors or compare alternative strategies in depth."
         ],
         "suggestions": [
-          "Introduce a brief written reflection prompt (e.g., 'How did you decide which half to choose? Where might this fail?') to make thinking visible and assessable.",
-          "Use metacognitive questions during debriefs (What was your plan? Why did it work? What would you do differently?), and have students compare approaches.",
-          "Include a short error-analysis task so students practice diagnosing and explaining common mistakes."
+          "Include short written reflections (e.g., 'Explain in 2\u20133 sentences why binary search reduces the search space') to deepen metacognitive processing.",
+          "Ask students to compare and justify multiple solution paths or to identify potential failure points (e.g., unsorted input).",
+          "Use self-assessment prompts or rubrics to help students evaluate the completeness of their explanations."
         ]
       },
       "Engagement": {
         "score": 5,
-        "confidence": 85,
+        "confidence": 88,
         "evidence": [
-          "\"Now, in pairs, I want you to trace through finding the number 8 in that same list.\"",
-          "\"Can you explain to your partner why we only look at that half now?\"",
-          "Student responses and whole-class Q&A: Students A and B answer and explain."
+          "Teacher: 'Now, in pairs, I want you to trace through finding the number 8 in that same list.'",
+          "[Students work in pairs. Teacher circulates.]",
+          "Teacher: 'Can you explain to your partner why we only look at that half now?' Student A explains to partner; whole-class Q&A later ('can anyone tell me why binary search is faster')"
         ],
-        "reasoning": "Students work in pairs (interactive), explain to partners, and participate in whole-class Q&A. These activities constitute interactive engagement (co-construction, discussion, explanation), which is the highest ICAP level.",
+        "reasoning": "Students are working in pairs (interactive collaboration), explaining reasoning to partners (interactive/constructive), and participating in whole-class discussion. These activities align with the ICAP framework's highest engagement levels (interactive), suggesting strong cognitive engagement.",
         "strengths": [
-          "Pair work encourages peer interaction and co-construction of knowledge.",
-          "Whole-class questioning invites students to articulate and defend reasoning."
+          "Structured pair work promotes peer explanation and co-construction of understanding.",
+          "Classroom discussion invites multiple students to articulate and defend reasoning.",
+          "Practice task (tracing) requires active cognitive work, not passive listening."
         ],
         "weaknesses": [
-          "Transcript shows short interactions; depth and duration of interactive tasks are limited in the evidence.",
-          "No evidence of structured collaborative tasks that require extended negotiation or consensus-building."
+          "Limited evidence of sustained group argumentation or structured roles to deepen interaction.",
+          "No evidence of students challenging each other's reasoning or engaging in extended collaborative problem solving."
         ],
         "suggestions": [
-          "Use structured peer-instruction methods (e.g., think-pair-share with follow-up justification or small-group problem-solving that requires a shared solution).",
-          "Design tasks that require interdependence (roles, joint artifacts) so interaction must produce new shared understanding.",
-          "Incorporate longer, more complex problems that encourage sustained debate and argumentation about choices and trade-offs."
+          "Use structured collaborative protocols (think\u2013pair\u2013share, jigsaw, assigned roles) to deepen interactive engagement and ensure equitable participation.",
+          "Have pairs present their traces and reasoning and invite peer critique to foster argumentation and co-construction.",
+          "Introduce tasks that require group consensus on more ambiguous or complex cases to increase higher-level interactive discourse."
         ]
       }
     },
     "groq": {
       "PCK": {
         "score": 4,
-        "confidence": 92,
+        "confidence": 95,
         "evidence": [
-          "\"Can anyone tell me what happens when you look up a word in a dictionary?\" \u2013 teacher links binary search to a familiar analogy",
-          "\"Exactly! That's the core idea behind binary search.\" \u2013 clear explanation of the algorithm",
-          "\"binary search only works on sorted data, that's a common misconception.\" \u2013 addresses a key misconception"
+          "\"Can anyone tell me what happens when you look up a word in a dictionary?\"",
+          "\"That's the core idea behind binary search\"",
+          "\"binary search only works on sorted data, that's a common misconception\""
         ],
-        "reasoning": "The teacher transforms the abstract algorithm into a concrete, relatable scenario (dictionary lookup) and uses a concrete numeric example. Misconceptions about sorting are identified and corrected. Explanations are clear and multiple representations (analogy, list example) are provided, though deeper multiple representations (e.g., visual) are absent, keeping the rating at Good.",
+        "reasoning": "The teacher translates the abstract algorithm into a familiar real\u2011world analogy (dictionary lookup) and walks through a concrete numeric example, explicitly addressing a typical misconception about sorted data.",
         "strengths": [
-          "Effective use of everyday analogy",
-          "Clear step\u2011by\u2011step verbal walk\u2011through",
-          "Explicitly corrects a common misconception"
+          "Clear, relatable analogy",
+          "Think\u2011aloud modeling of the algorithm",
+          "Identification and correction of a common misconception"
         ],
         "weaknesses": [
-          "Limited visual or multimodal representations",
-          "No explicit probing of other possible misconceptions"
+          "Limited range of examples (only one numeric list)",
+          "No visual representation or multiple modalities"
         ],
         "suggestions": [
-          "Add a visual diagram of the list halves being eliminated",
-          "Elicit and address additional misconceptions such as off\u2011by\u2011one errors"
+          "Add a visual diagram of the list halves shrinking",
+          "Provide an additional example (e.g., searching in a phone contacts list) to reinforce transfer"
         ]
       },
       "Feedback": {
-        "score": 4,
-        "confidence": 84,
+        "score": 3,
+        "confidence": 80,
         "evidence": [
-          "\"I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time.\"",
+          "\"I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again.\"",
           "\"Exactly right.\"",
           "\"For homework, try tracing through one more example and be ready to explain your reasoning to the class tomorrow.\""
         ],
-        "reasoning": "Feedback is frequent, points out specific errors, reinforces correct reasoning, and provides a concrete next step for independent practice. It does not always link back to explicit learning goals, but overall it meets the criteria for Good feedback.",
+        "reasoning": "The teacher offers corrective feedback and praise, and sets a clear next step for homework, but feedback is not consistently structured around specific learning goals or individualized next\u2011step guidance.",
         "strengths": [
-          "Timely corrective comments",
-          "Positive reinforcement of correct reasoning",
-          "Clear homework expectations linking to next learning step"
+          "Immediate correction of a procedural error",
+          "Positive reinforcement of correct reasoning"
         ],
         "weaknesses": [
-          "Feedback sometimes implicit rather than explicitly tied to learning objectives"
+          "Feedback lacks explicit reference to learning objectives",
+          "Next\u2011step guidance is generic rather than tailored"
         ],
         "suggestions": [
-          "State the specific learning goal (e.g., \"apply binary search to locate a target in O(log n) time\") when giving feedback"
+          "Use a feedback rubric that links student response to the target concept (e.g., 'You correctly identified the middle element, next focus on updating bounds')",
+          "Provide brief written feedback summarizing strengths and specific improvement actions"
         ]
       },
       "Modeling": {
-        "score": 5,
+        "score": 4,
         "confidence": 90,
         "evidence": [
-          "\"Let me think through this out loud as if I were solving it for the first time.\"",
-          "Teacher walks through searching for 42 step\u2011by\u2011step, verbalizing each decision"
+          "\"Let me think through this out loud as if I were solving it for the first time... I start by checking the middle element, 23...\""
         ],
-        "reasoning": "The teacher consistently makes expert thinking visible through a think\u2011aloud protocol, showing each decision point and underlying logic, fulfilling the highest standard of Modeling.",
+        "reasoning": "The teacher demonstrates expert thinking through a think\u2011aloud protocol, making the decision process visible to students.",
         "strengths": [
-          "Consistent think\u2011aloud demonstration",
-          "Explicit articulation of reasoning at each step"
+          "Step\u2011by\u2011step verbalization of algorithmic reasoning",
+          "Explicitly shows comparison and branch decision"
         ],
-        "weaknesses": [],
+        "weaknesses": [
+          "Modeling is limited to a single example"
+        ],
         "suggestions": [
-          "Maintain the practice across multiple examples to reinforce transfer"
+          "Model a mistaken approach and then self\u2011correct to illustrate debugging",
+          "Incorporate visual modeling (e.g., drawing the list and pointers) alongside verbal explanation"
         ]
       },
       "Coaching": {
-        "score": 4,
-        "confidence": 81,
+        "score": 3,
+        "confidence": 75,
         "evidence": [
-          "\"I'll come around and give hints if you get stuck.\"",
-          "\"I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time.\""
+          "\"I noticed some of you jumped straight to checking the first element \u2014 remember... Try starting from the middle again.\""
         ],
-        "reasoning": "The teacher provides scaffolding during pair work, offering hints and corrective prompts that are responsive to student actions. Support is present but not explicitly shown fading over time, placing it at Good.",
+        "reasoning": "The teacher provides on\u2011the\u2011spot hints and reminders while students work in pairs, but there is no clear pattern of gradually withdrawing support as competence increases.",
         "strengths": [
-          "Responsive hints during activity",
-          "Circulates to monitor and support pairs"
+          "Responsive hints during independent work",
+          "Circulates to monitor student progress"
         ],
         "weaknesses": [
-          "No explicit evidence of gradually releasing responsibility"
+          "Scaffolding is not explicitly faded",
+          "Support appears uniform rather than differentiated"
         ],
         "suggestions": [
-          "Introduce a fading schedule (e.g., ask students to try independently before intervening)"
+          "Plan a sequence of prompts (e.g., cue \u2192 hint \u2192 solution) that tapers as students demonstrate mastery",
+          "Use check\u2011in questions to gauge each pair\u2019s understanding before reducing assistance"
         ]
       },
       "Reflection": {
         "score": 4,
-        "confidence": 86,
+        "confidence": 85,
         "evidence": [
           "\"Can you explain to your partner why we only look at that half now?\"",
-          "Student A explains reasoning",
-          "\"Before we move on, can anyone tell me why binary search is faster than checking every element one by one?\""
+          "\"Because we know 8 has to be smaller than 23...\"",
+          "\"Why binary search is faster than checking every element one by one?\""
         ],
-        "reasoning": "Students are repeatedly asked to articulate their reasoning both to peers and the whole class, supporting reflective practice. The activity is regular but not yet systematic for every step, yielding a Good rating.",
+        "reasoning": "Students are repeatedly prompted to articulate their reasoning, both to peers and verbally to the class, fostering metacognitive reflection.",
         "strengths": [
-          "Prompting peer explanation",
-          "Eliciting justification of algorithm efficiency"
+          "Peer explanation requirement",
+          "Direct questioning about algorithmic efficiency"
         ],
         "weaknesses": [
-          "Reflection prompts are limited to a few moments rather than integrated throughout"
+          "Reflection is limited to verbal explanation; no written self\u2011assessment"
         ],
         "suggestions": [
-          "Incorporate quick think\u2011pair\u2011share reflections after each decision point"
+          "Add a quick exit ticket where students write one misconception they cleared and one lingering question",
+          "Encourage students to compare binary search with linear search in a brief written reflection"
         ]
       },
       "Engagement": {
-        "score": 5,
-        "confidence": 79,
+        "score": 4,
+        "confidence": 90,
         "evidence": [
-          "Teacher assigns pair work to trace through an example",
-          "Students discuss and explain reasoning to each other",
-          "Teacher asks whole\u2011class questions that require student responses"
+          "\"Now, in pairs, I want you to trace through finding the number 8 in that same list.\"",
+          "\"Can you explain to your partner why we only look at that half now?\""
         ],
-        "reasoning": "The lesson moves beyond passive listening to constructive and interactive tasks: pair collaboration, peer explanation, and class discussion. This sustained interactive involvement aligns with the highest ICAP level.",
+        "reasoning": "The pair activity moves learners from passive listening to constructive and interactive tasks (tracing, explaining, discussing), aligning with higher levels of the ICAP framework.",
         "strengths": [
-          "Collaborative pair activity",
-          "Frequent student talk and peer teaching"
+          "Collaborative pair work encourages co\u2011construction of knowledge",
+          "Students actively generate explanations"
         ],
-        "weaknesses": [],
+        "weaknesses": [
+          "Limited variety of interactive formats (no whole\u2011class debate or problem\u2011creation)"
+        ],
         "suggestions": [
-          "Continue to embed brief whole\u2011class argumentation or co\u2011construction tasks to deepen interaction"
+          "Introduce a brief whole\u2011class debate on when binary search is preferable versus other search methods",
+          "Have pairs create their own example lists to test the algorithm"
         ]
       }
     },
     "gemini": {
       "PCK": {
-        "score": 4,
+        "score": 5,
         "confidence": 95,
         "evidence": [
           "Do you start from page 1?",
-          "Exactly! That's the core idea behind binary search.",
           "binary search only works on sorted data, that's a common misconception."
         ],
-        "reasoning": "The teacher exhibits strong pedagogical content knowledge by starting with an intuitive physical analogy (dictionary search) to frame the abstract computer science concept. They also proactively and effectively address a foundational computer science misconception regarding the necessity of sorted inputs for binary search.",
+        "reasoning": "The teacher demonstrates excellent Pedagogical Content Knowledge by utilizing a highly relevant real-world analogy (dictionary lookup) to introduce the concept. They also proactively address a major threshold concept and common misconception in computer science (the requirement of sorted data).",
         "strengths": [
-          "Use of a concrete, real-world analogy to establish student intuition before technical formalization.",
-          "Direct and proactive addressing of a key prerequisite misconception (unsorted lists)."
+          "Effective use of the dictionary analogy to ground an abstract algorithmic concept in daily experience.",
+          "Proactive identification and immediate correction of the crucial 'unsorted data' misconception."
         ],
         "weaknesses": [
-          "No visual representation (e.g., box diagrams, index pointers) was utilized alongside the verbal explanation of the list array, which could leave visual learners behind."
+          "Could explicitly connect the conceptual 'cutting in half' to formal algorithmic complexity terms (like logarithmic time) if appropriate for the student level."
         ],
         "suggestions": [
-          "Introduce visual pointer markers (low, mid, high) on a whiteboard or screen to visually support the list trace."
+          "Introduce formal terminology (O(log n)) once the conceptual mechanics of the search are fully grasped."
         ]
       },
       "Feedback": {
         "score": 4,
         "confidence": 90,
         "evidence": [
-          "I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time. Try starting from the middle again."
+          "Exactly right.",
+          "Perfect explanation.",
+          "I noticed some of you jumped straight to checking the first element \u2014 remember, the point of binary search is to eliminate half the remaining elements each time."
         ],
-        "reasoning": "The teacher uses active monitoring to deliver timely corrective feedback during the practice phase. They identify a specific procedural error (reverting to a linear search mindset) and guide the students back toward the core mechanism of binary search.",
+        "reasoning": "The teacher provides timely feedback during student application. Corrective feedback is given to the whole class when a common error is noticed, and verbal reinforcement is given for correct reasoning.",
         "strengths": [
-          "Formative feedback is delivered in real-time during the task.",
-          "Corrective feedback explains the 'why' (reminding them of the goal to eliminate half) rather than just giving the correct step."
+          "Monitoring during pair-work allows for immediate, relevant corrective feedback.",
+          "Positive reinforcement validates and encourages student articulation."
         ],
         "weaknesses": [
-          "Feedback is mostly delivered at a group/general level rather than showing highly individualized diagnostic feedback."
+          "Feedback is occasionally directive rather than exploratory (telling them to start from the middle rather than asking them where they should start)."
         ],
         "suggestions": [
-          "Offer individual feedback by checking the specific pointers chosen by struggling pairs, asking 'What element did your search space start with?'"
+          "Try asking guiding questions instead of directly telling students to start from the middle again (e.g., 'What is the first step of our strategy?')."
         ]
       },
       "Modeling": {
-        "score": 4,
+        "score": 5,
         "confidence": 95,
         "evidence": [
-          "Let me think through this out loud as if I were solving it for the first time. Say I'm looking for the number 42 in this sorted list: [3, 8, 15, 23, 42, 56, 91]. I start by checking the middle element..."
+          "Let me think through this out loud as if I were solving it for the first time. Say I'm looking for the number 42 in this sorted list..."
         ],
-        "reasoning": "The teacher uses an explicit metacognitive 'think-aloud' strategy, modeling how an expert solves the problem step-by-step and detailing the rationale behind discarding one half of the search space.",
+        "reasoning": "The teacher models the cognitive process of executing a binary search using an explicit think-aloud protocol. This exposes the expert decision-making sequence instead of just presenting the final algorithmic steps.",
         "strengths": [
-          "Explicit framing of the demonstration as a cognitive 'think-aloud' process.",
-          "Clear explanation of decision-making criteria (e.g., discarding the left half because 42 is larger than 23)."
+          "Explicitly labels the strategy ('think through this out loud as if I were solving it for the first time').",
+          "Clearly demonstrates the logic of discarding half of the search space."
         ],
-        "weaknesses": [
-          "The modeling segment only shows a single step of the process (checking the first middle element) without modeling the subsequent recursive steps needed to finally arrive at the target (42)."
-        ],
+        "weaknesses": [],
         "suggestions": [
-          "Model a complete trace down to the single-element base case to demonstrate the repetitive cycle of binary search before releasing students to practice."
+          "Maintain this strong think-aloud modeling practice for more complex algorithm tracings in future lessons."
         ]
       },
       "Coaching": {
         "score": 4,
-        "confidence": 90,
+        "confidence": 85,
         "evidence": [
-          "Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck.",
-          "Try starting from the middle again."
+          "Now, in pairs, I want you to trace through finding the number 8 in that same list. I'll come around and give hints if you get stuck."
         ],
-        "reasoning": "The lesson utilizes a classic gradual release framework (I do, we do/you do in pairs). The teacher acts as a coach, offering prompts and hints ('try starting from the middle') rather than taking over the problem-solving for the student.",
+        "reasoning": "The teacher provides clear guidance and scaffolding through structured peer work. They actively circulate to provide hints, moving students from guided instruction toward independence, though full fading is not yet shown in the short excerpt.",
         "strengths": [
-          "Scaffolded transition from direct modeling to collaborative pair practice.",
-          "Coaching interventions consist of helpful prompts that encourage self-correction."
+          "Structures the transition from teacher modeling to cooperative application.",
+          "Actively monitors and intervenes with structural hints when students struggle."
         ],
         "weaknesses": [
-          "The transcript shows coaching for only one phase of the lesson; there is limited evidence of systematic 'fading' of scaffolding for independent work within this segment."
+          "Fading of the scaffolding is promised for homework but not actively demonstrated within the recorded class interaction."
         ],
         "suggestions": [
-          "Provide a scaffolded worksheet with diminishing prompts (e.g., explicit steps for the first trace, and blank spaces for subsequent independent traces)."
+          "Before sending students home with the homework, have them write down a simple 3-step checklist to act as a faded prompt for independent work."
         ]
       },
       "Reflection": {
-        "score": 4,
-        "confidence": 92,
+        "score": 5,
+        "confidence": 95,
         "evidence": [
           "Can you explain to your partner why we only look at that half now?",
-          "Before we move on, can anyone tell me why binary search is faster than checking every element one by one?",
           "be ready to explain your reasoning to the class tomorrow."
         ],
-        "reasoning": "Students are consistently pushed to articulate their thinking and explain the underlying reasoning. The teacher avoids letting students just state answers, explicitly demanding explanations for both specific choices and broader algorithm efficiency.",
+        "reasoning": "The teacher prioritizes articulation and reflection, prompting students to explain the 'why' behind their algorithmic choices both to their peers and to the class, rather than just executing steps mechanically.",
         "strengths": [
-          "Prompts students to explain the logic to their peers, enhancing active articulation.",
-          "Extends reflection to homework with an expectation of classroom presentation."
+          "Asks students to explain the logic of discarding the right half to their peers.",
+          "Embeds reflective explanation into the homework requirements."
         ],
-        "weaknesses": [
-          "The reflection is verbally led, meaning only a couple of vocal students (Student A and Student B) express their reasoning to the whole class."
-        ],
+        "weaknesses": [],
         "suggestions": [
-          "Have all students write a 1-2 sentence explanation on an exit ticket or mini-whiteboard to ensure 100% of the class engages in individual written articulation."
+          "Ask students to write down their explanations or draw a quick diagram of the elimination process to ground the reflection in multiple modalities."
         ]
       },
       "Engagement": {
-        "score": 4,
+        "score": 5,
         "confidence": 90,
         "evidence": [
-          "Now, in pairs, I want you to trace through finding the number 8...",
-          "Can you explain to your partner why we only look at that half now?"
+          "[Students work in pairs. Teacher circulates.]",
+          "Can you explain to your partner why..."
         ],
-        "reasoning": "Student engagement reaches the 'Interactive' level under the ICAP framework. Students work collaboratively in pairs to trace the search algorithm and are explicitly asked to explain concepts to one another, co-constructing their understanding.",
+        "reasoning": "The lesson moves up the ICAP scale to the Interactive level. Students do not merely listen (Passive) or trace individually (Active/Constructive); they actively work in pairs, co-constructing their understanding of the tracing process and explaining concepts to one another.",
         "strengths": [
-          "Use of pair-work ensures student-student interaction.",
-          "The lesson flow prompts active questioning from students ('What if the list isn't sorted?')."
+          "Incorporates structured partner work that requires joint problem-solving.",
+          "High level of cognitive involvement, keeping students active throughout the segment."
         ],
         "weaknesses": [
-          "The pair-work instructions are relatively open-ended, which can sometimes lead to one dominant student doing the bulk of the work."
+          "The transcript only directly records responses from two students (A and B), though the instruction is designed for the whole class."
         ],
         "suggestions": [
-          "Incorporate structured collaborative roles, such as assigning one student to write/trace (the driver) and the other to check rules and explain decisions (the navigator)."
+          "Use structured roles in pair work (e.g., one student points to the index, the other decides which half to discard) to ensure equal participation."
         ]
       }
     }
@@ -379,47 +391,47 @@
   "aggregated": {
     "factor_scores": {
       "PCK": {
-        "mean": 4,
+        "mean": 4.33,
         "individual_scores": [
           4,
           4,
-          4
+          5
         ],
-        "agreement_stdev": 0.0
+        "agreement_stdev": 0.47
       },
       "Feedback": {
-        "mean": 4,
+        "mean": 3.67,
         "individual_scores": [
           4,
-          4,
+          3,
           4
         ],
-        "agreement_stdev": 0.0
+        "agreement_stdev": 0.47
       },
       "Modeling": {
         "mean": 4.67,
         "individual_scores": [
           5,
-          5,
-          4
+          4,
+          5
         ],
         "agreement_stdev": 0.47
       },
       "Coaching": {
-        "mean": 4,
-        "individual_scores": [
-          4,
-          4,
-          4
-        ],
-        "agreement_stdev": 0.0
-      },
-      "Reflection": {
         "mean": 3.67,
         "individual_scores": [
-          3,
           4,
+          3,
           4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
         ],
         "agreement_stdev": 0.47
       },
@@ -427,13 +439,13 @@
         "mean": 4.67,
         "individual_scores": [
           5,
-          5,
-          4
+          4,
+          5
         ],
         "agreement_stdev": 0.47
       }
     },
-    "pedagogy_score": 83.4,
+    "pedagogy_score": 84.5,
     "interpretation": "Very Good pedagogy"
   }
 }

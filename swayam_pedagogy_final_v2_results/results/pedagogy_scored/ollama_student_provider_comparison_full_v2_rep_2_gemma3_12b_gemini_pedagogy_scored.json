@@ -1,0 +1,518 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_gemma3_12b_gemini",
+    "student_model": "gemma3:12b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Teacher: You've correctly identified that pass-by-result requires copying values back into original variables!",
+          "Teacher: You're completely right that in pass-by-result, parameters do not receive the initial values of the arguments when the function starts.",
+          "Teacher: You've nailed it. The value would be whatever happened to be in memory, and that's precisely why this approach fails.",
+          "Teacher: You've analyzed expression 4 thoroughly and correctly!",
+          "Teacher: You've successfully worked through the Hoare triple, derived the weakest preconditions step-by-step, and analyzed both the equality and inequality cases."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge (PCK) by transforming complex computer science concepts (pass-by-result, type checking, Hoare logic) into forms students can understand. The teacher uses clear explanations, addresses misconceptions proactively, and adapts to student needs. The teacher consistently identifies and corrects student misunderstandings (e.g., the difference between pass-by-result and pass-by-value-result) and provides multiple representations of concepts (e.g., analogies like 'labeled boxes'). The teacher also demonstrates strong adaptation to student needs by guiding them through increasingly complex questions.",
+        "strengths": [
+          "Exceptional ability to transform complex concepts into understandable forms",
+          "Proactive identification and correction of student misconceptions",
+          "Use of multiple representations (analogies, examples, step-by-step reasoning)",
+          "Strong adaptation to student needs and progressive disclosure of information",
+          "Clear, accurate, and deep explanations of technical concepts"
+        ],
+        "weaknesses": [
+          "Occasional accidental pasting of meta-comments by the student disrupts flow, but teacher handles this gracefully"
+        ],
+        "suggestions": [
+          "Consider providing a visual aid (e.g., diagram) for pass-by-result to further enhance understanding",
+          "Explicitly define terms like 'original variables' early in the discussion to avoid initial confusion"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Teacher: You've done a thorough job working through the first section!",
+          "Teacher: You've correctly identified that pass-by-result requires copying values back into original variables!",
+          "Teacher: You're completely right that in pass-by-result, parameters do not receive the initial values of the arguments when the function starts.",
+          "Teacher: That's spot on! Now you have the correct condition after the second step: w = -2*v + u.",
+          "Teacher: You've successfully worked through the entire problem, from deriving the weakest preconditions to explaining how the inequality broadens the valid initial states.",
+          "Teacher: Spot on! Your intuition about the wider range of acceptable starting values is completely correct."
+        ],
+        "reasoning": "The teacher provides consistently high-quality feedback that addresses learning goals, current performance, and future improvement. Feedback is specific, actionable, and directly tied to the student's reasoning. The teacher regularly identifies strengths (e.g., 'You've nailed it'), weaknesses (e.g., 'You're on the right track in identifying what the weakest precondition represents'), and provides clear next steps. Feedback is consistently constructive and helps the student understand both what they did well and how to improve.",
+        "strengths": [
+          "Feedback consistently addresses learning goals, current performance, and next steps",
+          "Specific, actionable, and directly tied to student reasoning",
+          "Balances praise with constructive guidance",
+          "Helps students understand both strengths and areas for improvement",
+          "Regularly reinforces correct understanding and corrects misconceptions"
+        ],
+        "weaknesses": [
+          "Minor: Feedback could occasionally be more explicit about the 'why' behind corrections (though this is already strong)"
+        ],
+        "suggestions": [
+          "Occasionally summarize the student's progress to reinforce learning",
+          "Explicitly connect feedback to broader learning objectives"
+        ]
+      },
+      "Modeling": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "Teacher: Let's look closely at the function signature: function update (a, b). How many parameters does update accept, and how many arguments are being passed into it in the function calls listed in question 1?",
+          "Teacher: You have the right idea about the copy-back phase copying values from local parameters back to the original variables!",
+          "Teacher: However, think about what kinds of expressions can be passed as arguments in a function call. Can you pass a constant value or an expression like x + 1 into a function that uses pass-by-result? Why or why not?",
+          "Teacher: You're completely right that you cannot assign a value to a constant!",
+          "Teacher: Now, look closely at the function calls listed in question 1 (like update(x, y), update(x, z), etc.): are any of those arguments constants, or are they all variables?",
+          "Teacher: You've correctly noticed that all the arguments (x, y, and z) are variables, not constants!",
+          "Teacher: So if they are all variables, can we assign values back to them during the copy-back phase? Think about what happens if a variable is passed in more than once to the same function call..."
+        ],
+        "reasoning": "The teacher consistently demonstrates expert thinking and problem-solving processes through well-structured questions and guided reasoning. The teacher models the thought process of breaking down complex problems (e.g., pass-by-result, type checking, Hoare logic) into smaller, manageable steps. The teacher uses think-aloud strategies implicitly by guiding the student through the reasoning process, and provides real-world examples (e.g., assignment to constants). The modeling is visible and consistent throughout the interaction.",
+        "strengths": [
+          "Consistently demonstrates expert thinking through structured questioning",
+          "Models problem-solving processes by breaking down complex problems",
+          "Uses think-aloud strategies implicitly through guided reasoning",
+          "Provides real-world examples to illustrate concepts",
+          "Makes expert thinking visible and accessible to the student"
+        ],
+        "weaknesses": [
+          "Minor: Could occasionally make the modeling more explicit (e.g., 'Let me think aloud about this...')"
+        ],
+        "suggestions": [
+          "Occasionally use explicit think-aloud statements to further model expert thinking",
+          "Provide more real-world analogies to complement the technical explanations"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Teacher: To help you get started, can you recall what happens during the copy-back phase of pass-by-result when a function takes arguments?",
+          "Teacher: You have the right idea about the copy-back phase copying values from local parameters back to the original variables!",
+          "Teacher: However, think about what kinds of expressions can be passed as arguments in a function call. Can you pass a constant value or an expression like x + 1 into a function that uses pass-by-result? Why or why not?",
+          "Teacher: You're completely right that you cannot assign a value to a constant!",
+          "Teacher: Now, look closely at the function calls listed in question 1 (like update(x, y), update(x, z), etc.): are any of those arguments constants, or are they all variables?",
+          "Teacher: You've correctly noticed that all the arguments (x, y, and z) are variables, not constants!",
+          "Teacher: So if they are all variables, can we assign values back to them during the copy-back phase? Think about what happens if a variable is passed in more than once to the same function call...",
+          "Teacher: You've got a great grasp on the relationship defined by the precondition.",
+          "Teacher: Now, let's look at part 3(b): if the postcondition were changed from Q : w = 0 to Q : w \u2265 0, how would that change the weakest precondition you just derived?"
+        ],
+        "reasoning": "The teacher provides outstanding coaching and scaffolding throughout the interaction. The teacher offers structured assistance that is consistently adapted to the student's progress. The teacher provides hints, guidance, and questions that gradually lead the student to deeper understanding. The scaffolding is strategically provided and gradually fades as the student demonstrates competence (e.g., the student eventually derives the weakest preconditions independently). The teacher's questions are targeted and help the student build their own understanding.",
+        "strengths": [
+          "Provides structured, targeted hints and guidance",
+          "Adapts scaffolding to student progress and needs",
+          "Gradually fades support as student competence grows",
+          "Uses questions to guide student thinking without giving answers",
+          "Consistently meets student needs with appropriate support"
+        ],
+        "weaknesses": [
+          "None significant; the coaching is consistently high-quality"
+        ],
+        "suggestions": [
+          "Occasionally summarize the scaffolding steps to reinforce the learning process",
+          "Explicitly state when scaffolding is being reduced to help the student recognize their progress"
+        ]
+      },
+      "Reflection": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "Student: Okay, let me think about that. With pass-by-result, the function gets copies of the arguments initially, just like with pass-by-value. But the key difference is that during the copy-back phase, the function is supposed to copy values back into the original variables that were passed in.",
+          "Student: Okay, let me think about that. The greater than operator expects an int and a float as inputs. In the expression greater than(10, 5), 10 is an integer, but 5 is also an integer. So, it doesn't match the required types.",
+          "Student: Okay, so now the postcondition is w >= 0 instead of w = 0. I need to figure out how that changes the weakest precondition I derived earlier.",
+          "Student: Okay, so basically, when the postcondition changes from w = 0 to w >= 0, it makes the initial states more flexible.",
+          "Student: Okay, let's put it all together. Here's my summary of how each expression works, with the corrections we made:",
+          "Student: Okay, I think I understand everything now. I've walked through the derivation of the preconditions for both the equality and inequality postconditions, and I understand how the inequality makes the initial states more flexible."
+        ],
+        "reasoning": "The teacher consistently incorporates reflection and articulation into the learning activities. The student is regularly asked to explain their reasoning, reflect on their understanding, and communicate their thought processes. The student demonstrates meaningful reflection by summarizing their understanding, explaining their reasoning step-by-step, and articulating the relationships between concepts. The reflection is constructive and helps the student solidify their understanding.",
+        "strengths": [
+          "Students are consistently asked to explain reasoning and reflect on understanding",
+          "Reflection activities are deeply integrated into learning",
+          "Students engage in meaningful, constructive reflection",
+          "Reflection helps students solidify and articulate their understanding",
+          "Students demonstrate the ability to summarize and connect concepts"
+        ],
+        "weaknesses": [
+          "Minor: Reflection could occasionally be more explicit (e.g., 'Why do you think that?')"
+        ],
+        "suggestions": [
+          "Occasionally ask students to reflect on their learning process (e.g., 'How did you arrive at that conclusion?')",
+          "Encourage students to connect new concepts to prior knowledge more explicitly"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "Student: Okay, let's tackle this. I'll try to work through each part of the question on my own first.",
+          "Student: Okay, let me think about that. With pass-by-result, the function gets copies of the arguments initially...",
+          "Student: Okay, let me look at that function signature and the calls to update again.",
+          "Student: Okay, let's think about expression 4: and(greater than(20, 10.5), equals(\"hi\", \"hi\")).",
+          "Student: Okay, so now the postcondition is w >= 0 instead of w = 0. I need to figure out how that changes the weakest precondition I derived earlier.",
+          "Student: Okay, let's put it all together. Here's my summary of how each expression works, with the corrections we made:",
+          "Student: Okay, I think I understand everything now. I've walked through the derivation of the preconditions..."
+        ],
+        "reasoning": "The student demonstrates consistently high levels of cognitive engagement, reaching the 'Interactive' level of the ICAP framework. The student actively participates in discussions, collaborates with the teacher to co-construct understanding, and engages in argumentation and reasoning. The student frequently explains their thought processes, questions assumptions, and summarizes their understanding. The engagement is constructive and interactive throughout the interaction.",
+        "strengths": [
+          "Students consistently engage in interactive learning (discussion, collaboration, argumentation)",
+          "Students actively participate in co-constructing understanding",
+          "Students frequently explain reasoning, question assumptions, and summarize understanding",
+          "Engagement is constructive and deeply involved in the learning process",
+          "Students demonstrate high levels of cognitive involvement"
+        ],
+        "weaknesses": [
+          "None significant; engagement is consistently at the highest level"
+        ],
+        "suggestions": [
+          "Encourage students to engage in peer discussion to further enhance interactive learning",
+          "Provide opportunities for students to present their reasoning to the class"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: In pass-by-result, the function's parameters are *not* initialized with the values of the arguments when the function starts (that's pass-by-value-result). Instead, pass-by-result only does the copy-back *at the end* of the function.",
+          "Teacher: Think about what happens conceptually if you try to copy a result back into something that isn't a simple variable\u2014like a constant value (e.g., `5`) or an expression. Can you assign a new value to a constant or an expression?",
+          "Teacher: In Hoare logic, when we compute the weakest precondition for an assignment like `v := E`, we take the postcondition and replace every free occurrence of the variable being assigned (`v`) with the expression (`E`)."
+        ],
+        "reasoning": "The teacher demonstrates exceptional Pedagogical Content Knowledge by identifying and resolving deep misconceptions about parameter passing (specifically the initialization phase of pass-by-result) and formal logic (Hoare triples). The teacher uses precise terminology and effective analogies (e.g., assignment to constants) to clarify abstract concepts. The scaffolding of the weakest precondition problem is particularly strong, breaking down a complex algebraic process into manageable steps.",
+        "strengths": [
+          "Accurate and precise content knowledge in both programming semantics and formal methods.",
+          "Proactive identification of common student errors (e.g., assuming pass-by-result initializes parameters).",
+          "Effective use of contrast between similar concepts (pass-by-value vs. pass-by-result vs. pass-by-value-result)."
+        ],
+        "weaknesses": [
+          "The transcript contains significant technical noise where the 'Student' mistakenly generates evaluation summaries, which might obscure the clean flow of teaching in a real-world setting, though the teacher corrects it well."
+        ],
+        "suggestions": [
+          "Continue using code snippets and specific variable examples to ground abstract logical rules."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You've correctly identified that pass-by-result requires copying values back into original variables! However, think about what happens conceptually if you try to copy a result back into something that isn't a simple variable...",
+          "Teacher: Spot on! Because `a` starts uninitialized, trying to read it on the right-hand side of `a = a + y` fails immediately.",
+          "Teacher: That's spot on! Your analysis of the types and arguments for expression 4 is completely correct."
+        ],
+        "reasoning": "The feedback is consistent, specific, and actionable. The teacher validates correct reasoning ('Spot on', 'You're on the right track') and provides precise corrective guidance when errors occur ('However, remember how...'). The feedback always connects current performance to the learning goal (understanding the mechanics of parameter passing and type checking).",
+        "strengths": [
+          "Timely and specific confirmation of understanding.",
+          "Constructive redirection of incorrect assumptions without being dismissive.",
+          "Clear language that reinforces the 'why' behind the answer."
+        ],
+        "weaknesses": [
+          "Feedback could sometimes be more explicit about *why* a previous step was partially incorrect before providing the next hint, though this is minor given the high quality of the hints."
+        ],
+        "suggestions": [
+          "Use slightly more varied affirmative phrases to avoid potential student desensitization to the word 'Spot on'."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Look closely at the function calls listed in question 1 (like `update(x, y)`, `update(x, z)`, etc.): are any of those arguments constants, or are they all variables?",
+          "Teacher: Let's look closely at your second step... When we compute the weakest precondition for an assignment statement like `v := expression`, how do we substitute variables in our condition?"
+        ],
+        "reasoning": "The teacher relies heavily on the Socratic method (questioning) rather than direct modeling of the thought process. While the teacher guides the student through the logic, they do not explicitly 'think aloud' or demonstrate the full resolution of a problem independently. The teaching style is inquiry-based, which is highly effective for high-order thinking, but it scores lower on 'Modeling' because the expert process is revealed through guidance rather than demonstration.",
+        "strengths": [
+          "Guides students to model their own thinking through targeted questions.",
+          "Uses specific code examples as anchors for the discussion."
+        ],
+        "weaknesses": [
+          "Lack of explicit think-aloud strategies where the teacher demonstrates their own reasoning path before asking the student to replicate it.",
+          "Less visualization of the 'expert lens' compared to direct demonstration."
+        ],
+        "suggestions": [
+          "Incorporate a brief think-aloud for a very similar but slightly simpler example to explicitly model the substitution rule before asking the student to apply it."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: To help you get started, can you recall what happens during the *copy-back* phase...?",
+          "Teacher: Now, think about what kinds of expressions can be passed as arguments... Can you pass a constant value...?",
+          "Teacher: In your second step... what algebraic rule of substitution do we apply...?"
+        ],
+        "reasoning": "The coaching is strategic and follows a clear scaffolding ladder. The teacher starts with recall, moves to application of rules, then to novel application in complex scenarios (inequalities). The support is carefully calibrated: when the student struggles with the 'uninitialized' concept, the teacher narrows the focus to a single line of code. The scaffolding fades as the student gains confidence, moving from basic recall to complex derivation.",
+        "strengths": [
+          "Gradual release of responsibility: from guided questioning to independent derivation.",
+          "Precise hints that point to the specific cognitive gap (e.g., distinguishing reading from writing in memory).",
+          "Patient handling of student errors and 'glitches' in the transcript."
+        ],
+        "weaknesses": [
+          "None observed; the scaffolding is exceptionally well-tuned."
+        ],
+        "suggestions": [
+          "Maintain this level of precision in hinting, especially for more complex logical derivations."
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: So, basically, when the postcondition changes from `w = 0` to `w >= 0`, it makes the initial states more flexible... It's like the program is allowed a little bit of extra wiggle room at the beginning.",
+          "Student: The problem arises because the `update` function receives `a` and `b` as parameters... There's no inherent connection or 'memory' within `a` and `b` that tells the function, 'Oh, this copy of the value used to be `x`.'",
+          "Student: I think that's why pass-by-result isn't applicable here... It's too ambiguous."
+        ],
+        "reasoning": "The student is regularly asked to explain their reasoning and reflect on the implications of the concepts. The student uses analogies ('labeled boxes', 'wiggle room') to articulate their understanding, which indicates deep reflection. The teacher explicitly asks for summaries and reflections on how changes (like equality vs. inequality) affect the system.",
+        "strengths": [
+          "Students articulate reasoning clearly using their own analogies.",
+          "Reflection on the 'why' rather than just the 'what'.",
+          "Student demonstrates metacognition by correcting their own initial misconceptions."
+        ],
+        "weaknesses": [
+          "Reflection is sometimes prompted directly by the teacher; more independent reflection prompts could be added."
+        ],
+        "suggestions": [
+          "Ask the student to predict what might happen in a new scenario without immediate feedback to deepen independent reflection."
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Student: I think the key lies in what happens *before* any assignment takes place... The function needs to know which original variables these copies represent... It's like having two identical boxes, but no labels...",
+          "Student: Basically, when the postcondition changes... it makes the initial states more flexible... It's like the program is allowed a little bit of extra wiggle room...",
+          "Student: The problem arises because... There's no inherent connection or 'memory'..."
+        ],
+        "reasoning": "The interaction is consistently at the Interactive and Constructive levels of the ICAP framework. The student is not just answering questions but co-constructing knowledge, proposing hypotheses, testing them against code logic, and refining their mental models. The dialogue is a genuine partnership in problem-solving, with the student actively manipulating concepts and the teacher challenging them to refine their arguments.",
+        "strengths": [
+          "High level of cognitive engagement with abstract concepts.",
+          "Student generates and refines analogies independently.",
+          "Active dialogue where the student challenges and corrects their own thinking."
+        ],
+        "weaknesses": [
+          "Transcript artifacts (meta-comments) occasionally disrupt the flow of the interactive dialogue, though the human interaction itself is highly engaged."
+        ],
+        "suggestions": [
+          "Continue to encourage the student to lead with hypotheses before confirming with the teacher."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The student demonstrates a strong understanding of pass-by-value, pass-by-reference, and pass-by-value-result, explaining how each affects variable values after function calls.",
+          "They correctly identify that pass-by-result requires a clear mapping of local variables to original variables for the copy-back phase, which is missing in the given pseudocode."
+        ],
+        "reasoning": "The student shows a deep understanding of parameter passing mechanisms, explaining concepts clearly and applying them to the pseudocode. They identify a key issue with pass-by-result: the lack of a defined mapping for the copy-back phase.",
+        "strengths": [
+          "Clear explanations of pass-by-value, pass-by-reference, and pass-by-value-result",
+          "Accurate identification of the problem with pass-by-result in the given context",
+          "Ability to connect theoretical concepts to specific code examples"
+        ],
+        "weaknesses": [
+          "Does not explicitly discuss potential misconceptions about pass-by-result",
+          "Could provide more examples of how pass-by-result works in other contexts"
+        ],
+        "suggestions": [
+          "Encourage the student to explore common misconceptions about pass-by-result",
+          "Provide additional examples of pass-by-result in different programming scenarios"
+        ]
+      },
+      "Feedback": {
+        "score": 5,
+        "confidence": 98,
+        "evidence": [
+          "The teacher provides detailed, actionable feedback, guiding the student to discover the core issue with pass-by-result through targeted questions.",
+          "Feedback consistently links the student's current understanding to the next steps, such as asking about the copy-back phase and the function signature."
+        ],
+        "reasoning": "The teacher's feedback is highly effective, using a Socratic approach to guide the student toward deeper understanding. It addresses learning goals, current performance, and future improvement clearly and actionably.",
+        "strengths": [
+          "Socratic questioning that encourages critical thinking",
+          "Clear linkage between current understanding and next steps",
+          "Consistent focus on core concepts and their application"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more explicit summaries of key points",
+          "Some questions are very advanced (e.g., aliasing), which might not be suitable for all students"
+        ],
+        "suggestions": [
+          "Provide occasional summaries to reinforce key concepts",
+          "Ensure advanced topics are introduced at an appropriate pace"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher models expert thinking by breaking down the problem into manageable parts, such as focusing on the copy-back phase and the function signature.",
+          "They demonstrate how to analyze function calls and parameter passing mechanisms, making their thought process visible."
+        ],
+        "reasoning": "The teacher effectively models expert thinking by systematically analyzing the problem and guiding the student through the reasoning process. They make their thought process visible through structured questioning and examples.",
+        "strengths": [
+          "Systematic breakdown of complex problems",
+          "Clear demonstration of analytical thinking",
+          "Effective use of examples to illustrate concepts"
+        ],
+        "weaknesses": [
+          "Could provide more explicit think-aloud strategies",
+          "Some explanations might be too brief for less advanced students"
+        ],
+        "suggestions": [
+          "Incorporate more explicit think-aloud strategies",
+          "Ensure explanations are tailored to the student's level of understanding"
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 97,
+        "evidence": [
+          "The teacher provides strategic guidance, gradually increasing the complexity of questions to scaffold the student's learning.",
+          "Support is adapted to the student's progress, with hints and structured assistance provided as needed."
+        ],
+        "reasoning": "The teacher's coaching is highly effective, using a scaffolding approach to build the student's understanding incrementally. Support is strategically provided and gradually removed as the student becomes more independent.",
+        "strengths": [
+          "Effective use of scaffolding to build understanding",
+          "Strategic provision of hints and assistance",
+          "Gradual removal of support as student gains competence"
+        ],
+        "weaknesses": [
+          "Could occasionally check for understanding more explicitly",
+          "Some questions might be too challenging for less prepared students"
+        ],
+        "suggestions": [
+          "Incorporate more explicit checks for understanding",
+          "Ensure questions are appropriately leveled for the student's current knowledge"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 93,
+        "evidence": [
+          "The student consistently reflects on their understanding, articulating their thought processes and refining their reasoning throughout the conversation.",
+          "They evaluate their initial assumptions and adjust their understanding based on the teacher's feedback."
+        ],
+        "reasoning": "The student engages in meaningful reflection, explaining their reasoning and evaluating their understanding. They actively participate in the learning process, refining their thoughts based on feedback.",
+        "strengths": [
+          "Articulate explanation of thought processes",
+          "Willingness to revise understanding based on feedback",
+          "Active engagement in the learning process"
+        ],
+        "weaknesses": [
+          "Could occasionally provide more structured reflections",
+          "Some reflections are less detailed than others"
+        ],
+        "suggestions": [
+          "Encourage more structured reflection activities",
+          "Prompt for more detailed reflections on key concepts"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 99,
+        "evidence": [
+          "The student consistently participates in interactive learning, engaging in discussion, collaboration, and co-construction of understanding with the teacher.",
+          "They actively question their own assumptions and seek clarification, demonstrating high cognitive involvement."
+        ],
+        "reasoning": "The student demonstrates high levels of engagement, consistently participating in interactive and collaborative learning activities. They actively contribute to the discussion, question assumptions, and co-construct understanding with the teacher.",
+        "strengths": [
+          "Active participation in discussion and collaboration",
+          "High cognitive involvement in learning activities",
+          "Willingness to question assumptions and seek clarification"
+        ],
+        "weaknesses": [
+          "Could occasionally take more initiative in driving the conversation",
+          "Some responses are less detailed than others"
+        ],
+        "suggestions": [
+          "Encourage the student to take more initiative in driving discussions",
+          "Prompt for more detailed responses when needed"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Feedback": {
+        "mean": 4.67,
+        "individual_scores": [
+          5,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Modeling": {
+        "mean": 4,
+        "individual_scores": [
+          5,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Coaching": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Reflection": {
+        "mean": 4.33,
+        "individual_scores": [
+          5,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 5,
+        "individual_scores": [
+          5,
+          5,
+          5
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 92.2,
+    "interpretation": "Excellent pedagogy"
+  }
+}

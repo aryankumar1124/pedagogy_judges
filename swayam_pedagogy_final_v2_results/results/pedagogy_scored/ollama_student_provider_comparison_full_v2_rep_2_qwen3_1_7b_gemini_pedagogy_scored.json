@@ -1,0 +1,522 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_2_qwen3_1_7b_gemini",
+    "student_model": "qwen3:1.7b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Teacher: Let's take a closer look at part (a): `update(x, y)` where parameters are passed **by value**. When parameters are passed by value, changes made to the parameters (`a` and `b`) inside the function do not affect the calling arguments (`x` and `y`). However, notice that the function also modifies global or non-local variables like `y` and `x` directly inside the body (e.g., `y = b + x`).",
+          "Teacher: Notice that `y` is *not* declared as a local variable or a parameter inside the function\u2014only `a` and `b` are parameters in `function update(a, b)`. When a variable like `y` (or `x`) is used without being declared locally, what scope does it belong to?",
+          "Teacher: Remember that in this code, `x`, `y`, and `z` are global variables. Even though `a` and `b` are passed by value, the function statements like `y = b + x;` directly assign a new value to the global variable `y`.",
+          "Teacher: Let's trace the statements line by line for part (a). What are the values of `a`, `b`, `x`, `y`, and `z` after executing the first line: `a = a + y;`?"
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by consistently transforming complex programming concepts (parameter passing, global vs. local scope) into forms students can understand. The teacher uses clear explanations, addresses misconceptions (e.g., global variable modification), and provides effective examples (tracing line-by-line). However, the teacher does not proactively identify all student misconceptions (e.g., the student's persistent confusion about global variables in part (a)) and could use more varied representations (e.g., analogies or diagrams).",
+        "strengths": [
+          "Clear, step-by-step explanations of parameter passing and scope.",
+          "Effective use of examples (e.g., tracing code execution).",
+          "Addresses student misconceptions directly (e.g., global variable modification).",
+          "Adapts explanations to student responses (e.g., guiding the student through substitution)."
+        ],
+        "weaknesses": [
+          "Does not proactively identify all student misconceptions (e.g., the student's confusion about global variables persists for several turns).",
+          "Limited use of multiple representations (e.g., no analogies or diagrams).",
+          "Could better anticipate common misconceptions (e.g., the student's initial assumption that global variables remain unchanged)."
+        ],
+        "suggestions": [
+          "Proactively identify and address common misconceptions (e.g., explicitly state that global variables can be modified regardless of parameter passing).",
+          "Use multiple representations (e.g., analogies, diagrams) to explain concepts like scope and parameter passing.",
+          "Provide more varied examples to illustrate edge cases (e.g., global vs. local variables)."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: You've got it\u2014because `y` is a global variable, assigning to it inside the function directly modifies the global variable `y`, even though `x` and `y` are passed by value!",
+          "Teacher: That's correct! Now that we see `y` gets updated to `b + x` during the execution, let's trace through the rest of the lines in part (a) step by step.",
+          "Teacher: That's spot on! You correctly tracked the sign changes and arrived at the right inequality.",
+          "Teacher: You've successfully completed all parts of the question. Do you have any remaining questions about how the weakest precondition or Hoare triples were constructed here?"
+        ],
+        "reasoning": "The teacher provides consistent and actionable feedback, often identifying strengths (e.g., 'You've got it') and guiding students toward next steps (e.g., 'let's trace through the rest of the lines'). The feedback is specific and helps students understand their current performance and what to do next. However, the feedback could be more explicit about learning goals and could occasionally provide more detailed guidance for improvement.",
+        "strengths": [
+          "Feedback is specific and actionable (e.g., guiding students to trace code step-by-step).",
+          "Identifies strengths and weaknesses in student reasoning (e.g., 'You're on the right track').",
+          "Helps students understand current performance and next steps.",
+          "Consistently reinforces correct reasoning (e.g., 'That's spot on!')."
+        ],
+        "weaknesses": [
+          "Feedback could be more explicit about learning goals (e.g., what the student should aim to achieve).",
+          "Occasionally lacks detailed guidance for improvement (e.g., could explain why a step was incorrect).",
+          "Feedback is sometimes repetitive (e.g., 'That's correct!') without adding new insights."
+        ],
+        "suggestions": [
+          "Explicitly state learning goals in feedback (e.g., 'The goal here is to understand how global variables are modified in functions').",
+          "Provide more detailed guidance for improvement (e.g., explain why a step was incorrect and how to correct it).",
+          "Vary feedback to include more constructive insights (e.g., 'Your reasoning was correct, but here's another way to think about it...')."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a closer look at part (a): `update(x, y)` where parameters are passed **by value**. When parameters are passed by value, changes made to the parameters (`a` and `b`) inside the function do not affect the calling arguments (`x` and `y`). However, notice that the function also modifies global or non-local variables like `y` and `x` directly inside the body (e.g., `y = b + x`).",
+          "Teacher: Notice that `y` is *not* declared as a local variable or a parameter inside the function\u2014only `a` and `b` are parameters in `function update(a, b)`. When a variable like `y` (or `x`) is used without being declared locally, what scope does it belong to?",
+          "Teacher: Remember that in this code, `x`, `y`, and `z` are global variables. Even though `a` and `b` are passed by value, the function statements like `y = b + x;` directly assign a new value to the global variable `y`.",
+          "Teacher: Let's trace the statements line by line for part (a). What are the values of `a`, `b`, `x`, `y`, and `z` after executing the first line: `a = a + y;`?"
+        ],
+        "reasoning": "The teacher consistently models expert thinking by demonstrating problem-solving processes (e.g., tracing code execution, explaining scope rules). The teacher uses think-aloud strategies (e.g., 'Let's take a closer look...') and provides clear, step-by-step reasoning. However, the modeling could be more explicit about the underlying principles (e.g., why global variables are modified) and could include more real-world examples.",
+        "strengths": [
+          "Demonstrates expert thinking through step-by-step reasoning (e.g., tracing code execution).",
+          "Uses think-aloud strategies to make reasoning visible (e.g., 'Let's take a closer look...').",
+          "Provides clear explanations of concepts (e.g., parameter passing, scope).",
+          "Adapts modeling to student responses (e.g., guiding the student through substitution)."
+        ],
+        "weaknesses": [
+          "Modeling could be more explicit about underlying principles (e.g., why global variables are modified).",
+          "Limited use of real-world examples or analogies to illustrate concepts.",
+          "Could better highlight the 'why' behind each step (e.g., explaining the rationale for substitution rules)."
+        ],
+        "suggestions": [
+          "Explicitly state the underlying principles behind each step (e.g., 'Global variables are modified because they are not local to the function').",
+          "Use real-world examples or analogies to illustrate abstract concepts (e.g., comparing global variables to shared resources).",
+          "Highlight the 'why' behind each step in the modeling process (e.g., 'We substitute because...')."
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a closer look at part (a): `update(x, y)` where parameters are passed **by value**. When parameters are passed by value, changes made to the parameters (`a` and `b`) inside the function do not affect the calling arguments (`x` and `y`). However, notice that the function also modifies global or non-local variables like `y` and `x` directly inside the body (e.g., `y = b + x`).",
+          "Teacher: Notice that `y` is *not* declared as a local variable or a parameter inside the function\u2014only `a` and `b` are parameters in `function update(a, b)`. When a variable like `y` (or `x`) is used without being declared locally, what scope does it belong to?",
+          "Teacher: Remember that in this code, `x`, `y`, and `z` are global variables. Even though `a` and `b` are passed by value, the function statements like `y = b + x;` directly assign a new value to the global variable `y`.",
+          "Teacher: Let's trace the statements line by line for part (a). What are the values of `a`, `b`, `x`, `y`, and `z` after executing the first line: `a = a + y;`?"
+        ],
+        "reasoning": "The teacher provides consistent and structured coaching, guiding students through problem-solving with hints and questions (e.g., 'What scope does it belong to?'). The support is adapted to student progress, and the teacher gradually reduces guidance as the student demonstrates understanding. However, the coaching could be more strategic in fading support and could include more explicit scaffolding for complex tasks.",
+        "strengths": [
+          "Provides structured guidance and hints (e.g., 'Let's take a closer look...').",
+          "Adapts coaching to student progress (e.g., guiding the student through substitution).",
+          "Uses questions to scaffold learning (e.g., 'What scope does it belong to?').",
+          "Gradually reduces support as the student demonstrates understanding."
+        ],
+        "weaknesses": [
+          "Coaching could be more strategic in fading support (e.g., could explicitly state when support is being reduced).",
+          "Could include more explicit scaffolding for complex tasks (e.g., breaking down multi-step problems).",
+          "Occasionally provides too much guidance at once (e.g., could let the student struggle more before intervening)."
+        ],
+        "suggestions": [
+          "Explicitly state when support is being reduced (e.g., 'Now try this step on your own').",
+          "Provide more explicit scaffolding for complex tasks (e.g., breaking down multi-step problems into smaller steps).",
+          "Allow the student to struggle more before intervening (e.g., ask more open-ended questions)."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Student: The student's answers for part (a) are accurate. When parameters are passed by value, the outer variables `x`, `y`, and `z` remain unchanged because the function does not modify them.",
+          "Student: The student's answer for part (a) is incorrect. The function modifies global variables `x`, `y`, and `z` even if `a` and `b` are passed by value.",
+          "Student: The student's final answer is accurate. When parameters are passed by value, the function's local variables (like `a` and `b`) are copies of the original parameters. However, the function directly modifies global variables `x`, `y`, and `z` in its assignments (e.g., `y = b + x`)."
+        ],
+        "reasoning": "The teacher occasionally prompts students to reflect on their reasoning (e.g., 'Can you check your final values for part (a)?'), but these opportunities are inconsistent and often superficial. The student does engage in some reflection (e.g., correcting their own answers), but this is not consistently encouraged or structured by the teacher. The reflection activities lack depth and are not regularly incorporated into the learning process.",
+        "strengths": [
+          "Occasionally prompts students to reflect on their reasoning (e.g., 'Can you check your final values...?').",
+          "Student demonstrates some self-correction (e.g., 'The student's answer for part (a) is incorrect...').",
+          "Encourages students to justify their answers (e.g., 'Can you trace through those lines...?')."
+        ],
+        "weaknesses": [
+          "Reflection activities are inconsistent and often superficial.",
+          "Lacks structured opportunities for students to explain their reasoning or reflect on their understanding.",
+          "Student reflection is not consistently encouraged or guided by the teacher.",
+          "Reflection activities do not regularly incorporate deeper thinking (e.g., evaluating understanding, articulating thought processes)."
+        ],
+        "suggestions": [
+          "Incorporate structured reflection activities (e.g., 'Explain why you think this is correct').",
+          "Encourage students to articulate their thought processes more consistently (e.g., 'How did you arrive at this answer?').",
+          "Use reflection to evaluate understanding (e.g., 'What do you think you understand well, and what is still confusing?').",
+          "Provide opportunities for students to engage in meaningful reflection (e.g., 'Compare your reasoning to the teacher's explanation')."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Teacher: Let's take a closer look at part (a): `update(x, y)` where parameters are passed **by value**. When parameters are passed by value, changes made to the parameters (`a` and `b`) inside the function do not affect the calling arguments (`x` and `y`). However, notice that the function also modifies global or non-local variables like `y` and `x` directly inside the body (e.g., `y = b + x`).",
+          "Teacher: Notice that `y` is *not* declared as a local variable or a parameter inside the function\u2014only `a` and `b` are parameters in `function update(a, b)`. When a variable like `y` (or `x`) is used without being declared locally, what scope does it belong to?",
+          "Teacher: Let's trace the statements line by line for part (a). What are the values of `a`, `b`, `x`, `y`, and `z` after executing the first line: `a = a + y;`?",
+          "Student: The final values of `x`, `y`, and `z` in part (a) are: x = 10, y = 5, z = 15."
+        ],
+        "reasoning": "The lesson involves frequent constructive and interactive activities. The teacher regularly asks students to trace code, explain reasoning, and justify answers, which requires students to engage in self-explaining, questioning, and summarizing (constructive and interactive levels). However, the engagement is not consistently at the interactive level (e.g., there is limited collaboration or discussion between students). The activities are primarily teacher-student interactions rather than peer-to-peer.",
+        "strengths": [
+          "Students frequently engage in constructive activities (e.g., tracing code, explaining reasoning).",
+          "Teacher prompts students to engage in self-explaining and questioning (e.g., 'What are the values...?').",
+          "Students demonstrate understanding through their responses (e.g., providing final values).",
+          "Activities require students to actively participate (e.g., justifying answers)."
+        ],
+        "weaknesses": [
+          "Engagement is not consistently at the interactive level (e.g., limited collaboration or discussion between students).",
+          "Activities are primarily teacher-student interactions rather than peer-to-peer.",
+          "Could include more opportunities for students to engage in co-construction of knowledge (e.g., group problem-solving)."
+        ],
+        "suggestions": [
+          "Incorporate more interactive activities (e.g., group discussions, peer teaching).",
+          "Encourage students to collaborate on problem-solving (e.g., 'Work with a partner to trace this code').",
+          "Provide opportunities for students to co-construct knowledge (e.g., 'Explain your reasoning to a peer')."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Pass-by-value parameters do not affect outer variables directly, unless those variables are global or explicitly assigned in the function body.",
+          "When an unqualified name like y is assigned to inside a function without a local declaration, it refers to the global variable y.",
+          "The standard rule of weakest precondition substitution is to replace every occurrence of the variable x in the postcondition with the right-hand side expression."
+        ],
+        "reasoning": "The teacher provides clear, conceptually accurate explanations of complex programming concepts (parameter passing, scope, Hoare logic). The teacher actively identifies and corrects a major misconception regarding global variable scope (that pass-by-value prevents modification of global variables accessed directly). The explanations use precise terminology and direct the student to specific code behaviors. However, the teacher does not use alternative analogies or multiple representations beyond the code trace, which limits the PCK slightly below a 5.",
+        "strengths": [
+          "Proactively identifies and dismantles the student's misconception about global variables.",
+          "Clearly distinguishes between parameter passing mechanisms and variable scope.",
+          "Accurately articulates the formal definition of the weakest precondition substitution rule."
+        ],
+        "weaknesses": [
+          "Limited use of diverse instructional representations (e.g., no visual diagrams or non-code analogies).",
+          "The distinction between local and global scope is introduced late in the session, requiring multiple cycles to correct the student."
+        ],
+        "suggestions": [
+          "Introduce a conceptual analogy for global vs. local scope earlier in the lesson.",
+          "Provide a visual diagram of the memory model (stack vs. heap/global) to reinforce the scope concept."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "You're on the right track about the function modifying x, y, and z directly! However, notice how x and y are also passed into the function...",
+          "That's correct! Now, apply that same substitution rule one more time...",
+          "Wait, let's look closely at your latest message. In your calculation above, you used different assignment statements for v... Could you check the original program fragment... and re-apply the substitution?"
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback that references the student's current work and points to the next step. The feedback is not just praise but includes directional guidance (e.g., 'check the original program fragment'). The teacher balances affirmation with correction, ensuring the student understands *why* an answer is incorrect. The confidence is slightly lower than PCK because some feedback loops are repetitive, indicating the feedback was not always immediately effective at shifting student understanding.",
+        "strengths": [
+          "Feedback is specific and references the exact line of code or logical step.",
+          "Use of 'scaffolding' feedback: affirming the correct part before correcting the error.",
+          "Directs the student to specific resources (the prompt/program definition) to self-correct."
+        ],
+        "weaknesses": [
+          "Some feedback is circular, repeating the same prompt after the student gives a similar incorrect answer without escalating the strategy.",
+          "Lacks explicit grading rubrics or success criteria at the start of the task."
+        ],
+        "suggestions": [
+          "Vary the feedback strategy if the student repeats the same error (e.g., provide a hint rather than a full question).",
+          "Explicitly state the learning goal at the beginning to frame the feedback."
+        ]
+      },
+      "Modeling": {
+        "score": 3,
+        "confidence": 85,
+        "evidence": [
+          "Let's trace the statements line by line for part (a). What are the values of a, b, x, y, and z after executing the first line: a = a + y?",
+          "Let's apply that same substitution rule to the next step moving backwards.",
+          "Now, look at the second statement: v := 2*v - u. If you substitute 2*v - u in place of v... what expression do you get?"
+        ],
+        "reasoning": "The teacher models the *process* of problem-solving (tracing, substitution) by guiding the student through the steps, rather than just giving the final answer. However, the teacher does not perform a 'think-aloud' demonstration themselves; instead, they prompt the student to perform the modeling. According to Cognitive Apprenticeship, explicit modeling by the expert is ideal. Here, the student is doing the heavy lifting with teacher prompts. This is strong guided practice but lacks the explicit expert demonstration component for a 5 or strong 4.",
+        "strengths": [
+          "Breaks down complex problems into manageable steps (tracing line-by-line).",
+          "Demonstrates the logical structure of weakest precondition derivation through guided questions."
+        ],
+        "weaknesses": [
+          "Lacks explicit 'think-aloud' narration of the teacher's internal cognitive process.",
+          "Does not show a fully worked example before asking the student to do it."
+        ],
+        "suggestions": [
+          "Perform one full traced example with verbalized reasoning steps before asking the student to trace a second one.",
+          "Explicitly verbalize the decision-making process when setting up the substitution."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 92,
+        "evidence": [
+          "Let's take a closer look at part (a)... What should happen to the outer variables... Can you check your final values?",
+          "Take another look at the function body... Are x, y, and z global variables or parameters?",
+          "Let's double-check the calculation for b in that third line... What is the current value of a...?"
+        ],
+        "reasoning": "The teacher provides excellent scaffolding. The support is strategic, moving from checking facts to checking reasoning, and adjusting the level of support based on student responses. The teacher uses 'fading' effectively: initially providing significant structure (line-by-line tracing), then asking for independent application (compare preconditions), and finally intervening only when the student deviates from the prompt's definitions (using wrong assignment for v). The support is adaptive and precisely targeted.",
+        "strengths": [
+          "Adaptive scaffolding: changes questions based on student errors.",
+          "Precise identification of specific error points (e.g., the value of b, the assignment statement for v).",
+          "Fades support as the student demonstrates competence in the new task (Hoare logic)."
+        ],
+        "weaknesses": [
+          "None significant in this transcript."
+        ],
+        "suggestions": [
+          "Encourage the student to identify the error themselves before the teacher points out the 'different assignment statement' issue."
+        ]
+      },
+      "Reflection": {
+        "score": 3,
+        "confidence": 88,
+        "evidence": [
+          "How does this new precondition for w >= 0 compare to the precondition you found in part 1 for w = 0?",
+          "The student's conclusion is accurate and logically consistent... Key Takeaway: Pass-by-Value does not prevent global variables from being modified."
+        ],
+        "reasoning": "The student is asked to compare two results (equation vs. inequality) and summarize key takeaways. This promotes reflection. However, the reflection is largely computational/algebraic comparison rather than deep metacognitive reflection on the *strategy* of learning. The student does not explicitly reflect on *why* they made the initial error or how they will avoid it in the future, but rather just corrects the mathematical result.",
+        "strengths": [
+          "Prompts comparison between similar but distinct scenarios (equality vs. inequality).",
+          "Requires synthesis of the 'Key Takeaway' regarding global variables."
+        ],
+        "weaknesses": [
+          "Lacks metacognitive prompts (e.g., 'Why did you think y was local before?').",
+          "Reflection is superficial, focusing on the final formula rather than the conceptual shift."
+        ],
+        "suggestions": [
+          "Ask the student to explicitly articulate the misconception they held previously.",
+          "Prompt reflection on the difficulty of the tracing process."
+        ]
+      },
+      "Engagement": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Student: ### Detailed Analysis... Part (a)... Part (b)...",
+          "Student: The substitution rule requires replacing every occurrence of v... Applying this, the expression becomes...",
+          "Student: To determine the weakest precondition... we proceed by substituting..."
+        ],
+        "reasoning": "The engagement is primarily 'Constructive' (ICAP). The student is actively constructing the solution by tracing values, applying substitution rules, and deriving formulas. It is not primarily 'Interactive' because there is no peer collaboration or argumentation between students. The student is engaged in high-level cognitive processing (debugging their own logic, following multi-step derivations). The student is not passive; they are constantly responding with generated content (code traces, derivations).",
+        "strengths": [
+          "Active problem-solving through step-by-step tracing.",
+          "Constructive engagement with formal logic (Hoare triples).",
+          "Student generates substantial detail in responses, showing deep processing."
+        ],
+        "weaknesses": [
+          "Lacks peer interaction or collaborative construction.",
+          "Some student responses appear to be regurgitation of the teacher's prompts rather than deep engagement (repetitive summaries)."
+        ],
+        "suggestions": [
+          "Introduce a peer-review component where students check each other's traces.",
+          "Ask students to create their own valid/invalid expressions to test each other."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "The student demonstrates a strong grasp of programming concepts like pass-by-value, pass-by-reference, and global variable scope.",
+          "They correctly explain how global variables are modified independently of parameter passing, even when parameters are passed by value."
+        ],
+        "reasoning": "The student shows good understanding of the material, providing clear explanations and examples. They address misconceptions and adapt their explanations based on the teacher's feedback.",
+        "strengths": [
+          "Clear explanations of complex concepts",
+          "Ability to identify and correct misconceptions",
+          "Use of concrete examples to illustrate points"
+        ],
+        "weaknesses": [
+          "Occasional confusion between local and global variable scope",
+          "Initial incorrect assumption about parameter passing affecting global variables"
+        ],
+        "suggestions": [
+          "Encourage more explicit distinction between local and global variables",
+          "Provide additional practice with variable scope and parameter passing scenarios"
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "The teacher provides regular feedback, identifying both correct and incorrect aspects of the student's responses.",
+          "They guide the student toward understanding by asking probing questions and pointing out specific lines of code."
+        ],
+        "reasoning": "The feedback is timely, specific, and actionable. It helps the student understand their mistakes and encourages them to think critically about the code.",
+        "strengths": [
+          "Timely and specific feedback",
+          "Use of probing questions to guide understanding",
+          "Focus on both strengths and weaknesses"
+        ],
+        "weaknesses": [
+          "Could provide more explicit next steps for improvement",
+          "Sometimes repeats explanations without adding new insights"
+        ],
+        "suggestions": [
+          "Offer more concrete suggestions for improvement",
+          "Vary feedback strategies to keep student engagement high"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "The teacher consistently demonstrates expert thinking by walking through code step-by-step and explaining the implications of each line.",
+          "They make their thought processes visible through think-aloud strategies and detailed code tracing."
+        ],
+        "reasoning": "The teacher effectively models expert problem-solving, breaking down complex code into manageable parts and explaining each step clearly.",
+        "strengths": [
+          "Clear and detailed code tracing",
+          "Effective use of think-aloud strategies",
+          "Ability to break down complex problems"
+        ],
+        "weaknesses": [
+          "Could incorporate more real-world examples",
+          "Sometimes assumes student understanding without checking"
+        ],
+        "suggestions": [
+          "Incorporate more diverse examples to broaden understanding",
+          "Regularly check for student comprehension during explanations"
+        ]
+      },
+      "Coaching": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "The teacher provides structured guidance, asking questions that lead the student to discover the correct answer.",
+          "They gradually reduce support as the student gains confidence and understanding."
+        ],
+        "reasoning": "The coaching is strategic and adaptive, balancing guidance with opportunities for independent problem-solving. The teacher effectively scaffolds learning.",
+        "strengths": [
+          "Strategic questioning to guide discovery",
+          "Adaptive support based on student progress",
+          "Encouragement of independent problem-solving"
+        ],
+        "weaknesses": [
+          "Could provide more explicit hints when student is stuck",
+          "Sometimes moves too quickly through explanations"
+        ],
+        "suggestions": [
+          "Offer more explicit hints when necessary",
+          "Pace explanations to ensure student understanding"
+        ]
+      },
+      "Reflection": {
+        "score": 4,
+        "confidence": 89,
+        "evidence": [
+          "The student regularly explains their reasoning and reflects on their understanding, particularly when correcting mistakes.",
+          "They articulate their thought processes and evaluate their understanding in response to teacher prompts."
+        ],
+        "reasoning": "The student demonstrates a growing ability to reflect on their learning, identifying areas of confusion and clarifying their understanding through explanation.",
+        "strengths": [
+          "Willingness to reflect on mistakes",
+          "Ability to articulate thought processes",
+          "Engagement with teacher prompts"
+        ],
+        "weaknesses": [
+          "Could engage in more self-directed reflection",
+          "Sometimes relies heavily on teacher guidance"
+        ],
+        "suggestions": [
+          "Encourage more independent reflection",
+          "Promote self-assessment and goal-setting"
+        ]
+      },
+      "Engagement": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "The student consistently participates in interactive learning, engaging in discussion, collaboration, and co-construction of understanding.",
+          "They actively respond to teacher prompts, ask questions, and revise their answers based on feedback."
+        ],
+        "reasoning": "The student demonstrates high levels of engagement, actively participating in the learning process and collaborating with the teacher to construct understanding.",
+        "strengths": [
+          "Active participation in discussion",
+          "Willingness to revise answers based on feedback",
+          "Collaborative approach to learning"
+        ],
+        "weaknesses": [
+          "Could initiate more independent exploration",
+          "Sometimes waits for teacher prompts before engaging"
+        ],
+        "suggestions": [
+          "Encourage more self-directed exploration",
+          "Promote student-led discussions and investigations"
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Feedback": {
+        "mean": 4,
+        "individual_scores": [
+          4,
+          4,
+          4
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Modeling": {
+        "mean": 3.67,
+        "individual_scores": [
+          4,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Coaching": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          5,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Reflection": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          3,
+          4
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 4.33,
+        "individual_scores": [
+          4,
+          4,
+          5
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 78.9,
+    "interpretation": "Good pedagogy"
+  }
+}

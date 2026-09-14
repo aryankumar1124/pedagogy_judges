@@ -1,0 +1,533 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen2_5_0_5b_anthropic",
+    "student_model": "qwen2.5:0.5b",
+    "tutor_provider": "anthropic",
+    "tutor_model": "claude-haiku-4-5-20251001",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Let me break this down simply: The assignment gives you a function and asks you to trace through it under different parameter-passing rules (by value, by reference, by value-result).",
+          "When parameters are passed 'by value,' what do you think happens to the original variables x and y when the function modifies its parameters a and b?",
+          "Let me show you what I'm asking for: Line 1: a = a + y; Before: a = 3, y = 2 Calculation: 3 + 2 = 5 After: a = 5",
+          "Now it's your turn. Do this one: Line 2: y = b + x; Before this line: b = 2, x = 3 What is 2 + 3?",
+          "Let me be direct. I showed you an example: Line 1: a = a + y; 3 + 2 = 5 So a = 5",
+          "Let me provide explicit scaffolding with worked examples, then redirect them to do the actual work.",
+          "Let me ask you to verify line by line. Looking back at the original function: a = a + y; y = b + x; b = a - z; x = b + y + a; z = x + a - b;",
+          "Let me slow this down and ask you to check one specific detail. Look directly at the operator definition for int_to_string: int_to_string(int) \u2192 string",
+          "Let me be very direct and clear. You wrote in your latest message: 'The arrow in the operator definition always points to the input type.' This is incorrect.",
+          "THE ARROW (\u2192) POINTS TO THE OUTPUT TYPE, NOT THE INPUT TYPE."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by transforming complex concepts (parameter passing, type inference) into clear, step-by-step explanations. They use concrete examples (3+2=5) and scaffolded questions to guide understanding. The teacher consistently identifies and addresses misconceptions (e.g., arrow notation in type definitions). However, the teacher occasionally repeats explanations without adapting to the student's persistent errors, and could better address the root cause of the student's confusion (e.g., why the student keeps misreading the arrow notation).",
+        "strengths": [
+          "Clear, step-by-step breakdown of complex concepts (parameter passing, type inference)",
+          "Effective use of concrete examples and arithmetic to illustrate abstract ideas",
+          "Consistent identification and correction of student misconceptions",
+          "Strong adaptation of explanations to the student's current level of understanding",
+          "Use of scaffolding techniques to build understanding incrementally"
+        ],
+        "weaknesses": [
+          "Occasional repetition of explanations without addressing the root cause of persistent errors",
+          "Could better diagnose why the student keeps misreading the arrow notation in type definitions",
+          "Sometimes provides too much guidance before allowing the student to struggle productively"
+        ],
+        "suggestions": [
+          "Diagnose the root cause of the student's persistent misreading of the arrow notation (e.g., visual confusion, conceptual misunderstanding)",
+          "Use more varied examples to reinforce the concept of input vs. output types in operator definitions",
+          "Allow the student to struggle more with the arithmetic before providing the answer",
+          "Explicitly ask the student to explain their reasoning in their own words to uncover deeper misconceptions"
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Good\u2014you've explained the correct principle about pass-by-value, but I notice something at the end that contradicts your earlier reasoning.",
+          "Look back at your conclusion: You correctly said: 'the original variables x and y do not change when the function modifies a and b' But then you concluded: 'modifying a inside the function affects the original x'",
+          "Which one is correct? Can both of those statements be true at the same time?",
+          "I see you're repeating my question back to me. Let me try a different approach.",
+          "I notice you're providing template-like answers that don't actually engage with the specific questions I'm asking.",
+          "I see you're acknowledging that we need to do calculations, but you're still providing the same template explanation instead of actually doing the arithmetic.",
+          "I notice you're still arriving at the same answer despite my hints.",
+          "I need to address a critical misreading that's persisting.",
+          "I notice you're consistently arriving at the same answer despite my hints.",
+          "I need to pause and address what's happening here directly."
+        ],
+        "reasoning": "The teacher provides feedback that identifies errors and contradictions in the student's reasoning (e.g., pointing out the contradiction in the student's statements about pass-by-value). However, the feedback is often reactive rather than proactive, and does not consistently provide clear next steps or actionable guidance. The teacher sometimes repeats the same feedback without adapting to the student's persistent errors.",
+        "strengths": [
+          "Identifies specific errors and contradictions in the student's reasoning",
+          "Provides clear examples of where the student's logic breaks down",
+          "Uses the student's own words to highlight inconsistencies"
+        ],
+        "weaknesses": [
+          "Feedback is often reactive rather than proactive",
+          "Does not consistently provide clear next steps or actionable guidance",
+          "Sometimes repeats the same feedback without adapting to the student's persistent errors",
+          "Lacks consistency in addressing the root cause of misconceptions"
+        ],
+        "suggestions": [
+          "Provide more proactive feedback that anticipates common misconceptions",
+          "Include clear next steps or actionable guidance in every feedback instance",
+          "Adapt feedback to address the root cause of persistent errors",
+          "Use a consistent framework for feedback (e.g., 'What you did well', 'What needs improvement', 'Next steps')"
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 95,
+        "evidence": [
+          "Let me show you what I'm asking for: Line 1: a = a + y; Before: a = 3, y = 2 Calculation: 3 + 2 = 5 After: a = 5",
+          "Let me demonstrate with the first line: Line 1: a = a + y; Before: a = 3, y = 2 Calculation: 3 + 2 = 5 After: a = 5 LHS value: 5",
+          "Let me show you exactly what you need to do: I can see you understand the concepts, but the assignment requires concrete number tracing, not general explanations. Let me demonstrate with the first line: Line 1: a = a + y; Before: a = 3, y = 2 Calculation: 3 + 2 = 5 After: a = 5",
+          "Let me be very direct and clear. You wrote in your latest message: 'The arrow in the operator definition always points to the input type.' This is incorrect. Let me show you the exact text from the assignment prompt: int_to_string(int) \u2192 string",
+          "THE ARROW (\u2192) POINTS TO THE OUTPUT TYPE, NOT THE INPUT TYPE."
+        ],
+        "reasoning": "The teacher consistently models expert thinking by demonstrating step-by-step problem-solving processes, particularly in arithmetic tracing and type inference. They use think-aloud strategies to make their reasoning visible. However, the modeling could be more frequent and could include more varied examples to reinforce different aspects of the concepts.",
+        "strengths": [
+          "Consistently demonstrates step-by-step problem-solving processes",
+          "Uses think-aloud strategies to make reasoning visible",
+          "Provides concrete examples to illustrate abstract concepts",
+          "Models the exact format and approach expected in the assignment"
+        ],
+        "weaknesses": [
+          "Modeling could be more frequent throughout the conversation",
+          "Could include more varied examples to reinforce different aspects of the concepts",
+          "Sometimes jumps to the answer too quickly without allowing the student to engage first"
+        ],
+        "suggestions": [
+          "Increase the frequency of modeling throughout the conversation",
+          "Use more varied examples to reinforce different aspects of the concepts",
+          "Allow the student to engage with the problem before providing the modeled solution",
+          "Model the process of identifying and correcting errors in reasoning"
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 90,
+        "evidence": [
+          "Let me try a different approach. You answer the question I asked: When parameters are passed 'by value,' what happens to the original variables x and y when the function modifies a and b?",
+          "Think about it this way: Does modifying a inside the function affect the original x outside the function? Why or why not?",
+          "Let me refocus us on part (a) with a concrete approach.",
+          "Let me ask you to verify line by line.",
+          "Let me be direct. I showed you an example: Line 1: a = a + y; 3 + 2 = 5 So a = 5 Now you try line 2: y = b + x; Before this line: b = 2, x = 3 What is 2 + 3?",
+          "Let me provide explicit scaffolding with worked examples, then redirect them to do the actual work.",
+          "Let me slow this down and ask you to check one specific detail.",
+          "Let me ask you to copy the operator definition for int_to_string directly from the assignment prompt at the top of this conversation, and paste it here exactly as it appears?"
+        ],
+        "reasoning": "The teacher provides scaffolding and guidance, particularly through step-by-step questions and explicit examples. They adapt their coaching to the student's current level of understanding. However, the coaching is sometimes inconsistent, and the teacher does not always fade the support as the student's competence grows. The teacher could also provide more targeted hints based on the student's specific errors.",
+        "strengths": [
+          "Provides scaffolding through step-by-step questions",
+          "Adapts coaching to the student's current level of understanding",
+          "Uses explicit examples to guide the student",
+          "Provides clear, direct questions to focus the student's attention"
+        ],
+        "weaknesses": [
+          "Coaching is sometimes inconsistent in its approach",
+          "Does not always fade support as the student's competence grows",
+          "Could provide more targeted hints based on the student's specific errors",
+          "Sometimes provides too much guidance before allowing the student to struggle"
+        ],
+        "suggestions": [
+          "Provide more consistent scaffolding throughout the conversation",
+          "Gradually fade support as the student's competence grows",
+          "Provide more targeted hints based on the student's specific errors",
+          "Allow the student to struggle more with the problem before providing guidance"
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Student: I'm sorry, but I'm unable to provide a response without the actual assignment details.",
+          "Student: I understand you might be looking at this for the first time. Let me help you get oriented.",
+          "Student: To answer your question, let's break it down step-by-step: 1. Understanding Parameter Passing by Value...",
+          "Student: Both statements can be true at the same time.",
+          "Student: I understand the task and the current assignment. I will guide you through the reasoning without giving away the answer.",
+          "Student: I will not attempt the problem directly. Instead, I will guide you through the reasoning without giving away the answer.",
+          "Student: The value of `v` after the second statement is 0. Therefore, the value of `w` after the third statement is 5."
+        ],
+        "reasoning": "The student rarely explains their reasoning or reflects on their understanding. Most of their responses are either repetitions of the teacher's questions, template-like explanations, or incorrect arithmetic without justification. There is little evidence of the student articulating their thought processes or evaluating their own understanding. The few instances where the student does provide reasoning (e.g., the arithmetic trace) are often incorrect or incomplete.",
+        "strengths": [
+          "The student occasionally attempts to break down problems step-by-step (e.g., in the arithmetic trace)",
+          "The student shows persistence in engaging with the problem, even if the engagement is not always productive"
+        ],
+        "weaknesses": [
+          "The student rarely explains their reasoning or reflects on their understanding",
+          "Most responses are repetitions of the teacher's questions or template-like explanations",
+          "The student does not evaluate their own understanding or identify their own misconceptions",
+          "The student's reasoning is often incorrect or incomplete"
+        ],
+        "suggestions": [
+          "Encourage the student to explain their reasoning in their own words",
+          "Ask the student to reflect on their understanding and identify their own misconceptions",
+          "Provide prompts that require the student to articulate their thought processes",
+          "Model reflection and articulation by thinking aloud during problem-solving"
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Student: I'm sorry, but I'm unable to provide a response without the actual assignment details.",
+          "Student: I understand you might be looking at this for the first time. Let me help you get oriented.",
+          "Student: To answer your question, let's break it down step-by-step...",
+          "Student: Both statements can be true at the same time.",
+          "Student: I understand the task and the current assignment. I will guide you through the reasoning without giving away the answer.",
+          "Student: I will not attempt the problem directly. Instead, I will guide you through the reasoning without giving away the answer.",
+          "Student: - **u**: 0 + 3 = 3 - **v**: 2*v - u = 2(1) - 3 = 2 - 3 = -1 - **w**: w := w + v = 5 + 0 = 5"
+        ],
+        "reasoning": "The student's engagement is primarily passive or active at best. They often repeat the teacher's questions or provide template-like responses rather than engaging constructively or interactively with the material. There are a few instances of active engagement (e.g., the arithmetic trace), but these are rare and often incorrect. The student does not consistently participate in discussion, collaboration, or co-construction of knowledge.",
+        "strengths": [
+          "The student occasionally engages actively with the problem (e.g., in the arithmetic trace)",
+          "The student shows persistence in responding to the teacher's prompts"
+        ],
+        "weaknesses": [
+          "The student's engagement is primarily passive or active, not constructive or interactive",
+          "The student often repeats the teacher's questions or provides template-like responses",
+          "The student does not consistently participate in discussion, collaboration, or co-construction of knowledge",
+          "The student's active engagement is rare and often incorrect"
+        ],
+        "suggestions": [
+          "Encourage the student to engage more constructively with the material by asking open-ended questions",
+          "Provide opportunities for the student to collaborate or co-construct knowledge with the teacher",
+          "Use prompts that require the student to participate in discussion or argumentation",
+          "Model constructive and interactive engagement by thinking aloud and inviting the student to do the same"
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 92,
+        "evidence": [
+          "When parameters are passed 'by value,' what do you think happens to the original variables x and y when the function modifies its parameters a and b?",
+          "Look directly at the operator definition for int_to_string: int_to_string(int) \u2192 string. I'm asking you to focus on what comes after the arrow (\u2192).",
+          "There is a critical error... The arrow (\u2192) points to the OUTPUT TYPE, NOT THE INPUT TYPE."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by breaking down complex concepts like parameter passing and type inference into manageable components. The teacher uses precise language ('by value', 'by reference', 'arrow points to output') and effectively uses visual cues (formatting the code definitions) to help the student understand the syntax of function signatures. The teacher proactively identifies the student's misconception about the direction of the arrow in type definitions and persists in correcting it with multiple representations until clarity is achieved.",
+        "strengths": [
+          "Clear explanation of technical syntax (operator definitions).",
+          "Effective use of contrast to correct misconceptions (input vs output type).",
+          "Adaptation of explanation based on student's repeated errors."
+        ],
+        "weaknesses": [
+          "Slightly lacking in analogies; relies heavily on direct textual interpretation rather than conceptual metaphors."
+        ],
+        "suggestions": [
+          "Use real-world analogies for 'pass-by-value' vs 'pass-by-reference' (e.g., copying a list vs. sharing a link) to reinforce the abstract concept."
+        ]
+      },
+      "Feedback": {
+        "score": 4,
+        "confidence": 90,
+        "evidence": [
+          "Good\u2014you've explained the correct principle about pass-by-value, but I notice something at the end that contradicts your earlier reasoning.",
+          "Excellent\u2014you've got it! That's the correct understanding.",
+          "Let me verify line by line. Looking back at the original function... You said after line 3: a = 5, b = 0, y = 5, x = 3, z = 5. Line 4: x = b + y + a; ... What is 0 + 5 + 5?"
+        ],
+        "reasoning": "The teacher provides specific, actionable feedback. Instead of just saying 'wrong,' the teacher isolates the specific line of code or logical contradiction (e.g., 'Statement 1 vs Statement 2') and asks the student to resolve it. The feedback is consistent, shifting from praise for correct principles to detective work for calculation errors. It clearly identifies the gap between the student's current state and the goal.",
+        "strengths": [
+          "Specific and granular feedback on code traces.",
+          "Non-punitive tone when correcting repeated errors.",
+          "Balances confirmation of correct steps with correction of incorrect ones."
+        ],
+        "weaknesses": [
+          "Sometimes repeats the same feedback prompt when the student ignores it, which could be seen as frustrating rather than helpful if not varied."
+        ],
+        "suggestions": [
+          "Introduce a self-check rubric or checklist for the student to use before finalizing an answer, shifting some feedback burden to the student."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 88,
+        "evidence": [
+          "Let me demonstrate with the first line: Line 1: a = a + y; Before: a = 3, y = 2. Calculation: 3 + 2 = 5. After: a = 5.",
+          "Let me walk through the calculation with you step by step: At the moment we execute v := 2*v - u; ... Now compute 2*v - u: First: 2 * v = 2 * 1 = ? Then: subtract u from that result."
+        ],
+        "reasoning": "The teacher explicitly models the expert thinking process (the 'trace') by demonstrating one line of code execution completely, showing before-values, the calculation, and after-values. This serves as a template for the student to follow. In later stages, the teacher also models 'meta-cognitive' thinking by showing how to check operator definitions step-by-step.",
+        "strengths": [
+          "Clear 'think-aloud' style demonstration of code execution.",
+          "Models the specific format required for the assignment (Before/After states)."
+        ],
+        "weaknesses": [
+          "The modeling of the higher-level concept (weakest precondition) is absent; the teacher focuses on forward execution tracing instead."
+        ],
+        "suggestions": [
+          "Model the backward reasoning process for weakest preconditions to show a different problem-solving strategy."
+        ]
+      },
+      "Coaching": {
+        "score": 5,
+        "confidence": 95,
+        "evidence": [
+          "Hint: Look at what the question is asking you to write down for each line of the function.",
+          "Please answer with just the number. This is basic arithmetic, and I need to see that you can apply it to trace through the code.",
+          "I will ask you a concrete question. You must respond with: A genuine attempt... Your specific task right now: ... Answer these three questions with numbers."
+        ],
+        "reasoning": "The teacher demonstrates exceptional coaching skills, particularly in the face of a non-responding or confused student. The teacher dynamically adjusts scaffolding: starting with open-ended questions, moving to specific hints, then to explicit instructions, and finally to providing the first step of a solution to break the impasse. The teacher persists without giving up or becoming hostile, maintaining a supportive yet firm stance.",
+        "strengths": [
+          "Dynamic adjustment of scaffolding levels.",
+          "Persistence in the face of student non-engagement.",
+          "Clear boundary setting ('I need you to take the first step')."
+        ],
+        "weaknesses": [
+          "None observed; the coaching was highly effective in eventually eliciting a response."
+        ],
+        "suggestions": [
+          "Consider using a 'pause and reset' language more early on when the student starts spiraling into template responses."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Which one is correct? Can both of those statements be true at the same time?",
+          "You wrote... 'the int_to_string definition can be simplified...'. You just wrote it yourself... Now I need you to look at what comes after the arrow.",
+          "These two answers contradict each other. One says string, the other says int. Here's my question: Which one is correct, and why?"
+        ],
+        "reasoning": "The teacher frequently asks the student to reflect on contradictions in their own work. However, the student's ability to engage in this reflection is largely undermined by the communication barrier (the student appearing to be a bot or confused about roles). While the teacher *creates* opportunities for reflection, the student rarely successfully *articulates* deep reasoning, often just repeating formats. The factor scores low because the interaction does not result in genuine student articulation of understanding, mostly due to the student's nature in the transcript.",
+        "strengths": [
+          "Teacher consistently prompts for self-evaluation of contradictions."
+        ],
+        "weaknesses": [
+          "Student rarely provides substantive reflective statements, mostly just correcting the final output."
+        ],
+        "suggestions": [
+          "Use lower-stakes, non-numeric contradictions to encourage verbal reasoning before moving to code."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 95,
+        "evidence": [
+          "Student: I'm sorry, but I'm unable to provide a response without the actual assignment details...",
+          "Student: Sure, let's go through the steps to execute the function... [long template text]",
+          "Student: I will not attempt to solve the given assignment episode."
+        ],
+        "reasoning": "The student engagement is very low for the majority of the transcript. The student responses are repetitive, template-like, and often do not address the teacher's prompts. There is a significant lack of interaction, collaboration, or constructive cognitive involvement. Only in the very final segment does the student provide a substantive (though initially incorrect) calculation trace, showing a brief shift to 'Active' engagement. The vast majority of the session is characterized by the student passingively repeating generic phrases, which fits the 'Passive' or very low 'Active' level of the ICAP framework.",
+        "strengths": [
+          "Student eventually engages with calculation."
+        ],
+        "weaknesses": [
+          "Prolonged period of non-engagement and repetitive template responses.",
+          "Lack of interactive discussion or question-asking by the student."
+        ],
+        "suggestions": [
+          "If the student is truly a learner, break the session into micro-tasks with immediate, single-word answers to build momentum before complex tracing."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "The teacher provides basic explanations of parameter passing mechanisms (by value, by reference, by value-result) but often leaves student misconceptions unresolved.",
+          "The teacher occasionally uses examples but does not consistently address common misconceptions or adapt explanations to student needs."
+        ],
+        "reasoning": "The teacher demonstrates a basic understanding of the content but struggles to explain concepts clearly and adapt to student needs. While some explanations are provided, they are often unclear and do not proactively address misconceptions.",
+        "strengths": [
+          "Provides basic explanations of parameter passing mechanisms.",
+          "Uses some examples to illustrate concepts."
+        ],
+        "weaknesses": [
+          "Explanations are often unclear and do not address student misconceptions.",
+          "Lacks adaptation to student needs and does not use multiple representations of concepts."
+        ],
+        "suggestions": [
+          "Use clearer and more concise explanations, addressing common misconceptions directly.",
+          "Adapt explanations based on student responses and use multiple representations to enhance understanding."
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "The teacher occasionally identifies errors but rarely provides specific guidance for improvement.",
+          "Feedback is limited to pointing out mistakes without offering actionable steps for correction."
+        ],
+        "reasoning": "The teacher's feedback is inconsistent and lacks specificity. While errors are identified, the teacher does not consistently provide guidance on how to improve, which limits its effectiveness in helping students understand and correct their work.",
+        "strengths": [
+          "Identifies errors in student responses.",
+          "Attempts to guide students toward correct understanding."
+        ],
+        "weaknesses": [
+          "Feedback lacks specificity and actionable guidance.",
+          "Does not consistently address learning goals or future improvement."
+        ],
+        "suggestions": [
+          "Provide more specific feedback that clearly identifies strengths, weaknesses, and next steps.",
+          "Ensure feedback addresses learning goals and offers actionable guidance for improvement."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "The teacher occasionally demonstrates problem-solving processes but lacks clarity and consistency.",
+          "Expert thinking is not consistently made visible through demonstrations or think-aloud strategies."
+        ],
+        "reasoning": "The teacher's modeling of expert thinking is inconsistent and lacks clarity. While some demonstrations are provided, they are not regular or detailed enough to make expert thinking visible to students. This limits the effectiveness of modeling as a teaching strategy.",
+        "strengths": [
+          "Occasionally demonstrates problem-solving processes.",
+          "Attempts to make thinking visible through explanations."
+        ],
+        "weaknesses": [
+          "Demonstrations lack clarity and consistency.",
+          "Does not regularly use think-aloud strategies or real-world examples."
+        ],
+        "suggestions": [
+          "Consistently model expert thinking through clear and detailed demonstrations.",
+          "Use think-aloud strategies and real-world examples to make expert thinking more visible."
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 82,
+        "evidence": [
+          "The teacher provides some support during learning activities but does so inconsistently and does not meet student needs effectively.",
+          "Support is not gradually adjusted based on student progress."
+        ],
+        "reasoning": "The teacher's coaching and scaffolding are inconsistent and do not effectively meet student needs. While some support is provided, it is not tailored to individual student progress or gradually faded as students become more competent. This limits the effectiveness of coaching in supporting student learning.",
+        "strengths": [
+          "Provides some support during learning activities.",
+          "Attempts to guide students through difficult concepts."
+        ],
+        "weaknesses": [
+          "Support is inconsistent and does not meet student needs effectively.",
+          "Does not gradually adjust support based on student progress."
+        ],
+        "suggestions": [
+          "Provide consistent and tailored support that meets individual student needs.",
+          "Gradually fade support as students become more competent to promote independence."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 78,
+        "evidence": [
+          "Students are occasionally asked to explain their reasoning but reflection activities remain superficial.",
+          "Students do not consistently articulate their thought processes or evaluate their understanding."
+        ],
+        "reasoning": "The teacher occasionally prompts students to reflect on their learning, but these activities are superficial and do not consistently encourage deep reflection. Students are not regularly asked to articulate their reasoning or evaluate their understanding, limiting the effectiveness of reflection as a learning tool.",
+        "strengths": [
+          "Occasionally prompts students to explain their reasoning.",
+          "Attempts to encourage reflection on learning."
+        ],
+        "weaknesses": [
+          "Reflection activities are superficial and lack depth.",
+          "Students do not consistently articulate their thought processes or evaluate their understanding."
+        ],
+        "suggestions": [
+          "Incorporate more meaningful reflection activities that encourage students to articulate their reasoning and evaluate their understanding.",
+          "Regularly ask students to reflect on their learning and provide opportunities for self-assessment."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 83,
+        "evidence": [
+          "Learning activities occasionally require active participation but remain largely passive.",
+          "Students are not consistently engaged in constructive or interactive learning activities."
+        ],
+        "reasoning": "Student engagement is inconsistent and largely passive. While there are occasional opportunities for active participation, students are not regularly engaged in constructive or interactive learning activities. This limits the cognitive involvement of students and reduces the effectiveness of the learning experience.",
+        "strengths": [
+          "Occasionally requires active participation from students.",
+          "Attempts to engage students in learning activities."
+        ],
+        "weaknesses": [
+          "Engagement remains largely passive and inconsistent.",
+          "Students are not regularly engaged in constructive or interactive learning activities."
+        ],
+        "suggestions": [
+          "Design learning activities that consistently engage students in active, constructive, and interactive learning.",
+          "Incorporate more opportunities for discussion, collaboration, and co-construction to enhance student engagement."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          4,
+          2
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Feedback": {
+        "mean": 3,
+        "individual_scores": [
+          3,
+          4,
+          2
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Modeling": {
+        "mean": 3.33,
+        "individual_scores": [
+          4,
+          4,
+          2
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Coaching": {
+        "mean": 3.33,
+        "individual_scores": [
+          3,
+          5,
+          2
+        ],
+        "agreement_stdev": 1.25
+      },
+      "Reflection": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          2,
+          2
+        ],
+        "agreement_stdev": 0.0
+      },
+      "Engagement": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          2,
+          2
+        ],
+        "agreement_stdev": 0.0
+      }
+    },
+    "pedagogy_score": 56.6,
+    "interpretation": "Needs significant improvement"
+  }
+}

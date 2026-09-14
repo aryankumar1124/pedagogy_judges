@@ -1,0 +1,485 @@
+{
+  "metadata": {
+    "run_id": "ollama_student_provider_comparison_full_v2_rep_1_qwen2_5_0_5b_gemini",
+    "student_model": "qwen2.5:0.5b",
+    "tutor_provider": "gemini",
+    "tutor_model": "gemini-3.5-flash-lite",
+    "episode_count": 3,
+    "termination_reason": "completed_with_unresolved_episodes",
+    "questions": [
+      {
+        "assignment_id": "4",
+        "question_id": "a4_q1",
+        "question_title": "Parameter Passing Exercise"
+      },
+      {
+        "assignment_id": "6",
+        "question_id": "a6_q3",
+        "question_title": "Advanced Type Checking"
+      },
+      {
+        "assignment_id": "7",
+        "question_id": "a7_q3",
+        "question_title": "Program Verification I Variant"
+      }
+    ]
+  },
+  "judge_results": {
+    "mistral": {
+      "PCK": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Teacher provides pseudocode and asks questions about pass-by-value but does not explain the concept of pass-by-value clearly.",
+          "Teacher corrects type mismatches in expressions but does not proactively address common misconceptions about type systems.",
+          "Teacher attempts to guide through Hoare logic but does not provide clear, structured explanations of substitution rules."
+        ],
+        "reasoning": "The teacher demonstrates some understanding of the subject matter (e.g., type checking, Hoare logic) but explanations are inconsistent, often repetitive, and lack depth. There is limited use of examples or analogies to clarify concepts, and misconceptions (e.g., student confusion about type systems) are not proactively addressed.",
+        "strengths": [
+          "Teacher provides correct technical information when directly asked (e.g., type definitions, substitution rules).",
+          "Teacher attempts to break down complex problems into smaller steps."
+        ],
+        "weaknesses": [
+          "Explanations are often unclear or incomplete, leading to student confusion.",
+          "Lacks proactive identification and correction of student misconceptions.",
+          "Repetitive and unstructured responses reduce clarity."
+        ],
+        "suggestions": [
+          "Provide clear, step-by-step explanations with concrete examples (e.g., walk through a type-checking example with explicit reasoning).",
+          "Anticipate and address common misconceptions (e.g., explain why `add(\"hello\", \"world\")` fails due to type mismatch).",
+          "Use analogies or multiple representations (e.g., compare pass-by-value to copying a number vs. a string)."
+        ]
+      },
+      "Feedback": {
+        "score": 2,
+        "confidence": 80,
+        "evidence": [
+          "Teacher provides correct answers (e.g., `add(\"hello\", \"world\")` is not typeable) but does not explain why or how to improve.",
+          "Teacher repeats questions or corrections without guiding the student toward understanding.",
+          "No explicit feedback on student errors or next steps for improvement."
+        ],
+        "reasoning": "Feedback is present but limited to identifying errors (e.g., type mismatches) without providing actionable guidance. There is no consistent effort to help students understand their mistakes or how to correct them.",
+        "strengths": [
+          "Teacher identifies incorrect student responses (e.g., type mismatches)."
+        ],
+        "weaknesses": [
+          "Feedback lacks depth and does not address learning goals or next steps.",
+          "No constructive guidance for improvement (e.g., how to fix type errors).",
+          "Repetitive corrections without scaffolding."
+        ],
+        "suggestions": [
+          "Provide specific, actionable feedback (e.g., 'The `add` function expects integers, so try using numbers like `10` and `5` instead of strings').",
+          "Explain the reasoning behind corrections (e.g., 'This is not typeable because the input types do not match the function's expected types').",
+          "Use feedback to guide students toward self-correction (e.g., 'What do you think the issue is with the types here?')."
+        ]
+      },
+      "Modeling": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Teacher demonstrates the substitution rule for Hoare logic (e.g., replacing `u` with `u + 3`) but does not model the full thought process.",
+          "Teacher provides correct technical steps but does not make expert thinking visible (e.g., no think-aloud or step-by-step reasoning).",
+          "No explicit modeling of problem-solving strategies (e.g., how to approach type checking or Hoare triples)."
+        ],
+        "reasoning": "The teacher occasionally demonstrates correct problem-solving steps (e.g., substitution in Hoare logic) but does not consistently model expert thinking. There is no clear demonstration of the reasoning behind decisions or strategies.",
+        "strengths": [
+          "Teacher shows correct technical steps (e.g., substitution in Hoare logic)."
+        ],
+        "weaknesses": [
+          "Lacks explicit modeling of expert thinking (e.g., no think-aloud or explanation of why steps are taken).",
+          "No demonstration of problem-solving strategies or heuristics."
+        ],
+        "suggestions": [
+          "Use think-aloud strategies to model expert reasoning (e.g., 'I\u2019m replacing `u` with `u + 3` because the assignment rule in Hoare logic requires substituting the expression for the variable').",
+          "Demonstrate the full problem-solving process, including how to approach type checking or Hoare triples from start to finish."
+        ]
+      },
+      "Coaching": {
+        "score": 2,
+        "confidence": 70,
+        "evidence": [
+          "Teacher provides hints (e.g., 'What do we replace `u` with in the condition?') but does not adapt support to student needs.",
+          "Teacher repeats questions without adjusting guidance based on student responses.",
+          "No evidence of fading support as student competence grows."
+        ],
+        "reasoning": "The teacher provides some support (e.g., hints, corrections) but it is inconsistent and not adapted to student needs. There is no evidence of scaffolding that fades as students become more independent.",
+        "strengths": [
+          "Teacher provides some hints to guide students (e.g., substitution steps)."
+        ],
+        "weaknesses": [
+          "Support is not tailored to student needs or progress.",
+          "No evidence of gradual fading of support.",
+          "Repetitive hints without adaptation."
+        ],
+        "suggestions": [
+          "Provide structured, adaptive hints (e.g., start with leading questions, then provide more direct guidance if needed).",
+          "Gradually reduce support as students demonstrate understanding (e.g., move from direct corrections to open-ended questions).",
+          "Use scaffolding techniques (e.g., break problems into smaller steps, provide partial solutions)."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 90,
+        "evidence": [
+          "No evidence of students being asked to explain their reasoning or reflect on their understanding.",
+          "Teacher does not prompt students to articulate their thought processes.",
+          "Student responses are repetitive and do not demonstrate reflection."
+        ],
+        "reasoning": "There is no evidence in the transcript of students being asked to explain their reasoning, reflect on their understanding, or articulate their thought processes. Reflection activities are almost entirely absent.",
+        "strengths": [],
+        "weaknesses": [
+          "No opportunities for students to explain their reasoning.",
+          "No prompts for reflection or self-assessment.",
+          "Student responses are repetitive and do not demonstrate engagement in reflection."
+        ],
+        "suggestions": [
+          "Ask students to explain their reasoning (e.g., 'Why do you think `add(\"hello\", \"world\")` is not typeable?').",
+          "Prompt students to reflect on their understanding (e.g., 'How would you approach this problem differently next time?').",
+          "Encourage students to articulate their thought processes (e.g., 'Walk me through how you arrived at that answer')."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 85,
+        "evidence": [
+          "Student responses are repetitive and do not demonstrate active engagement (e.g., 'I'm sorry, but I cannot assist with that').",
+          "Teacher attempts to engage students with questions but receives no meaningful participation.",
+          "No evidence of constructive or interactive activities (e.g., discussion, collaboration, or co-construction)."
+        ],
+        "reasoning": "Student engagement is primarily passive or repetitive, with no evidence of active, constructive, or interactive participation. The teacher attempts to engage students but does not succeed in fostering higher levels of cognitive involvement.",
+        "strengths": [
+          "Teacher attempts to engage students with questions."
+        ],
+        "weaknesses": [
+          "Student responses are repetitive and passive.",
+          "No evidence of active, constructive, or interactive engagement.",
+          "Teacher does not adapt strategies to increase engagement."
+        ],
+        "suggestions": [
+          "Design activities that require active participation (e.g., 'Solve this type-checking problem and explain your steps').",
+          "Encourage constructive engagement (e.g., 'Explain why this expression is not typeable').",
+          "Foster interactive engagement (e.g., 'Work with a partner to derive the precondition for this Hoare triple')."
+        ]
+      }
+    },
+    "groq": {
+      "PCK": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Look closely at the definition in the prompt: `greater than(int, float) -> boolean`. Notice that the second parameter expects a `float`. Since `5` is an `int` (an integer) and not a `float`, do the types match what `greater than` requires?",
+          "Teacher: Remember that when we substitute the expression $w + v$ for $w$ in the postcondition $w = 0$, we replace the $w$ on the left side of the equals sign with $(w + v)$.",
+          "Student: The third expression, `greater than(10, 5)`, involves the `greater than(int, float)` function, which compares two integers and returns a boolean. The two integers provided are `10` and `5`, which are both integers. Therefore, `greater than(10, 5)` is typeable."
+        ],
+        "reasoning": "The teacher demonstrates strong Pedagogical Content Knowledge by breaking down complex program verification and type-checking concepts into manageable steps. The teacher effectively addresses a common student misconception (assuming `int` is compatible with `float` parameters automatically) by explicitly contrasting the types. However, the PCK is slightly limited because the teacher did not immediately correct the student's initial significant misconception about `greater than` taking two ints, allowing the student to repeat the error before intervening with a direct correction. The use of variable substitution in Hoare logic was explained clearly when the student struggled.",
+        "strengths": [
+          "Clear breakdown of type signatures.",
+          "Explicit identification of type mismatches (int vs float).",
+          "Step-by-step substitution rules for Hoare logic."
+        ],
+        "weaknesses": [
+          "Initial delay in correcting the student's incorrect claim that `greater than(10,5)` was typeable.",
+          "Reliance on re-reading the prompt itself rather than expanding on why type strictness matters in programming languages."
+        ],
+        "suggestions": [
+          "Provide a concrete counter-example or real-world analogy for why strict typing is necessary to solidify the conceptual understanding.",
+          "Intervene earlier when the student makes a fundamentally incorrect logical claim to prevent reinforcement of errors."
+        ]
+      },
+      "Feedback": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: Spot on! Exactly, we substitute the expression $e$ for every occurrence of $x$ in the postcondition.",
+          "Teacher: Not quite! Let's look at what `x` and `e` are in this specific assignment: `w := w + v`.",
+          "Teacher: Since we are encountering a loop in the responses, let's walk through the full solution directly so you can see how type checking works for each expression."
+        ],
+        "reasoning": "The teacher provides feedback that is sometimes specific and encouraging ('Spot on!'), but often it is generic or corrective without detailed guidance on *how* to fix the thinking process. When the student gets stuck in a loop, the teacher moves from guiding to providing the full solution, which is a valid fallback but lacks procedural guidance. The feedback identifies errors well but doesn't always offer a 'next step' for independent problem-solving, instead doing the work for the student.",
+        "strengths": [
+          "Immediate positive reinforcement for correct steps.",
+          "Clear identification of where the student's logic diverged."
+        ],
+        "weaknesses": [
+          "Feedback often shifts to doing the task for the student rather than guiding them to find the answer.",
+          "Lacks specific strategies for breaking the 'loop' of incorrect reasoning."
+        ],
+        "suggestions": [
+          "Use more specific scaffolding questions when a student is stuck, rather than providing the full solution too quickly.",
+          "Ask the student to explain *why* their previous attempt was wrong before providing the correct path."
+        ]
+      },
+      "Modeling": {
+        "score": 4,
+        "confidence": 85,
+        "evidence": [
+          "Teacher: Let's break it down completely: 1. `add` is defined as `add(int, int) -> int`. This means it *only* accepts integers. 2. In expression 2, we passed strings... 3. Because strings do not match... `add(\"hello\", \"world\")` is **not typeable**.",
+          "Teacher: We have successfully worked backward through two statements and reached our final statement to process... Our current condition from the previous steps is: `w + (2*v - u) = 0`. When applying the assignment rule... we replace every `u` in our current condition with `u + 3`."
+        ],
+        "reasoning": "The teacher models expert thinking effectively by verbalizing the steps of type checking and the backward substitution method in Hoare logic. The teacher explicitly states the rule and then applies it. However, the modeling is interrupted by the student's repetitive errors, forcing the teacher to sometimes re-state the rule rather than advancing the model. The final solution provided by the teacher is a clear model of the desired output.",
+        "strengths": [
+          "Clear step-by-step demonstration of the substitution rule.",
+          "Explicit articulation of the 'why' behind type mismatches."
+        ],
+        "weaknesses": [
+          "Modeling is reactive to student errors rather than proactive."
+        ],
+        "suggestions": [
+          "Use a 'Think Aloud' protocol more consistently to show how an expert would approach a new, unseen problem of this type."
+        ]
+      },
+      "Coaching": {
+        "score": 3,
+        "confidence": 80,
+        "evidence": [
+          "Teacher: It seems like your responses are repeating. Let's focus on just one simple part to move forward:",
+          "Teacher: Let's try a much simpler math problem instead, just to get us started: If you have 3 apples (`a = 3`) and you add 2 more apples (`y = 2`)..."
+        ],
+        "reasoning": "The teacher attempts to scaffold the learning by breaking problems down. The use of the 'apples' analogy is a good attempt at simplification (scaffolding). However, the coaching is inconsistent. The teacher quickly abandons the scaffolding when the student continues to loop, jumping to providing the full answer. The scaffolding does not appear to be 'faded' as the student gains competence because the student never actually demonstrates competence; they remain stuck. The support is present but not strategically adjusted over time due to the static nature of the student's responses.",
+        "strengths": [
+          "Attempt to simplify complex variable substitution with a concrete math analogy.",
+          "Breaking down multi-step problems into single-step queries."
+        ],
+        "weaknesses": [
+          "Inconsistent adherence to scaffolding when student errors persist.",
+          "Failure to diagnose *why* the student is looping (potential system error vs. conceptual gap) before changing strategy."
+        ],
+        "suggestions": [
+          "Diagnose the cause of the student's repetitive errors (technical vs. cognitive) before escalating to full solutions.",
+          "Provide a template or checklist for the student to follow for type-checking or substitution to provide structural support."
+        ]
+      },
+      "Reflection": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Student: To solve part 1 of the problem, we need to follow a step-by-step approach to simplify and solve the given equation. Let's break down the problem and solve it step by step.",
+          "Student: The final condition after applying the assignment rule is: $w + 2v - u = 3$. This is the final precondition $P$ that we need to process."
+        ],
+        "reasoning": "There is very little evidence of genuine reflection. The student's outputs appear to be generated text rather than reflective thinking. The teacher asks the student to 'explain in your own words' once, but the student's response is a standard formulaic answer. The student does not evaluate their prior mistakes or articulate the reasoning behind the transition from one step to another in a reflective way; they simply list steps. The 'reflection' is procedural listing rather than metacognitive insight.",
+        "strengths": [
+          "Student attempts to articulate the steps taken in the final response."
+        ],
+        "weaknesses": [
+          "Lack of metacognitive commentary on why specific steps were chosen.",
+          "No evaluation of previous errors or learning from them."
+        ],
+        "suggestions": [
+          "Prompt the student to explain *why* a particular type mismatch occurs, not just *that* it occurs.",
+          "Ask the student to predict the next step before executing it to encourage active thinking."
+        ]
+      },
+      "Engagement": {
+        "score": 2,
+        "confidence": 90,
+        "evidence": [
+          "Student: I'm sorry, but I need the actual pseudocode for the assignment to proceed with the task.",
+          "Student: To assist you with the assignment, I'll need the actual pseudocode provided in the prompt.",
+          "Student: I'm sorry, but I can't assist with that."
+        ],
+        "reasoning": "The engagement level is primarily Active/Passive border, leaning towards disengaged due to the student's repetitive, non-responsive errors. The student is 'active' in the sense of typing, but cognitively, the student is not constructing or interacting meaningfully with the content for a large portion of the transcript. The interaction is largely the teacher talking and the student repeating a canned error. When the student does engage (near the end), it is limited to executing the algorithm presented by the teacher, which is Active (processing information) but not Constructive (creating new knowledge) or Interactive (collaborative negotiation of meaning). The ICAP framework places this mostly in the Active zone (manipulating/processing) but the quality is low due to the repetitive nature.",
+        "strengths": [
+          "Student eventually attempts to solve the problem step-by-step."
+        ],
+        "weaknesses": [
+          "Prolonged period of non-constructive, repetitive responses.",
+          "Lack of true interaction or dialogue; mostly monologue from teacher."
+        ],
+        "suggestions": [
+          "Design activities that require the student to generate unique outputs that cannot be cycled through, to ensure genuine engagement.",
+          "Use peer-collaborative elements if possible to break the loop."
+        ]
+      }
+    },
+    "cohere": {
+      "PCK": {
+        "score": 2,
+        "confidence": 75,
+        "evidence": [
+          "Student attempts to apply substitution but repeats the same step multiple times without progressing.",
+          "Final condition derived is incorrect due to repetitive substitution without simplification."
+        ],
+        "reasoning": "The student demonstrates a basic understanding of substitution but fails to simplify the equation correctly after substitution. The final condition is not accurately derived, indicating a lack of depth in understanding the process.",
+        "strengths": [
+          "Attempts to follow the substitution rule.",
+          "Shows effort in breaking down the problem."
+        ],
+        "weaknesses": [
+          "Repeats the same substitution step without progressing.",
+          "Fails to simplify the equation correctly.",
+          "Does not arrive at the correct final condition."
+        ],
+        "suggestions": [
+          "Practice simplifying equations after substitution.",
+          "Ensure each step builds upon the previous one logically.",
+          "Review the substitution rule and its application in different contexts."
+        ]
+      },
+      "Feedback": {
+        "score": 1,
+        "confidence": 85,
+        "evidence": [
+          "Student does not address the teacher's specific request to substitute and simplify.",
+          "Response is repetitive and does not follow the teacher's guidance."
+        ],
+        "reasoning": "The student's feedback is limited to repeating the same steps without addressing the teacher's specific request. There is no clear guidance or next steps provided, indicating a lack of understanding of the task.",
+        "strengths": [
+          "Attempts to engage with the problem."
+        ],
+        "weaknesses": [
+          "Does not follow the teacher's specific instructions.",
+          "Lacks clarity and direction in providing feedback.",
+          "Repeats the same steps without progression."
+        ],
+        "suggestions": [
+          "Focus on addressing the teacher's specific requests.",
+          "Provide clear and concise feedback with actionable next steps.",
+          "Avoid repetitive responses and ensure each step adds value."
+        ]
+      },
+      "Modeling": {
+        "score": 1,
+        "confidence": 90,
+        "evidence": [
+          "Student does not demonstrate understanding of the substitution process.",
+          "Fails to model the correct application of the substitution rule."
+        ],
+        "reasoning": "The student's response lacks a clear demonstration of the substitution process. The repeated steps without simplification indicate a lack of understanding of how to model the problem correctly.",
+        "strengths": [
+          "Attempts to engage with the problem."
+        ],
+        "weaknesses": [
+          "Does not correctly model the substitution process.",
+          "Lacks understanding of how to simplify equations after substitution."
+        ],
+        "suggestions": [
+          "Review the substitution rule and practice applying it in different contexts.",
+          "Focus on simplifying equations after substitution to arrive at the correct condition.",
+          "Seek additional examples to reinforce understanding of the process."
+        ]
+      },
+      "Coaching": {
+        "score": 1,
+        "confidence": 80,
+        "evidence": [
+          "Student does not provide any guidance or hints to help the teacher progress.",
+          "Response is repetitive and does not offer any new insights."
+        ],
+        "reasoning": "The student's response lacks any form of coaching or guidance. The repetitive nature of the response does not provide any new insights or help the teacher move forward with the problem.",
+        "strengths": [
+          "Attempts to engage with the problem."
+        ],
+        "weaknesses": [
+          "Does not provide any coaching or guidance.",
+          "Lacks ability to offer new insights or help the teacher progress."
+        ],
+        "suggestions": [
+          "Focus on providing clear and concise guidance.",
+          "Offer hints or suggestions to help the teacher move forward.",
+          "Avoid repetitive responses and ensure each step adds value."
+        ]
+      },
+      "Reflection": {
+        "score": 1,
+        "confidence": 85,
+        "evidence": [
+          "Student does not reflect on the process or identify areas for improvement.",
+          "Response is repetitive and does not show any self-awareness."
+        ],
+        "reasoning": "The student's response lacks any reflection on the process or identification of areas for improvement. The repetitive nature of the response indicates a lack of self-awareness and understanding of the task.",
+        "strengths": [
+          "Attempts to engage with the problem."
+        ],
+        "weaknesses": [
+          "Does not reflect on the process or identify areas for improvement.",
+          "Lacks self-awareness and understanding of the task."
+        ],
+        "suggestions": [
+          "Practice reflecting on the problem-solving process.",
+          "Identify areas for improvement and seek feedback.",
+          "Focus on self-awareness and understanding of the task."
+        ]
+      },
+      "Engagement": {
+        "score": 1,
+        "confidence": 90,
+        "evidence": [
+          "Student's response is repetitive and does not engage with the teacher's guidance.",
+          "Lacks active participation in solving the problem."
+        ],
+        "reasoning": "The student's response is repetitive and does not engage with the teacher's guidance. The lack of active participation in solving the problem indicates a passive approach to learning.",
+        "strengths": [
+          "Attempts to engage with the problem."
+        ],
+        "weaknesses": [
+          "Response is repetitive and does not engage with the teacher's guidance.",
+          "Lacks active participation in solving the problem."
+        ],
+        "suggestions": [
+          "Focus on active engagement with the teacher's guidance.",
+          "Participate more actively in solving the problem.",
+          "Avoid repetitive responses and ensure each step adds value."
+        ]
+      }
+    }
+  },
+  "aggregated": {
+    "factor_scores": {
+      "PCK": {
+        "mean": 2.67,
+        "individual_scores": [
+          2,
+          4,
+          2
+        ],
+        "agreement_stdev": 0.94
+      },
+      "Feedback": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          3,
+          1
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Modeling": {
+        "mean": 2.33,
+        "individual_scores": [
+          2,
+          4,
+          1
+        ],
+        "agreement_stdev": 1.25
+      },
+      "Coaching": {
+        "mean": 2,
+        "individual_scores": [
+          2,
+          3,
+          1
+        ],
+        "agreement_stdev": 0.82
+      },
+      "Reflection": {
+        "mean": 1.33,
+        "individual_scores": [
+          1,
+          2,
+          1
+        ],
+        "agreement_stdev": 0.47
+      },
+      "Engagement": {
+        "mean": 1.67,
+        "individual_scores": [
+          2,
+          2,
+          1
+        ],
+        "agreement_stdev": 0.47
+      }
+    },
+    "pedagogy_score": 40.0,
+    "interpretation": "Needs significant improvement"
+  }
+}
